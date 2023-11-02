@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { BoETemplate } from "./template";
+import { boeTemplateCertificate } from "../samples/customTemplateSample";
+
+<Meta title="MDX|BoETemplate" component={BoETemplate} />
+
+# BoETemplate component
+
+<Description of={BoETemplate} />
+
+# Props
+
+<Props of={BoETemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <BoETemplate document={object("document", boeTemplateCertificate)} />
+  </Story>
+</Preview>
