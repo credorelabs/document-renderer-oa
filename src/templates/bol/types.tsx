@@ -1,0 +1,67 @@
+import { v2 } from "@govtechsg/open-attestation";
+
+
+export interface BillOfLadingData extends v2.OpenAttestationDocument {
+  blNumber: string;
+  bookingReferenceNumber: string;
+  consignment_containerNumber: string;
+  consignment_containerSizeTypeISO: string;
+  consignment_fullOrEmptyIndicator: string;
+  contractQuoteReferenceNumber: string;
+  date_actualDateOfPlaceOfDelivery?: string;
+  date_actualDateOfPlaceOfReceipt?: string;
+  date_actualTimeOfArrival?: string;
+  date_actualTimeOfDeparture?: string;
+  date_estimatedDateOfPlaceOfDelivery?: string;
+  date_estimatedDateOfPlaceOfReceipt?: string;
+  date_estimatedTimeOfArrival?: string;
+  date_estimatedTimeOfDeparture?: string;
+  freightForwardersReferenceNumber: string;
+  goods_HSCode: string;
+  goods_IMDG: string;
+  goods_dangerLevel: string;
+  goods_descriptionOfGoods: string;
+  goods_numberOfPackages: string;
+  goods_productIdentifier: string;
+  goods_properShippingTechnicalName: string;
+  goods_typeOfPackagingCEFACT: string;
+  location_placeOfDelivery?: string;
+  location_placeOfPaymentUNLOCODE?: string;
+  location_placeOfReceipt?: string;
+  location_portOfDischarge?: string;
+  location_portOfLoading?: string;
+  measure_temperatureSettingForReeferContainers?: string;
+  measure_temperatureUnitsUNCEFACT?: string;
+  measure_totalNumberOfContainers?: string;
+  measure_volume?: string;
+  measure_weight?: string;
+  party_SCAC: string;
+  party_SMFG: string;
+  party_consignee?: string;
+  party_notifyParty?: string;
+  party_shipper?: string;
+  shippersReferenceNumber: string;
+  terms: string;
+  transport_IMOvesselNumber?: string;
+  transport_conveyanceReferenceNumber?: string;
+  transport_modeOfTransportUNCEFACT?: string;
+  transport_vesselName?: string;
+
+  exporter_sign_time?: string;
+  exporterEmail?: string;
+  exporterPhone?: string;
+  exporterAddress?: string;
+  exporterName?: string;
+  exporterCompanyName?: string;
+
+  importerCompanyName?: string;
+  importerAddress?: string;
+  importerName?: string;
+  importer_email?: string;
+  importer_phone?: string;
+  importer_address?: string;
+
+  shipping_company_sign_time?: string;
+  shipping_company_signer?: string;
+  
+}

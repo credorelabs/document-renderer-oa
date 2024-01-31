@@ -1,0 +1,40 @@
+import { v2 } from "@govtechsg/open-attestation";
+
+export interface BillOfExchangeMain extends v2.OpenAttestationDocument {
+  name?: string;
+  dlpcId?: string; 
+  orginatorId? :string;
+  refID?: string;
+  committer?: string;
+  committee?: string;
+  currency?: string;
+  amount?: string;
+  commitmentDate: string;
+  dueDate: string;
+  commitmentState?: string;
+  dischargeState?: string;
+  dischargeDate?: string;
+  applicableRules?: string;
+  invoiceNumber?: string;
+  frId?: string;
+  createdAt: string;
+  updatedAt?: string;
+  holderCompanyName?: string;
+  holderEmail?: string;
+  acceptorCompanyName?: string;
+  acceptorEmail?: string;
+  accountNo?: string;
+  accountPlace?: string;
+  txLink?: string;
+  supplierName?: string;
+  supplierJobTitle?: string;
+  sigTime: string;
+  buyerName?: string;
+  buyerJobTitle?: string;
+  acceptorSignTime: string;
+  merkleRoot?: string;
+  walletAddress?: string;
+  txHashUrl?: string;
+  supplierURL?: string;
+  buyerUrl?: string;
+}

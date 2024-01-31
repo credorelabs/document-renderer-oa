@@ -50,22 +50,7 @@ export const BoETemplate: FunctionComponent<TemplateProps<BILL_OF_EXCHANGE> & { 
       <h1>{document.name}</h1>
       {/* <div>awarded to</div> */}
       {/* <h2>{document.recipient.name}</h2> */}
-      <table style={tableStyle}>
-      <thead>
-        <tr>
-          <th style={cellStyle}>Key</th>
-          <th style={cellStyle}>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(data).map(([key, value]) => (
-          <tr key={key}>
-            <td style={cellStyle}>{key}</td>
-            <td style={cellStyle}>{value}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+      <h2>Document has been issued</h2>
 
     </div>
   );
