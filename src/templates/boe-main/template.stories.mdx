@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { BillOfExchangeMainTemplate } from "./template";
+import { boeMainTemplateCertificate } from "../samples/boeMainTemplate";
+
+<Meta title="MDX|BillOfExchangeMainTemplate" component={BillOfExchangeMainTemplate} />
+
+# BoETemplate component
+
+<Description of={BillOfExchangeMainTemplate} />
+
+# Props
+
+<Props of={BillOfExchangeMainTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <BillOfExchangeMainTemplate document={object("document", boeMainTemplateCertificate)} />
+  </Story>
+</Preview>

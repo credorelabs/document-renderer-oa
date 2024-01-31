@@ -32,7 +32,11 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
-            loader: "file-loader"
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash:7].[ext]",
+              outputPath: "src/templates/boe-main/" // Optional: specify the output folder for images
+            }
           }
         ]
       }
@@ -78,7 +82,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".ts", ".tsx"],
+    extensions: [".js", ".ts", ".tsx", ".css"],
     modules: ["node_modules", path.resolve(__dirname, "src")],
     alias: {
       "react-dom": "@hot-loader/react-dom"
