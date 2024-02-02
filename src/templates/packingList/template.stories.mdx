@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { PackingListTemplate } from "./template";
+import { packingListTemplate } from "../samples/packingListTemplate";
+
+<Meta title="MDX|PackingListTemplate" component={PackingListTemplate} />
+
+# PackingListTemplate component
+
+<Description of={PackingListTemplate} />
+
+# Props
+
+<Props of={PackingListTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <PackingListTemplate document={object("document", packingListTemplate)} />
+  </Story>
+</Preview>

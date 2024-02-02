@@ -5,6 +5,9 @@ import { BillOfExchangeTemplates } from "./boe-main";
 import { BOLTemplates } from "./bol";
 import { InvoiceTemplates } from "./invoice";
 import { CertificateofOriginTemplates } from "./certificateoforigin";
+import { packingListTemplate } from "./samples/packingListTemplate";
+import { PackingListTemplate } from "./packingList/template";
+import { PackingListTemplates } from "./packingList";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -12,5 +15,7 @@ export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE_MAIN: BillOfExchangeTemplates,
   BOL: BOLTemplates,
   INVOICE: InvoiceTemplates,
-  CERTIFICATE_OF_ORIGIN: CertificateofOriginTemplates
+  CERTIFICATE_OF_ORIGIN: CertificateofOriginTemplates,
+  PACKING_LIST : PackingListTemplates,
+  // PACKING_LIST:packingListTemplate
 };
