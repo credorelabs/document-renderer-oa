@@ -1,11 +1,6 @@
 import React, { FunctionComponent } from "react";
-// import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { css } from "@emotion/core";
-// import { CocTemplateCertificate } from "../samples/cooTemplate";
-// import { BillOfLadingData } from "./types";
-// import background from "./boeBackground.svg";
 import background from "./boeBackground.svg";
-
 import credoreLogo from "https://www.credore.xyz/assets/images/Logo.png";
 import moment from "moment";
 import {  ShippingDocument } from "./types";
@@ -31,13 +26,13 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     transportServiceProvider,
     seller,
     buyer,
-    // consignment,
-    // containerNo,
     goods,
     invoice,
-    
-    // issuers,
-    // $template
+    supplier_sign_name,
+    supplier_email,
+    supplier_sign_time,
+    chamber_email,
+    chamber_sign_time
   } = document;
   console.log(document)
 
@@ -47,7 +42,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     margin: auto;
     background-size: cover;
     background-position: center;
-    border: 3px solid black;
+    border: 1px solid black;
   
   `;
 
@@ -68,7 +63,8 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
           </td>
           <td css={tableTd} colSpan={2}>
             <h3>
-              <b>PACKING LIST FOR {packingNumber}</b>
+              <b>PACKING LIST FOR {packingNumber}</b><br />
+
             </h3>
           </td>
         </tr>
@@ -168,8 +164,8 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
         </tr>
       </table>
 
-      <h3 style={{ fontFamily: "Inter", fontSize: "1.75rem", fontWeight: 500, padding: "0.5rem" }}>
-        Item Informations:
+      <h3 style={{ fontFamily: "Inter", fontSize: "1.2rem", fontWeight: 500, padding: "0.5rem" }}>
+        Item Information:
       </h3>
       <table
         style={{
@@ -263,36 +259,41 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
         ))}
       </table>
 
-      {/* <table
-      style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
-    >
-      <tr css={tableTr}>
-        <td css={tableTd} colSpan={4}>
-          <b>Terms:</b>&nbsp;{terms}
-        </td>
-      </tr>
-      <tr css={tableTr}>
-        <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
-          <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-          
-          <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-            <b>Date & Time:</b>&nbsp;
-            {moment(shipping_company_sign_time)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
-        </td>
-
-        <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
-          <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
-
-          <b>Name:</b>&nbsp;{exporterName} <br />
-            <b>Date & Time:</b>&nbsp;
-            {moment(exporter_sign_time)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
-        </td>
-      </tr>
-    </table> */}
+      <table
+          style={{
+            width: "100%",
+            borderWidth: "0px 2px 2px 2px",
+            borderStyle: "solid",
+            borderColor: "black",
+            padding: "0px",
+            borderSpacing: "0px",
+            margin: "auto"
+          }}
+        >
+          <tr>
+          <td
+          style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}
+            >
+              <b style={{ color: "red" }}>Digitally signed by Exporter:</b> <br />
+              <b>Name:</b>&nbsp;{supplier_email} <br />
+              <b>Date & Time:</b>&nbsp;
+              {moment(supplier_sign_time)
+                .utc()
+                .format("DD/MM/YYYY hh:mm A [UTC]")}
+            </td>
+          <td
+              colSpan={2}
+              style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}
+            >
+              <b style={{ color: "red" }}>Digitally signed by Importer :</b> <br />
+              <b>Name:</b>&nbsp;{chamber_email} <br />
+              <b>Date & Time:</b>&nbsp;
+              {moment(chamber_sign_time)
+                .utc()
+                .format("DD/MM/YYYY hh:mm A [UTC]")}
+            </td>
+          </tr>
+        </table>
     </div>
   );
 };

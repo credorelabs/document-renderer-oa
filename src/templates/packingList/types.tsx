@@ -25,11 +25,15 @@ export interface ShippingDocument extends v2.OpenAttestationDocument{
   goods: any[];
   invoice: Invoice,
   supplierSignName: string;
-  supplierSignTime: string;
+  supplier_sign_time: string;
+  supplier_sign_name: string;
   supplierPosition: string;
+  supplier_email: string;
   supplierEmail: string;
   chamberSignTime: string;
   chamberEmail: string;
+  chamber_email:string;
+  chamber_sign_time:string;
   chamberPosition: string;
   issuers: any;
   template: string;
