@@ -56,7 +56,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
   `;
   return (
     <div css={containerStyle}>
-      <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+      <table style={{ width: "100%",  padding: "0px", borderSpacing: "0px" }}>
         <tr css={tableTr}>
           <td style={{ width: "50%", textAlign: "center" }} css={tableTd} colSpan={2}>
             <img src="https://www.credore.xyz/assets/images/Logo.png" alt="credore stamp" style={{ width: "10em" }} />
@@ -119,7 +119,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
       </table>
 
       <table
-        style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
+        style={{ width: "100%",  padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
       >
         <tr css={tableTr}>
           <td css={tableTd}>
@@ -164,14 +164,12 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
         </tr>
       </table>
 
-      <h3 style={{ fontFamily: "Inter", fontSize: "1.2rem", fontWeight: 500, padding: "0.5rem" }}>
-        Item Information:
-      </h3>
+      <h3 style={{ marginTop: "2em", paddingLeft:"0.5rem" }}>Items Information:</h3>
       <table
         style={{
           width: "100%",
           borderCollapse: "collapse",
-          border: "2px solid black",
+          
           padding: "0px",
           borderSpacing: "0px"
         }}
@@ -262,9 +260,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
       <table
           style={{
             width: "100%",
-            borderWidth: "0px 2px 2px 2px",
-            borderStyle: "solid",
-            borderColor: "black",
+           
             padding: "0px",
             borderSpacing: "0px",
             margin: "auto"
