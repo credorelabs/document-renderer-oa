@@ -70,18 +70,24 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
 
     shipping_company_sign_time,
     shipping_company_signer,
+
+    carrier_name,
+    carrier_contact_name,
+    carrier_address,
+    carrier_contact_email,
+    carrier_contact_phone,
+
+    notify_name,
+    notify_contact_name,
+    notify_address,
+    notify_contact_email,
+    notify_contact_phone
   } = document;
 
   const containerStyle = css`
     margin: auto;
     padding: 15px;
     width: 80%;
-    background-image: url(${background});
-    background-size: cover;
-    background-position: center;
-    @media print {
-      background-image: url(${background});
-    }
   `;
 
   // const containerStyle = css`
@@ -164,6 +170,26 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           </td>
         </tr>
 
+        <tr css={tableTr}>
+          <td css={tableTd} colSpan={2}>
+            <b>Carrier:</b>
+            <br />
+            {carrier_name},<br />
+            {carrier_contact_name},<br />
+            {carrier_address},<br />
+            {carrier_contact_email},<br />
+            {carrier_contact_phone}
+          </td>
+          <td css={tableTd} colSpan={2}>
+            <b>Notify Party:</b>
+            <br />
+            {notify_name},<br />
+            {notify_contact_name},<br />
+            {notify_address},<br />
+            {notify_contact_email},<br />
+            {notify_contact_phone}
+          </td>
+        </tr>
         <tr css={tableTr}>
           <td css={tableTd}>
             <b>Actual date of delivery:</b>

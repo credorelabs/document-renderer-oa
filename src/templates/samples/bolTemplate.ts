@@ -64,6 +64,17 @@ export const billOfLadingCertificate: BillOfLadingData = {
 
   shipping_company_sign_time: "2023-11-30T09:30:00Z",
   shipping_company_signer: "Maersk",
+  carrier_name: "Carrier Company",
+  carrier_contact_name: "Gujral",
+  carrier_address: "YNV, Canada",
+  carrier_contact_email: "cemail@gmail.com",
+  carrier_contact_phone: "7008297411",
+
+  notify_name: "Notifier company",
+  notify_contact_name: "Harsh",
+  notify_address: "XYZ, India",
+  notify_contact_email: "nemail@gmail.com",
+  notify_contact_phone: "7787009005",
   
   issuers: [
     {

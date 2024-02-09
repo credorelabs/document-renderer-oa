@@ -64,4 +64,15 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   shipping_company_sign_time?: string;
   shipping_company_signer?: string;
   
+  carrier_name?: string;
+  carrier_contact_name?: string;
+  carrier_address?: string;
+  carrier_contact_email?: string;
+  carrier_contact_phone?: string;
+
+  notify_name?: string;
+  notify_contact_name?: string;
+  notify_address?: string;
+  notify_contact_email?: string;
+  notify_contact_phone?: string;
 }
