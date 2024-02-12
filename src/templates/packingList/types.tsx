@@ -30,6 +30,7 @@ export interface ShippingDocument extends v2.OpenAttestationDocument{
   supplierPosition: string;
   supplier_email: string;
   supplierEmail: string;
+  supplier_name: string;
   chamberSignTime: string;
   chamberEmail: string;
   chamber_email:string;
