@@ -34,6 +34,8 @@ export interface Invoice extends v2.OpenAttestationDocument {
   bankAccountNo: string;
   IFSCCode: string;
   bankHolderName: string;
+  subTotal: string;
+
 }
 
 interface InvoiceLine {

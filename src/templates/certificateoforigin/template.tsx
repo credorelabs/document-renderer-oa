@@ -27,11 +27,18 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
     portOfDischarge,
     portOfLading,
     vessel_name,
-    carrier_address,
-    carrier_contact_email,
-    carrier_contact_name,
-    carrier_contact_phone,
-    carrier_name,
+    chamber_address,
+    chamber_contact_email,
+    chamber_contact_name,
+    chamber_contact_phone,
+    chamber_name,
+    chamber_logo,
+    chamber_fax,
+
+    kindOfPackage,
+    containerNo,
+    descriptionOfGood,
+
     supplier_email,
     supplier_position,
     supplier_sign_name,
@@ -49,7 +56,9 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
     quantity,
     hsCode,
     route,
-    invoiceNumber
+    invoiceNumber,
+    value,
+    termsOfShippment
   } = document;
 
   const containerStyle = css`
@@ -109,23 +118,22 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
                   <b>{certificateNumber}</b>
                 </h2>
               </div>
-              <img src={utkalStamp} alt="Utkal Chamber" style={{ width: "8em" }} />
+              <img src={chamber_logo} alt="Utkal Chamber" style={{ width: "8em" }} />
               <div>
-                <b>Utkal Chamber of Commerce & Industry Ltd.</b>
+                <b>{chamber_name}</b>
                 <br />
-                N/6, IRC Village, Nayapalli,
+                {chamber_address}
                 <br />
-                Bhubaneswar - 751015, Odisha <br />
-                📞: 0674-2362598 <br />
-                📠: 0674-2362598 <br />
-                ✉️: contactus@utkalchamber.in <br />
+                📞: {chamber_contact_phone} <br />
+                📠: {chamber_fax} <br />
+                ✉️: {chamber_contact_email} <br />
               </div>
             </td>
           </tr>
 
           <tr css={tableTr}>
             <td css={tableTd} colSpan={3}>
-              <b>Consignee:</b>
+              <b>Importer:</b>
               <br />
               {customer_name} <br />
               {customer_contact_name} <br />
@@ -183,22 +191,19 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
           </tr>
           <tr css={tableTr}>
             <td css={tableData}>
-              COCO PEAT <br />
-              ORIGIN-INDIA <br />
+              {containerNo}<br />
             </td>
             <td css={tableData}>
-              5KG BLOCKS <br />
-              FLOOR LOADED <br />
+              {kindOfPackage} <br />
             </td>
             <td css={tableData}>
-              LOW EC-COCO PEAT BLOCK 5KG <br />
+              {descriptionOfGood} <br />
               INV NO.: {invoiceNumber} <br />
               Dt.: {dateOfIssuance} <br />
-              IE Code: IE1234567 <br />
               HS Code: {hsCode} <br />
             </td>
             <td style={{ textAlign: "center" }} css={tableData}>
-              <b>NETT WT:</b>
+              <b>Volume:</b>
               <br />
               {totalVolume} <br />
               <br />
@@ -207,7 +212,7 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
               {totalWeight} <br />
             </td>
             <td style={{ textAlign: "center" }} css={tableData}>
-              12344 <br /> <br /> <br />
+              {value} <br /> <br /> <br />
             </td>
           </tr>
 
@@ -215,7 +220,7 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
             <td css={tableTd} colSpan={4}>
               <b>Terms of Shipment:</b>
               <br />
-              {termsOfShipment}
+              {termsOfShippment}
             </td>
             <td css={tableTd}>
               <b>Secured by:</b> <br />

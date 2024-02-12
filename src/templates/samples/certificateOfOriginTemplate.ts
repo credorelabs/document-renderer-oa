@@ -17,11 +17,11 @@ export const certificateofOriginTemplate: CertificateOfOrigin = {
   dateOfIssuance: "2023-11-16T15:30:00Z",
   termsOfShipment: "FOB",
   vessel_name: "Example Vessel",
-  carrier_name: "Carrier Co.",
-  carrier_address: "789 Carrier St, Carrier City",
-  carrier_contact_name: "Carrier Contact",
-  carrier_contact_phone: "111-222-3333",
-  carrier_contact_email: "carrier@email.com",
+  chamber_name: "chamber Co.",
+  chamber_address: "789 chamber St, chamber City",
+  chamber_contact_name: "chamber Contact",
+  chamber_contact_phone: "111-222-3333",
+  chamber_contact_email: "chamber@email.com",
   portOfLading: "Port A",
   portOfDischarge: "Port B",
   buyerSignTime: "2023-11-17T10:00:00Z",
@@ -46,6 +46,15 @@ export const certificateofOriginTemplate: CertificateOfOrigin = {
   totalWeight: "1000 kg",
   totalVolume: "10 cubic meters",
   route: "sea",
+
+  chamber_logo: "logo",
+  chamber_fax: "fax",
+
+  kindOfPackage: "s",
+  containerNo: "conNo",
+  descriptionOfGood: "description",
+  termsOfShippment: "terms",
+  value: "USD something",
 
   invoiceNumber: "INV0001022020",
   issuers: [

@@ -38,7 +38,8 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     bankAccountNo,
     bankName,
     IFSCCode,
-    bankHolderName
+    bankHolderName,
+    subTotal
   } = document;
 
   const containerStyle = css`
@@ -223,13 +224,13 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             <td style={{ padding: "0.4em" }}>
               <b>SUBTOTAL</b>
             </td>
-            <td>{amount}</td>
+            <td>{currency}&nbsp;{subTotal}</td>
           </tr>
           <tr>
             <td style={{ padding: "0.4em" }}>
               <b>TAX</b>
             </td>
-            <td>{taxAmount}</td>
+            <td>{taxAmount}%</td>
           </tr>
           <tr>
             <td style={{ padding: "0.4em" }}>

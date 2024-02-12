@@ -33,6 +33,8 @@ export const invoiceTemplate: Invoice = {
   bankAccountNo: "ACC123456789",
   IFSCCode: "IFSCSBI00010101",
   bankHolderName: "BankGuy",
+  subTotal: "1000",
+
   Invoice_Lines: [
     {
         description: "best for sneakers",
