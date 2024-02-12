@@ -32,7 +32,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     supplier_email,
     supplier_sign_time,
     chamber_email,
-    chamber_sign_time
+    chamber_sign_time,supplier_name
   } = document;
   console.log(document)
 
@@ -134,7 +134,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
         </tr>
         <tr css={tableTr}>
           <td css={tableTd}>
-            <b>Temperature:</b>&nbsp;{temperature}
+            <b>Temperature:</b>&nbsp;{temperature}°c
           </td>
           <td css={tableTd}>
             <b>No Of Packages:</b>&nbsp;{noOfPackages}
@@ -271,7 +271,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
           style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}
             >
               <b style={{ color: "red" }}>Digitally signed by Exporter:</b> <br />
-              <b>Name:</b>&nbsp;{supplier_email} <br />
+              <b>Name:</b>&nbsp;{invoice?.supplier_name} <br />
               <b>Date & Time:</b>&nbsp;
               {moment(supplier_sign_time)
                 .utc()
@@ -282,7 +282,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}
             >
               <b style={{ color: "red" }}>Digitally signed by Importer :</b> <br />
-              <b>Name:</b>&nbsp;{chamber_email} <br />
+              <b>Name:</b>&nbsp;{invoice?.customer_name} <br />
               <b>Date & Time:</b>&nbsp;
               {moment(chamber_sign_time)
                 .utc()
