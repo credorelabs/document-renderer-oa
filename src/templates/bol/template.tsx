@@ -345,16 +345,35 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Temperature:</b>&nbsp;{measure_temperatureSettingForReeferContainers}
           </td>
         </tr>
-      </table>
-
-      <table
-        style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
-      >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
             <b>Terms:</b>&nbsp;{terms}
           </td>
         </tr>
+      </table>
+
+      <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}>
+        <tr css={tableTr}>
+          <td css={tableTd}>
+          TAKEN  IN  CHARGE  IN  APPARENTLY  GOOD  CONDITION  HEREIN  AT  THE  PLACE  OF  RECEIPT  FOR
+          TRANSPORT  AND  DELIVERY  AS  MENTIONED  ABOVE,  UNLESS  OTHERWISE  STATED.  THE  MTO  IN
+          ACCORDANCE  WITH  THE  PROVISIONS  CONTAINED  IN  THE  MTD  UNDERTAKES  TO  PERFORM  OR  TO
+          PROCURE THE  PREFORMANCE  OF THE  MULTIMODAL TRANSPORT  FROM THE  PLACE AT  WHICH THE
+          GOODS  ARE  TAKEN  IN  CHARGE,  TO  THE  PLACE  DESIGNATED  FOR  DELIVERY  AND  ASSUMES
+          RESPONSIBILITY FOR SUCH TRANSPORT.                   
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd}>
+              ONE OF THE MTD(S) MUST BE SURRENDERED, DULY ENDORSED IN EXCHANGE FOR THE GOODS, IN
+              WITNESS WHERE OF THE ORIGINAL MTD ALL OF THIS TENOR AND DATE HAVE BEEN SIGNED IN THE
+              NUMBER INDICATED BELOW ONE OF WHICH BEING ACCOMPLISHED THE OTHER(S) TO BE VOID
+            </td>
+        </tr>
+      </table>
+
+      <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }} >        
         <tr css={tableTr}>
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
