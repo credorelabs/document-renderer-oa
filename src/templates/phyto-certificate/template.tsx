@@ -48,7 +48,7 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
   `;
 
   const backgroundImage = css`
-    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url(${background});
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(${background});
     background-size: cover;
     background-position: center;
     @media print {
