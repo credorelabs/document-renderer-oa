@@ -83,9 +83,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
 
   return (
     <>
-      {/* <div style={{ display: 'flex'}}> */}
       <div css={containerStyle}>
-        {/* <h2 style={{ textAlign: "center" }}>CERTIFICATE OF ORIGIN</h2> */}
         <table
           style={{
             width: "95%",
@@ -93,7 +91,6 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
             padding: "0px",
             borderSpacing: "0px",
             margin: "auto"
-            // marginBottom: "0.2rem"
           }}
         >
           <tr css={tableTr}>
@@ -109,9 +106,10 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <br />
               ✉️: {supplier_contact_email}
               <br />
-              GSTIN NO.: {supplier_contact_gst}
+              CIN NO:- U28900MH1999PLC123308 &nbsp;&nbsp;&nbsp;PAN NO. AADCM3035D <br />
+              GSTIN NO. : 27AADCM3035D1ZW &nbsp;&nbsp;&nbsp;IEC CODE NO. 3106010142
             </td>
-            <td css={tableTd} style={{ textAlign: "center" }} colSpan={2} rowSpan={3}>
+            <td css={tableTd} style={{ textAlign: "center" }} colSpan={3} rowSpan={2}>
               <h2 style={{ textAlign: "center", marginTop: "0" }}>
                 <b>CERTIFICATE OF ORIGIN</b>
                 <h6 style={{ fontWeight: "lighter", fontSize: "0.5em", marginTop: "0" }}>
@@ -168,88 +166,81 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <br />
               Port of discharge - {portOfDischarge}
             </td>
+            <td css={tableTd} colSpan={3}>
+              <p style={{ margin: "-0.5em", fontSize: "0.9em" }}>4. For Official use</p>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </td>
           </tr>
 
-          <tr>
-            <td colSpan={5}>
-              <table
-                style={{
-                  width: "100.2%",
-                  border: "0.5px solid black",
-                  padding: "-1px",
-                  borderSpacing: "0px",
-                  margin: "-1px"
-                }}
-                cellPadding={0}
-                css={tableTr}
-              >
-                <tr css={tableTr}>
-                  <td css={tableTr} style={{ padding: "0.5em" }}>
-                    5. Item No.
-                  </td>
-                  <td css={tableTr} style={{ padding: "0.5em" }}>
-                    6. Mark and numbers of packages
-                  </td>
-                  <td css={tableTr} style={{ padding: "0.5em" }}>
-                    7. Number and kind of packages, description of goods
-                  </td>
-                  <td css={tableTr} style={{ padding: "0.5em" }}>
-                    8. Origin criteria
-                  </td>
-                  <td css={tableTr} style={{ padding: "0.5em" }}>
-                    9. Gross weight or other quantity
-                  </td>
-                  <td css={tableTr} style={{ padding: "0.5em" }}>
-                    10. Number and date of invoices
-                  </td>
-                </tr>
-                <tr css={tableTr}>
-                  <td css={tableTd} style={{ height: "10rem" }}>
-                    1.
-                  </td>
-                  <td css={tableTd} style={{ height: "10rem" }}>
-                    <b>
-                      {numOfPackages}&nbsp;{markOfPackages}
-                    </b>
-                  </td>
-                  <td css={tableTd} style={{ height: "10rem" }}>
-                    DRAWING NUMBER: D-332-1-A7 <br />
-                    Material Code:8093883
-                    <br />
-                    <br />
-                    <b>
-                      <u>Dimension of Pallet</u>
-                    </b>
-                    <br /> 1) L 72 CM X W 72 CM X H 88 CM of 01 Pallet
-                    <br />
-                    Item No.1 in Box 12 Nos (Box No.Identify: 01 to 12)
-                  </td>
-                  <td css={tableTd} style={{ height: "10rem" }}>
-                    <b>INDIA</b>
-                  </td>
-                  <td css={tableTd} style={{ height: "10rem" }}>
-                    <b>
-                      Gross Weight
-                      <br />
-                      {totalWeight}
-                      <br />
-                      <br />
-                      Net Weight
-                      <br /> 108.000 Kgs
-                    </b>
-                  </td>
-                  <td css={tableTd} style={{ height: "10rem" }}>
-                    <b>Inv No.</b>
-                    <br />
-                    {invoiceNumber}
-                    <br />
-                    Dt.&nbsp;
-                    {moment(dateOfIssuance)
-                      .utc()
-                      .format("DD/MM/YYYY")}
-                  </td>
-                </tr>
-              </table>
+          <tr css={tableTr}>
+            <td css={tableTr} style={{ padding: "0.5em" }}>
+              5. Item No.
+            </td>
+            <td css={tableTr} style={{ padding: "0.5em" }}>
+              6. Mark and numbers of packages
+            </td>
+            <td css={tableTr} style={{ padding: "0.5em" }}>
+              7. Number and kind of packages, description of goods
+            </td>
+            <td css={tableTr} style={{ padding: "0.5em" }}>
+              8. Origin criteria
+            </td>
+            <td css={tableTr} style={{ padding: "0.5em" }}>
+              9. Gross weight or other quantity
+            </td>
+            <td css={tableTr} style={{ padding: "0.5em" }}>
+              10. Number and date of invoices
+            </td>
+          </tr>
+
+          <tr css={tableTr}>
+            <td css={tableTd} style={{ height: "10rem" }}>
+              1.
+            </td>
+            <td css={tableTd} style={{ height: "10rem" }}>
+              <b>
+                {numOfPackages}&nbsp;{markOfPackages}
+              </b>
+            </td>
+            <td css={tableTd} style={{ height: "10rem" }}>
+              DRAWING NUMBER: D-332-1-A7 <br />
+              Material Code:8093883
+              <br />
+              <br />
+              <b>
+                <u>Dimension of Pallet</u>
+              </b>
+              <br /> 1) L 72 CM X W 72 CM X H 88 CM of 01 Pallet
+              <br />
+              Item No.1 in Box 12 Nos (Box No.Identify: 01 to 12)
+            </td>
+            <td css={tableTd} style={{ height: "10rem" }}>
+              <b>INDIA</b>
+            </td>
+            <td css={tableTd} style={{ height: "10rem" }}>
+              <b>
+                Gross Weight
+                <br />
+                {totalWeight}
+                <br />
+                <br />
+                Net Weight
+                <br /> 108.000 Kgs
+              </b>
+            </td>
+            <td css={tableTd} style={{ height: "10rem" }}>
+              <b>Inv No.</b>
+              <br />
+              {invoiceNumber}
+              <br />
+              Dt.&nbsp;
+              {moment(dateOfIssuance)
+                .utc()
+                .format("DD/MM/YYYY")}
             </td>
           </tr>
           {/* <tr css={tableTr}>
@@ -281,7 +272,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
           </tr> */}
 
           <tr css={tableTr}>
-            <td css={tableTd} colSpan={2}>
+            <td css={tableTd} colSpan={3}>
               <p style={{ marginLeft: "-0.9em", marginTop: "-1em", marginBottom: "2em", fontSize: "0.9em" }}>
                 11. Certification
                 <br />
@@ -298,16 +289,17 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <br />
               <div style={{ textAlign: "right", fontSize: "0.7em" }}>
                 Authorised Signatory
-                <br /> Maharashtra Chamber of Commerce,
-                <br /> Industry and Agriculture Mumbai, India
+                <br /> Maharashtra Chamber of Commerce, Industry and Agriculture
+                <br /> Mumbai, India
               </div>
             </td>
-            <td css={tableTd} colSpan={2}>
+            <td css={tableTd} colSpan={3}>
               <p style={{ marginLeft: "-0.9em", marginTop: "-1em", marginBottom: "2em", fontSize: "0.9em" }}>
                 12. Declaration by the exporter
                 <br />
-                The undersigned hereby, declares that the above details and statements are correct that all the goods
-                were produced and that they comply with the origin requirements for exports to
+                The undersigned hereby, declares that the above details and statements
+                <br /> are correct that all the goods were produced
+                <br /> and that they comply with the origin requirements for exports to
               </p>
               <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br />
               <b>Name:</b>&nbsp;{supplier_sign_name} <br />
@@ -317,13 +309,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 .format("DD/MM/YYYY hh:mm A [UTC]")}
               <br />
               <br />
-              <div style={{ textAlign: "right", fontSize: "0.7em" }}>
-                Place date and signature of authorised signatory
-              </div>
-            </td>
-            <td css={tableTd}>
-              <b>Secured by:</b> <br />
-              <img src={stamp} alt="credore stamp" style={{ width: "8em", position: "static", right: "0px" }} />
+              <div style={{ fontSize: "0.7em" }}>Place date and signature of authorised signatory</div>
             </td>
           </tr>
         </table>
