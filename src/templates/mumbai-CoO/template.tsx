@@ -294,20 +294,32 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               {moment(chamber_sign_time)
                 .utc()
                 .format("DD/MM/YYYY hh:mm A [UTC]")}
+              <br />
+              <br />
+              <div style={{ textAlign: "right", fontSize: "0.7em" }}>
+                Authorised Signatory
+                <br /> Maharashtra Chamber of Commerce,
+                <br /> Industry and Agriculture Mumbai, India
+              </div>
             </td>
             <td css={tableTd} colSpan={2}>
-              <p style={{ marginLeft: "-0.9em", marginTop: "-1.2em", marginBottom: "2em", fontSize: "0.9em" }}>
+              <p style={{ marginLeft: "-0.9em", marginTop: "-1em", marginBottom: "2em", fontSize: "0.9em" }}>
                 12. Declaration by the exporter
                 <br />
                 The undersigned hereby, declares that the above details and statements are correct that all the goods
                 were produced and that they comply with the origin requirements for exports to
               </p>
-              <b style={{ color: "red" }}>Digitally signed by Chamber :</b> <br />
-              <b>Name:</b>&nbsp;{chamber_sign_name} <br />
+              <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br />
+              <b>Name:</b>&nbsp;{supplier_sign_name} <br />
               <b>Date & Time:</b>&nbsp;
-              {moment(chamber_sign_time)
+              {moment(supplier_sign_time)
                 .utc()
                 .format("DD/MM/YYYY hh:mm A [UTC]")}
+              <br />
+              <br />
+              <div style={{ textAlign: "right", fontSize: "0.7em" }}>
+                Place date and signature of authorised signatory
+              </div>
             </td>
             <td css={tableTd}>
               <b>Secured by:</b> <br />
