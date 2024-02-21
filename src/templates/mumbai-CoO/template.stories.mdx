@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { MumbaiCertificateofOriginTemplate } from "./template";
+import { MumbaiCooTemplate } from "../samples/mumbaiCoO";
+
+<Meta title="MDX|MumbaiCertificateofOriginTemplate" component={MumbaiCertificateofOriginTemplate} />
+
+# CertificateofOriginTemplate component
+
+<Description of={MumbaiCertificateofOriginTemplate} />
+
+# Props
+
+<Props of={MumbaiCertificateofOriginTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <MumbaiCertificateofOriginTemplate document={object("document", MumbaiCooTemplate)} />
+  </Story>
+</Preview>
