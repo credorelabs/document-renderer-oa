@@ -74,7 +74,7 @@ export const MumbaiCooTemplate: mumbaiCoO = {
     }
   ],
   $template: {
-    name: "CERTIFICATE_OF_ORIGIN",
+    name: "MUMBAI_CERTIFICATE_OF_ORIGIN",
     type: v2.TemplateType.EmbeddedRenderer,
     url: "http://localhost:3000"
   }
