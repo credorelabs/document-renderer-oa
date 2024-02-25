@@ -203,7 +203,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
               <b>
-                {numOfPackages}&nbsp;{markOfPackages}
+                12 Corrugated Boxes packed in one Pallet
               </b>
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>

@@ -57,6 +57,9 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     padding: 1em;
   `;
 
+  let tax = parseInt(taxAmount,10);
+  let subAmout = parseInt(subTotal,10);
+  const result = (tax / 100) * subAmout;
   return (
     <>
       <div css={containerStyle}>
@@ -224,13 +227,13 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             <td style={{ padding: "0.4em" }}>
               <b>SUBTOTAL</b>
             </td>
-            <td>{currency}&nbsp;{subTotal}</td>
+            <td>{subTotal}</td>
           </tr>
           <tr>
             <td style={{ padding: "0.4em" }}>
               <b>TAX</b>
             </td>
-            <td>{taxAmount}%</td>
+            <td>({taxAmount}%)&nbsp;{result}</td>
           </tr>
           <tr>
             <td style={{ padding: "0.4em" }}>
