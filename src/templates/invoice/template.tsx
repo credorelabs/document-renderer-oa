@@ -261,6 +261,15 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             <td>{currency}&nbsp;{amount}</td>
           </tr>
         </table>
+        <div
+        style={{ fontSize: "0.8rem", lineHeight: "1rem", marginTop: "2rem", opacity: "0.8", textAlign: "justify" }}
+      >
+        <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
+        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
+        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
+        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
+        integrity and authenticity through approved channels.
+      </div>
       </div>
     </>
   );
