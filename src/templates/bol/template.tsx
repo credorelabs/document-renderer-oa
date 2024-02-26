@@ -53,7 +53,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     transport_conveyanceReferenceNumber,
     transport_modeOfTransportUNCEFACT,
     transport_vesselName,
-    
+
     importerCompanyName,
     importerAddress,
     importerName,
@@ -151,8 +151,8 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           <td css={tableTd} rowSpan={3} colSpan={2}>
             <b>Consignee:</b>
             <br />
-            {importerCompanyName},<br /> {importerName},<br/>
-            {importerAddress},<br /> {importer_email},<br/>
+            {importerCompanyName},<br /> {importerName},<br />
+            {importerAddress},<br /> {importer_email},<br />
             {importer_phone}
           </td>
           <td css={tableTd} colSpan={2}>
@@ -352,50 +352,60 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         </tr>
       </table>
 
-      <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}>
+      <table
+        style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
+      >
         <tr css={tableTr}>
           <td css={tableTd}>
-          TAKEN  IN  CHARGE  IN  APPARENTLY  GOOD  CONDITION  HEREIN  AT  THE  PLACE  OF  RECEIPT  FOR
-          TRANSPORT  AND  DELIVERY  AS  MENTIONED  ABOVE,  UNLESS  OTHERWISE  STATED.  THE  MTO  IN
-          ACCORDANCE  WITH  THE  PROVISIONS  CONTAINED  IN  THE  MTD  UNDERTAKES  TO  PERFORM  OR  TO
-          PROCURE THE  PREFORMANCE  OF THE  MULTIMODAL TRANSPORT  FROM THE  PLACE AT  WHICH THE
-          GOODS  ARE  TAKEN  IN  CHARGE,  TO  THE  PLACE  DESIGNATED  FOR  DELIVERY  AND  ASSUMES
-          RESPONSIBILITY FOR SUCH TRANSPORT.                   
+            TAKEN IN CHARGE IN APPARENTLY GOOD CONDITION HEREIN AT THE PLACE OF RECEIPT FOR TRANSPORT AND DELIVERY AS
+            MENTIONED ABOVE, UNLESS OTHERWISE STATED. THE MTO IN ACCORDANCE WITH THE PROVISIONS CONTAINED IN THE MTD
+            UNDERTAKES TO PERFORM OR TO PROCURE THE PREFORMANCE OF THE MULTIMODAL TRANSPORT FROM THE PLACE AT WHICH THE
+            GOODS ARE TAKEN IN CHARGE, TO THE PLACE DESIGNATED FOR DELIVERY AND ASSUMES RESPONSIBILITY FOR SUCH
+            TRANSPORT.
           </td>
         </tr>
 
         <tr css={tableTr}>
           <td css={tableTd}>
-              ONE OF THE MTD(S) MUST BE SURRENDERED, DULY ENDORSED IN EXCHANGE FOR THE GOODS, IN
-              WITNESS WHERE OF THE ORIGINAL MTD ALL OF THIS TENOR AND DATE HAVE BEEN SIGNED IN THE
-              NUMBER INDICATED BELOW ONE OF WHICH BEING ACCOMPLISHED THE OTHER(S) TO BE VOID
-            </td>
+            ONE OF THE MTD(S) MUST BE SURRENDERED, DULY ENDORSED IN EXCHANGE FOR THE GOODS, IN WITNESS WHERE OF THE
+            ORIGINAL MTD ALL OF THIS TENOR AND DATE HAVE BEEN SIGNED IN THE NUMBER INDICATED BELOW ONE OF WHICH BEING
+            ACCOMPLISHED THE OTHER(S) TO BE VOID
+          </td>
         </tr>
       </table>
 
-      <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }} >        
+      <table
+        style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
+      >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-            
             <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-              <b>Date & Time:</b>&nbsp;
-              {moment(shipping_company_sign_time)
-                .utc()
-                .format("DD/MM/YYYY hh:mm A [UTC]")}
+            <b>Date & Time:</b>&nbsp;
+            {moment(shipping_company_sign_time)
+              .utc()
+              .format("DD/MM/YYYY hh:mm A [UTC]")}
           </td>
 
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
-
             <b>Name:</b>&nbsp;{exporterName} <br />
-              <b>Date & Time:</b>&nbsp;
-              {moment(exporter_sign_time)
-                .utc()
-                .format("DD/MM/YYYY hh:mm A [UTC]")}
+            <b>Date & Time:</b>&nbsp;
+            {moment(exporter_sign_time)
+              .utc()
+              .format("DD/MM/YYYY hh:mm A [UTC]")}
           </td>
         </tr>
       </table>
+      <div
+        style={{ fontSize: "0.8rem", lineHeight: "1rem", marginTop: "2rem", opacity: "0.8", textAlign: "justify" }}
+      >
+        <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
+        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
+        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
+        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
+        integrity and authenticity through approved channels.
+      </div>
     </div>
   );
 };
