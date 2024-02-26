@@ -195,29 +195,29 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Actual date of delivery:</b>
             <br />
             {moment(date_actualDateOfPlaceOfDelivery)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Actual date of receipt:</b>
             <br />
             {moment(date_actualDateOfPlaceOfReceipt)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Actual time of arrival:</b>
             <br />
             {moment(date_actualTimeOfArrival)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Actual time of departure:</b>
             <br />
             {moment(date_actualTimeOfDeparture)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
         </tr>
 
@@ -226,29 +226,29 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Estimated date of delivery:</b>
             <br />
             {moment(date_estimatedDateOfPlaceOfDelivery)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Estimated date of receipt:</b>
             <br />
             {moment(date_estimatedDateOfPlaceOfReceipt)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Estimated time of arrival:</b>
             <br />
             {moment(date_estimatedTimeOfArrival)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Estimated time of departure:</b>
             <br />
             {moment(date_estimatedTimeOfDeparture)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
         </tr>
 
@@ -383,8 +383,8 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Name:</b>&nbsp;{shipping_company_signer} <br />
             <b>Date & Time:</b>&nbsp;
             {moment(shipping_company_sign_time)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
 
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
@@ -392,20 +392,20 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Name:</b>&nbsp;{exporterName} <br />
             <b>Date & Time:</b>&nbsp;
             {moment(exporter_sign_time)
-              .utc()
-              .format("DD/MM/YYYY hh:mm A [UTC]")}
+              .utc().add(5, 'hours').add(30, 'minutes')
+              .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
         </tr>
-      </table>
-      <div
-        style={{ fontSize: "0.8rem", lineHeight: "1rem", marginTop: "2rem", opacity: "0.8", textAlign: "justify" }}
-      >
-        <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
+        <tr css={tableTr}>
+            <td css={tableTd} colSpan={3}>
+            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
         in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
         compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
         the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
         integrity and authenticity through approved channels.
-      </div>
+            </td>
+          </tr>
+      </table>
     </div>
   );
 };

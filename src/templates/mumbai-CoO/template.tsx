@@ -237,7 +237,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <br />
               Dt.&nbsp;
               {moment(dateOfIssuance)
-                .utc()
+                .utc().add(5, 'hours').add(30, 'minutes')
                 .format("DD/MM/YYYY")}
             </td>
           </tr>
@@ -276,13 +276,20 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 <br />
                 It is hereby certified on the basis of control carried out, that the declaration by the exporter is
                 correct.
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
               </p>
               <b style={{ color: "red" }}>Digitally signed by Chamber :</b> <br />
               <b>Name:</b>&nbsp;{chamber_sign_name} <br />
               <b>Date & Time:</b>&nbsp;
               {moment(chamber_sign_time)
-                .utc()
-                .format("DD/MM/YYYY hh:mm A [UTC]")}
+                .utc().add(5, 'hours').add(30, 'minutes')
+                .format("DD/MM/YYYY hh:mm A [IST]")}
               <br />
               <br />
               <div style={{ textAlign: "right", fontSize: "0.7em" }}>
@@ -295,39 +302,35 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <p style={{ marginLeft: "-0.9em", marginTop: "-1em", marginBottom: "2em", fontSize: "0.9em" }}>
                 12. Declaration by the exporter
                 <br />
-                The undersigned hereby, declares that the above details and statements
-                <br /> are correct that all the goods were produced
-                <br /> and that they comply with the origin requirements for exports to
+                The undersigned hereby, declares that the above details and statements are correct that all the goods were produced and that they comply with the origin requirements for exports to
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                (Importing Country)
               </p>
               <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br />
               <b>Name:</b>&nbsp;{supplier_sign_name} <br />
+              <b>Place:</b>&nbsp;{supplier_address}<br/>
               <b>Date & Time:</b>&nbsp;
               {moment(supplier_sign_time)
-                .utc()
-                .format("DD/MM/YYYY hh:mm A [UTC]")}
+                .utc().add(5, 'hours').add(30, 'minutes')
+                .format("DD/MM/YYYY hh:mm A [IST]")}
               <br />
               <br />
-              <div style={{ fontSize: "0.7em" }}>Place date and signature of authorised signatory</div>
+              <div style={{ fontSize: "0.7em" }}>Place, date and signature of authorised signatory</div>
+            </td>
+          </tr>
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={6}>
+            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
+        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
+        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
+        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
+        integrity and authenticity through approved channels.
             </td>
           </tr>
         </table>
-        <div
-          style={{
-            width: "96%",
-            margin: "auto",
-            fontSize: "0.8rem",
-            lineHeight: "1rem",
-            marginTop: "2rem",
-            opacity: "0.8",
-            textAlign: "justify"
-          }}
-        >
-          <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
-          existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
-          ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
-          Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
-          prohibited. Verify its integrity and authenticity through approved channels.
-        </div>
       </div>
     </>
   );

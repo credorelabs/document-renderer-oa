@@ -268,31 +268,30 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               <b>Name:</b>&nbsp;{invoice?.supplier_name} <br />
               <b>Date & Time:</b>&nbsp;
               {moment(supplier_sign_time)
-                .utc()
-                .format("DD/MM/YYYY hh:mm A [UTC]")}
+                .utc().add(5, 'hours').add(30, 'minutes')
+                .format("DD/MM/YYYY hh:mm A [IST]")}
             </td>
             <td
-              colSpan={2}
               style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}
             >
               <b style={{ color: "red" }}>Digitally signed by Importer :</b> <br />
               <b>Name:</b>&nbsp;{chamber_email} <br />
               <b>Date & Time:</b>&nbsp;
               {moment(chamber_sign_time)
-                .utc()
-                .format("DD/MM/YYYY hh:mm A [UTC]")}
+                .utc().add(5, 'hours').add(30, 'minutes')
+                .format("DD/MM/YYYY hh:mm A [IST]")}
             </td>
           </tr>
-        </table>
-      </div>
-      <div
-        style={{width:"80%", margin:"auto", fontSize: "0.8rem", lineHeight: "1rem", marginTop: "0.5rem", opacity: "0.8", textAlign: "justify" }}
-      >
-        <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={2}>
+            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
         in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
         compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
         the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
         integrity and authenticity through approved channels.
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   );
