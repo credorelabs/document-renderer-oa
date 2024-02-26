@@ -282,7 +282,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}
             >
               <b style={{ color: "red" }}>Digitally signed by Importer :</b> <br />
-              <b>Name:</b>&nbsp;{invoice?.customer_name} <br />
+              <b>Name:</b>&nbsp;{chamber_email} <br />
               <b>Date & Time:</b>&nbsp;
               {moment(chamber_sign_time)
                 .utc()
