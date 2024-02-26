@@ -727,19 +727,16 @@ export const BillOfExchangeMainTemplate: FunctionComponent<TemplateProps<BillOfE
                               </div>
                           </div>
                       </div>
-
-
-                  </div>
-
-              </div>
-
-          </div>
-          <div style={{ fontSize: "0.8rem", lineHeight: "1rem", opacity: "0.8", textAlign: 'justify' }}>
+          <div style={{ fontSize: "0.8rem", lineHeight: "1rem", opacity: "0.8", textAlign: 'justify', marginBottom:'2rem' }}>
             <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
             existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
             ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
             Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
             prohibited. Verify its integrity and authenticity through approved channels.
+          </div>
+                  </div>
+              </div>
+
           </div>
         </div>
       </div>

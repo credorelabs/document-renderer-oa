@@ -108,12 +108,12 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
           <tr css={tableTr}>
             <td css={tableTd} style={{ textAlign: "center" }}>
               {moment(invoice_date)
-                .utc()
+                .utc().add(5, 'hours').add(30, 'minutes')
                 .format("DD/MM/YYYY")}
             </td>
             <td css={tableTd} style={{ textAlign: "center" }}>
               {moment(due_date)
-                .utc()
+                .utc().add(5, 'hours').add(30, 'minutes')
                 .format("DD/MM/YYYY")}
             </td>
           </tr>
@@ -262,7 +262,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
           </tr>
         </table>
         <div
-        style={{ fontSize: "0.8rem", lineHeight: "1rem", marginTop: "2rem", opacity: "0.8", textAlign: "justify" }}
+        style={{ fontSize: "0.8rem", lineHeight: "1rem", marginTop: "2rem", opacity: "0.8", textAlign: "justify", border:"2px solid black", padding:"0.5rem" }}
       >
         <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
         in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
