@@ -381,6 +381,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{shipping_company_signer} <br />
+            <b>Place:</b>&nbsp;{carrier_address}<br/>
             <b>Date & Time:</b>&nbsp;
             {moment(shipping_company_sign_time)
               .utc().add(5, 'hours').add(30, 'minutes')
@@ -390,6 +391,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
             <b>Name:</b>&nbsp;{exporterName} <br />
+            <b>Place:</b>&nbsp;{exporterAddress}<br/>
             <b>Date & Time:</b>&nbsp;
             {moment(exporter_sign_time)
               .utc().add(5, 'hours').add(30, 'minutes')

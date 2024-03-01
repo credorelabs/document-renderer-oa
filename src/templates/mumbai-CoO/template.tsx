@@ -281,8 +281,6 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 <br/>
                 <br/>
                 <br/>
-                <br/>
-                <br/>
               </p>
               <b style={{ color: "red" }}>Digitally signed by Chamber :</b> <br />
               <b>Name:</b>&nbsp;{chamber_sign_name} <br />

@@ -21,11 +21,11 @@ export interface mumbaiCoO extends v2.OpenAttestationDocument {
   chamber_contact_name: "chamber Contact";
   chamber_contact_phone: "Nos. 2285 5859 / 60 / 6739 5800 (30 Lines)";
   chamber_contact_email: "maccia@maccia.org.in";
-  portOfLading: "Port A";
-  portOfDischarge: "Port B";
+  portOfLading: "Nhava Sheva";
+  portOfDischarge: "Jebel Ali, UAE";
   buyerSignTime: "2023-11-17T10:00:00Z";
   supplierSignTime: "2023-11-16T15:30:00Z";
-  supplier_sign_name: "P Singh";
+  supplier_sign_name: "Zakir Shaikh";
   supplier_sign_time: "2023-11-16T10:00:00Z";
   supplier_position: "CEO";
   supplier_email: "psingh@gmail.xyz";
@@ -37,9 +37,9 @@ export interface mumbaiCoO extends v2.OpenAttestationDocument {
   totalVolume: "10 cubic meters";
   route: "sea";
 
-  chamber_sign_name: "Chamber boi";
+  chamber_sign_name: "Avinash Pathak";
   chamber_sign_time: "2023-11-17T15:30:00Z";
-  chamber_position: "Director";
+  chamber_position: "Asst. Secretary";
   chamber_email: "chamber@chamber.com";
 
   manufacturer_name: "XYZ Manufacturing Inc.";
