@@ -1,10 +1,7 @@
 import { v2 } from "@govtechsg/open-attestation";
 import { BillOfExchangeMain } from "../boe-main/types";
 
-
 export const packingListTemplate: any = {
-
-
   certificateNumber: null,
   packingNumber: "P27",
   totalWeight: "40",
@@ -89,6 +86,10 @@ export const packingListTemplate: any = {
   chamber_sign_time: "2024-01-31T06:11:24.263Z",
   chamber_email: "abhilashsethi9@gmail.com",
   chamber_position: "INV-0001",
+  blockchainName: "XDC",
+  mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
+  exporter_signer_place: "Dubai",
+  importer_signer_place: "India",
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec",
@@ -106,9 +107,6 @@ export const packingListTemplate: any = {
   $template: {
     name: "PACKING_LIST",
     type: v2.TemplateType.EmbeddedRenderer,
-    url: "http://localhost:3000",
+    url: "http://localhost:3000"
   }
-
-
-
 };

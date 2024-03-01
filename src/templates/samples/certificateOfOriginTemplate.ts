@@ -13,7 +13,7 @@ export const certificateofOriginTemplate: CertificateOfOrigin = {
   customer_contact_name: "Customer Contact",
   customer_contact_phone: "987-654-3210",
   customer_contact_email: "customer@email.com",
-  
+
   dateOfIssuance: "2023-11-16T15:30:00Z",
   termsOfShipment: "FOB",
   vessel_name: "Example Vessel",
@@ -40,7 +40,7 @@ export const certificateofOriginTemplate: CertificateOfOrigin = {
   manufacturer_country: "Manufacturia",
 
   meansOfTransport: "ship",
-  
+
   hsCode: "HS001",
   quantity: 150,
   totalWeight: "1000 kg",
@@ -57,6 +57,10 @@ export const certificateofOriginTemplate: CertificateOfOrigin = {
   value: "USD something",
 
   invoiceNumber: "INV0001022020",
+  blockchainName: "XDC",
+  mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
+  chamber_signer_place: "Dubai",
+  supplier_signer_place: "India",
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller",
@@ -74,6 +78,6 @@ export const certificateofOriginTemplate: CertificateOfOrigin = {
   $template: {
     name: "CERTIFICATE_OF_ORIGIN",
     type: v2.TemplateType.EmbeddedRenderer,
-    url: "http://localhost:3000",
-  },
+    url: "http://localhost:3000"
+  }
 };

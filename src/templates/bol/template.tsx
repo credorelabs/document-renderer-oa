@@ -81,7 +81,11 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     notify_contact_name,
     notify_address,
     notify_contact_email,
-    notify_contact_phone
+    notify_contact_phone,
+    shipping_signer_place,
+    exporter_signer_place,
+    blockchainName,
+    mintTxHash
   } = document;
 
   const containerStyle = css`
@@ -195,28 +199,36 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Actual date of delivery:</b>
             <br />
             {moment(date_actualDateOfPlaceOfDelivery)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Actual date of receipt:</b>
             <br />
             {moment(date_actualDateOfPlaceOfReceipt)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Actual time of arrival:</b>
             <br />
             {moment(date_actualTimeOfArrival)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Actual time of departure:</b>
             <br />
             {moment(date_actualTimeOfDeparture)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
         </tr>
@@ -226,28 +238,36 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Estimated date of delivery:</b>
             <br />
             {moment(date_estimatedDateOfPlaceOfDelivery)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Estimated date of receipt:</b>
             <br />
             {moment(date_estimatedDateOfPlaceOfReceipt)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Estimated time of arrival:</b>
             <br />
             {moment(date_estimatedTimeOfArrival)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Estimated time of departure:</b>
             <br />
             {moment(date_estimatedTimeOfDeparture)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
         </tr>
@@ -381,32 +401,63 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-            <b>Place:</b>&nbsp;{carrier_address}<br/>
+            <b>Place:</b>&nbsp;{shipping_signer_place}
+            <br />
             <b>Date & Time:</b>&nbsp;
             {moment(shipping_company_sign_time)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
 
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
             <b>Name:</b>&nbsp;{exporterName} <br />
-            <b>Place:</b>&nbsp;{exporterAddress}<br/>
+            <b>Place:</b>&nbsp;{exporter_signer_place}
+            <br />
             <b>Date & Time:</b>&nbsp;
             {moment(exporter_sign_time)
-              .utc().add(5, 'hours').add(30, 'minutes')
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
         </tr>
         <tr css={tableTr}>
-            <td css={tableTd} colSpan={3}>
-            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
-        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
-        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
-        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
-        integrity and authenticity through approved channels.
-            </td>
-          </tr>
+          <td css={tableTd} colSpan={4}>
+            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+            existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
+            ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
+            Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
+            prohibited. Verify its integrity and authenticity through approved channels.
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td
+            style={{
+              padding: "0.5rem",
+              borderWidth: "1px 0px 1px 1px",
+              borderStyle: "solid",
+              borderColor: "black",
+              width: "50%"
+            }}
+            colSpan={2}
+          >
+            <b>Blockchain:</b>&nbsp;{blockchainName}
+          </td>
+          <td
+            style={{
+              padding: "0.5rem",
+              borderWidth: "1px 1px 1px 0px",
+              borderStyle: "solid",
+              borderColor: "black"
+            }}
+            colSpan={2}
+          >
+            <b>Hash:</b>&nbsp;{mintTxHash}
+          </td>
+        </tr>
       </table>
     </div>
   );

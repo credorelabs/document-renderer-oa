@@ -59,6 +59,10 @@ export const MumbaiCooTemplate: mumbaiCoO = {
   markOfPackages: "Corrugated Boxes packed in one Pallet",
 
   invoiceNumber: "INV0001022020",
+  blockchainName: "XDC",
+  mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
+  chamber_signer_place: "Dubai",
+  supplier_signer_place: "India",
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller",

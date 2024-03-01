@@ -59,7 +59,11 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
     value,
     termsOfShippment,
     numOfPackages,
-    markOfPackages
+    markOfPackages,
+    blockchainName,
+    mintTxHash,
+    chamber_signer_place,
+    supplier_signer_place
   } = document;
 
   const containerStyle = css`
@@ -202,7 +206,10 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               1.
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
-              <b>{quantity}{kindOfPackage}</b>
+              <b>
+                {quantity}
+                {kindOfPackage}
+              </b>
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
               DRAWING NUMBER: D-332-1-A7 <br />
@@ -237,7 +244,9 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <br />
               Dt.&nbsp;
               {moment(dateOfIssuance)
-                .utc().add(5, 'hours').add(30, 'minutes')
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
                 .format("DD/MM/YYYY")}
             </td>
           </tr>
@@ -276,17 +285,19 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 <br />
                 It is hereby certified on the basis of control carried out, that the declaration by the exporter is
                 correct.
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
               </p>
               <b style={{ color: "red" }}>Digitally signed by Chamber :</b> <br />
               <b>Name:</b>&nbsp;{chamber_sign_name} <br />
               <b>Date & Time:</b>&nbsp;
               {moment(chamber_sign_time)
-                .utc().add(5, 'hours').add(30, 'minutes')
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
                 .format("DD/MM/YYYY hh:mm A [IST]")}
               <br />
               <br />
@@ -300,19 +311,23 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <p style={{ marginLeft: "-0.9em", marginTop: "-1em", marginBottom: "2em", fontSize: "0.9em" }}>
                 12. Declaration by the exporter
                 <br />
-                The undersigned hereby, declares that the above details and statements are correct that all the goods were produced and that they comply with the origin requirements for exports to
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                The undersigned hereby, declares that the above details and statements are correct that all the goods
+                were produced and that they comply with the origin requirements for exports to
+                <br />
+                <br />
+                <br />
+                <br />
                 (Importing Country)
               </p>
               <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br />
               <b>Name:</b>&nbsp;{supplier_sign_name} <br />
-              <b>Place:</b>&nbsp;{supplier_address}<br/>
+              <b>Place:</b>&nbsp;{supplier_signer_place}
+              <br />
               <b>Date & Time:</b>&nbsp;
               {moment(supplier_sign_time)
-                .utc().add(5, 'hours').add(30, 'minutes')
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
                 .format("DD/MM/YYYY hh:mm A [IST]")}
               <br />
               <br />
@@ -321,11 +336,36 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={6}>
-            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
-        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
-        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
-        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
-        integrity and authenticity through approved channels.
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+              existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
+              ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
+              Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
+              prohibited. Verify its integrity and authenticity through approved channels.
+            </td>
+          </tr>
+          <tr css={tableTr}>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 0px 1px 1px",
+                borderStyle: "solid",
+                borderColor: "black",
+                width: "50%"
+              }}
+              colSpan={3}
+            >
+              <b>Blockchain:</b>&nbsp;{blockchainName}
+            </td>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 1px 1px 0px",
+                borderStyle: "solid",
+                borderColor: "black"
+              }}
+              colSpan={3}
+            >
+              <b>Hash:</b>&nbsp;{mintTxHash}
             </td>
           </tr>
         </table>

@@ -1,6 +1,5 @@
 import { v2 } from "@govtechsg/open-attestation";
 
-
 export interface BillOfLadingData extends v2.OpenAttestationDocument {
   blNumber: string;
   bookingReferenceNumber: string;
@@ -63,7 +62,7 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
 
   shipping_company_sign_time?: string;
   shipping_company_signer?: string;
-  
+
   carrier_name?: string;
   carrier_contact_name?: string;
   carrier_address?: string;
@@ -75,4 +74,9 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   notify_address?: string;
   notify_contact_email?: string;
   notify_contact_phone?: string;
+
+  blockchainName?: string;
+  mintTxHash?: string;
+  shipping_signer_place?: string;
+  exporter_signer_place?: string;
 }

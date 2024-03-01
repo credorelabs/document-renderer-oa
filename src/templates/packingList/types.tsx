@@ -1,7 +1,6 @@
 import { v2 } from "@govtechsg/open-attestation";
 
-
-export interface ShippingDocument extends v2.OpenAttestationDocument{
+export interface ShippingDocument extends v2.OpenAttestationDocument {
   certificateNumber: string;
   packingNumber: string;
   totalVolume: number;
@@ -23,7 +22,7 @@ export interface ShippingDocument extends v2.OpenAttestationDocument{
   consignment: string;
   containerNo: string;
   goods: any[];
-  invoice: Invoice,
+  invoice: Invoice;
   supplierSignName: string;
   supplier_sign_time: string;
   supplier_sign_name: string;
@@ -33,11 +32,15 @@ export interface ShippingDocument extends v2.OpenAttestationDocument{
   supplier_name: string;
   chamberSignTime: string;
   chamberEmail: string;
-  chamber_email:string;
-  chamber_sign_time:string;
+  chamber_email: string;
+  chamber_sign_time: string;
   chamberPosition: string;
   issuers: any;
   template: string;
+  blockchainName?: string;
+  mintTxHash?: string;
+  exporter_signer_place?: string;
+  importer_signer_place?: string;
 }
 interface Invoice {
   invoice_number: string;
@@ -81,6 +84,5 @@ interface InvoiceLine {
   unit_price: string;
   discount: string;
   line_total: string;
-  hsCode: string
+  hsCode: string;
 }
-

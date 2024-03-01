@@ -58,7 +58,11 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
     route,
     invoiceNumber,
     value,
-    termsOfShippment
+    termsOfShippment,
+    blockchainName,
+    mintTxHash,
+    chamber_signer_place,
+    supplier_signer_place
   } = document;
 
   const containerStyle = css`
@@ -154,7 +158,9 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
                 <b>Date of Issuance:</b>
                 <br />
                 {moment(dateOfIssuance)
-                  .utc().add(5, 'hours').add(30, 'minutes')
+                  .utc()
+                  .add(5, "hours")
+                  .add(30, "minutes")
                   .format("DD/MM/YYYY hh:mm A [IST]")}
               </td>
             </tr>
@@ -242,36 +248,66 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
             }}
           >
             <tr>
-              <td
-                colSpan={2}
-                css={tableTd}
-              >
+              <td colSpan={2} css={tableTd}>
                 <b style={{ color: "red" }}>Digitally signed by Chamber :</b> <br />
                 <b>Name:</b>&nbsp;{chamber_sign_name} <br />
+                <b>Place:</b>&nbsp;{chamber_signer_place}
+                <br />
                 <b>Date & Time:</b>&nbsp;
                 {moment(chamber_sign_time)
-                  .utc().add(5, 'hours').add(30, 'minutes')
+                  .utc()
+                  .add(5, "hours")
+                  .add(30, "minutes")
                   .format("DD/MM/YYYY hh:mm A [IST]")}
               </td>
 
               <td colSpan={2} css={tableTd}>
                 <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br />
                 <b>Name:</b>&nbsp;{supplier_sign_name} <br />
+                <b>Place:</b>&nbsp;{supplier_signer_place}
+                <br />
                 <b>Date & Time:</b>&nbsp;
                 {moment(supplier_sign_time)
-                  .utc().add(5, 'hours').add(30, 'minutes')
+                  .utc()
+                  .add(5, "hours")
+                  .add(30, "minutes")
                   .format("DD/MM/YYYY hh:mm A [IST]")}
               </td>
             </tr>
             <tr css={tableTr}>
-            <td css={tableTd} colSpan={3}>
-            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
-        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
-        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
-        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
-        integrity and authenticity through approved channels.
-        </td>
-        </tr>
+              <td css={tableTd} colSpan={3}>
+                <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+                existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended
+                format, ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the
+                Electronic Trade Document Act, holds the same legal validity. Any unauthorized alterations or
+                modifications are strictly prohibited. Verify its integrity and authenticity through approved channels.
+              </td>
+            </tr>
+            <tr css={tableTr}>
+              <td
+                style={{
+                  padding: "0.5rem",
+                  borderWidth: "1px 0px 1px 1px",
+                  borderStyle: "solid",
+                  borderColor: "black",
+                  width: "50%"
+                }}
+                colSpan={2}
+              >
+                <b>Blockchain:</b>&nbsp;{blockchainName}
+              </td>
+              <td
+                style={{
+                  padding: "0.5rem",
+                  borderWidth: "1px 1px 1px 0px",
+                  borderStyle: "solid",
+                  borderColor: "black"
+                }}
+                colSpan={2}
+              >
+                <b>Hash:</b>&nbsp;{mintTxHash}
+              </td>
+            </tr>
           </table>
         </div>
       </div>

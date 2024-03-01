@@ -39,7 +39,9 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     bankName,
     IFSCCode,
     bankHolderName,
-    subTotal
+    subTotal,
+    blockchainName,
+    mintTxHash
   } = document;
 
   const containerStyle = css`
@@ -57,8 +59,8 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     padding: 1em;
   `;
 
-  let tax = parseInt(taxAmount,10);
-  let subAmout = parseInt(subTotal,10);
+  let tax = parseInt(taxAmount, 10);
+  let subAmout = parseInt(subTotal, 10);
   const result = (tax / 100) * subAmout;
   return (
     <>
@@ -70,7 +72,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
                 <b>{supplier_contact_name}</b>
               </h2>
               <br />
-              {supplier_name} <br/>
+              {supplier_name} <br />
               {supplier_address} <br />
               ✉️:&nbsp;{supplier_contact_email} <br />
               📞:&nbsp;{supplier_contact_phone} <br />
@@ -108,12 +110,16 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
           <tr css={tableTr}>
             <td css={tableTd} style={{ textAlign: "center" }}>
               {moment(invoice_date)
-                .utc().add(5, 'hours').add(30, 'minutes')
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
                 .format("DD/MM/YYYY")}
             </td>
             <td css={tableTd} style={{ textAlign: "center" }}>
               {moment(due_date)
-                .utc().add(5, 'hours').add(30, 'minutes')
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
                 .format("DD/MM/YYYY")}
             </td>
           </tr>
@@ -142,10 +148,14 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               <b>BANK DETAILS:</b>&nbsp;
               <br />
               <br />
-              <b>Bank Name: </b>{bankName} <br />
-              <b>Account Name: </b>{bankHolderName} <br />
-              <b>Account Number: </b>{bankAccountNo} <br/>
-              <b>IFSC: </b>{IFSCCode} 
+              <b>Bank Name: </b>
+              {bankName} <br />
+              <b>Account Name: </b>
+              {bankHolderName} <br />
+              <b>Account Number: </b>
+              {bankAccountNo} <br />
+              <b>IFSC: </b>
+              {IFSCCode}
             </td>
           </tr>
         </table>
@@ -206,10 +216,18 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             <tr css={tableTr} key={index} className="my-0 text-sm bg-white border dark:bg-gray-800">
               <td css={tableTd}>{item.hsCode}</td>
               <td css={tableTd}>{item.description}</td>
-              <td style={{textAlign: "right"}} css={tableTd}>{item.quantity}</td>
-              <td style={{textAlign: "right"}} css={tableTd}>{parseFloat(item.unit_price).toFixed(2)}</td>
-              <td style={{textAlign: "right"}} css={tableTd}>{item.discount ? item.discount : 0} %</td>
-              <td style={{textAlign: "right"}} css={tableTd}>{item.line_total}</td>
+              <td style={{ textAlign: "right" }} css={tableTd}>
+                {item.quantity}
+              </td>
+              <td style={{ textAlign: "right" }} css={tableTd}>
+                {parseFloat(item.unit_price).toFixed(2)}
+              </td>
+              <td style={{ textAlign: "right" }} css={tableTd}>
+                {item.discount ? item.discount : 0} %
+              </td>
+              <td style={{ textAlign: "right" }} css={tableTd}>
+                {item.line_total}
+              </td>
             </tr>
           ))}
         </table>
@@ -233,7 +251,9 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             <td style={{ padding: "0.4em" }}>
               <b>TAX</b>
             </td>
-            <td>({taxAmount}%)&nbsp;{result}</td>
+            <td>
+              ({taxAmount}%)&nbsp;{result}
+            </td>
           </tr>
           <tr>
             <td style={{ padding: "0.4em" }}>
@@ -258,18 +278,52 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             <td style={{ padding: "0.4em" }}>
               <b>INVOICE TOTAL</b>
             </td>
-            <td>{currency}&nbsp;{amount}</td>
+            <td>
+              {currency}&nbsp;{amount}
+            </td>
           </tr>
         </table>
-        <div
-        style={{ fontSize: "0.8rem", lineHeight: "1rem", marginTop: "2rem", opacity: "0.8", textAlign: "justify", border:"2px solid black", padding:"0.5rem" }}
-      >
-        <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
-        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
-        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
-        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
-        integrity and authenticity through approved channels.
-      </div>
+        <table
+          style={{
+            width: "100%",
+            borderWidth: "2px 2px 2px 2px",
+            borderStyle: "solid",
+            borderColor: "black",
+            padding: "0px",
+            borderSpacing: "0px",
+            margin: "auto"
+          }}
+        >
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={4}>
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+              existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
+              ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
+              Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
+              prohibited. Verify its integrity and authenticity through approved channels.
+            </td>
+          </tr>
+          <tr css={tableTr}>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 0px 1px 1px",
+                borderStyle: "solid",
+                borderColor: "black",
+                width: "50%"
+              }}
+              colSpan={2}
+            >
+              <b>Blockchain:</b>&nbsp;{blockchainName}
+            </td>
+            <td
+              style={{ padding: "0.5rem", borderWidth: "1px 1px 1px 0px", borderStyle: "solid", borderColor: "black" }}
+              colSpan={2}
+            >
+              <b>Hash:</b>&nbsp;{mintTxHash}
+            </td>
+          </tr>
+        </table>
       </div>
     </>
   );
