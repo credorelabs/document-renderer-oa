@@ -35,7 +35,8 @@ export interface Invoice extends v2.OpenAttestationDocument {
   IFSCCode: string;
   bankHolderName: string;
   subTotal: string;
-
+  blockchainName?: string;
+  mintTxHash?: string;
 }
 
 interface InvoiceLine {
@@ -44,5 +45,5 @@ interface InvoiceLine {
   unit_price: string;
   discount: string;
   line_total: string;
-  hsCode: string
+  hsCode: string;
 }

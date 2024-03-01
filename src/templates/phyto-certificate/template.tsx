@@ -38,7 +38,9 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
     placeOfIssue,
     codeNo,
     signedBy,
-    designation
+    designation,
+    blockchainName,
+    mintTxHash
   } = document;
 
   const containerStyle = css`
@@ -223,7 +225,9 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                   <br />
                   Invoice Date: &nbsp;&nbsp;&nbsp;
                   {moment(invoiceDate)
-                    .utc().add(5, 'hours').add(30, 'minutes')
+                    .utc()
+                    .add(5, "hours")
+                    .add(30, "minutes")
                     .format("DD/MM/YYYY")}
                   &nbsp;-&nbsp; "The consignment inspected and found free from all army worm (Spodoptera frugiperda) on
                   the basis of visual inspection".
@@ -239,7 +243,9 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                     <div>
                       <b>Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;
                       {moment(issueDate)
-                        .utc().add(5, 'hours').add(30, 'minutes')
+                        .utc()
+                        .add(5, "hours")
+                        .add(30, "minutes")
                         .format("DD/MM/YYYY hh:mm A [IST]")}
                       <br />
                       <br />
@@ -267,14 +273,40 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                 </td>
               </tr>
               <tr css={tableTr}>
-            <td css={tableTd} colSpan={4}>
-            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
-        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
-        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
-        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
-        integrity and authenticity through approved channels.
-            </td>
-          </tr>
+                <td css={tableTd} colSpan={4}>
+                  <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+                  existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended
+                  format, ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the
+                  Electronic Trade Document Act, holds the same legal validity. Any unauthorized alterations or
+                  modifications are strictly prohibited. Verify its integrity and authenticity through approved
+                  channels.
+                </td>
+              </tr>
+              <tr css={tableTr}>
+                <td
+                  style={{
+                    padding: "0.5rem",
+                    borderWidth: "1px 0px 1px 1px",
+                    borderStyle: "solid",
+                    borderColor: "black",
+                    width: "50%"
+                  }}
+                  colSpan={2}
+                >
+                  <b>Blockchain:</b>&nbsp;{blockchainName}
+                </td>
+                <td
+                  style={{
+                    padding: "0.5rem",
+                    borderWidth: "1px 1px 1px 0px",
+                    borderStyle: "solid",
+                    borderColor: "black"
+                  }}
+                  colSpan={2}
+                >
+                  <b>Hash:</b>&nbsp;{mintTxHash}
+                </td>
+              </tr>
             </table>
           </div>
         </div>

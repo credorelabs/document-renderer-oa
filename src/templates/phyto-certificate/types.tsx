@@ -32,4 +32,6 @@ export interface Phyto extends v2.OpenAttestationDocument {
   codeNo: string;
   signedBy: string;
   designation: string;
+  blockchainName?: string;
+  mintTxHash?: string;
 }

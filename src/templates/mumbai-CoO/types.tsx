@@ -56,4 +56,9 @@ export interface mumbaiCoO extends v2.OpenAttestationDocument {
   value: "USD something";
   numOfPackages: "12";
   markOfPackages: "Corrugated Boxes packed in one Pallet";
+
+  blockchainName?: string;
+  mintTxHash?: string;
+  chamber_signer_place?: string;
+  supplier_signer_place?: string;
 }

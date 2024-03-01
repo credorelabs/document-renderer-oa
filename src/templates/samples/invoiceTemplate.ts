@@ -34,42 +34,44 @@ export const invoiceTemplate: Invoice = {
   IFSCCode: "IFSCSBI00010101",
   bankHolderName: "BankGuy",
   subTotal: "1000",
+  blockchainName: "XDC",
+  mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
 
   Invoice_Lines: [
     {
-        description: "best for sneakers",
-        quantity: "2",
-        unit_price: "5000",
-        discount: "10",
-        line_total: "10",
-        hsCode: "HSCODE001",
+      description: "best for sneakers",
+      quantity: "2",
+      unit_price: "5000",
+      discount: "10",
+      line_total: "10",
+      hsCode: "HSCODE001"
     },
     {
-        description: "best for sneakers",
-        quantity: "2",
-        unit_price: "5000",
-        discount: "10",
-        line_total: "10",
-        hsCode: "HSCODE001",
+      description: "best for sneakers",
+      quantity: "2",
+      unit_price: "5000",
+      discount: "10",
+      line_total: "10",
+      hsCode: "HSCODE001"
     },
     {
-        description: "best for sneakers",
-        quantity: "2",
-        unit_price: "5000",
-        discount: "10",
-        line_total: "10",
-        hsCode: "HSCODE001",
+      description: "best for sneakers",
+      quantity: "2",
+      unit_price: "5000",
+      discount: "10",
+      line_total: "10",
+      hsCode: "HSCODE001"
     },
     {
-        description: "best for sneakers",
-        quantity: "2",
-        unit_price: "5000",
-        discount: "10",
-        line_total: "10",
-        hsCode: "HSCODE001",
+      description: "best for sneakers",
+      quantity: "2",
+      unit_price: "5000",
+      discount: "10",
+      line_total: "10",
+      hsCode: "HSCODE001"
     }
   ],
-  
+
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller",
@@ -87,6 +89,6 @@ export const invoiceTemplate: Invoice = {
   $template: {
     name: "INVOICE",
     type: v2.TemplateType.EmbeddedRenderer,
-    url: "http://localhost:3000",
-  },
+    url: "http://localhost:3000"
+  }
 };

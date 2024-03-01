@@ -33,7 +33,11 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     supplier_sign_time,
     chamber_email,
     chamber_sign_time,
-    supplier_name
+    supplier_name,
+    blockchainName,
+    mintTxHash,
+    exporter_signer_place,
+    importer_signer_place
   } = document;
   console.log(document);
 
@@ -186,7 +190,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
                 marginBottom: "0",
                 fontSize: "0.875rem",
                 backgroundColor: "#ffffff",
-                border: "1px solid #e5e7eb"
+                border: "1.5px solid black"
               }}
             >
               <td
@@ -266,29 +270,47 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
             <td style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}>
               <b style={{ color: "red" }}>Digitally signed by Exporter:</b> <br />
               <b>Name:</b>&nbsp;{invoice?.supplier_name} <br />
+              <b>Place:</b>&nbsp;{exporter_signer_place}
+              <br />
               <b>Date & Time:</b>&nbsp;
               {moment(supplier_sign_time)
-                .utc().add(5, 'hours').add(30, 'minutes')
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
                 .format("DD/MM/YYYY hh:mm A [IST]")}
             </td>
-            <td
-              style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}
-            >
+            <td style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}>
               <b style={{ color: "red" }}>Digitally signed by Importer :</b> <br />
               <b>Name:</b>&nbsp;{chamber_email} <br />
+              <b>Place:</b>&nbsp;{importer_signer_place}
+              <br />
               <b>Date & Time:</b>&nbsp;
               {moment(chamber_sign_time)
-                .utc().add(5, 'hours').add(30, 'minutes')
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
                 .format("DD/MM/YYYY hh:mm A [IST]")}
             </td>
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={2}>
-            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally existing
-        in electronic or paper or both formats, has been converted to the TradeTrust-recommended format, ensuring MLETR
-        compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade Document Act, holds
-        the same legal validity. Any unauthorized alterations or modifications are strictly prohibited. Verify its
-        integrity and authenticity through approved channels.
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+              existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
+              ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
+              Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
+              prohibited. Verify its integrity and authenticity through approved channels.
+            </td>
+          </tr>
+          <tr css={tableTr}>
+            <td
+              style={{ padding: "0.5rem", borderWidth: "1px 0px 1px 1px", borderStyle: "solid", borderColor: "black" }}
+            >
+              <b>Blockchain:</b>&nbsp;{blockchainName}
+            </td>
+            <td
+              style={{ padding: "0.5rem", borderWidth: "1px 1px 1px 0px", borderStyle: "solid", borderColor: "black" }}
+            >
+              <b>Hash:</b>&nbsp;{mintTxHash}
             </td>
           </tr>
         </table>

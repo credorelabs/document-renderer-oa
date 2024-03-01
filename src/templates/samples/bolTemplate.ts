@@ -2,7 +2,7 @@ import { v2 } from "@govtechsg/open-attestation";
 import { BillOfLadingData } from "../bol/types";
 
 export const billOfLadingCertificate: BillOfLadingData = {
-  blNumber: 'BOL12345',
+  blNumber: "BOL12345",
 
   bookingReferenceNumber: "BK123456",
   consignment_containerNumber: "CNT123",
@@ -47,7 +47,7 @@ export const billOfLadingCertificate: BillOfLadingData = {
   transport_conveyanceReferenceNumber: "CRN123",
   transport_modeOfTransportUNCEFACT: "Ship",
   transport_vesselName: "VesselXYZ",
-  
+
   importerCompanyName: "ABC",
   importerAddress: "Dubai",
   importerName: "Prads",
@@ -75,7 +75,12 @@ export const billOfLadingCertificate: BillOfLadingData = {
   notify_address: "XYZ, India",
   notify_contact_email: "nemail@gmail.com",
   notify_contact_phone: "7787009005",
-  
+
+  blockchainName: "XDC",
+  mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
+  shipping_signer_place: "Dubai",
+  exporter_signer_place: "India",
+
   issuers: [
     {
       name: "CREDORE",
@@ -84,11 +89,11 @@ export const billOfLadingCertificate: BillOfLadingData = {
         type: v2.IdentityProofType.DNSTxt,
         location: "td.credore.xyz"
       }
-    },
+    }
   ],
   $template: {
     name: "BOL",
     type: v2.TemplateType.EmbeddedRenderer,
-    url: "http://localhost:3000",
-  },
+    url: "http://localhost:3000"
+  }
 };
