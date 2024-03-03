@@ -282,7 +282,7 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                   channels.
                 </td>
               </tr>
-              <tr css={tableTr}>
+              {/* <tr css={tableTr}>
                 <td
                   style={{
                     padding: "0.5rem",
@@ -306,7 +306,7 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                 >
                   <b>Hash:</b>&nbsp;{mintTxHash}
                 </td>
-              </tr>
+              </tr> */}
             </table>
           </div>
         </div>

@@ -303,7 +303,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               prohibited. Verify its integrity and authenticity through approved channels.
             </td>
           </tr>
-          <tr css={tableTr}>
+          {/* <tr css={tableTr}>
             <td
               style={{
                 padding: "0.5rem",
@@ -322,7 +322,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             >
               <b>Hash:</b>&nbsp;{mintTxHash}
             </td>
-          </tr>
+          </tr> */}
         </table>
       </div>
     </>

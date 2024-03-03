@@ -43,7 +43,7 @@ export const MumbaiCooTemplate: mumbaiCoO = {
 
   hsCode: "HS001",
   quantity: 150,
-  totalWeight: "1000 kg",
+  totalWeight: "1000 kilograms",
   totalVolume: "10 cubic meters",
   route: "sea",
 
@@ -53,10 +53,12 @@ export const MumbaiCooTemplate: mumbaiCoO = {
   kindOfPackage: "s",
   containerNo: "conNo",
   descriptionOfGood: "description",
+  dimenssionOfPallets: "76x76x76",
+  totalNetWeight: "1200 kilograms",
   termsOfShippment: "terms",
   value: "USD something",
   numOfPackages: "12",
-  markOfPackages: "Corrugated Boxes packed in one Pallet",
+  markOfPackage: "Corrugated Boxes packed in one Pallet",
 
   invoiceNumber: "INV0001022020",
   blockchainName: "XDC",

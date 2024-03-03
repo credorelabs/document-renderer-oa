@@ -59,11 +59,13 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
     value,
     termsOfShippment,
     numOfPackages,
-    markOfPackages,
+    markOfPackage,
     blockchainName,
     mintTxHash,
     chamber_signer_place,
-    supplier_signer_place
+    supplier_signer_place,
+    dimenssionOfPallets,
+    totalNetWeight
   } = document;
 
   const containerStyle = css`
@@ -106,14 +108,14 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <br />
               <b>{supplier_name}</b> <br />
               {supplier_address} <br />
-              📞: {supplier_contact_phone}
-              <br />
               ✉️: {supplier_contact_email}
               <br />
-              CIN NO:- U28900MH1999PLC123308 &nbsp;&nbsp;&nbsp;PAN NO. AADCM3035D <br />
-              GSTIN NO. : 27AADCM3035D1ZW &nbsp;&nbsp;&nbsp;IEC CODE NO. 3106010142
+              📞: {supplier_contact_phone}
+              <br />
+              {/* CIN NO:- U28900MH1999PLC123308 &nbsp;&nbsp;&nbsp;PAN NO. AADCM3035D <br />
+              GSTIN NO. : 27AADCM3035D1ZW &nbsp;&nbsp;&nbsp;IEC CODE NO. 3106010142 */}
             </td>
-            <td css={tableTd} style={{ textAlign: "center" }} colSpan={3} rowSpan={2}>
+            <td css={tableTd} style={{ textAlign: "center", width:"50%" }} colSpan={3} rowSpan={2}>
               <h2 style={{ textAlign: "center", marginTop: "0" }}>
                 <b>CERTIFICATE OF ORIGIN</b>
                 <h6 style={{ fontWeight: "lighter", fontSize: "0.5em", marginTop: "0" }}>
@@ -124,19 +126,20 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               </h2>
               <br />
               <br />
-              <h3>MACCIA / MBI /{certificateNumber}</h3>
+              <h3>{certificateNumber}</h3>
               <img src={chamber_logo} alt="Utkal Chamber" style={{ width: "15em" }} />
               <br />
               <b style={{ color: "#5d2621" }}>
-                Maharashtra Chamber of Commerce,
+                {/* Maharashtra Chamber of Commerce,
                 <br />
-                Industry and Agriculture
-                {/* {chamber_name} */}
+                Industry and Agriculture */}
+                {chamber_name.split(',')[0]}<br/>
+                {chamber_name.split(',')[1]}
               </b>
               <br />
-              Oricon House, 6th Floor, 12, K. Dubhash Marg,
-              <br /> Fort. Mumbai - 400 001
-              {/* {chamber_address} */}
+              {/* Oricon House, 6th Floor, 12, K. Dubhash Marg,
+              <br /> Fort. Mumbai - 400 001 */}
+              {chamber_address}
               <br />
               📞: {chamber_contact_phone} <br />
               📠: {chamber_fax} <br />
@@ -150,7 +153,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 2. Goods consigned to (Consignee's name, addess, country)
               </p>
               <br />
-              {customer_name} <br />
+              <b>{customer_name} </b><br />
               {/* {customer_contact_name} <br /> */}
               {customer_address} <br />
               ✉️: {customer_contact_email} <br />
@@ -207,21 +210,19 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
               <b>
-                {quantity}
-                {kindOfPackage}
+                {quantity}&nbsp;,
+                {markOfPackage.toUpperCase()}
               </b>
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
-              DRAWING NUMBER: D-332-1-A7 <br />
-              Material Code:8093883
+            {kindOfPackage.toUpperCase()}<br/>
+              {descriptionOfGood.toUpperCase()}
               <br />
               <br />
               <b>
                 <u>Dimension of Pallet</u>
               </b>
-              <br /> 1) L 72 CM X W 72 CM X H 88 CM of 01 Pallet
-              <br />
-              Item No.1 in Box 12 Nos (Box No.Identify: 01 to 12)
+              <br /> {dimenssionOfPallets}
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
               <b>INDIA</b>
@@ -234,7 +235,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 <br />
                 <br />
                 Net Weight
-                <br /> 108.000 Kgs
+                <br /> {totalNetWeight} 
               </b>
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
@@ -343,7 +344,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               prohibited. Verify its integrity and authenticity through approved channels.
             </td>
           </tr>
-          <tr css={tableTr}>
+          {/* <tr css={tableTr}>
             <td
               style={{
                 padding: "0.5rem",
@@ -367,7 +368,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
             >
               <b>Hash:</b>&nbsp;{mintTxHash}
             </td>
-          </tr>
+          </tr> */}
         </table>
       </div>
     </>

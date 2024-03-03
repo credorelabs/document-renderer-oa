@@ -283,7 +283,7 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
                 modifications are strictly prohibited. Verify its integrity and authenticity through approved channels.
               </td>
             </tr>
-            <tr css={tableTr}>
+            {/* <tr css={tableTr}>
               <td
                 style={{
                   padding: "0.5rem",
@@ -307,7 +307,7 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
               >
                 <b>Hash:</b>&nbsp;{mintTxHash}
               </td>
-            </tr>
+            </tr> */}
           </table>
         </div>
       </div>

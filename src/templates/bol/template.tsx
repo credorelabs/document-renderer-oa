@@ -202,7 +202,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("DD/MM/YYYY")}
           </td>
           <td css={tableTd}>
             <b>Actual date of receipt:</b>
@@ -211,7 +211,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("DD/MM/YYYY")}
           </td>
           <td css={tableTd}>
             <b>Actual time of arrival:</b>
@@ -220,7 +220,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Actual time of departure:</b>
@@ -229,7 +229,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("hh:mm A [IST]")}
           </td>
         </tr>
 
@@ -241,7 +241,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("DD/MM/YYYY")}
           </td>
           <td css={tableTd}>
             <b>Estimated date of receipt:</b>
@@ -250,7 +250,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("DD/MM/YYYY")}
           </td>
           <td css={tableTd}>
             <b>Estimated time of arrival:</b>
@@ -259,7 +259,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("hh:mm A [IST]")}
           </td>
           <td css={tableTd}>
             <b>Estimated time of departure:</b>
@@ -268,7 +268,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
+              .format("hh:mm A [IST]")}
           </td>
         </tr>
 
@@ -433,7 +433,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             prohibited. Verify its integrity and authenticity through approved channels.
           </td>
         </tr>
-        <tr css={tableTr}>
+        {/* <tr css={tableTr}>
           <td
             style={{
               padding: "0.5rem",
@@ -457,7 +457,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           >
             <b>Hash:</b>&nbsp;{mintTxHash}
           </td>
-        </tr>
+        </tr> */}
       </table>
     </div>
   );

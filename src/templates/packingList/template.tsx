@@ -301,7 +301,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               prohibited. Verify its integrity and authenticity through approved channels.
             </td>
           </tr>
-          <tr css={tableTr}>
+          {/* <tr css={tableTr}>
             <td
               style={{ padding: "0.5rem", borderWidth: "1px 0px 1px 1px", borderStyle: "solid", borderColor: "black" }}
             >
@@ -312,7 +312,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
             >
               <b>Hash:</b>&nbsp;{mintTxHash}
             </td>
-          </tr>
+          </tr> */}
         </table>
       </div>
     </div>

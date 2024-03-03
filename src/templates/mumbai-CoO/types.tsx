@@ -33,7 +33,7 @@ export interface mumbaiCoO extends v2.OpenAttestationDocument {
 
   hsCode: "HS001";
   quantity: 150;
-  totalWeight: "1000 kg";
+  totalWeight: "1000 kilograms";
   totalVolume: "10 cubic meters";
   route: "sea";
 
@@ -52,10 +52,12 @@ export interface mumbaiCoO extends v2.OpenAttestationDocument {
   kindOfPackage: "s";
   containerNo: "conNo";
   descriptionOfGood: "description";
+  dimenssionOfPallets: "76x76x76";
+  totalNetWeight: "1200 kilograms";
   termsOfShippment: "terms";
   value: "USD something";
   numOfPackages: "12";
-  markOfPackages: "Corrugated Boxes packed in one Pallet";
+  markOfPackage: "Corrugated Boxes packed in one Pallet";
 
   blockchainName?: string;
   mintTxHash?: string;
