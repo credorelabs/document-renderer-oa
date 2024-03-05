@@ -99,7 +99,9 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
           <table
             style={{
               width: "95%",
-              border: "2px solid black",
+              borderWidth: "2px 2px 0px 2px",
+              borderStyle: "solid",
+              borderColor: "black",
               padding: "0px",
               borderSpacing: "0px",
               margin: "auto"
@@ -239,7 +241,7 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
           <table
             style={{
               width: "95%",
-              borderWidth: "0px 2px 2px 2px",
+              borderWidth: "0px 2px 0px 2px",
               borderStyle: "solid",
               borderColor: "black",
               padding: "0px",
@@ -274,23 +276,26 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
                   .format("DD/MM/YYYY hh:mm A [IST]")}
               </td>
             </tr>
+          </table>
+          <table
+            style={{
+              width: "95%",
+              borderWidth: "0px 2px 2px 2px",
+              borderStyle: "solid",
+              borderColor: "black",
+              padding: "0px",
+              borderSpacing: "0px",
+              margin: "auto"
+            }}
+          >
             <tr css={tableTr}>
-              <td css={tableTd} colSpan={3}>
-                <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
-                existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended
-                format, ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the
-                Electronic Trade Document Act, holds the same legal validity. Any unauthorized alterations or
-                modifications are strictly prohibited. Verify its integrity and authenticity through approved channels.
-              </td>
-            </tr>
-            {/* <tr css={tableTr}>
               <td
                 style={{
                   padding: "0.5rem",
                   borderWidth: "1px 0px 1px 1px",
                   borderStyle: "solid",
-                  borderColor: "black",
-                  width: "50%"
+                  borderColor: "black"
+                  // width: "50%"
                 }}
                 colSpan={2}
               >
@@ -301,13 +306,23 @@ export const CertificateofOriginTemplate: FunctionComponent<TemplateProps<Certif
                   padding: "0.5rem",
                   borderWidth: "1px 1px 1px 0px",
                   borderStyle: "solid",
-                  borderColor: "black"
+                  borderColor: "black",
+                  textAlign: "right"
                 }}
                 colSpan={2}
               >
-                <b>Hash:</b>&nbsp;{mintTxHash}
+                <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
               </td>
-            </tr> */}
+            </tr>
+            <tr css={tableTr}>
+              <td css={tableTd} colSpan={4}>
+                <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+                existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended
+                format, ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the
+                Electronic Trade Document Act, holds the same legal validity. Any unauthorized alterations or
+                modifications are strictly prohibited. Verify its integrity and authenticity through approved channels.
+              </td>
+            </tr>
           </table>
         </div>
       </div>

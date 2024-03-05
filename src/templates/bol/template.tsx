@@ -82,7 +82,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     notify_address,
     notify_contact_email,
     notify_contact_phone,
-    shipping_signer_place,
+    carrier_signer_place,
     exporter_signer_place,
     blockchainName,
     mintTxHash
@@ -395,13 +395,15 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
       </table>
 
       <table
-        style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
+        style={{ width: "100%", borderWidth: "2px 2px 0px 2px",
+        borderStyle: "solid",
+        borderColor: "black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
       >
         <tr css={tableTr}>
-          <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
+          <td css={tableTd} colSpan={2} style={{ padding: "1rem", width:"50%" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-            <b>Place:</b>&nbsp;{shipping_signer_place}
+            <b>Place:</b>&nbsp;{carrier_signer_place}
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(shipping_company_sign_time)
@@ -424,6 +426,12 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .format("DD/MM/YYYY hh:mm A [IST]")}
           </td>
         </tr>
+        </table>
+        <table
+        style={{ width: "100%", borderWidth: "0px 2px 2px 2px",
+        borderStyle: "solid",
+        borderColor: "black", padding: "0px", borderSpacing: "0px"}}
+        >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
             <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
@@ -433,31 +441,6 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             prohibited. Verify its integrity and authenticity through approved channels.
           </td>
         </tr>
-        {/* <tr css={tableTr}>
-          <td
-            style={{
-              padding: "0.5rem",
-              borderWidth: "1px 0px 1px 1px",
-              borderStyle: "solid",
-              borderColor: "black",
-              width: "50%"
-            }}
-            colSpan={2}
-          >
-            <b>Blockchain:</b>&nbsp;{blockchainName}
-          </td>
-          <td
-            style={{
-              padding: "0.5rem",
-              borderWidth: "1px 1px 1px 0px",
-              borderStyle: "solid",
-              borderColor: "black"
-            }}
-            colSpan={2}
-          >
-            <b>Hash:</b>&nbsp;{mintTxHash}
-          </td>
-        </tr> */}
       </table>
     </div>
   );

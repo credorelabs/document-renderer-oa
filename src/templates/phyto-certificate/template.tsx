@@ -264,6 +264,34 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                   </div>
                 </td>
               </tr>
+            </table>
+            <table style={{ width: "100%", padding: "0px", borderSpacing: "0px" }}>
+              <tr css={tableTr}>
+                <td
+                  style={{
+                    padding: "0.5rem",
+                    borderWidth: "1px 0px 1px 1px",
+                    borderStyle: "solid",
+                    borderColor: "black"
+                    // width: "50%"
+                  }}
+                  colSpan={2}
+                >
+                  <b>Blockchain:</b>&nbsp;{blockchainName}
+                </td>
+                <td
+                  style={{
+                    padding: "0.5rem",
+                    borderWidth: "1px 1px 1px 0px",
+                    borderStyle: "solid",
+                    borderColor: "black",
+                    textAlign: "right"
+                  }}
+                  colSpan={2}
+                >
+                  <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
+                </td>
+              </tr>
               <tr css={tableTr}>
                 <td css={tableTd} colSpan={4}>
                   No financial-liability with respect to this certificate shall attach to the Ministry of Agriculture &
@@ -282,7 +310,8 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                   channels.
                 </td>
               </tr>
-              {/* <tr css={tableTr}>
+            </table>
+            {/* <tr css={tableTr}>
                 <td
                   style={{
                     padding: "0.5rem",
@@ -307,7 +336,6 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                   <b>Hash:</b>&nbsp;{mintTxHash}
                 </td>
               </tr> */}
-            </table>
           </div>
         </div>
       </div>

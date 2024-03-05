@@ -77,6 +77,6 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
 
   blockchainName?: string;
   mintTxHash?: string;
-  shipping_signer_place?: string;
+  carrier_signer_place?: string;
   exporter_signer_place?: string;
 }

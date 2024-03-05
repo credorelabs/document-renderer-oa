@@ -93,7 +93,9 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
         <table
           style={{
             width: "95%",
-            border: "2px solid black",
+            borderWidth: "2px 2px 0px 2px",
+            borderStyle: "solid",
+            borderColor: "black",
             padding: "0px",
             borderSpacing: "0px",
             margin: "auto"
@@ -115,7 +117,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               {/* CIN NO:- U28900MH1999PLC123308 &nbsp;&nbsp;&nbsp;PAN NO. AADCM3035D <br />
               GSTIN NO. : 27AADCM3035D1ZW &nbsp;&nbsp;&nbsp;IEC CODE NO. 3106010142 */}
             </td>
-            <td css={tableTd} style={{ textAlign: "center", width:"50%" }} colSpan={3} rowSpan={2}>
+            <td css={tableTd} style={{ textAlign: "center", width: "50%" }} colSpan={3} rowSpan={2}>
               <h2 style={{ textAlign: "center", marginTop: "0" }}>
                 <b>CERTIFICATE OF ORIGIN</b>
                 <h6 style={{ fontWeight: "lighter", fontSize: "0.5em", marginTop: "0" }}>
@@ -133,8 +135,9 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 {/* Maharashtra Chamber of Commerce,
                 <br />
                 Industry and Agriculture */}
-                {chamber_name.split(',')[0]}<br/>
-                {chamber_name.split(',')[1]}
+                {chamber_name.split(",")[0]}
+                <br />
+                {chamber_name.split(",")[1]}
               </b>
               <br />
               {/* Oricon House, 6th Floor, 12, K. Dubhash Marg,
@@ -153,7 +156,8 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 2. Goods consigned to (Consignee's name, addess, country)
               </p>
               <br />
-              <b>{customer_name} </b><br />
+              <b>{customer_name} </b>
+              <br />
               {/* {customer_contact_name} <br /> */}
               {customer_address} <br />
               ✉️: {customer_contact_email} <br />
@@ -215,7 +219,8 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               </b>
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
-            {kindOfPackage.toUpperCase()}<br/>
+              {kindOfPackage.toUpperCase()}
+              <br />
               {descriptionOfGood.toUpperCase()}
               <br />
               <br />
@@ -235,7 +240,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 <br />
                 <br />
                 Net Weight
-                <br /> {totalNetWeight} 
+                <br /> {totalNetWeight}
               </b>
             </td>
             <td css={tableTd} style={{ height: "10rem" }}>
@@ -335,25 +340,28 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <div style={{ fontSize: "0.7em" }}>Place, date and signature of authorised signatory</div>
             </td>
           </tr>
+        </table>
+        <table
+          style={{
+            width: "95%",
+            borderWidth: "0px 2px 2px 2px",
+            borderStyle: "solid",
+            borderColor: "black",
+            padding: "0px",
+            borderSpacing: "0px",
+            margin: "auto"
+          }}
+        >
           <tr css={tableTr}>
-            <td css={tableTd} colSpan={6}>
-              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
-              existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
-              ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
-              Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
-              prohibited. Verify its integrity and authenticity through approved channels.
-            </td>
-          </tr>
-          {/* <tr css={tableTr}>
             <td
               style={{
                 padding: "0.5rem",
                 borderWidth: "1px 0px 1px 1px",
                 borderStyle: "solid",
-                borderColor: "black",
-                width: "50%"
+                borderColor: "black"
+                // width: "50%"
               }}
-              colSpan={3}
+              colSpan={2}
             >
               <b>Blockchain:</b>&nbsp;{blockchainName}
             </td>
@@ -362,13 +370,23 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
                 padding: "0.5rem",
                 borderWidth: "1px 1px 1px 0px",
                 borderStyle: "solid",
-                borderColor: "black"
+                borderColor: "black",
+                textAlign: "right"
               }}
-              colSpan={3}
+              colSpan={2}
             >
-              <b>Hash:</b>&nbsp;{mintTxHash}
+              <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
             </td>
-          </tr> */}
+          </tr>
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={4}>
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+              existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
+              ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
+              Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
+              prohibited. Verify its integrity and authenticity through approved channels.
+            </td>
+          </tr>
         </table>
       </div>
     </>

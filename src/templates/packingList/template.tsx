@@ -292,8 +292,46 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
                 .format("DD/MM/YYYY hh:mm A [IST]")}
             </td>
           </tr>
+        </table>
+
+        <table
+          style={{
+            width: "100%",
+            borderWidth: "0px 1px 1px 1px",
+            borderStyle: "solid",
+            borderColor: "black",
+            padding: "0px",
+            borderSpacing: "0px"
+          }}
+        >
           <tr css={tableTr}>
-            <td css={tableTd} colSpan={2}>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 0px 1px 1px",
+                borderStyle: "solid",
+                borderColor: "black"
+                // width: "50%"
+              }}
+              colSpan={2}
+            >
+              <b>Blockchain:</b>&nbsp;{blockchainName}
+            </td>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 1px 1px 0px",
+                borderStyle: "solid",
+                borderColor: "black",
+                textAlign: "right"
+              }}
+              colSpan={2}
+            >
+              <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
+            </td>
+          </tr>
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={4}>
               <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
               existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
               ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
@@ -301,18 +339,6 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               prohibited. Verify its integrity and authenticity through approved channels.
             </td>
           </tr>
-          {/* <tr css={tableTr}>
-            <td
-              style={{ padding: "0.5rem", borderWidth: "1px 0px 1px 1px", borderStyle: "solid", borderColor: "black" }}
-            >
-              <b>Blockchain:</b>&nbsp;{blockchainName}
-            </td>
-            <td
-              style={{ padding: "0.5rem", borderWidth: "1px 1px 1px 0px", borderStyle: "solid", borderColor: "black" }}
-            >
-              <b>Hash:</b>&nbsp;{mintTxHash}
-            </td>
-          </tr> */}
         </table>
       </div>
     </div>

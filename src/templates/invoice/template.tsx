@@ -286,14 +286,40 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
         <table
           style={{
             width: "100%",
-            borderWidth: "2px 2px 2px 2px",
+            borderWidth: "2px",
             borderStyle: "solid",
             borderColor: "black",
             padding: "0px",
             borderSpacing: "0px",
-            margin: "auto"
+            marginTop: "2rem"
           }}
         >
+          <tr css={tableTr}>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 0px 1px 1px",
+                borderStyle: "solid",
+                borderColor: "black"
+                // width: "50%"
+              }}
+              colSpan={2}
+            >
+              <b>Blockchain:</b>&nbsp;{blockchainName}
+            </td>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 1px 1px 0px",
+                borderStyle: "solid",
+                borderColor: "black",
+                textAlign: "right"
+              }}
+              colSpan={2}
+            >
+              <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
+            </td>
+          </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={4}>
               <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
@@ -303,26 +329,6 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               prohibited. Verify its integrity and authenticity through approved channels.
             </td>
           </tr>
-          {/* <tr css={tableTr}>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 0px 1px 1px",
-                borderStyle: "solid",
-                borderColor: "black",
-                width: "50%"
-              }}
-              colSpan={2}
-            >
-              <b>Blockchain:</b>&nbsp;{blockchainName}
-            </td>
-            <td
-              style={{ padding: "0.5rem", borderWidth: "1px 1px 1px 0px", borderStyle: "solid", borderColor: "black" }}
-              colSpan={2}
-            >
-              <b>Hash:</b>&nbsp;{mintTxHash}
-            </td>
-          </tr> */}
         </table>
       </div>
     </>

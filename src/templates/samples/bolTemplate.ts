@@ -78,7 +78,7 @@ export const billOfLadingCertificate: BillOfLadingData = {
 
   blockchainName: "XDC",
   mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
-  shipping_signer_place: "Dubai",
+  carrier_signer_place: "Dubai",
   exporter_signer_place: "India",
 
   issuers: [
