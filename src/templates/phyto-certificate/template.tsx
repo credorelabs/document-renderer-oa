@@ -229,8 +229,8 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                     .add(5, "hours")
                     .add(30, "minutes")
                     .format("DD/MM/YYYY")}
-                  &nbsp;-&nbsp; "The consignment inspected and found free from all army worm (Spodoptera frugiperda) on
-                  the basis of visual inspection".
+                  {signedBy==='_________________________________'? <></>:<>&nbsp;-&nbsp; "The consignment inspected and found free from all army worm (Spodoptera frugiperda) on
+                  the basis of visual inspection".</>}
                   <br />
                   <br />
                   <br />
@@ -246,7 +246,7 @@ export const PhytoTemplate: FunctionComponent<TemplateProps<Phyto>> = ({ documen
                         .utc()
                         .add(5, "hours")
                         .add(30, "minutes")
-                        .format("DD/MM/YYYY hh:mm A [IST]")}
+                        .format("DD/MM/YYYY")}
                       <br />
                       <br />
                       <b>Place of Issue:</b>&nbsp;&nbsp;&nbsp;&nbsp;{placeOfIssue}

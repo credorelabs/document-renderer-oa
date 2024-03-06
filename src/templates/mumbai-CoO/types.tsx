@@ -46,7 +46,7 @@ export interface mumbaiCoO extends v2.OpenAttestationDocument {
   manufacturer_address: "456 Manufacturer Ave, Production Town, Country";
   manufacturer_country: "Manufacturia";
   invoiceNumber: "INV0001022020";
-  //   chamber_logo: "./logo.png",
+    chamber_logo: "./logo.png",
   chamber_fax: "(022) 2285 5861";
 
   kindOfPackage: "s";

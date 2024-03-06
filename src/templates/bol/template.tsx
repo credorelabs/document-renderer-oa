@@ -129,7 +129,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} rowSpan={3} colSpan={2}>
-            <b>Shipper:</b>
+            <b>Exporter / Shipper / Consignor:</b>
             <br />
             {exporterCompanyName},<br />
             {exporterName},<br />
@@ -277,10 +277,10 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Container Size: </b>&nbsp;{consignment_containerSizeTypeISO}
           </td>
           <td css={tableTd}>
-            <b>Weight:</b>&nbsp;{measure_weight}
+            <b>Weight:</b>&nbsp;{measure_weight}&nbsp;KG
           </td>
           <td css={tableTd}>
-            <b>Volume:</b>&nbsp;{measure_volume}
+            <b>Volume:</b>&nbsp;{measure_volume}&nbsp;m^3
           </td>
           <td css={tableTd} colSpan={2}>
             <b>Place of Payment Unlocode:</b>&nbsp;{location_placeOfPaymentUNLOCODE}
@@ -340,7 +340,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Goods description:</b>&nbsp;{goods_descriptionOfGoods}
           </td>
           <td css={tableTd}>
-            <b>No. of Goods:</b>&nbsp;{goods_descriptionOfGoods}
+            <b>No. of Goods:</b>&nbsp;{goods_numberOfPackages}
           </td>
         </tr>
         <tr css={tableTr}>

@@ -4,7 +4,6 @@ import { css } from "@emotion/core";
 import { mumbaiCoO } from "./types";
 import stamp from "../boe-main/stampCredore (1).svg";
 import moment from "moment";
-import chamber_logo from "./logo.png";
 
 export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<mumbaiCoO>> = ({ document }) => {
   const {
@@ -31,7 +30,7 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
     chamber_contact_name,
     chamber_contact_phone,
     chamber_name,
-    // chamber_logo,
+    chamber_logo,
     chamber_fax,
 
     kindOfPackage,
@@ -309,8 +308,8 @@ export const MumbaiCertificateofOriginTemplate: FunctionComponent<TemplateProps<
               <br />
               <div style={{ textAlign: "right", fontSize: "0.7em" }}>
                 Authorised Signatory
-                <br /> Maharashtra Chamber of Commerce, Industry and Agriculture
-                <br /> Mumbai, India
+                <br /> {chamber_name}
+                <br /> {chamber_signer_place}
               </div>
             </td>
             <td css={tableTd} colSpan={3}>

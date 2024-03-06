@@ -47,7 +47,7 @@ export const MumbaiCooTemplate: mumbaiCoO = {
   totalVolume: "10 cubic meters",
   route: "sea",
 
-  //   chamber_logo: "../mumbai-CoO/logo.png",
+  chamber_logo: "./logo.png",
   chamber_fax: "(022) 2285 5861",
 
   kindOfPackage: "s",
