@@ -16,8 +16,8 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
     letterContent,
     blockchainName,
     mintTxHash,
-    customerName,
-    email,
+    fromContactName,
+    
     address,
     createdAt
   } = document;
@@ -27,7 +27,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
   return (
     <>
       <div style={{ padding: "3.5rem", paddingTop: "1.25rem" }}>
-        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
+        <div style={{  display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <img src={companyLogo} alt="company logo" style={{ width: "200px" }} />
             <div style={{ textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
@@ -50,13 +50,13 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
           <div dangerouslySetInnerHTML={{ __html: decodedContent }} />
           <div style={{ color: "#EF4444", fontWeight: 600, marginBottom: "1rem" }}>Digitally signed by</div>
           <div style={{ color: "#000", fontWeight: 600 }}>
-            Name : <span style={{ color: "#000", fontWeight: 100 }}>{customerName}</span>
+            Name : <span style={{ color: "#000", fontWeight: 100 }}>{fromContactName}</span>
           </div>
           <div style={{ color: "#000", fontWeight: 600 }}>
-            Email : <span style={{ color: "#000", fontWeight: 100 }}>{email}</span>
+            Email : <span style={{ color: "#000", fontWeight: 100 }}>{fromCompanyEmail}</span>
           </div>
           <div style={{ color: "#000", fontWeight: 600 }}>
-            Place : <span style={{ color: "#000", fontWeight: 100 }}>{address}</span>
+            Place : <span style={{ color: "#000", fontWeight: 100 }}>{fromCompanyAddress}</span>
           </div>
           <div style={{ color: "#000", fontWeight: 600 }}>
             Date & Timestamp :{" "}

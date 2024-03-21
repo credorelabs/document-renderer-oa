@@ -12,7 +12,8 @@ export interface Cover extends v2.OpenAttestationDocument {
   mintTxHash?: string;
   txHash?: string;
   customerName?: string;
-  email ?: string;
-    address ?: string;
-    createdAt ?: string;
+  email?: string;
+  address?: string;
+  createdAt?: string;
+  fromContactName?: string;
 }

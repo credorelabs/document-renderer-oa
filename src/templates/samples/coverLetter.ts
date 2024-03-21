@@ -14,8 +14,6 @@ export const coverLetter: Cover = {
   blockchainName: "XDC",
   mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
   customerName: "Raj Patra",
-  email: "raj.patra@gmail.com",
-  address: "BBSR",
   createdAt: "2024-03-21T11:05:10.842Z",
   issuers: [
     {
