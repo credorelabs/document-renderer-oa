@@ -29,7 +29,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
       <div style={{ padding: "3.5rem", paddingTop: "1.25rem" }}>
         <div style={{  display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <img src={companyLogo} alt="company logo" style={{ width: "4rem" }} />
+            <img src={companyLogo} alt="company logo" style={{ width: "6rem" }} />
             <div style={{ textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
               {fromCompanyNumber}
               <br />
