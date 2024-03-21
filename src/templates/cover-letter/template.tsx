@@ -1,0 +1,102 @@
+import React, { FunctionComponent } from "react";
+import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { css } from "@emotion/core";
+import { Cover } from "./types";
+import moment from "moment";
+import he from "he";
+
+export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document }) => {
+  const {
+    letterDate,
+    referenceNumber,
+    companyLogo,
+    fromCompanyNumber,
+    fromCompanyEmail,
+    fromCompanyAddress,
+    letterContent,
+    blockchainName,
+    mintTxHash
+  } = document;
+
+  const decodedContent = he.decode(letterContent || "");
+
+  return (
+    <>
+      <div style={{ padding: "3.5rem", paddingTop: "1.25rem" }}>
+        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <img src={companyLogo} alt="company logo" style={{ width: "200px" }} />
+            <div style={{ textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
+              {fromCompanyNumber}
+              <br />
+              {fromCompanyEmail}
+              <br />
+              {fromCompanyAddress}
+            </div>
+          </div>
+          <div
+            style={{ height: "0.5rem", width: "100%", marginTop: "2.5rem", marginBottom: "2.5rem", display: "flex" }}
+          >
+            <div style={{ width: "100%", backgroundColor: "#000" }}></div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
+            <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>Ref. No. {referenceNumber}</div>
+            <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{moment(letterDate).format("DD/MMMM/YYYY")}</div>
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: decodedContent }} />
+          <div style={{ height: "0.5rem", width: "100%", marginBottom: "1rem", display: "flex" }}>
+            <div style={{ width: "100%", backgroundColor: "#000" }}></div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", fontSize: "1rem" }}>
+              <div
+                style={{
+                  border: "0.05rem solid #000",
+                  borderRadius: "50%",
+                  padding: "0.125rem",
+                  margin: "auto",
+                  width: "1.3rem"
+                }}
+              >
+                📞
+              </div>
+              &nbsp;
+              <div style={{ marginTop: "auto" }}>{fromCompanyNumber}</div>
+            </div>
+            <div style={{ display: "flex", fontSize: "1rem", margin: "0 1rem" }}>
+              <div
+                style={{
+                  border: "0.05rem solid #000",
+                  borderRadius: "50%",
+                  padding: "0.125rem",
+                  margin: "auto",
+                  width: "1.3rem"
+                }}
+              >
+                🌍
+              </div>
+              &nbsp;
+              <div style={{ marginTop: "auto" }}>{fromCompanyAddress}</div>
+            </div>
+            <div style={{ display: "flex", fontSize: "1rem" }}>
+              <div
+                style={{
+                  border: "0.05rem solid #000",
+                  borderRadius: "50%",
+                  margin: "auto",
+                  width: "1.3rem",
+                  fontSize: "1.5rem",
+                  paddingLeft: "0.3rem"
+                }}
+              >
+                ✉︎
+              </div>
+              &nbsp;
+              <div style={{ marginTop: "auto" }}>{fromCompanyEmail}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};

@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { CoverLetter } from "./template";
+import { coverLetter } from "../samples/coverLetter";
+
+<Meta title="MDX|CoverLetter" component={CoverLetter} />
+
+# CoverLetter component
+
+<Description of={CoverLetter} />
+
+# Props
+
+<Props of={CoverLetter} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <CoverLetter document={object("document", coverLetter)} />
+  </Story>
+</Preview>
