@@ -15,7 +15,11 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
     fromCompanyAddress,
     letterContent,
     blockchainName,
-    mintTxHash
+    mintTxHash,
+    customerName,
+    email,
+    address,
+    createdAt
   } = document;
 
   const decodedContent = he.decode(letterContent || "");
@@ -44,6 +48,35 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
             <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{moment(letterDate).format("DD/MMMM/YYYY")}</div>
           </div>
           <div dangerouslySetInnerHTML={{ __html: decodedContent }} />
+          <div style={{ color: "#EF4444", fontWeight: 600, marginBottom: "1rem" }}>Digitally signed by</div>
+          <div style={{ color: "#000", fontWeight: 600 }}>
+            Name : <span style={{ color: "#000", fontWeight: 100 }}>{customerName}</span>
+          </div>
+          <div style={{ color: "#000", fontWeight: 600 }}>
+            Email : <span style={{ color: "#000", fontWeight: 100 }}>{email}</span>
+          </div>
+          <div style={{ color: "#000", fontWeight: 600 }}>
+            Place : <span style={{ color: "#000", fontWeight: 100 }}>{address}</span>
+          </div>
+          <div style={{ color: "#000", fontWeight: 600 }}>
+            Date & Timestamp :{" "}
+            <span style={{ color: "#000", fontWeight: 100 }}>
+              {" "}
+              {moment(createdAt)
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
+                .format("DD/MM/YYYY hh:mm a")}
+            </span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom:"1rem", marginTop:"0.5rem" }}>
+            <div style={{ color: "#000", fontWeight: 600 }}>
+              Genesis : <span style={{ color: "#000", fontWeight: 100 }}>{mintTxHash}</span>{" "}
+            </div>
+            <div style={{ color: "#000", fontWeight: 600 }}>
+              Chain : <span style={{ color: "#000", fontWeight: 100 }}>{blockchainName}</span>{" "}
+            </div>
+          </div>
           <div style={{ height: "0.5rem", width: "100%", marginBottom: "1rem", display: "flex" }}>
             <div style={{ width: "100%", backgroundColor: "#000" }}></div>
           </div>

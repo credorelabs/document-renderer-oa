@@ -10,4 +10,9 @@ export interface Cover extends v2.OpenAttestationDocument {
   letterContent?: string;
   blockchainName?: string;
   mintTxHash?: string;
+  txHash?: string;
+  customerName?: string;
+  email ?: string;
+    address ?: string;
+    createdAt ?: string;
 }
