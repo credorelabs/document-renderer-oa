@@ -23,7 +23,9 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
   } = document;
 
   const decodedContent = he.decode(letterContent || "");
-
+  const contentStyle = {
+    height: decodedContent.length < 120 ? "75vh" : "auto",
+  };
   return (
     <>
       <div style={{ padding: "3.5rem", paddingTop: "1.25rem" }}>
@@ -47,7 +49,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
             <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>Ref. No. {referenceNumber}</div>
             <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{moment(letterDate).format("DD/MMMM/YYYY")}</div>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: decodedContent }} />
+          <div dangerouslySetInnerHTML={{ __html: decodedContent }} style={contentStyle} />
           <div style={{ color: "#EF4444", fontWeight: 600, marginBottom: "1rem" }}>Digitally signed by</div>
           <div style={{ color: "#000", fontWeight: 600 }}>
             Name : <span style={{ color: "#000", fontWeight: 100 }}>{fromContactName}</span>
