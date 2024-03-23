@@ -24,7 +24,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
 
   const decodedContent = he.decode(letterContent || "");
   const contentStyle = {
-    height: decodedContent.length < 120 ? "50vh" : "auto",
+    height: decodedContent.length < 100 ? "50vh" : "auto",
   };
   return (
     <>
