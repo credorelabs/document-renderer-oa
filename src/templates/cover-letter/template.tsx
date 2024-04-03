@@ -24,14 +24,28 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
 
   const decodedContent = he.decode(letterContent || "");
   const contentStyle = {
-    height: decodedContent.length < 700 ? "50vh" : "auto"
+    height: decodedContent.length < 1000 ? "50vh" : "auto"
   };
   return (
     <>
       <div style={{ padding: "3.5rem", paddingTop: "1.25rem" }}>
         <div style={{ display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <img src={companyLogo} alt="company logo" style={{ width: "6rem" }} />
+            {/* <img src={companyLogo} alt="company logo" style={{ width: "6rem" }} /> */}
+            <div>
+              <img
+                src={companyLogo}
+                alt="Logo"
+                // loading="lazy"
+                width={180}
+                height={80}
+                style={{ width: "10rem" }}
+              />
+              <div style={{ width: "22rem", fontWeight: "bold" }}>
+                www.credore.xyz+91-8600-936-299 info@credore.xyz Strengthening Global Trade Partnerships Through Legally
+                Recognized Electronic Trade Documentation
+              </div>
+            </div>
             <div style={{ textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
               {fromCompanyNumber}
               <br />
@@ -40,8 +54,16 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
               {fromCompanyAddress}
             </div>
           </div>
-          <div style={{ height: "0.5rem", width: "100%", marginTop: "2.5rem", marginBottom: "1rem", display: "flex" }}>
+          {/* <div style={{ height: "0.5rem", width: "100%", marginTop: "2.5rem", marginBottom: "1rem", display: "flex" }}>
             <div style={{ width: "100%", backgroundColor: "#000" }}></div>
+          </div> */}
+          <div
+            style={{ display: "flex", height: "0.5rem", width: "full", marginTop: "2.5rem", marginBottom: "2.5rem" }}
+            className="w-full flex h-2 mb-10"
+          >
+            <div style={{ height: "0.5rem", width: "30%", marginBottom: "1rem", backgroundColor: "#f15929" }}></div>
+            {/* Orange part */}
+            <div style={{ height: "0.5rem", width: "70%", marginBottom: "1rem", backgroundColor: "#29564b" }}></div>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
             <div style={{ fontSize: "1rem" }}>Ref. No. {referenceNumber}</div>
@@ -77,8 +99,16 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
               Chain : <span style={{ color: "#000", fontWeight: 100 }}>{blockchainName}</span>{" "}
             </div>
           </div>
-          <div style={{ height: "0.5rem", width: "100%", marginBottom: "1rem", display: "flex" }}>
+          {/* <div style={{ height: "0.5rem", width: "100%", marginBottom: "1rem", display: "flex" }}>
             <div style={{ width: "100%", backgroundColor: "#000" }}></div>
+          </div> */}
+          <div
+            style={{ display: "flex", height: "0.5rem", width: "full", marginBottom: "2.5rem" }}
+            className="w-full flex h-2 mb-10"
+          >
+            <div style={{ height: "0.5rem", width: "30%", marginBottom: "1rem", backgroundColor: "#f15929" }}></div>
+            {/* Orange part */}
+            <div style={{ height: "0.5rem", width: "70%", marginBottom: "1rem", backgroundColor: "#29564b" }}></div>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ display: "flex", fontSize: "1rem" }}>
