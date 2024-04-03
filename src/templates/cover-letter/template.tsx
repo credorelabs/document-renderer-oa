@@ -39,7 +39,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
                 // loading="lazy"
                 width={180}
                 height={80}
-                style={{ width: "10rem" }}
+                style={{ width: "14rem" }}
               />
               <div style={{ width: "22rem", fontWeight: "bold" }}>
                 www.credore.xyz+91-8600-936-299 info@credore.xyz Strengthening Global Trade Partnerships Through Legally
