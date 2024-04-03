@@ -17,19 +17,19 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
     blockchainName,
     mintTxHash,
     fromContactName,
-    
+
     address,
     createdAt
   } = document;
 
   const decodedContent = he.decode(letterContent || "");
   const contentStyle = {
-    height: decodedContent.length < 100 ? "50vh" : "auto",
+    height: decodedContent.length < 700 ? "50vh" : "auto"
   };
   return (
     <>
       <div style={{ padding: "3.5rem", paddingTop: "1.25rem" }}>
-        <div style={{  display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <img src={companyLogo} alt="company logo" style={{ width: "6rem" }} />
             <div style={{ textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
@@ -40,13 +40,11 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
               {fromCompanyAddress}
             </div>
           </div>
-          <div
-            style={{ height: "0.5rem", width: "100%", marginTop: "2.5rem", marginBottom: "1rem", display: "flex" }}
-          >
+          <div style={{ height: "0.5rem", width: "100%", marginTop: "2.5rem", marginBottom: "1rem", display: "flex" }}>
             <div style={{ width: "100%", backgroundColor: "#000" }}></div>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
-            <div style={{ fontSize: "1rem", }}>Ref. No. {referenceNumber}</div>
+            <div style={{ fontSize: "1rem" }}>Ref. No. {referenceNumber}</div>
             <div style={{ fontSize: "1rem" }}>{moment(letterDate).format("DD/MMMM/YYYY")}</div>
           </div>
           <div dangerouslySetInnerHTML={{ __html: decodedContent }} style={contentStyle} />
@@ -71,7 +69,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
                 .format("DD/MM/YYYY hh:mm a")}
             </span>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom:"1rem", marginTop:"0.5rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem", marginTop: "0.5rem" }}>
             <div style={{ color: "#000", fontWeight: 600 }}>
               Genesis : <span style={{ color: "#000", fontWeight: 100 }}>{mintTxHash}</span>{" "}
             </div>
