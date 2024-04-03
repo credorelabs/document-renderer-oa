@@ -42,8 +42,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
                 style={{ width: "14rem", height: "3rem" }}
               />
               <div style={{ width: "22rem", fontWeight: "bold" }}>
-                www.credore.xyz+91-8600-936-299 info@credore.xyz Strengthening Global Trade Partnerships Through Legally
-                Recognized Electronic Trade Documentation
+                Strengthening Global Trade Partnerships Through Legally Recognized Electronic Trade Documentation
               </div>
             </div>
             <div style={{ textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
