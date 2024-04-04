@@ -69,7 +69,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
             <div style={{ fontSize: "1rem" }}>{moment(letterDate).format("DD/MMMM/YYYY")}</div>
           </div>
           <div dangerouslySetInnerHTML={{ __html: decodedContent }} style={contentStyle} />
-          <div style={{ color: "#EF4444", fontFamily: "helvetica", fontSize: "0.7rem", marginBottom: "1rem" }}>
+          <div style={{ color: "#EF4444", fontFamily: "helvetica", fontSize: "0.7rem", marginBottom: "0.1rem" }}>
             Digitally signed by
           </div>
           <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
