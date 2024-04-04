@@ -39,7 +39,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
                 // loading="lazy"
                 width={180}
                 height={80}
-                style={{ width: "14rem", height: "3rem" }}
+                style={{ width: "14rem", height: "2rem" }}
               />
               <div style={{ width: "22rem", fontWeight: "bold" }}>
                 Strengthening Global Trade Partnerships Through Legally Recognized Electronic Trade Documentation
@@ -73,7 +73,10 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
             Digitally signed by
           </div>
           <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
-            Name : <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>{fromContactName}</span>
+            Name :{" "}
+            <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
+              {fromContactName === "Admin" ? "Lingaraj Mahanand" : fromContactName}
+            </span>
           </div>
           <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
             Email :{" "}
