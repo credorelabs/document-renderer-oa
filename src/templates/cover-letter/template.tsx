@@ -17,7 +17,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
     blockchainName,
     mintTxHash,
     fromContactName,
-
+    fromCompanyName,
     address,
     createdAt
   } = document;
@@ -45,8 +45,8 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
                 Strengthening Global Trade Partnerships Through Legally Recognized Electronic Trade Documentation
               </div>
             </div>
-            <div style={{ textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
-              {fromCompanyNumber}
+            <div style={{ width: "25rem", textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
+              {fromCompanyName}
               <br />
               {fromCompanyEmail}
               <br />
@@ -57,31 +57,35 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
             <div style={{ width: "100%", backgroundColor: "#000" }}></div>
           </div> */}
           <div
-            style={{ display: "flex", height: "0.5rem", width: "full", marginTop: "2.5rem", marginBottom: "2.5rem" }}
+            style={{ display: "flex", height: "0.5rem", width: "full", marginTop: "1rem", marginBottom: "2rem" }}
             className="w-full flex h-2 mb-10"
           >
             <div style={{ height: "0.5rem", width: "30%", marginBottom: "1rem", backgroundColor: "#f15929" }}></div>
             {/* Orange part */}
             <div style={{ height: "0.5rem", width: "70%", marginBottom: "1rem", backgroundColor: "#29564b" }}></div>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
             <div style={{ fontSize: "1rem" }}>Ref. No. {referenceNumber}</div>
             <div style={{ fontSize: "1rem" }}>{moment(letterDate).format("DD/MMMM/YYYY")}</div>
           </div>
           <div dangerouslySetInnerHTML={{ __html: decodedContent }} style={contentStyle} />
-          <div style={{ color: "#EF4444", fontWeight: 600, marginBottom: "1rem" }}>Digitally signed by</div>
-          <div style={{ color: "#000", fontWeight: 600 }}>
-            Name : <span style={{ color: "#000", fontWeight: 100 }}>{fromContactName}</span>
+          <div style={{ color: "#EF4444", fontFamily: "helvetica", fontSize: "0.7rem", marginBottom: "1rem" }}>
+            Digitally signed by
           </div>
-          <div style={{ color: "#000", fontWeight: 600 }}>
-            Email : <span style={{ color: "#000", fontWeight: 100 }}>{fromCompanyEmail}</span>
+          <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
+            Name : <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>{fromContactName}</span>
           </div>
-          <div style={{ color: "#000", fontWeight: 600 }}>
-            Place : <span style={{ color: "#000", fontWeight: 100 }}>{fromCompanyAddress}</span>
+          <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
+            Email :{" "}
+            <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>{fromCompanyEmail}</span>
           </div>
-          <div style={{ color: "#000", fontWeight: 600 }}>
+          <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
+            Place :{" "}
+            <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>{fromCompanyAddress}</span>
+          </div>
+          <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
             Date & Timestamp :{" "}
-            <span style={{ color: "#000", fontWeight: 100 }}>
+            <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
               {" "}
               {moment(createdAt)
                 .utc()
@@ -91,11 +95,12 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
             </span>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem", marginTop: "0.5rem" }}>
-            <div style={{ color: "#000", fontWeight: 600 }}>
-              Genesis : <span style={{ color: "#000", fontWeight: 100 }}>{mintTxHash}</span>{" "}
+            <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
+              Genesis : <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>{mintTxHash}</span>{" "}
             </div>
-            <div style={{ color: "#000", fontWeight: 600 }}>
-              Chain : <span style={{ color: "#000", fontWeight: 100 }}>{blockchainName}</span>{" "}
+            <div style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>
+              Chain :{" "}
+              <span style={{ color: "#000", fontFamily: "helvetica", fontSize: "0.7rem" }}>{blockchainName}</span>{" "}
             </div>
           </div>
           {/* <div style={{ height: "0.5rem", width: "100%", marginBottom: "1rem", display: "flex" }}>

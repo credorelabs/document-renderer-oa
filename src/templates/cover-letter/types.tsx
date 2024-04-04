@@ -16,4 +16,5 @@ export interface Cover extends v2.OpenAttestationDocument {
   address?: string;
   createdAt?: string;
   fromContactName?: string;
+  fromCompanyName?: string;
 }
