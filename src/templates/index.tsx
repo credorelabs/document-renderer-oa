@@ -13,6 +13,7 @@ import { MumbaiCertificateofOriginTemplate } from "./mumbai-CoO/template";
 import { MumbaiCooTemplate } from "./samples/mumbaiCoO";
 import { MumbaiCertificateofOriginTemplates } from "./mumbai-CoO";
 import { CoverLetterTemplates } from "./cover-letter";
+import { PromisoryTemplate } from "./promissory";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -24,6 +25,7 @@ export const registry: TemplateRegistry<any> = {
   PACKING_LIST: PackingListTemplates,
   PHYTOSANITARY_CERTIFICATE: PhytoTemplates,
   MUMBAI_CERTIFICATE_OF_ORIGIN: MumbaiCertificateofOriginTemplates,
-  COVER_LETTER: CoverLetterTemplates
+  COVER_LETTER: CoverLetterTemplates,
+  PROMISSORY_NOTE: PromisoryTemplate
   // PACKING_LIST:packingListTemplate
 };
