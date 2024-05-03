@@ -24,4 +24,6 @@ export interface Prom extends v2.OpenAttestationDocument {
   signerName: string;
   signerPosition: string;
   signerEmail: string;
+  blockchainName: string;
+  mintTxHash: string;
 }

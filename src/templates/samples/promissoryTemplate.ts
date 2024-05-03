@@ -24,6 +24,8 @@ export const promissoryTemplate: Prom = {
   signerName: "KALINGA",
   signerPosition: "CEO",
   signerEmail: "kalingsa@kalingsa.com",
+  blockchainName: "XDC",
+  mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller",

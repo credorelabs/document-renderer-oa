@@ -30,7 +30,9 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     signedAt,
     signerName,
     signerPosition,
-    signerEmail
+    signerEmail,
+    mintTxHash,
+    blockchainName
   } = document;
   const containerStyle = css`
     margin: auto;
@@ -236,6 +238,14 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   Electronic Trade Document Act, holds the same legal validity. Any unauthorized alterations or
                   modifications are strictly prohibited. Verify its integrity and authenticity through approved
                   channels.
+                </div>
+                <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
+                  <div>
+                    <b>Blockchain:</b>&nbsp;{blockchainName}
+                  </div>
+                  <div>
+                    <b>Genesis Transaction Hash:</b>&nbsp;{mintTxHash}
+                  </div>
                 </div>
               </tbody>
             </table>
