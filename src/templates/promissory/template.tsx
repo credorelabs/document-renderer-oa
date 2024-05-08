@@ -8,30 +8,29 @@ import seal from "./stampCredore (1).svg";
 
 export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ document }) => {
   const {
-    dlpcId,
-    createdAt,
-    issuerCompanyName,
-    issuerContactNum,
+    pNoteId,
+    commitmentDate,
+    drawerCompanyName,
+    drawerCin,
     issuerEmail,
-    issuerJurisdiction,
-    holderCompanyName,
-    holderEmail,
-    holderContactNum,
-    holderJurisdiction,
+    drawerJurisdiction,
+    draweeCompany,
+    draweeEmail,
+    draweeCIN,
+    draweeJurisdiction,
     currency,
     amount,
-    maturityDate,
-    paymentPlace,
-    accountNumber,
-    bankName,
-    bankBranch,
-    branchAddress,
-    bankIFSC,
-    signedAt,
+    dueDate,
+    payableAt,
+    draweeAccountNumber,
+    draweeBankName,
+    draweeSortCode,
+    draweeIBAN,
+    signerTimeStamp,
     signerName,
     signerPosition,
     signerEmail,
-    mintTxHash,
+    txHash,
     blockchainName
   } = document;
   const containerStyle = css`
@@ -74,10 +73,10 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   <div style={{ margin: "auto", marginLeft: "0" }}>
                     <th style={{ fontSize: "2.5em" }}>Electronic Promissory Note</th>
                     <div style={{ fontSize: "1.2rem", wordSpacing: "2px" }}>
-                      This electronic payment undertaking (ePU) with reference <b>{dlpcId}</b> is timestamped at{" "}
+                      This electronic payment undertaking (ePU) with reference <b>{pNoteId}</b> is timestamped at{" "}
                       <b>
                         {moment
-                          .utc(createdAt)
+                          .utc(commitmentDate)
                           .add(5, "hours")
                           .add(30, "minutes")
                           .format("DD/MM/YYYY hh:mm A [IST]")}
@@ -114,15 +113,15 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     </tr>
                     <div style={{ marginTop: "0.5rem", fontSize: "1.1rem" }}>
                       <span style={{ fontSize: "1.3rem" }}>
-                        <b>Name:</b>
+                        <b>Company Name:</b>
                       </span>
-                      &nbsp;&nbsp;{issuerCompanyName}
+                      &nbsp;&nbsp;{drawerCompanyName}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Number:</b>&nbsp;&nbsp;{issuerContactNum}
+                        <b>Company Number:</b>&nbsp;&nbsp;{drawerCin}
                       </div>
                       <br />
-                      <b>Jurisdiction:</b>&nbsp;&nbsp;{issuerJurisdiction}
+                      <b>Jurisdiction:</b>&nbsp;&nbsp;{drawerJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
                         <b>Email:</b>&nbsp;&nbsp;{issuerEmail}
@@ -135,18 +134,18 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     </tr>
                     <div style={{ marginTop: "0.5rem", fontSize: "1.1rem" }}>
                       <span style={{ fontSize: "1.3rem" }}>
-                        <b>Name:</b>
+                        <b>Company Name:</b>
                       </span>
-                      &nbsp;&nbsp;{holderCompanyName}
+                      &nbsp;&nbsp;{draweeCompany}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Number:</b>&nbsp;&nbsp;{holderContactNum}
+                        <b>Company Number:</b>&nbsp;&nbsp;{draweeCIN}
                       </div>
                       <br />
-                      <b>Jurisdiction:</b>&nbsp;&nbsp;{holderJurisdiction}
+                      <b>Jurisdiction:</b>&nbsp;&nbsp;{draweeJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Email:</b>&nbsp;&nbsp;{holderEmail}
+                        <b>Email:</b>&nbsp;&nbsp;{draweeEmail}
                       </div>
                     </div>
                   </div>
@@ -155,12 +154,12 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   On the{" "}
                   <b>
                     {moment
-                      .utc(maturityDate)
+                      .utc(dueDate)
                       .add(5, "hours")
                       .add(30, "minutes")
-                      .format("DD/MM/YYYY hh:mm A [IST]")}
+                      .format("DD/MM/YYYY")}
                   </b>
-                  , we promise to pay <b>{bankName}</b> the sum of{" "}
+                  , we promise to pay <b>{draweeBankName}</b> the sum of{" "}
                   <b>
                     {currency}&nbsp;{amount}&nbsp; (Two hundred thousand {currency})
                   </b>{" "}
@@ -170,24 +169,23 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                 <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
                   <div style={{ margin: "auto", marginLeft: "0" }}>
                     <span style={{ fontSize: "1.4rem" }}>
-                      <b>Payable at:</b>
+                      <b>Payment Details:</b>
                       <br />
                     </span>
                     <div style={{ marginTop: "0.5rem" }}></div>
-                    <b>Account Number:</b>&nbsp;&nbsp; {accountNumber}
+                    <b>Payable at:</b>&nbsp;&nbsp; {payableAt}
                     <br />
                     <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>Bank:</b>&nbsp;&nbsp;{bankName}
+                    <b>Bank Name:</b>&nbsp;&nbsp;{draweeBankName}
                     <br />
                     <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>Branch:</b>&nbsp;&nbsp;{bankBranch}
+                    <b>Account Number:</b>&nbsp;&nbsp; {draweeAccountNumber}
                     <br />
                     <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>Branch Address:</b>&nbsp;&nbsp;{branchAddress}
+                    <b>Sort Code:</b>&nbsp;&nbsp;{draweeSortCode}
                     <br />
                     <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>IFSC Code:</b>&nbsp;&nbsp;
-                    {bankIFSC}
+                    <b>SWIFT/IBAN Number:</b>&nbsp;&nbsp;{draweeIBAN}
                     <br />
                   </div>
                 </div>
@@ -223,7 +221,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       <span style={{ color: "red", fontWeight: "bolder" }}>Time Stamp:&nbsp;&nbsp;</span>
                       <span style={{ fontSize: "1.3rem" }}>
                         {moment
-                          .utc(signedAt)
+                          .utc(signerTimeStamp)
                           .add(5, "hours")
                           .add(30, "minutes")
                           .format("DD/MM/YYYY hh:mm A [IST]")}
@@ -232,19 +230,14 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   </div>
                 </div>
                 <div style={{ margin: "2rem" }}>
-                  <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
-                  existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended
-                  format, ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the
-                  Electronic Trade Document Act, holds the same legal validity. Any unauthorized alterations or
-                  modifications are strictly prohibited. Verify its integrity and authenticity through approved
-                  channels.
+                  <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Note :</span> In 2021, the Electronic Transactions Act (ETA) of Singapore was amended to adopt the UNCITRAL Model Law on Electronic Transferable Records (MLETR), allowing for the creation and utilization of electronic bills of lading (eBLs) and other transferable documents in international trade. This enhances efficiency and security, with the amended Act effective from 19 March 2021. This electronic trade document issued through the Credore system adhere to the provisions of the Electronic Transactions Act of Singapore and the Singapore courts shall have exclusive jurisdiction over any dispute or claim arising from or in connection with this document or any non-contractual obligations arising from or connected with it.
                 </div>
                 <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
                   <div>
                     <b>Blockchain:</b>&nbsp;{blockchainName}
                   </div>
                   <div>
-                    <b>Genesis Transaction Hash:</b>&nbsp;{mintTxHash}
+                    <b>Genesis Transaction Hash:</b>&nbsp;{txHash}
                   </div>
                 </div>
               </tbody>
