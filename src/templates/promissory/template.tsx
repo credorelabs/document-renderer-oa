@@ -1,12 +1,14 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { css } from "@emotion/core";
 import { Prom } from "./types";
 import moment from "moment";
 import background from "./boeBackground.svg";
 import seal from "./stampCredore (1).svg";
+import numberToWords from 'number-to-words';
 
 export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ document }) => {
+  const [amountText, setAmountText] = useState('');
   const {
     pNoteId,
     commitmentDate,
@@ -53,6 +55,17 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
   const sealDesign = css`
     opacity: 90%;
   `;
+
+  useEffect(() => {
+    if (amount) {
+      let amountToText = numberToWords.toWords(amount);
+
+      setAmountText(amountToText
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' '));
+    }
+  }, [amount])
 
   return (
     <>
@@ -136,16 +149,16 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       <span style={{ fontSize: "1.3rem" }}>
                         <b>Company Name:</b>
                       </span>
-                      &nbsp;&nbsp;{draweeCompany}
+                      &nbsp;&nbsp;{drawerCompanyName}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Company Number:</b>&nbsp;&nbsp;{draweeCIN}
+                        <b>Company Number:</b>&nbsp;&nbsp;{drawerCin}
                       </div>
                       <br />
-                      <b>Jurisdiction:</b>&nbsp;&nbsp;{draweeJurisdiction}
+                      <b>Jurisdiction:</b>&nbsp;&nbsp;{drawerJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Email:</b>&nbsp;&nbsp;{draweeEmail}
+                        <b>Email:</b>&nbsp;&nbsp;{issuerEmail}
                       </div>
                     </div>
                   </div>
@@ -161,7 +174,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   </b>
                   , we promise to pay <b>{draweeBankName}</b> the sum of{" "}
                   <b>
-                    {currency}&nbsp;{amount}&nbsp; (Two hundred thousand {currency})
+                    {currency}&nbsp;{amount}&nbsp; ({currency} {amountText})
                   </b>{" "}
                   for value received.
                 </div>
