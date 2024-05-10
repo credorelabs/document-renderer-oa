@@ -5,7 +5,7 @@ export const promissoryTemplate: Prom = {
   commitmentDate: "2024-05-02T08:30:00Z",
   drawerCompanyName: "CREDORE",
   drawerCin: "7008297411",
-  issuerEmail: "raj@credore.xyz",
+  drawerEmail: "raj@credore.xyz",
   drawerJurisdiction: "India",
   draweeCompany: "KALINGA SUPPLIERS",
   draweeEmail: "supplier@example.com",

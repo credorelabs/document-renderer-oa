@@ -6,7 +6,7 @@ import moment from "moment";
 import background from "./boeBackground.svg";
 import seal from "./stampCredore (1).svg";
 import numberToWords from 'number-to-words';
-
+import '../../core/style.css'
 export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ document }) => {
   const [amountText, setAmountText] = useState('');
   const {
@@ -14,7 +14,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     commitmentDate,
     drawerCompanyName,
     drawerCin,
-    issuerEmail,
+    drawerEmail,
     drawerJurisdiction,
     draweeCompany,
     draweeEmail,
@@ -37,7 +37,6 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
   } = document;
   const containerStyle = css`
     margin: auto;
-    padding: 15px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -69,8 +68,15 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
 
   return (
     <>
-      <div css={containerStyle}>
-        <div style={{ width: "90%", border: "5px solid black" }}>
+      <div>
+        <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
+          <ol className="stepper" style={{ width: "90%", margin: "auto", marginBottom: "2rem", marginTop: "2rem" }}>
+            <li>INITIATED</li>
+            <li>TAKEN EFFECT</li>
+            <li className="active">ENDORSED</li>
+          </ol>
+        </div>
+        <div css={containerStyle} style={{ width: "90%", border: "5px solid black" }}>
           <div css={backgroundImage}>
             <table style={{ width: "100%", padding: "5px", borderSpacing: "0px" }}>
               <thead>
@@ -137,7 +143,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       <b>Jurisdiction:</b>&nbsp;&nbsp;{drawerJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Email:</b>&nbsp;&nbsp;{issuerEmail}
+                        <b>Email:</b>&nbsp;&nbsp;{drawerEmail}
                       </div>
                     </div>
                   </div>
@@ -149,16 +155,16 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       <span style={{ fontSize: "1.3rem" }}>
                         <b>Company Name:</b>
                       </span>
-                      &nbsp;&nbsp;{drawerCompanyName}
+                      &nbsp;&nbsp;{draweeCompany}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Company Number:</b>&nbsp;&nbsp;{drawerCin}
+                        <b>Company Number:</b>&nbsp;&nbsp;{draweeCIN}
                       </div>
                       <br />
-                      <b>Jurisdiction:</b>&nbsp;&nbsp;{drawerJurisdiction}
+                      <b>Jurisdiction:</b>&nbsp;&nbsp;{draweeJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Email:</b>&nbsp;&nbsp;{issuerEmail}
+                        <b>Email:</b>&nbsp;&nbsp;{draweeEmail}
                       </div>
                     </div>
                   </div>
@@ -172,7 +178,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       .add(30, "minutes")
                       .format("DD/MM/YYYY")}
                   </b>
-                  , we promise to pay <b>{draweeBankName}</b> the sum of{" "}
+                  , we promise to pay <b>{draweeCompany}</b> the sum of{" "}
                   <b>
                     {currency}&nbsp;{amount}&nbsp; ({currency} {amountText})
                   </b>{" "}
@@ -247,10 +253,10 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                 </div>
                 <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
                   <div>
-                    <b>Blockchain:</b>&nbsp;{blockchainName}
+                    <b>Blockchain:</b>&nbsp;{blockchainName === 'xinfin' ? 'XDC Network' : blockchainName}
                   </div>
                   <div>
-                    <b>Genesis Transaction Hash:</b>&nbsp;{txHash}
+                    <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
                   </div>
                 </div>
               </tbody>
