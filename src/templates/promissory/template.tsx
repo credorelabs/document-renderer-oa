@@ -66,15 +66,46 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     }
   }, [amount])
 
+  function numberWithCommas(amountX: string) {
+    return amountX?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <>
       <div>
-        <div style={{ marginLeft: "3rem", marginRight: "3rem" }}>
-          <ol className="stepper" style={{ width: "90%", margin: "auto", marginBottom: "2rem", marginTop: "2rem" }}>
-            <li>INITIATED</li>
-            <li>TAKEN EFFECT</li>
-            <li className="active">ENDORSED</li>
-          </ol>
+        <div style={{ marginTop: "3rem", marginBottom: "3rem" }}>
+          <div style={{ display: "flex", flexDirection: "row", paddingTop: "5px", paddingBottom: "0", alignItems: "center", width: "65%", justifyContent: "center", margin: "auto" }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <img
+                src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
+                width={35}
+                height={35}
+                style={{ marginLeft: "auto", marginRight: "auto" }}
+              />&nbsp;&nbsp;
+              <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Initiated</span>
+            </div>
+            <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <img
+                src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
+                width={35}
+                height={35}
+                style={{ marginLeft: "auto", marginRight: "auto" }}
+              />&nbsp;&nbsp;
+              <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Taken Effect</span>
+            </div>
+            <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <img
+                src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
+                width={35}
+                height={35}
+                style={{ marginLeft: "auto", marginRight: "auto" }}
+              />&nbsp;&nbsp;
+              <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Endorsed</span>
+            </div>
+          </div>
         </div>
         <div css={containerStyle} style={{ width: "90%", border: "5px solid black" }}>
           <div css={backgroundImage}>
@@ -140,7 +171,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                         <b>Company Number:</b>&nbsp;&nbsp;{drawerCin}
                       </div>
                       <br />
-                      <b>Jurisdiction:</b>&nbsp;&nbsp;{drawerJurisdiction}
+                      <b>Jurisdiction:</b>&nbsp;&nbsp;{draweeJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
                         <b>Email:</b>&nbsp;&nbsp;{drawerEmail}
@@ -176,11 +207,11 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       .utc(dueDate)
                       .add(5, "hours")
                       .add(30, "minutes")
-                      .format("DD/MM/YYYY")}
+                      .format("Do MMMM YYYY")}
                   </b>
                   , we promise to pay <b>{draweeCompany}</b> the sum of{" "}
                   <b>
-                    {currency}&nbsp;{amount}&nbsp; ({currency} {amountText})
+                    {currency}&nbsp;{numberWithCommas(amount)}&nbsp; ({currency} {amountText})
                   </b>{" "}
                   for value received.
                 </div>
@@ -248,9 +279,10 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     </div>
                   </div>
                 </div>
-                <div style={{ margin: "2rem" }}>
-                  <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Note :</span> In 2021, the Electronic Transactions Act (ETA) of Singapore was amended to adopt the UNCITRAL Model Law on Electronic Transferable Records (MLETR), allowing for the creation and utilization of electronic bills of lading (eBLs) and other transferable documents in international trade. This enhances efficiency and security, with the amended Act effective from 19 March 2021. This electronic trade document issued through the Credore system adhere to the provisions of the Electronic Transactions Act of Singapore and the Singapore courts shall have exclusive jurisdiction over any dispute or claim arising from or in connection with this document or any non-contractual obligations arising from or connected with it.
-                </div>
+                {draweeJurisdiction === 'Singapore' ?
+                  <div style={{ margin: "2rem" }}>
+                    <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Note :</span> In 2021, the Electronic Transactions Act (ETA) of Singapore was amended to adopt the UNCITRAL Model Law on Electronic Transferable Records (MLETR), allowing for the creation and utilization of electronic transferable documents in international trade. This enhances efficiency and security, with the amended Act effective from 19 March 2021. This electronic trade document issued through the Credore system adhere to the provisions of the Electronic Transactions Act of Singapore and the Singapore courts shall have exclusive jurisdiction over any dispute or claim arising from or in connection with this document or any non-contractual obligations arising from or connected with it.
+                  </div> : null}
                 <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
                   <div>
                     <b>Blockchain:</b>&nbsp;{blockchainName === 'xinfin' ? 'XDC Network' : blockchainName}

@@ -10,7 +10,7 @@ export const promissoryTemplate: Prom = {
   draweeCompany: "KALINGA SUPPLIERS",
   draweeEmail: "supplier@example.com",
   draweeCIN: "7008297411",
-  draweeJurisdiction: "India",
+  draweeJurisdiction: "Singapore",
   currency: "EURO",
   amount: "200000",
   dueDate: "2024-05-02T08:30:00Z",
