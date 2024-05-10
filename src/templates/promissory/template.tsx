@@ -133,16 +133,16 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       </b>
                     </div>
                   </div>
-                  <div>
+                  {/* <div>
                     <img css={sealDesign} src={seal} alt="seal of credore" width="80%" />
-                  </div>
+                  </div> */}
                 </div>
               </thead>
               <tbody>
                 <div
                   style={{
                     margin: "2rem",
-                    marginTop: "-1rem",
+                    // marginTop: "-1rem",
                     marginBottom: "0rem",
                     fontWeight: "bold",
                     fontSize: "1.5em",
