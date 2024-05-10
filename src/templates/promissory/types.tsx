@@ -5,7 +5,7 @@ export interface Prom extends v2.OpenAttestationDocument {
   commitmentDate: string;
   drawerCompanyName: string;
   drawerCin: string;
-  issuerEmail: string;
+  drawerEmail: string;
   drawerJurisdiction: string;
   draweeCompany: string;
   draweeEmail: string;
