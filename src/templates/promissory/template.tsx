@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 import { Prom } from "./types";
 import moment from "moment";
 import background from "./boeBackground.svg";
-import seal from "./stampCredore (1).svg";
+import seal from "./ttlogo Background Removed.png";
 import numberToWords from 'number-to-words';
 import '../../core/style.css'
 export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ document }) => {
@@ -73,42 +73,44 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
   return (
     <>
       <div>
-        <div style={{ marginTop: "3rem", marginBottom: "3rem" }}>
-          <div style={{ display: "flex", flexDirection: "row", paddingTop: "5px", paddingBottom: "0", alignItems: "center", width: "65%", justifyContent: "center", margin: "auto" }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <img
-                src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
-                width={35}
-                height={35}
-                style={{ marginLeft: "auto", marginRight: "auto" }}
-              />&nbsp;&nbsp;
-              <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Initiated</span>
-            </div>
-            <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <img
-                src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
-                width={35}
-                height={35}
-                style={{ marginLeft: "auto", marginRight: "auto" }}
-              />&nbsp;&nbsp;
-              <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Taken Effect</span>
-            </div>
-            <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
-
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <img
-                src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
-                width={35}
-                height={35}
-                style={{ marginLeft: "auto", marginRight: "auto" }}
-              />&nbsp;&nbsp;
-              <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Endorsed</span>
-            </div>
-          </div>
-        </div>
-        <div css={containerStyle} style={{ width: "90%", border: "5px solid black" }}>
+        <div css={containerStyle} style={{ width: "90%", fontFamily: "sans-serif" }}>
           <div css={backgroundImage}>
+            <div style={{ marginTop: "5rem", marginBottom: "0", display: "flex", justifyContent: "center" }}>
+              <div style={{ display: "flex", flexDirection: "row-reverse", marginTop: "-1.5rem" }}>
+                <div style={{ display: "flex", flexDirection: "row", paddingTop: "5px", paddingBottom: "0", alignItems: "center", width: "100%" }}>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <img
+                      src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
+                      width={35}
+                      height={35}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                    />&nbsp;&nbsp;
+                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Initiated</span>
+                  </div>
+                  <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <img
+                      src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
+                      width={35}
+                      height={35}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                    />&nbsp;&nbsp;
+                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Taken Effect</span>
+                  </div>
+                  <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
+
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <img
+                      src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
+                      width={35}
+                      height={35}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                    />&nbsp;&nbsp;
+                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Endorsed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <table style={{ width: "100%", padding: "5px", borderSpacing: "0px" }}>
               <thead>
                 <div
@@ -116,8 +118,9 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     display: "flex",
                     justifyContent: "space-between",
                     margin: "2rem",
-                    marginBottom: "1rem",
-                    marginTop: "1rem"
+                    marginBottom: "0",
+                    marginTop: "1rem",
+                    marginRight: "0"
                   }}
                 >
                   <div style={{ margin: "auto", marginLeft: "0" }}>
@@ -133,16 +136,19 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       </b>
                     </div>
                   </div>
-                  {/* <div>
-                    <img css={sealDesign} src={seal} alt="seal of credore" width="80%" />
-                  </div> */}
+                  <div style={{
+                    display: "flex",
+                    justifyContent: "center"
+                  }}>
+                    <img css={sealDesign} src={seal} alt="seal of credore" width="50%" />
+                  </div>
                 </div>
               </thead>
               <tbody>
                 <div
                   style={{
                     margin: "2rem",
-                    // marginTop: "-1rem",
+                    marginTop: "1rem",
                     marginBottom: "0rem",
                     fontWeight: "bold",
                     fontSize: "1.5em",
@@ -171,7 +177,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                         <b>Company Number:</b>&nbsp;&nbsp;{drawerCin}
                       </div>
                       <br />
-                      <b>Jurisdiction:</b>&nbsp;&nbsp;{draweeJurisdiction}
+                      <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{draweeJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
                         <b>Email:</b>&nbsp;&nbsp;{drawerEmail}
@@ -192,7 +198,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                         <b>Company Number:</b>&nbsp;&nbsp;{draweeCIN}
                       </div>
                       <br />
-                      <b>Jurisdiction:</b>&nbsp;&nbsp;{draweeJurisdiction}
+                      <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{draweeJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
                         <b>Email:</b>&nbsp;&nbsp;{draweeEmail}
@@ -216,6 +222,12 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   for value received.
                 </div>
 
+                <div style={{ margin: "2rem" }}>
+                  <span style={{ fontWeight: "bold" }}>Jurisdiction:&nbsp;</span>The English courts shall have exclusive jurisdiction over any dispute or claim arising from or in connection with this Promissory note or
+                  any non-contractual obligations arising from or connected with it.<br />
+                  Note: This language is only required when the parties would like the applicable jurisdiction to apply in case of a dispute to
+                  be the courts of Singapore.
+                </div>
                 <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
                   <div style={{ margin: "auto", marginLeft: "0" }}>
                     <span style={{ fontSize: "1.4rem" }}>
@@ -281,7 +293,15 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                 </div>
                 {draweeJurisdiction === 'Singapore' ?
                   <div style={{ margin: "2rem" }}>
-                    <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Note :</span> In 2021, the Electronic Transactions Act (ETA) of Singapore was amended to adopt the UNCITRAL Model Law on Electronic Transferable Records (MLETR), allowing for the creation and utilization of electronic transferable documents in international trade. This enhances efficiency and security, with the amended Act effective from 19 March 2021. This electronic trade document issued through the Credore system adhere to the provisions of the Electronic Transactions Act of Singapore and the Singapore courts shall have exclusive jurisdiction over any dispute or claim arising from or in connection with this document or any non-contractual obligations arising from or connected with it.
+                    <span style={{ fontWeight: "bold" }}>Note :</span> In 2021, the Electronic Transactions Act (ETA) of Singapore was
+                    amended to adopt the UNCITRAL Model Law on Electronic Transferable Records (MLETR), allowing for the
+                    creation and utilization of electronic transferable documents in
+                    international trade. This enhances efficiency and security, with the amended Act effective from 19
+                    March 2021. This electronic trade document issued through the Credore system adhere to the provisions
+                    of the Electronic Transactions Act of Singapore. This document is verifiable through the TradeTrust
+                    portal at http://tradetrust.io/verify or any other portal that adheres to the established standards
+                    and specifications of TradeTrust. Upon discharge, the TradeTrust portal will reflect the status of this
+                    document as "Surrendered".
                   </div> : null}
                 <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
                   <div>
