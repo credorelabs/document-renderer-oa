@@ -5,10 +5,10 @@ import { Prom } from "./types";
 import moment from "moment";
 import background from "./boeBackground.svg";
 import seal from "./ttlogo Background Removed.png";
-import numberToWords from 'number-to-words';
-import '../../core/style.css'
+import numberToWords from "number-to-words";
+import "../../core/style.css";
 export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ document }) => {
-  const [amountText, setAmountText] = useState('');
+  const [amountText, setAmountText] = useState("");
   const {
     pNoteId,
     commitmentDate,
@@ -33,7 +33,9 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     signerPosition,
     signerEmail,
     txHash,
-    blockchainName
+    blockchainName,
+    drawerWalletAddress,
+    draweeWalletAddress
   } = document;
   const containerStyle = css`
     margin: auto;
@@ -59,12 +61,14 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     if (amount) {
       let amountToText = numberToWords.toWords(amount);
 
-      setAmountText(amountToText
-        .split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' '));
+      setAmountText(
+        amountToText
+          .split(" ")
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ")
+      );
     }
-  }, [amount])
+  }, [amount]);
 
   function numberWithCommas(amountX: string) {
     return amountX?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -77,27 +81,58 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
           <div css={backgroundImage}>
             <div style={{ marginTop: "5rem", marginBottom: "0", display: "flex", justifyContent: "center" }}>
               <div style={{ display: "flex", flexDirection: "row-reverse", marginTop: "-1.5rem" }}>
-                <div style={{ display: "flex", flexDirection: "row", paddingTop: "5px", paddingBottom: "0", alignItems: "center", width: "100%" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    paddingTop: "5px",
+                    paddingBottom: "0",
+                    alignItems: "center",
+                    width: "100%"
+                  }}
+                >
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <img
                       src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
                       width={35}
                       height={35}
                       style={{ marginLeft: "auto", marginRight: "auto" }}
-                    />&nbsp;&nbsp;
-                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Initiated</span>
+                    />
+                    &nbsp;&nbsp;
+                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>
+                      Initiated
+                    </span>
                   </div>
-                  <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
+                  <div
+                    style={{
+                      width: "62px",
+                      height: "0px",
+                      border: "2px solid #A5B4C4",
+                      marginLeft: "5px",
+                      marginRight: "5px"
+                    }}
+                  ></div>
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <img
                       src={"https://cdn-icons-png.flaticon.com/128/9709/9709605.png"}
                       width={35}
                       height={35}
                       style={{ marginLeft: "auto", marginRight: "auto" }}
-                    />&nbsp;&nbsp;
-                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Taken Effect</span>
+                    />
+                    &nbsp;&nbsp;
+                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>
+                      Taken Effect
+                    </span>
                   </div>
-                  <div style={{ width: "62px", height: "0px", border: "2px solid #A5B4C4", marginLeft: "5px", marginRight: "5px" }}></div>
+                  <div
+                    style={{
+                      width: "62px",
+                      height: "0px",
+                      border: "2px solid #A5B4C4",
+                      marginLeft: "5px",
+                      marginRight: "5px"
+                    }}
+                  ></div>
 
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <img
@@ -105,8 +140,11 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       width={35}
                       height={35}
                       style={{ marginLeft: "auto", marginRight: "auto" }}
-                    />&nbsp;&nbsp;
-                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>Endorsed</span>
+                    />
+                    &nbsp;&nbsp;
+                    <span style={{ marginLeft: "auto", marginRight: "auto", fontSize: "1.2rem", marginTop: "-1rem" }}>
+                      Endorsed
+                    </span>
                   </div>
                 </div>
               </div>
@@ -136,10 +174,12 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       </b>
                     </div>
                   </div>
-                  <div style={{
-                    display: "flex",
-                    justifyContent: "center"
-                  }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center"
+                    }}
+                  >
                     <img css={sealDesign} src={seal} alt="seal of credore" width="50%" />
                   </div>
                 </div>
@@ -167,7 +207,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                         (Issuer)
                       </td>
                     </tr>
-                    <div style={{ marginTop: "0.5rem", fontSize: "1.1rem" }}>
+                    <div style={{ marginTop: "0.5rem", fontSize: "1rem" }}>
                       <span style={{ fontSize: "1.3rem" }}>
                         <b>Company Name:</b>
                       </span>
@@ -177,18 +217,20 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                         <b>Company Number:</b>&nbsp;&nbsp;{drawerCin}
                       </div>
                       <br />
-                      <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{draweeJurisdiction}
+                      <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{drawerJurisdiction}
                       <br />
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
                         <b>Email:</b>&nbsp;&nbsp;{drawerEmail}
                       </div>
+                      <br />
+                      <b>DNS:</b>&nbsp;&nbsp;did:ethr:{drawerWalletAddress}
                     </div>
                   </div>
-                  <div style={{ margin: "2em", marginTop: "0", marginRight: "10rem" }}>
+                  <div style={{ margin: "2em", marginTop: "0" }}>
                     <tr>
                       <td style={{ fontWeight: "bold", fontSize: "1.4em" }}> (Holder)</td>
                     </tr>
-                    <div style={{ marginTop: "0.5rem", fontSize: "1.1rem" }}>
+                    <div style={{ marginTop: "0.5rem", fontSize: "1rem" }}>
                       <span style={{ fontSize: "1.3rem" }}>
                         <b>Company Name:</b>
                       </span>
@@ -203,6 +245,8 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
                         <b>Email:</b>&nbsp;&nbsp;{draweeEmail}
                       </div>
+                      <br />
+                      <b>DNS:</b>&nbsp;&nbsp;did:ethr:{draweeWalletAddress}
                     </div>
                   </div>
                 </div>
@@ -222,11 +266,13 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   for value received.
                 </div>
 
-                <div style={{ margin: "2rem" }}>
-                  <span style={{ fontWeight: "bold" }}>Jurisdiction:&nbsp;</span>The English courts shall have exclusive jurisdiction over any dispute or claim arising from or in connection with this Promissory note or
-                  any non-contractual obligations arising from or connected with it.<br />
-                  Note: This language is only required when the parties would like the applicable jurisdiction to apply in case of a dispute to
-                  be the courts of Singapore.
+                <div style={{ margin: "2rem", display: "flex", flexDirection: "column" }}>
+                  <span style={{ fontWeight: "bold", fontSize: "1.5rem" }}>Jurisdiction:&nbsp;</span>
+                  <div>
+                    The <b>Singapore</b> courts shall have exclusive jurisdiction over any dispute or claim arising from
+                    or in connection with this <b>promissory note</b> or any non-contractual obligations arising from
+                    or connected with it.
+                  </div>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
                   <div style={{ margin: "auto", marginLeft: "0" }}>
@@ -291,21 +337,22 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     </div>
                   </div>
                 </div>
-                {draweeJurisdiction === 'Singapore' ?
+                {draweeJurisdiction === "Singapore" ? (
                   <div style={{ margin: "2rem" }}>
-                    <span style={{ fontWeight: "bold" }}>Note :</span> In 2021, the Electronic Transactions Act (ETA) of Singapore was
-                    amended to adopt the UNCITRAL Model Law on Electronic Transferable Records (MLETR), allowing for the
-                    creation and utilization of electronic transferable documents in
-                    international trade. This enhances efficiency and security, with the amended Act effective from 19
-                    March 2021. This electronic trade document issued through the Credore system adhere to the provisions
-                    of the Electronic Transactions Act of Singapore. This document is verifiable through the TradeTrust
-                    portal at http://tradetrust.io/verify or any other portal that adheres to the established standards
-                    and specifications of TradeTrust. Upon discharge, the TradeTrust portal will reflect the status of this
+                    <span style={{ fontWeight: "bold" }}>Note :</span> In 2021, the Electronic Transactions Act (ETA) of
+                    Singapore was amended to adopt the UNCITRAL Model Law on Electronic Transferable Records (MLETR),
+                    allowing for the creation and utilization of electronic transferable documents in international
+                    trade. This enhances efficiency and security, with the amended Act effective from 19 March 2021.
+                    This electronic trade document issued through the Credore system adhere to the provisions of the
+                    Electronic Transactions Act of Singapore. This document is verifiable through the TradeTrust portal
+                    at http://tradetrust.io/verify or any other portal that adheres to the established standards and
+                    specifications of TradeTrust. Upon discharge, the TradeTrust portal will reflect the status of this
                     document as "Surrendered".
-                  </div> : null}
+                  </div>
+                ) : null}
                 <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
                   <div>
-                    <b>Blockchain:</b>&nbsp;{blockchainName === 'xinfin' ? 'XDC Network' : blockchainName}
+                    <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
                   </div>
                   <div>
                     <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
