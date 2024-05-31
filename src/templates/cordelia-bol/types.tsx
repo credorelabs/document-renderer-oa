@@ -79,8 +79,8 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   mintTxHash?: string;
   carrier_signer_place?: string;
   exporter_signer_place?: string;
+  shippingBillNo?:string;
 
-  shippingBillNo?: string;
   invoiceNumber: string;
   invoiceDate: string;
   sealNumber: string;

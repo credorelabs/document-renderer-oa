@@ -80,6 +80,14 @@ export const billOfLadingCertificate: BillOfLadingData = {
   mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
   carrier_signer_place: "Dubai",
   exporter_signer_place: "India",
+  shippingBillNo: '435678976',
+
+  invoiceNumber: 'INV-4356789',
+  invoiceDate: '2023-11-30T09:30:00Z',
+  sealNumber: '43256789dtrfyg',
+  humidity: 'dtrfyghu',
+  ventilation: 'cfgvbhj',
+  tokenRegistryAddress: '0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3',
 
   issuers: [
     {
@@ -92,7 +100,7 @@ export const billOfLadingCertificate: BillOfLadingData = {
     }
   ],
   $template: {
-    name: "BOL",
+    name: "BOL-CORDELIA",
     type: v2.TemplateType.EmbeddedRenderer,
     url: "http://localhost:3000"
   }

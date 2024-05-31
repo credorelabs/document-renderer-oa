@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { BOLTemplate } from "./template";
+import { billOfLadingCertificate } from "../samples/bolTemplate";
+
+<Meta title="MDX|CordeliaBOLTemplate" component={BOLTemplate} />
+
+# BOLTemplate component
+
+<Description of={BOLTemplate} />
+
+# Props
+
+<Props of={BOLTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <BOLTemplate document={object("document", billOfLadingCertificate)} />
+  </Story>
+</Preview>
