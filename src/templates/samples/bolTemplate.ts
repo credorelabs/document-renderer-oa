@@ -100,7 +100,7 @@ export const billOfLadingCertificate: BillOfLadingData = {
     }
   ],
   $template: {
-    name: "BOL-CORDELIA",
+    name: "BOL_CORDELIA",
     type: v2.TemplateType.EmbeddedRenderer,
     url: "http://localhost:3000"
   }
