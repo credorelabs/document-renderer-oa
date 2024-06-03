@@ -91,11 +91,11 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     mintTxHash,
     shippingBillNo,
     invoiceNumber,
-invoiceDate,
-sealNumber,
-humidity,
-ventilation,
-tokenRegistryAddress
+    invoiceDate,
+    sealNumber,
+    humidity,
+    ventilation,
+    tokenRegistryAddress
   } = document;
 
   const containerStyle = css`
@@ -193,9 +193,9 @@ tokenRegistryAddress
             <span style={{ fontSize: "0.8rem" }}>Consignee</span>
             <br />
             <span style={{ fontSize: "1.2rem" }}>
-              {exporterCompanyName},<br />
-              {exporterAddress},<br />
-              {exporterEmail},<br />
+              {importerCompanyName},<br />
+              {importerAddress},<br />
+              {importer_email},<br />
             </span>
           </td>
         </tr>
@@ -285,7 +285,7 @@ tokenRegistryAddress
               <b>Vessel & Voyage</b>
             </span>
             <br />
-           {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber}
+            {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber}
           </td>
         </tr>
       </table>
@@ -321,26 +321,33 @@ tokenRegistryAddress
         <tbody>
           <tr css={tableTr}>
             <td css={tableTd}>
-              <div style={{ position: "relative", top: "0px" }}>{consignment_containerNumber}&nbsp;/&nbsp;{sealNumber}</div>
+              <div style={{ position: "relative", top: "0px" }}>
+                {consignment_containerNumber}&nbsp;/&nbsp;{sealNumber}
+              </div>
             </td>
             <td css={tableTd}>
               {goods_numberOfPackages} Packages
-              <br />{consignment_containerSizeTypeISO}
+              <br />
+              {consignment_containerSizeTypeISO}
             </td>
             <td colSpan={3} style={{ width: "50%" }} css={tableTd}>
               {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
               {goods_numberOfPackages} Package ({amountText} Package) <br />
               {goods_descriptionOfGoods} <br />
-              INV NO.:{invoiceNumber}&nbsp; Date:{moment(invoiceDate)
+              INV NO.:{invoiceNumber}&nbsp; Date:
+              {moment(invoiceDate)
                 .utc()
                 .add(5, "hours")
                 .add(30, "minutes")
-                .format("DD/MM/YYYY")}  <br />
-              SB NO: {shippingBillNo}&nbsp; DATE: {moment(date_estimatedDateOfPlaceOfReceipt)
+                .format("DD/MM/YYYY")}{" "}
+              <br />
+              SB NO: {shippingBillNo}&nbsp; DATE:{" "}
+              {moment(date_estimatedDateOfPlaceOfReceipt)
                 .utc()
                 .add(5, "hours")
                 .add(30, "minutes")
-                .format("DD/MM/YYYY")} <br />
+                .format("DD/MM/YYYY")}{" "}
+              <br />
               HSCODE: {goods_HSCode} <br />
               Temperature: {measure_temperatureSettingForReeferContainers} <br />
               Humidity: {humidity} <br />
@@ -446,7 +453,9 @@ tokenRegistryAddress
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
             {location_placeOfPaymentUNLOCODE}
           </td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}>{importerCompanyName}</td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            {importerCompanyName}
+          </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
             {location_placeOfReceipt}
