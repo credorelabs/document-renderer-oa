@@ -400,19 +400,6 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         borderColor: "black", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}
       >
         <tr css={tableTr}>
-          <td css={tableTd} colSpan={2} style={{ padding: "1rem", width:"50%" }}>
-            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-            <b>Place:</b>&nbsp;{carrier_signer_place}
-            <br />
-            <b>Date & Time:</b>&nbsp;
-            {moment(shipping_company_sign_time)
-              .utc()
-              .add(5, "hours")
-              .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
-          </td>
-
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
             <b>Name:</b>&nbsp;{exporterName} <br />
@@ -420,6 +407,19 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(exporter_sign_time)
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
+              .format("DD/MM/YYYY hh:mm A [IST]")}
+          </td>
+
+          <td css={tableTd} colSpan={2} style={{ padding: "1rem", width:"50%" }}>
+            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
+            <b>Name:</b>&nbsp;{shipping_company_signer} <br />
+            <b>Place:</b>&nbsp;{carrier_signer_place}
+            <br />
+            <b>Date & Time:</b>&nbsp;
+            {moment(shipping_company_sign_time)
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
