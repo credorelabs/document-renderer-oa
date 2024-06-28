@@ -86,7 +86,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               <br />
               <b>Street Address:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterAddress}
               <br />
-              <b>City:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterCountry}
+              <b>Country:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterCountry}
               <br />
               <b>Pin Code:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterPinCode}
               <br />
@@ -105,7 +105,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               <br />
               <b>Street Address:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerAddress}
               <br />
-              <b>City:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerCountry}
+              <b>Country:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerCountry}
               <br />
               <b>Pin Code:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerPinCode}
               <br />
