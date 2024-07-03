@@ -81,7 +81,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
       <div>
         <div css={containerStyle} style={{ width: "90%", fontFamily: "sans-serif" }}>
           <div css={backgroundImage}>
-            <div style={{ marginTop: "5rem", marginBottom: "0", display: "flex", justifyContent: "center" }}>
+            {/* <div style={{ marginTop: "5rem", marginBottom: "0", display: "flex", justifyContent: "center" }}>
               <div style={{ display: "flex", flexDirection: "row-reverse", marginTop: "-1.5rem" }}>
                 <div
                   style={{
@@ -150,8 +150,8 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   </div>
                 </div>
               </div>
-            </div>
-            <table style={{ width: "100%", padding: "5px", borderSpacing: "0px" }}>
+            </div> */}
+            <table style={{ width: "100%", padding: "5px", borderSpacing: "0px", marginTop:"2rem" }}>
               <thead>
                 <div
                   style={{
