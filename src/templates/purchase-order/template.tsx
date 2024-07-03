@@ -231,22 +231,36 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             marginTop: "2rem"
           }}
         >
-          {importerDns ? (
+          {/* {importerDns ? ( */}
+          {purchasePartiesDetails?.importerEmail==='a2zhoneywala@gmail.com' && purchasePartiesDetails?.exporterEmail==='kp_sambhavani@yahoo.com' ?
             <tr css={tableTr}>
               <td
                 style={{
                   padding: "0.5rem",
                   borderWidth: "1px",
                   borderStyle: "solid",
-                  borderColor: "black"
-                  // width: "50%"
+                  borderColor: "black",
+                  width: "50%"
                 }}
-                colSpan={4}
+                colSpan={2}
               >
-                <b>Importer DNS:</b>&nbsp;&nbsp;did:ethr:{importerDns}
+                <b>Importer DNS:</b>&nbsp;&nbsp;did:ethr:{'0x25BB0773137D254d1647De4c2ACc019B9ac05A'}
+              </td>
+              <td
+                style={{
+                  // padding: "0.5rem",
+                  // paddingLeft: "0.5rem",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "black",
+                  width: "50%"
+                }}
+                colSpan={2}
+              >
+                <b>Exporter DNS:</b>&nbsp;&nbsp;did:ethr:{'0x4d87d254ef8055D16f2c5B60fe3c1876A5Df3334'}
               </td>
             </tr>
-          ) : (
+          : (
             <></>
           )}
           <tr css={tableTr}>
