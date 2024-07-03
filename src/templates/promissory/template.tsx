@@ -35,7 +35,9 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     txHash,
     blockchainName,
     drawerWalletAddress,
-    draweeWalletAddress
+    draweeWalletAddress,
+    drawer,
+    drawee
   } = document;
   const containerStyle = css`
     margin: auto;
@@ -213,9 +215,10 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       </span>
                       &nbsp;&nbsp;{drawerCompanyName}
                       <br />
+                      { drawer || drawerCin?
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Company Number:</b>&nbsp;&nbsp;{drawerCin}
-                      </div>
+                        <b>Company Number/LEI:</b>&nbsp;&nbsp;{drawer ? drawer : drawerCin || ''}
+                      </div>:""}
                       <br />
                       <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{drawerJurisdiction}
                       <br />
@@ -236,9 +239,11 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       </span>
                       &nbsp;&nbsp;{draweeCompany}
                       <br />
+                      {!drawee?.includes('NAME') || draweeCIN ?
                       <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Company Number:</b>&nbsp;&nbsp;{draweeCIN}
+                        <b>Company Number/LEI:</b>&nbsp;&nbsp;{!drawee?.includes('NAME') ? drawee : draweeCIN || ''}
                       </div>
+                      :""}
                       <br />
                       <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{draweeJurisdiction}
                       <br />

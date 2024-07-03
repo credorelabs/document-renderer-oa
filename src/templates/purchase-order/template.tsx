@@ -78,7 +78,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
 
         <div style={{ width: "100%", display: "flex", justifyContent: "space-between", margin: "2rem 0" }}>
           <div style={{ width: "40%" }}>
-            <div style={{ backgroundColor: "#B8E7E2", padding: "8px 10px", fontWeight: "bold" }}>EXPORTER</div>
+            <div style={{ backgroundColor: "#B8E7E2", padding: "8px 10px", fontWeight: "bold" }}>IMPORTER</div>
             <div style={{ padding: "10px" }}>
               <b>Company Name:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterCompanyName}
               <br />
@@ -97,7 +97,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             </div>
           </div>
           <div style={{ width: "40%" }}>
-            <div style={{ backgroundColor: "#B8E7E2", padding: "8px 10px", fontWeight: "bold" }}>IMPORTER</div>
+            <div style={{ backgroundColor: "#B8E7E2", padding: "8px 10px", fontWeight: "bold" }}>EXPORTER</div>
             <div style={{ padding: "10px" }}>
               <b>Company Name:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerCompanyName}
               <br />

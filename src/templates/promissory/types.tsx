@@ -25,6 +25,8 @@ export interface Prom extends v2.OpenAttestationDocument {
   signerEmail: string;
   blockchainName: string;
   txHash: string;
+  drawer: string;
+  drawee: string;
   drawerWalletAddress: string;
   draweeWalletAddress: string;
 }
