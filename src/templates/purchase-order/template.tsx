@@ -15,14 +15,15 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
     placeOfDelivery,
     paymentTerms,
     quotationNumber,
-    tax="0",
+    tax = "0",
     totalAmount,
-    subTotal="0",
+    subTotal = "0",
     othersCost,
     purchasePartiesDetails,
     productDetails,
     blockchainName,
-    mintTxHash
+    mintTxHash,
+    importerDns
   } = document;
 
   const containerStyle = css`
@@ -230,6 +231,24 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             marginTop: "2rem"
           }}
         >
+          {importerDns ? (
+            <tr css={tableTr}>
+              <td
+                style={{
+                  padding: "0.5rem",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "black"
+                  // width: "50%"
+                }}
+                colSpan={4}
+              >
+                <b>Importer DNS:</b>&nbsp;&nbsp;did:ethr:{importerDns}
+              </td>
+            </tr>
+          ) : (
+            <></>
+          )}
           <tr css={tableTr}>
             <td
               style={{

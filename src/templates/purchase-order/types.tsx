@@ -18,6 +18,7 @@ export interface PurchaseOrder extends v2.OpenAttestationDocument {
   productDetails: productDetails[];
   blockchainName?: string;
   mintTxHash?: string;
+  importerDns?: string;
 }
 
 interface purchasePartiesDetails {
