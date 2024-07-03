@@ -206,7 +206,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                         style={{ fontWeight: "bold", fontSize: "1.4em", borderColor: "#333", borderBottomWidth: "1px" }}
                       >
                         {" "}
-                        (Issuer)
+                        (Drawer)
                       </td>
                     </tr>
                     <div style={{ marginTop: "0.5rem", fontSize: "1rem" }}>
@@ -231,7 +231,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   </div>
                   <div style={{ margin: "2em", marginTop: "0" }}>
                     <tr>
-                      <td style={{ fontWeight: "bold", fontSize: "1.4em" }}> (Holder)</td>
+                      <td style={{ fontWeight: "bold", fontSize: "1.4em" }}> (Drawee)</td>
                     </tr>
                     <div style={{ marginTop: "0.5rem", fontSize: "1rem" }}>
                       <span style={{ fontSize: "1.3rem" }}>
