@@ -166,7 +166,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
           {productDetails.map((item, index) => (
             <tr css={tableTr} key={index} className="my-0 text-sm bg-white border dark:bg-gray-800">
               <td css={tableTd}>{item.hsCode}</td>
-              <td css={tableTd}>{item.description}</td>
+              <td css={tableTd}>{item.item}</td>
               <td style={{ textAlign: "right" }} css={tableTd}>
                 {item.quantity}
               </td>
