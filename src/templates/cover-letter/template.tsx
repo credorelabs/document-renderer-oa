@@ -19,7 +19,8 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
     fromContactName,
     fromCompanyName,
     address,
-    createdAt
+    createdAt,
+    coverLetterDocuments
   } = document;
 
   const decodedContent = he.decode(letterContent || "");
@@ -110,61 +111,68 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
             <div style={{ width: "100%", backgroundColor: "#000" }}></div>
           </div> */}
           <div
-            style={{ display: "flex", height: "0.5rem", width: "full", marginBottom: "2.5rem" }}
-            className="w-full flex h-2 mb-10"
+            style={{ display: "flex", height: "0.5rem", width: "full", marginBottom: "1.5rem" }}
+            // className="w-full flex h-2 mb-10"
           >
-            <div style={{ height: "0.5rem", width: "30%", marginBottom: "1rem", backgroundColor: "#f15929" }}></div>
+            <div style={{ height: "0.5rem", width: "30%", marginBottom: "0.5rem", backgroundColor: "#f15929" }}></div>
             {/* Orange part */}
-            <div style={{ height: "0.5rem", width: "70%", marginBottom: "1rem", backgroundColor: "#29564b" }}></div>
+            <div style={{ height: "0.5rem", width: "70%", marginBottom: "0.5rem", backgroundColor: "#29564b" }}></div>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ display: "flex", fontSize: "1rem" }}>
               <div
                 style={{
-                  border: "0.05rem solid #000",
-                  borderRadius: "50%",
-                  padding: "0.125rem",
+                  // border: "0.05rem solid #000",
+                  // borderRadius: "50%",
+                  // padding: "0.125rem",
                   margin: "auto",
-                  width: "1.3rem"
+                  // width: "1.3rem"
                 }}
               >
                 📞
               </div>
               &nbsp;
-              <div style={{ marginTop: "auto" }}>{fromCompanyNumber}</div>
+              <div style={{ marginTop: "auto", marginBottom:"auto" }}>{fromCompanyNumber}</div>
             </div>
             <div style={{ display: "flex", fontSize: "1rem", margin: "0 1rem" }}>
               <div
                 style={{
-                  border: "0.05rem solid #000",
-                  borderRadius: "50%",
-                  padding: "0.125rem",
+                  // border: "0.05rem solid #000",
+                  // borderRadius: "50%",
+                  // padding: "0.125rem",
                   margin: "auto",
-                  width: "1.3rem"
+                  // width: "1.3rem"
                 }}
               >
                 🌍
               </div>
               &nbsp;
-              <div style={{ marginTop: "auto" }}>{fromCompanyAddress}</div>
+              <div style={{ marginTop: "auto", marginBottom:"auto" }}>{fromCompanyAddress}</div>
             </div>
             <div style={{ display: "flex", fontSize: "1rem" }}>
               <div
                 style={{
-                  border: "0.05rem solid #000",
-                  borderRadius: "50%",
+                  // border: "0.05rem solid #000",
+                  // borderRadius: "50%",
                   margin: "auto",
-                  width: "1.3rem",
+                  // width: "1.3rem",
                   fontSize: "1.5rem",
-                  paddingLeft: "0.3rem"
+                  // paddingLeft: "0.3rem"
                 }}
               >
                 ✉︎
               </div>
               &nbsp;
-              <div style={{ marginTop: "auto" }}>{fromCompanyEmail}</div>
+              <div style={{ marginTop: "auto", marginBottom:"auto" }}>{fromCompanyEmail}</div>
             </div>
           </div>
+        </div>
+
+        <div style={{border: "2px solid black", width:"100%", padding:"0 10px"}}>
+          <h4>Please find below the links to download attached documents:</h4>
+          {coverLetterDocuments?.map((doc,i)=>
+            <p><b>{i+1}.</b>&nbsp;&nbsp;&nbsp;<a href={doc?.documentUrl?.split(':string:')[1]}><span style={{color:"blue"}}>{doc?.documentUrl?.split(':string:')[1]}</span></a></p>
+          )}
         </div>
       </div>
     </>

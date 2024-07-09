@@ -17,6 +17,41 @@ export const coverLetter: Cover = {
   mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
   customerName: "Raj Patra",
   createdAt: "2024-03-21T11:05:10.842Z",
+  coverLetterDocuments: [
+    {
+      id: "31d1e783-0dc6-49a2-8b99-2629f96b86a1:string:d7a653d0-40d8-4c10-ab05-d468282d9ea6",
+      coverLetterId: "4c36fc23-3dcf-4e86-92bb-64c050c92cb7:string:c1210778-3601-4edc-be35-8e9cf6eed128",
+      documentNumber: "efc2aa42-de94-4ba6-8404-50a5388ac809:string:others",
+      documentUrl: "4a239750-6fbe-41d2-956b-5127dfe0b64e:string:https://ctfdevblob.blob.core.windows.net/ctf-dev-blob-container/cl-c1210778-3601-4edc-be35-8e9cf6eed128/e-P1234.tt",
+      documentType: "87bdb50c-f734-4c8f-8e11-6f693ba834d9:string:Others",
+      isTransferable: "d6942204-dc3f-42ab-97e5-2539f2ee06ea:boolean:false",
+      isCredore: "4304a827-17ea-46db-9e8f-d9774ee6db70:boolean:false",
+      createdAt: "52acc737-b638-4417-9a25-0b710b112b46:string:2024-07-08T06:11:10.803Z",
+      updatedAt: "a15586fc-0dba-4e65-a7b6-cf033cc5f21b:string:2024-07-08T06:11:10.803Z"
+    },
+    {
+      id: "40d04b3c-c7fc-4d6f-8716-b2e8f0530415:string:e0211037-b832-43ca-80fa-2d6288962aef",
+      coverLetterId: "18d4d2a0-b0ac-49d6-93a2-1a011bd9fced:string:c1210778-3601-4edc-be35-8e9cf6eed128",
+      documentNumber: "a70004e2-afd8-4a0b-a274-2b36f735dc16:string:INV-TSL-001",
+      documentUrl: "397ba9ab-b6be-4b42-8a6e-5a1e76b65984:string:https://ctfdevblob.blob.core.windows.net/ctf-dev-blob-container/cl-c1210778-3601-4edc-be35-8e9cf6eed128/e-pNote-dc32125e-e031-4c54-b56f-24315db858d2.tt",
+      documentType: "de6f506a-c94c-4f07-84f6-a0cfe60961ed:string:Invoice",
+      isTransferable: "75d83824-f51c-4aef-9179-c2945e82d085:boolean:false",
+      isCredore: "9080573b-c7f1-4c9d-b99b-27076b08eaea:boolean:true",
+      createdAt: "16592fba-99ca-4359-a84e-71383c50fb4f:string:2024-07-08T06:11:10.888Z",
+      updatedAt: "1fd6e5f1-9f80-4ac6-a278-bcd9e0fcb1cf:string:2024-07-08T06:11:10.888Z"
+    },
+    {
+      id: "a7f9ade5-36be-4d00-8075-568f7874c1f7:string:669b366d-b625-4c5f-ab62-21c154562e07",
+      coverLetterId: "37b9523f-3e6b-4301-a288-73129fc29f1c:string:c1210778-3601-4edc-be35-8e9cf6eed128",
+      documentNumber: "833c8d7c-acf2-4fac-8697-cca26cea3c2e:string:7a7b9386-593c-49d7-bdbe-af20528622f3",
+      documentUrl: "821b0e7e-5ca7-4680-95c6-b02fdc5510ba:string:https://ctfdevblob.blob.core.windows.net/ctf-dev-blob-container/cl-c1210778-3601-4edc-be35-8e9cf6eed128/e-INV-RPDD-0D11.tt",
+      documentType: "d32307ad-de7c-43e3-876e-8f3a74a5c7ef:string:pNote",
+      isTransferable: "49f41d33-c67a-4efe-9044-0f762ae4ea84:boolean:true",
+      isCredore: "40a7f201-84c9-48ed-9eab-48ea7ffee83b:boolean:true",
+      createdAt: "66fe5905-c9c3-4829-a713-da105be43086:string:2024-07-08T06:11:10.969Z",
+      updatedAt: "2716bbc1-5dcf-450b-9ace-8c7b5ffb1511:string:2024-07-08T06:11:10.969Z"
+    }
+  ],
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller",

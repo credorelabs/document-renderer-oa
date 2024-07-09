@@ -17,4 +17,17 @@ export interface Cover extends v2.OpenAttestationDocument {
   createdAt?: string;
   fromContactName?: string;
   fromCompanyName?: string;
+  coverLetterDocuments?: coverLetterDocuments[];
+}
+
+interface coverLetterDocuments {
+  id: string;
+  coverLetterId: string;
+  documentNumber: string;
+  documentUrl: string;
+  documentType: string;
+  isTransferable: string;
+  isCredore: string;
+  createdAt: string;
+  updatedAt: string;
 }
