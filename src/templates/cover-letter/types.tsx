@@ -17,10 +17,10 @@ export interface Cover extends v2.OpenAttestationDocument {
   createdAt?: string;
   fromContactName?: string;
   fromCompanyName?: string;
-  coverLetterDocuments?: coverLetterDocuments[];
+  coverLetterDocuments?: coverLetter_Documents[];
 }
 
-interface coverLetterDocuments {
+interface coverLetter_Documents {
   id: string;
   coverLetterId: string;
   documentNumber: string;
