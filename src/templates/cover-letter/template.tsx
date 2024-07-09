@@ -171,7 +171,7 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
         <div style={{border: "2px solid black", width:"100%", padding:"0 10px"}}>
           <h4>Please find below the links to download attached documents:</h4>
           {coverLetterDocuments?.map((doc,i)=>(
-            <p><b>{i+1}.</b>&nbsp;&nbsp;&nbsp;<span style={{color:"blue"}}>{doc?.documentUrl?.split(':string:')[1]}</span></p>
+            <p><b>{i+1}.</b>&nbsp;&nbsp;&nbsp;<span style={{color:"blue"}}>{doc.documentUrl}</span></p>
           ))}
         </div>
       </div>
