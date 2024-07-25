@@ -95,6 +95,8 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               <br />
               <b>Email:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterEmail}
               <br />
+              <b>LEI:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterLei}
+              <br />
             </div>
           </div>
           <div style={{ width: "40%" }}>
@@ -113,6 +115,8 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               <b>Phone Number:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerPhoneNumber}
               <br />
               <b>Email:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerEmail}
+              <br />
+              <b>LEI:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerLei}
               <br />
             </div>
           </div>

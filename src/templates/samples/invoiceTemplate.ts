@@ -7,6 +7,8 @@ export const invoiceTemplate: Invoice = {
   supplier_contact_email: "supplier@email.com",
   supplier_contact_name: "Supplier Contact",
   supplier_contact_phone: "123-456-7890",
+  customer_lei_number: 'ASDFGHJKLUYTREFDGHJ',
+  supplier_lei_number: 'SDFGHJKLJHGFDKJHGFD',
   customer_name: "XYZ Customer",
   customer_address: "456 Customer Ave, Customer City",
   customer_contact_name: "Customer Contact",

@@ -29,6 +29,7 @@ interface purchasePartiesDetails {
   exporterPinCode?: string;
   exporterEmail?: string;
   exporterAddress?: string;
+  exporterLei?: string;
   importerCompanyName?: string;
   importerName?: string;
   importerPhoneNumber?: string;
@@ -36,6 +37,7 @@ interface purchasePartiesDetails {
   importerPinCode?: string;
   importerEmail?: string;
   importerAddress?: string;
+  importerLei?: string;
 }
 interface productDetails {
   description: string;

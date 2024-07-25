@@ -12,11 +12,13 @@ export interface Invoice extends v2.OpenAttestationDocument {
   supplier_contact_email: string;
   supplier_contact_name: string;
   supplier_contact_phone: string;
+  supplier_lei_number: string;
   customer_name: string;
   customer_address: string;
   customer_vat_number: string;
   customer_contact_name: string;
   customer_contact_email: string;
+  customer_lei_number: string;
   Invoice_Lines: InvoiceLine[];
   countryOfOrigin: string;
   contractNumber: string;

@@ -11,6 +11,8 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     customer_contact_email,
     customer_contact_name,
     customer_address,
+    customer_lei_number,
+    supplier_lei_number,
     supplier_name,
     supplier_contact_email,
     supplier_contact_name,
@@ -76,7 +78,8 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               {supplier_address} <br />
               ✉️:&nbsp;{supplier_contact_email} <br />
               📞:&nbsp;{supplier_contact_phone} <br />
-              VAT No.:&nbsp;{supplier_vat_number}
+              VAT No.:&nbsp;{supplier_vat_number} <br/>
+              LEI:&nbsp;{supplier_lei_number} 
             </td>
             <td css={tableTd} colSpan={2} style={{ textAlign: "right" }}>
               <h1 style={{ textAlign: "right", marginBottom: "0" }}>
@@ -95,7 +98,8 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               {customer_address} <br />
               ✉️:&nbsp;{customer_contact_email} <br />
               📞:&nbsp;{customer_contact_phone} <br />
-              VAT No.:&nbsp;{customer_vat_number}
+              VAT No.:&nbsp;{customer_vat_number} <br/>
+              LEI:&nbsp;{customer_lei_number}
             </td>
             <th css={tableTd} style={{ textAlign: "center" }}>
               {" "}

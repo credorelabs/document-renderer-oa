@@ -20,6 +20,7 @@ export const purchaseOrderTemplate: PurchaseOrder = {
     exporterPhoneNumber: "1234567890",
     exporterCountry: "USA",
     exporterPinCode: "10001",
+    exporterLei: "DSFGHJKHGFDGHJKFDGHJK",
     exporterEmail: "kp_sambhavani@yahoo.com",
     exporterAddress: "123 Export St, New York, NY",
     importerCompanyName: "Importer LLC",
@@ -27,6 +28,7 @@ export const purchaseOrderTemplate: PurchaseOrder = {
     importerPhoneNumber: "0987654321",
     importerCountry: "USA",
     importerPinCode: "20001",
+    importerLei: "DSFGHJKGFDGHJKGFDHJKGF",
     importerEmail: "a2zhoneywala@gmail.com",
     importerAddress: "456 Import Ave, Washington, DC"
   },
