@@ -2,8 +2,8 @@ import { PromissoryTemplate } from "./template";
 
 export const PromisoryTemplate = [
   {
-    id: "Promissory-Template",
-    label: "Promissory-Template",
+    id: "Promissory Note",
+    label: "Promissory Note",
     template: PromissoryTemplate
   }
 ];
