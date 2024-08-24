@@ -51,6 +51,7 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   exporterPhone?: string;
   exporterAddress?: string;
   exporterName?: string;
+  exporterLei?: string;
   exporterCompanyName?: string;
 
   importerCompanyName?: string;
@@ -58,6 +59,7 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   importerName?: string;
   importer_email?: string;
   importer_phone?: string;
+  importer_lei?: string;
   importer_address?: string;
 
   shipping_company_sign_time?: string;
@@ -66,12 +68,14 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   carrier_name?: string;
   carrier_contact_name?: string;
   carrier_address?: string;
+  carrier_lei?: string;
   carrier_contact_email?: string;
   carrier_contact_phone?: string;
 
   notify_name?: string;
   notify_contact_name?: string;
   notify_address?: string;
+  notify_lei?: string;
   notify_contact_email?: string;
   notify_contact_phone?: string;
 

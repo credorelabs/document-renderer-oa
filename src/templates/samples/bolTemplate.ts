@@ -54,6 +54,7 @@ export const billOfLadingCertificate: BillOfLadingData = {
   importer_email: "importer@importingcompany.com",
   importer_phone: "000000000000",
   importer_address: "address",
+  importer_lei: "65SDF6757676",
 
   exporterCompanyName: "XYZ",
   exporterAddress: "india",
@@ -61,18 +62,21 @@ export const billOfLadingCertificate: BillOfLadingData = {
   exporter_sign_time: "2023-11-30T09:30:00Z",
   exporterEmail: "aditi@credore.xyz",
   exporterPhone: "99999999999",
+  exporterLei: "765467DFBSDJH",
 
   shipping_company_sign_time: "2023-11-30T09:30:00Z",
   shipping_company_signer: "Maersk",
   carrier_name: "Carrier Company",
   carrier_contact_name: "Gujral",
   carrier_address: "YNV, Canada",
+  carrier_lei: "6755SFGS67578",
   carrier_contact_email: "cemail@gmail.com",
   carrier_contact_phone: "7008297411",
 
   notify_name: "Notifier company",
   notify_contact_name: "Harsh",
   notify_address: "XYZ, India",
+  notify_lei: "765DSGSG67544",
   notify_contact_email: "nemail@gmail.com",
   notify_contact_phone: "7787009005",
 

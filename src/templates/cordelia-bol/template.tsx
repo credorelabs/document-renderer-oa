@@ -95,7 +95,11 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     sealNumber,
     humidity,
     ventilation,
-    tokenRegistryAddress
+    tokenRegistryAddress,
+    exporterLei,
+    importer_lei,
+    notify_lei,
+    carrier_lei
   } = document;
 
   const containerStyle = css`
@@ -157,8 +161,10 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <br />
             <span style={{ fontSize: "1.1rem" }}>
               {exporterCompanyName},<br />
+              {exporterLei && <><b>LEI number:</b>&nbsp;{exporterLei}<br/></>}
               {exporterAddress},<br />
               {exporterEmail},<br />
+              {exporterPhone},<br />
             </span>
           </td>
           <td css={tableTd} colSpan={2}>
@@ -194,8 +200,10 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <br />
             <span style={{ fontSize: "1.2rem" }}>
               {importerCompanyName},<br />
+              {importer_lei && <><b>LEI number:</b>&nbsp;{importer_lei}<br/></>}
               {importerAddress},<br />
               {importer_email},<br />
+              {importer_phone},<br />
             </span>
           </td>
         </tr>
@@ -218,6 +226,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <br />
             <span style={{ fontSize: "1.1rem" }}>
               {notify_name},<br />
+              {notify_lei && <><b>LEI number:</b>&nbsp;{notify_lei}<br/></>}
               {/* {notify_contact_name},<br /> */}
               {notify_address},<br />
               {notify_contact_email},<br />
@@ -495,7 +504,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
       >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
-            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
+            <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
             <b>Name:</b>&nbsp;{shipping_company_signer} <br />
             <b>Place:</b>&nbsp;{carrier_signer_place}
             <br />
@@ -508,9 +517,11 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           </td>
 
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
-            <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{exporterName} <br />
-            <b>Place:</b>&nbsp;{exporter_signer_place}
+            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
+            <b>Name:</b>&nbsp;{'Mr. Carrier Line'} <br />   
+            {/* exporterName */}
+            <b>Place:</b>&nbsp;Cityville,Countryland
+            {/* {exporter_signer_place} */}
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(exporter_sign_time)
