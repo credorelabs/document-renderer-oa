@@ -99,7 +99,9 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     exporterLei,
     importer_lei,
     notify_lei,
-    carrier_lei
+    carrier_lei,
+    primaryLogo,
+    secondaryLogo
   } = document;
 
   const containerStyle = css`
@@ -146,11 +148,11 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     <div css={containerStyle}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <img
-          src="https://www.cordelialine.com/wp-content/uploads/2021/05/HeaderLogoFinal1.png"
+          src={primaryLogo}
           alt="credore stamp"
           style={{ width: "20em", marginBottom: "2rem", marginTop: "2rem" }}
         />
-        <img src={logo} alt="credore stamp" style={{ width: "12em", marginBottom: "2rem", marginTop: "2rem" }} />
+        {secondaryLogo && <img src={secondaryLogo} alt="credore stamp" style={{ width: "12em", marginBottom: "2rem", marginTop: "2rem" }} />}
       </div>
       <table
         style={{ width: "100%", border: "2px solid black", borderBottom: "0", padding: "0px", borderSpacing: "0px" }}

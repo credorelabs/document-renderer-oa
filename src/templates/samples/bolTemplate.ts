@@ -93,6 +93,9 @@ export const billOfLadingCertificate: BillOfLadingData = {
   ventilation: 'cfgvbhj',
   tokenRegistryAddress: '0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3',
 
+  primaryLogo: 'https://stock.adobe.com/search?k=%22company+logo%22',
+  secondaryLogo: 'https://stock.adobe.com/search?k=it+logo',
+
   issuers: [
     {
       name: "CREDORE",

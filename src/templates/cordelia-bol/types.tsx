@@ -91,4 +91,7 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   humidity: string;
   ventilation: string;
   tokenRegistryAddress: string;
+
+  primaryLogo: string;
+  secondaryLogo: string;
 }
