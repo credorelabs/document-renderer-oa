@@ -147,12 +147,12 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
   return (
     <div css={containerStyle}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <img
+        {primaryLogo && <img
           src={primaryLogo}
-          alt="credore stamp"
-          style={{ width: "20em", marginBottom: "2rem", marginTop: "2rem" }}
-        />
-        {secondaryLogo && <img src={secondaryLogo} alt="credore stamp" style={{ width: "12em", marginBottom: "2rem", marginTop: "2rem" }} />}
+          alt="company logo"
+						style={{ marginBottom: "2rem", marginTop: "2rem" }}
+        />}
+        {secondaryLogo && <img src={secondaryLogo} alt="company logo" style={{ width: "15rem", height: "5rem", margin: "2rem 0 2rem 2rem" }} />}
       </div>
       <table
         style={{ width: "100%", border: "2px solid black", borderBottom: "0", padding: "0px", borderSpacing: "0px" }}
