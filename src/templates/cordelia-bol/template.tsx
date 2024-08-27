@@ -541,11 +541,11 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         <tr css={tableTr}>
           <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
             <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-            <b>Place:</b>&nbsp;{carrier_signer_place}
+            <b>Name:</b>&nbsp;{exporter_signer_place} <br />
+            <b>Place:</b>&nbsp;{exporter_signer_place}
             <br />
             <b>Date & Time:</b>&nbsp;
-            {moment(shipping_company_sign_time)
+            {moment(exporter_sign_time)
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
@@ -554,13 +554,13 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
 
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{"Mr. Carrier Line"} <br />
+            <b>Name:</b>&nbsp;{shipping_company_signer} <br />
             {/* exporterName */}
-            <b>Place:</b>&nbsp;Cityville,Countryland
+            <b>Place:</b>&nbsp;{carrier_signer_place}
             {/* {exporter_signer_place} */}
             <br />
             <b>Date & Time:</b>&nbsp;
-            {moment(exporter_sign_time)
+            {moment(shipping_company_sign_time)
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
