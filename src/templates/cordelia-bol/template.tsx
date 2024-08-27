@@ -147,18 +147,31 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
   return (
     <div css={containerStyle}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        {primaryLogo && <img
-          src={primaryLogo}
-          alt="company logo"
-          style={{ 
-            marginBottom: "2rem", 
-            marginTop: "2rem", 
-            maxWidth: "150px", 
-            maxHeight: "auto", 
-            objectFit: "contain" 
-          }}
-        />}
-        {secondaryLogo && <img src={secondaryLogo} alt="company logo" style={{ width: "15rem", height: "5rem", margin: "2rem 0 2rem 2rem" }} />}
+        {primaryLogo && (
+          <img
+            src={primaryLogo}
+            alt="company logo"
+            style={{
+              marginBottom: "2rem",
+              marginTop: "2rem",
+              maxWidth: "150px",
+              maxHeight: "auto",
+              objectFit: "contain"
+            }}
+          />
+        )}
+        {secondaryLogo && (
+          <img
+            src={secondaryLogo}
+            alt="company logo"
+            style={{
+              width: "150px",
+              height: "auto",
+              margin: "2rem 0 2rem 2rem",
+              objectFit: "contain"
+            }}
+          />
+        )}
       </div>
       <table
         style={{ width: "100%", border: "2px solid black", borderBottom: "0", padding: "0px", borderSpacing: "0px" }}
@@ -169,7 +182,12 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <br />
             <span style={{ fontSize: "1.1rem" }}>
               {exporterCompanyName},<br />
-              {exporterLei && <><b>LEI number:</b>&nbsp;{exporterLei}<br/></>}
+              {exporterLei && (
+                <>
+                  <b>LEI number:</b>&nbsp;{exporterLei}
+                  <br />
+                </>
+              )}
               {exporterAddress},<br />
               {exporterEmail},<br />
               {exporterPhone},<br />
@@ -208,7 +226,12 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <br />
             <span style={{ fontSize: "1.2rem" }}>
               {importerCompanyName},<br />
-              {importer_lei && <><b>LEI number:</b>&nbsp;{importer_lei}<br/></>}
+              {importer_lei && (
+                <>
+                  <b>LEI number:</b>&nbsp;{importer_lei}
+                  <br />
+                </>
+              )}
               {importerAddress},<br />
               {importer_email},<br />
               {importer_phone},<br />
@@ -234,7 +257,12 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <br />
             <span style={{ fontSize: "1.1rem" }}>
               {notify_name},<br />
-              {notify_lei && <><b>LEI number:</b>&nbsp;{notify_lei}<br/></>}
+              {notify_lei && (
+                <>
+                  <b>LEI number:</b>&nbsp;{notify_lei}
+                  <br />
+                </>
+              )}
               {/* {notify_contact_name},<br /> */}
               {notify_address},<br />
               {notify_contact_email},<br />
@@ -526,7 +554,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
 
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{'Mr. Carrier Line'} <br />   
+            <b>Name:</b>&nbsp;{"Mr. Carrier Line"} <br />
             {/* exporterName */}
             <b>Place:</b>&nbsp;Cityville,Countryland
             {/* {exporter_signer_place} */}
