@@ -1,0 +1,23 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { billOfLadingCertificate } from "../samples/bolTemplate";
+import { FiataEBolTemplate } from "./template";
+import { fiataBolCertificate } from "../samples/fbolTemplate";
+
+<Meta title="MDX|FiataEBolTemplate" component={FiataEBolTemplate} />
+
+# FiataEBolTemplate component
+
+<Description of={FiataEBolTemplate} />
+
+# Props
+
+<Props of={FiataEBolTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <FiataEBolTemplate document={object("document", fiataBolCertificate)} />
+  </Story>
+</Preview>
