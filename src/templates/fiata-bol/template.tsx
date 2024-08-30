@@ -38,7 +38,7 @@ export const FiataEBolTemplate: FunctionComponent<TemplateProps<FiataEBLData>> =
   `;
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#7acbd8" }}>
+    <div style={{ backgroundColor: "#7acbd8", width:"80%" }}>
       <div css={containerStyle}>
         <table
           style={{
