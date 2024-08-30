@@ -5,6 +5,7 @@ import { css } from "@emotion/core";
 import moment from "moment";
 import { FiataEBLData } from "./types";
 import fiataLogo from "./fiata.png";
+import fiataBg from "./fiataBg.png";
 import iccLogo from "./icc.png";
 export const FiataEBolTemplate: FunctionComponent<TemplateProps<FiataEBLData>> = ({ document }) => {
   const containerStyle = css`
@@ -38,7 +39,19 @@ export const FiataEBolTemplate: FunctionComponent<TemplateProps<FiataEBLData>> =
   `;
 
   return (
-    <div style={{ backgroundColor: "#7acbd8", display:"flex", justifyContent:"center", alignItems:"center", margin:"auto" }}>
+    <div
+      style={{
+        backgroundColor: "#7acbd8",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: "auto",
+        backgroundImage: `url(${fiataBg})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "30rem"
+      }}
+    >
       <div css={containerStyle}>
         <table
           style={{
@@ -507,6 +520,27 @@ export const FiataEBolTemplate: FunctionComponent<TemplateProps<FiataEBLData>> =
             </div>
           </div>
         </div>
+        <table
+          style={{
+            width: "100%",
+            borderWidth: "2px",
+            borderStyle: "solid",
+            borderColor: "black",
+            padding: "0px",
+            borderSpacing: "0px",
+            marginTop: "5rem"
+          }}
+        >
+          <tr>
+            <td colSpan={4} style={{ padding: "1rem", width: "50%" }}>
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+              existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
+              ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
+              Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
+              prohibited. Verify its integrity and authenticity through approved channels.
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   );
