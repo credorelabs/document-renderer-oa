@@ -15,6 +15,7 @@ import { CoverLetterTemplates } from "./cover-letter";
 import { PromisoryTemplate } from "./promissory";
 import { BOLTemplates } from "./cordelia-bol";
 import { PurchaseOrderTemplates } from "./purchase-order";
+import { FiataEBolTemplates } from "./fiata-bol";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -28,7 +29,8 @@ export const registry: TemplateRegistry<any> = {
   MUMBAI_CERTIFICATE_OF_ORIGIN: MumbaiCertificateofOriginTemplates,
   COVER_LETTER: CoverLetterTemplates,
   PROMISSORY_NOTE: PromisoryTemplate,
-  PURCHASE_ORDER: PurchaseOrderTemplates
+  PURCHASE_ORDER: PurchaseOrderTemplates,
+  FIATA_BOL: FiataEBolTemplates
 
   // PACKING_LIST:packingListTemplate
 };
