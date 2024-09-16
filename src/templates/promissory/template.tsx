@@ -227,6 +227,10 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       </div>
                       <br />
                       <b>DNS:</b>&nbsp;&nbsp;did:ethr:{drawerWalletAddress}
+                      <br />
+                      <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
+                        <b>Place of Issue:</b>&nbsp;&nbsp;{draweeJurisdiction}
+                      </div>
                     </div>
                   </div>
                   <div style={{ margin: "2em", marginTop: "0" }}>
@@ -255,8 +259,8 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     </div>
                   </div>
                 </div>
-                <div style={{ margin: "2rem", fontSize: "1.3rem", wordSpacing: "0.1rem", marginTop: "1 rem" }}>
-                  On the{" "}
+                <div style={{ margin: "2rem", fontSize: "1.1rem", wordSpacing: "0.1rem", marginTop: "1 rem" }}>
+                  We promise to pay <b>{draweeCompany}</b> on{" "}
                   <b>
                     {moment
                       .utc(dueDate)
@@ -264,21 +268,17 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       .add(30, "minutes")
                       .format("Do MMMM YYYY")}
                   </b>
-                  , we promise to pay <b>{draweeCompany}</b> the sum of{" "}
+                  ,the sum of{" "}
                   <b>
                     {currency}&nbsp;{numberWithCommas(amount)}&nbsp; ({currency} {amountText})
                   </b>{" "}
-                  for value received.
+                  for value received. Payment shall be made to the designated bank account of the <b>{draweeCompany}</b>.
                 </div>
 
-                <div style={{ margin: "2rem", display: "flex", flexDirection: "column" }}>
-                  <span style={{ fontWeight: "bold", fontSize: "1.5rem" }}>Jurisdiction:&nbsp;</span>
-                  <div>
-                    The <b>Singapore</b> courts shall have exclusive jurisdiction over any dispute or claim arising from
-                    or in connection with this <b>promissory note</b> or any non-contractual obligations arising from
-                    or connected with it.
-                  </div>
-                </div>
+                {draweeJurisdiction !==
+                      "Singapore" ||
+                      (drawerJurisdiction !==
+                        "Singapore" && (
                 <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
                   <div style={{ margin: "auto", marginLeft: "0" }}>
                     <span style={{ fontSize: "1.4rem" }}>
@@ -301,7 +301,39 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     <b>SWIFT/IBAN Number:</b>&nbsp;&nbsp;{draweeIBAN}
                     <br />
                   </div>
-                </div>
+                </div>))}
+
+                <div style={{margin:"2rem", fontSize:"0.8rem"}}>
+                      <strong>Law and Arbitration</strong>
+                      <br />
+                      The maker, payee and each indorsee and/or holder of this
+                      promissory note agree that:
+                      <br />
+                      <span className="ml-2">
+                        (1) This promissory note shall be subject to Singapore
+                        law, without reference to any conflict of law rules
+                        thereunder (but not limited to any conflict of law rules
+                        under the Bills of Exchange Act 1949) or under any other
+                        system of law.
+                        <br />
+                      </span>
+                      <span className="ml-2">
+                        (2) Any and all disputes arising out of or in connection with this contract, including any question regarding its existence, validity or termination, shall be referred to and finally resolved by arbitration seated in Singapore in accordance with the Arbitration Rules of the Singapore Chamber of Maritime Arbitration ("SCMA Rules") current at the commencement of the arbitration, which rules are deemed to be incorporated by reference in this clause
+                      </span>
+                      <br />
+                      <strong>
+                        No presentation / Notice / Protest Required
+                      </strong>
+                      <br />
+                      The maker, payee and each indorsee and/or holder of this
+                      promissory note agree that any and all requirements for
+                      presentation, notice and/or protest under any law (whether
+                      as a precondition to liability or otherwise) are fully and
+                      irrevocably waived and all parties to this promissory note
+                      shall be estopped from raising the non-fulfillment of any
+                      such alleged requirements for presentation and/or
+                      notification to avoid liability for payment hereunder.
+                    </div>
                 <div
                   style={{
                     display: "flex",
