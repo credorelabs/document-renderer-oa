@@ -276,7 +276,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                 </div>
 
                 {draweeJurisdiction !==
-                      "Singapore" ||
+                      "Singapore" &&
                       (drawerJurisdiction !==
                         "Singapore" && (
                 <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
