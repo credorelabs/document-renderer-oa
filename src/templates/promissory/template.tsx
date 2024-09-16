@@ -151,7 +151,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                 </div>
               </div>
             </div> */}
-            <table style={{ width: "100%", padding: "5px", borderSpacing: "0px", marginTop:"2rem" }}>
+            <table style={{ width: "100%", padding: "5px", borderSpacing: "0px", marginTop: "2rem" }}>
               <thead>
                 <div
                   style={{
@@ -215,10 +215,10 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       </span>
                       &nbsp;&nbsp;{drawerCompanyName}
                       <br />
-                      { drawer || drawerCin?
-                      <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Company Number/LEI:</b>&nbsp;&nbsp;{drawer ? drawer : drawerCin || ''}
-                      </div>:""}
+                      {drawer || drawerCin ?
+                        <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
+                          <b>Company Number/LEI:</b>&nbsp;&nbsp;{drawer ? drawer : drawerCin || ''}
+                        </div> : ""}
                       <br />
                       <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{drawerJurisdiction}
                       <br />
@@ -244,10 +244,10 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                       &nbsp;&nbsp;{draweeCompany}
                       <br />
                       {!drawee?.includes('NAME') || draweeCIN ?
-                      <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
-                        <b>Company Number/LEI:</b>&nbsp;&nbsp;{!drawee?.includes('NAME') ? drawee : draweeCIN || ''}
-                      </div>
-                      :""}
+                        <div style={{ marginTop: "0.4rem", marginBottom: "-0.8rem" }}>
+                          <b>Company Number/LEI:</b>&nbsp;&nbsp;{!drawee?.includes('NAME') ? drawee : draweeCIN || ''}
+                        </div>
+                        : ""}
                       <br />
                       <b>Jurisdiction of Incorporation:</b>&nbsp;&nbsp;{draweeJurisdiction}
                       <br />
@@ -276,64 +276,66 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                 </div>
 
                 {draweeJurisdiction !==
-                      "Singapore" &&
-                      (drawerJurisdiction !==
-                        "Singapore" && (
-                <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
-                  <div style={{ margin: "auto", marginLeft: "0" }}>
-                    <span style={{ fontSize: "1.4rem" }}>
-                      <b>Payment Details:</b>
-                      <br />
-                    </span>
-                    <div style={{ marginTop: "0.5rem" }}></div>
-                    <b>Payable at:</b>&nbsp;&nbsp; {payableAt}
-                    <br />
-                    <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>Bank Name:</b>&nbsp;&nbsp;{draweeBankName}
-                    <br />
-                    <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>Account Number:</b>&nbsp;&nbsp; {draweeAccountNumber}
-                    <br />
-                    <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>Sort Code:</b>&nbsp;&nbsp;{draweeSortCode}
-                    <br />
-                    <div style={{ marginTop: "0.3rem" }}></div>
-                    <b>SWIFT/IBAN Number:</b>&nbsp;&nbsp;{draweeIBAN}
-                    <br />
-                  </div>
-                </div>))}
+                  "Singapore" &&
+                  (drawerJurisdiction !==
+                    "Singapore" && (
+                      // <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
+                      //   <div style={{ margin: "auto", marginLeft: "0" }}>
+                      //     <span style={{ fontSize: "1.4rem" }}>
+                      //       <b>Payment Details:</b>
+                      //       <br />
+                      //     </span>
+                      //     <div style={{ marginTop: "0.5rem" }}></div>
+                      //     <b>Payable at:</b>&nbsp;&nbsp; {payableAt}
+                      //     <br />
+                      //     <div style={{ marginTop: "0.3rem" }}></div>
+                      //     <b>Bank Name:</b>&nbsp;&nbsp;{draweeBankName}
+                      //     <br />
+                      //     <div style={{ marginTop: "0.3rem" }}></div>
+                      //     <b>Account Number:</b>&nbsp;&nbsp; {draweeAccountNumber}
+                      //     <br />
+                      //     <div style={{ marginTop: "0.3rem" }}></div>
+                      //     <b>Sort Code:</b>&nbsp;&nbsp;{draweeSortCode}
+                      //     <br />
+                      //     <div style={{ marginTop: "0.3rem" }}></div>
+                      //     <b>SWIFT/IBAN Number:</b>&nbsp;&nbsp;{draweeIBAN}
+                      //     <br />
+                      //   </div>
+                      // </div>
+                      ""
+                    ))}
 
-                <div style={{margin:"2rem", fontSize:"0.8rem"}}>
-                      <strong>Law and Arbitration</strong>
-                      <br />
-                      The maker, payee and each indorsee and/or holder of this
-                      promissory note agree that:
-                      <br />
-                      <span className="ml-2">
-                        (1) This promissory note shall be subject to Singapore
-                        law, without reference to any conflict of law rules
-                        thereunder (but not limited to any conflict of law rules
-                        under the Bills of Exchange Act 1949) or under any other
-                        system of law.
-                        <br />
-                      </span>
-                      <span className="ml-2">
-                        (2) Any and all disputes arising out of or in connection with this contract, including any question regarding its existence, validity or termination, shall be referred to and finally resolved by arbitration seated in Singapore in accordance with the Arbitration Rules of the Singapore Chamber of Maritime Arbitration ("SCMA Rules") current at the commencement of the arbitration, which rules are deemed to be incorporated by reference in this clause
-                      </span>
-                      <br />
-                      <strong>
-                        No presentation / Notice / Protest Required
-                      </strong>
-                      <br />
-                      The maker, payee and each indorsee and/or holder of this
-                      promissory note agree that any and all requirements for
-                      presentation, notice and/or protest under any law (whether
-                      as a precondition to liability or otherwise) are fully and
-                      irrevocably waived and all parties to this promissory note
-                      shall be estopped from raising the non-fulfillment of any
-                      such alleged requirements for presentation and/or
-                      notification to avoid liability for payment hereunder.
-                    </div>
+                <div style={{ margin: "2rem", fontSize: "0.8rem" }}>
+                  <strong>Law and Arbitration</strong>
+                  <br />
+                  The maker, payee and each indorsee and/or holder of this
+                  promissory note agree that:
+                  <br />
+                  <span className="ml-2">
+                    (1) This promissory note shall be subject to Singapore
+                    law, without reference to any conflict of law rules
+                    thereunder (but not limited to any conflict of law rules
+                    under the Bills of Exchange Act 1949) or under any other
+                    system of law.
+                    <br />
+                  </span>
+                  <span className="ml-2">
+                    (2) Any and all disputes arising out of or in connection with this contract, including any question regarding its existence, validity or termination, shall be referred to and finally resolved by arbitration seated in Singapore in accordance with the Arbitration Rules of the Singapore Chamber of Maritime Arbitration ("SCMA Rules") current at the commencement of the arbitration, which rules are deemed to be incorporated by reference in this clause
+                  </span>
+                  <br />
+                  <strong>
+                    No presentation / Notice / Protest Required
+                  </strong>
+                  <br />
+                  The maker, payee and each indorsee and/or holder of this
+                  promissory note agree that any and all requirements for
+                  presentation, notice and/or protest under any law (whether
+                  as a precondition to liability or otherwise) are fully and
+                  irrevocably waived and all parties to this promissory note
+                  shall be estopped from raising the non-fulfillment of any
+                  such alleged requirements for presentation and/or
+                  notification to avoid liability for payment hereunder.
+                </div>
                 <div
                   style={{
                     display: "flex",
