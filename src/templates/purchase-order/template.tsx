@@ -161,6 +161,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
           <tr css={tableTr} style={{ backgroundColor: "#B8E7E2" }}>
             <th css={tableTd}>HS Code</th>
+            <th css={tableTd}>Item</th>
             <th css={tableTd}>Description of Goods</th>
             <th css={tableTd}>Unit Quantity</th>
             <th css={tableTd}>Unit Price(USD)</th>
@@ -171,6 +172,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             <tr css={tableTr} key={index} className="my-0 text-sm bg-white border dark:bg-gray-800">
               <td css={tableTd}>{item.hsCode}</td>
               <td css={tableTd}>{item.item}</td>
+              <td css={tableTd}>{item.description}</td>
               <td style={{ textAlign: "right" }} css={tableTd}>
                 {item.quantity}
               </td>
