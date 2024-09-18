@@ -101,7 +101,8 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     notify_lei,
     carrier_lei,
     primaryLogo,
-    secondaryLogo
+    secondaryLogo,
+    currency
   } = document;
 
   const containerStyle = css`
@@ -266,7 +267,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               {/* {notify_contact_name},<br /> */}
               {notify_address},<br />
               {notify_contact_email},<br />
-              {/* {notify_contact_phone} */}
+              {notify_contact_phone}
             </span>
           </td>
           <td css={tableTd} colSpan={2}>
@@ -373,20 +374,20 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <td css={tableTd}>
               {goods_numberOfPackages} Packages
               <br />
-              {consignment_containerSizeTypeISO}
+              {/* {consignment_containerSizeTypeISO} */}
             </td>
             <td colSpan={3} style={{ width: "50%" }} css={tableTd}>
-              {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
-              {goods_numberOfPackages} Package ({amountText} Package) <br />
+              {measure_totalNumberOfContainers} X {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
+              {goods_numberOfPackages} Packages <br /><br />
               {goods_descriptionOfGoods} <br />
-              INV NO.:{invoiceNumber}&nbsp; Date:
+              INV NO.:{invoiceNumber}&nbsp;&nbsp; Date:
               {moment(invoiceDate)
                 .utc()
                 .add(5, "hours")
                 .add(30, "minutes")
                 .format("DD/MM/YYYY")}{" "}
               <br />
-              SB NO: {shippingBillNo}&nbsp; DATE:{" "}
+              SB NO: {shippingBillNo}&nbsp;&nbsp;DATE:{" "}
               {moment(date_estimatedDateOfPlaceOfReceipt)
                 .utc()
                 .add(5, "hours")
@@ -473,7 +474,9 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            {currency}
+          </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
         </tr>

@@ -96,6 +96,8 @@ export const billOfLadingCertificate: BillOfLadingData = {
   primaryLogo: 'https://stock.adobe.com/search?k=%22company+logo%22',
   secondaryLogo: 'https://stock.adobe.com/search?k=it+logo',
 
+  currency: "USD",
+
   issuers: [
     {
       name: "CREDORE",
