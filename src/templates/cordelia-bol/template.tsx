@@ -145,6 +145,8 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
       );
     }
   }, [goods_numberOfPackages]);
+
+  console.log(JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')));
   return (
     <div css={containerStyle}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -378,27 +380,42 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             </td>
             <td colSpan={3} style={{ width: "50%" }} css={tableTd}>
               {measure_totalNumberOfContainers} X {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
-              {goods_numberOfPackages} Packages <br /><br />
-              {goods_descriptionOfGoods} <br />
-              INV NO.:{invoiceNumber}&nbsp;&nbsp; Date:
-              {moment(invoiceDate)
-                .utc()
-                .add(5, "hours")
-                .add(30, "minutes")
-                .format("DD/MM/YYYY")}{" "}
+              {goods_numberOfPackages} Packages <br />
+              {JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                <p>
+                  {item?.hsCode} - {item?.desc}
+                </p>
+              ))}
+              <div style={{display:"flex", justifyContent:"space-between", margin:"0.5rem 0"}}>
+                <span>
+                  <strong>INVOICE NO. :</strong> {invoiceNumber}{" "}
+                </span>
+                <span>
+                  <strong>INVOICE DATE :</strong> {moment(invoiceDate).format("YYYY-MM-DD")}&nbsp;&nbsp;&nbsp;
+                </span>
+              </div>
+              <div style={{display:"flex", justifyContent:"space-between", margin:"0 0 0.5rem 0"}}>
+                <span>
+                  <strong>SB NO:</strong> {shippingBillNo}{" "}
+                </span>
+                <span>
+                  <strong>DATE: </strong>
+                  {moment(date_estimatedDateOfPlaceOfReceipt).format("YYYY-MM-DD")}&nbsp;&nbsp;&nbsp;
+                </span>
+              </div>
+              <strong>HSCODE: </strong>
+              <div style={{display:"flex", marginTop:"-0.5rem"}}>
+                {JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                  <p>
+                    {item?.hsCode?.split(" - ")[0]}
+                    {index + 1 < JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).length && " , "}
+                  </p>
+                ))}
+              </div>
               <br />
-              SB NO: {shippingBillNo}&nbsp;&nbsp;DATE:{" "}
-              {moment(date_estimatedDateOfPlaceOfReceipt)
-                .utc()
-                .add(5, "hours")
-                .add(30, "minutes")
-                .format("DD/MM/YYYY")}{" "}
-              <br />
-              HSCODE: {goods_HSCode} <br />
-              Temperature: {measure_temperatureSettingForReeferContainers} <br />
-              Humidity: {humidity} <br />
-              Ventilation: {ventilation}
-              <br />
+              <strong>Temperature:</strong> {measure_temperatureSettingForReeferContainers} <br />
+              <strong>Humidity:</strong> {humidity} <br />
+              <strong>Ventilation:</strong> {ventilation}
               <br />
               <br />
               SHIPPED ON BOARD{" "}
@@ -411,9 +428,6 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               FREIGHT PREPAID <br />
               CY/CY <br />
               FCL/FC <br />
-              <br />
-              <br />
-              <br />
               <br />
               <br />
             </td>

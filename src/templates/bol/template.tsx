@@ -326,7 +326,14 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Freight Forwarders Reference No.:</b>&nbsp;{freightForwardersReferenceNumber}
           </td>
           <td css={tableTd}>
-            <b>HS Code:</b>&nbsp;{goods_HSCode}
+            <b>HS Code:</b>&nbsp;<div style={{display:"flex", marginTop:"-0.5rem"}}>
+                {JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                  <p>
+                    {item?.hsCode?.split(" - ")[0]}
+                    {index + 1 < JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).length && " , "}
+                  </p>
+                ))}
+              </div>
           </td>
           <td css={tableTd}>
             <b>IMDG:</b>&nbsp;{goods_IMDG}
@@ -337,7 +344,11 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Danger level:</b>&nbsp;{goods_dangerLevel}
           </td>
           <td css={tableTd}>
-            <b>Goods description:</b>&nbsp;{goods_descriptionOfGoods}
+            <b>Goods description:</b>&nbsp;{JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                <p>
+                  {item?.hsCode} - {item?.desc}
+                </p>
+              ))}
           </td>
           <td css={tableTd}>
             <b>No. of Goods:</b>&nbsp;{goods_numberOfPackages}
