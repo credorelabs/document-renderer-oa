@@ -114,6 +114,16 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     border: 1px solid black;
     padding: 1em;
   `;
+
+  function isJSONString(str: string) {
+    try {
+      JSON.parse(str);
+      return true; // It's a valid JSON string
+    } catch (error) {
+      return false; // It's not a valid JSON string
+    }
+  }
+
   return (
     <div css={containerStyle}>
       <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
@@ -327,12 +337,15 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           </td>
           <td css={tableTd}>
             <b>HS Code:</b>&nbsp;<div style={{display:"flex", marginTop:"-0.5rem"}}>
-                {JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).map((item: any, index: number) => (
-                  <p>
-                    {item?.hsCode?.split(" - ")[0]}
-                    {index + 1 < JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).length && " , "}
-                  </p>
+                {isJSONString(goods_HSCode.replaceAll("&quot;", '"')) && 
+                  JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                    <p>
+                      {item?.hsCode?.split(" - ")[0]}
+                      {index + 1 < JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).length && " , "}
+                    </p>
                 ))}
+              {!isJSONString(goods_HSCode.replaceAll("&quot;", '"')) && goods_HSCode}
+
               </div>
           </td>
           <td css={tableTd}>
@@ -344,11 +357,14 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Danger level:</b>&nbsp;{goods_dangerLevel}
           </td>
           <td css={tableTd}>
-            <b>Goods description:</b>&nbsp;{JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+            <b>Goods description:</b>&nbsp;
+            {isJSONString(goods_descriptionOfGoods.replaceAll("&quot;", '"')) && 
+              JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')).map((item: any, index: number) => (
                 <p>
                   {item?.hsCode} - {item?.desc}
                 </p>
-              ))}
+            ))}
+            {!isJSONString(goods_descriptionOfGoods.replaceAll("&quot;", '"')) && goods_descriptionOfGoods}
           </td>
           <td css={tableTd}>
             <b>No. of Goods:</b>&nbsp;{goods_numberOfPackages}

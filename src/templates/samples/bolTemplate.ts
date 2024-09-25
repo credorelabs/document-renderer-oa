@@ -18,7 +18,7 @@ export const billOfLadingCertificate: BillOfLadingData = {
   date_estimatedTimeOfArrival: "2023-11-30T08:30:00Z",
   date_estimatedTimeOfDeparture: "2023-11-30T09:30:00Z",
   freightForwardersReferenceNumber: "FFR123",
-  goods_HSCode: "[{\"hsCode\":\"071334 - Vegetables, leguminous; bambara beans (Vigna subterranea or Voandzeia subterranea), shelled, whether or not skinned or split, dried\",\"desc\":\"vegetablesss\"},{\"hsCode\":\"030119 - Fish; live, ornamental, other than freshwater\",\"desc\":\"Live fish\"},{\"hsCode\":\"300242 - Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products; for veterinary medicine\",\"desc\":\"Corona vaccine\"}]",
+  goods_HSCode: "Str",
   goods_IMDG: "IMDG123",
   goods_dangerLevel: "High",
   goods_descriptionOfGoods: "[{\"hsCode\":\"071334 - Vegetables, leguminous; bambara beans (Vigna subterranea or Voandzeia subterranea), shelled, whether or not skinned or split, dried\",\"desc\":\"vegetablesss\"},{\"hsCode\":\"030119 - Fish; live, ornamental, other than freshwater\",\"desc\":\"Live fish\"},{\"hsCode\":\"300242 - Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products; for veterinary medicine\",\"desc\":\"Corona vaccine\"}]",

@@ -146,7 +146,15 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     }
   }, [goods_numberOfPackages]);
 
-  console.log(JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')));
+  function isJSONString(str: string) {
+    try {
+      JSON.parse(str);
+      return true; // It's a valid JSON string
+    } catch (error) {
+      return false; // It's not a valid JSON string
+    }
+  }
+
   return (
     <div css={containerStyle}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -381,11 +389,14 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <td colSpan={3} style={{ width: "50%" }} css={tableTd}>
               {measure_totalNumberOfContainers} X {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
               {goods_numberOfPackages} Packages <br />
-              {JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')).map((item: any, index: number) => (
-                <p>
-                  {item?.hsCode} - {item?.desc}
-                </p>
+              {isJSONString(goods_descriptionOfGoods.replaceAll("&quot;", '"')) && 
+                JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                  <p>
+                    {item?.hsCode} - {item?.desc}
+                  </p>
               ))}
+
+              {!isJSONString(goods_descriptionOfGoods.replaceAll("&quot;", '"')) && goods_descriptionOfGoods}
               <div style={{display:"flex", justifyContent:"space-between", margin:"0.5rem 0"}}>
                 <span>
                   <strong>INVOICE NO. :</strong> {invoiceNumber}{" "}
@@ -404,13 +415,16 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
                 </span>
               </div>
               <strong>HSCODE: </strong>
-              <div style={{display:"flex", marginTop:"-0.5rem"}}>
-                {JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).map((item: any, index: number) => (
-                  <p>
-                    {item?.hsCode?.split(" - ")[0]}
-                    {index + 1 < JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).length && " , "}
-                  </p>
+              <div style={{display:"flex"}}>
+              {isJSONString(goods_HSCode.replaceAll("&quot;", '"')) && 
+                  JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                    <p>
+                      {item?.hsCode?.split(" - ")[0]}
+                      {index + 1 < JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).length && " , "}
+                    </p>
                 ))}
+              {!isJSONString(goods_HSCode.replaceAll("&quot;", '"')) && goods_HSCode}
+
               </div>
               <br />
               <strong>Temperature:</strong> {measure_temperatureSettingForReeferContainers} <br />
