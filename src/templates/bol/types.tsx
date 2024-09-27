@@ -96,4 +96,5 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
   secondaryLogo: string;
 
   currency: string;
+  consignment_containerReeferType: string;
 }

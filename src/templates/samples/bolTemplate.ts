@@ -7,6 +7,7 @@ export const billOfLadingCertificate: BillOfLadingData = {
   bookingReferenceNumber: "BK123456",
   consignment_containerNumber: "CNT123",
   consignment_containerSizeTypeISO: "20GP",
+  consignment_containerReeferType: "Dry",
   consignment_fullOrEmptyIndicator: "Full",
   contractQuoteReferenceNumber: "CQ123",
   date_actualDateOfPlaceOfDelivery: "2023-11-30T10:00:00Z",

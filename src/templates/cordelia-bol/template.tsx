@@ -102,7 +102,8 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     carrier_lei,
     primaryLogo,
     secondaryLogo,
-    currency
+    currency,
+    consignment_containerReeferType
   } = document;
 
   const containerStyle = css`
@@ -261,7 +262,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         }}
       >
         <tr css={tableTr}>
-          <td css={tableTd} style={{ width: "50%" }} rowSpan={2} colSpan={2}>
+          <td css={tableTd} style={{ width: "50%" }} rowSpan={3} colSpan={2}>
             <span style={{ fontSize: "0.8rem" }}>
               Notify Party (Carrier not responsible for failure to notify and no claim shall attach therefrom)
             </span>
@@ -280,12 +281,37 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               {notify_contact_phone}
             </span>
           </td>
-          <td css={tableTd} colSpan={2}>
+          <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Shipper/ Export /Forwarder References</b>
             </span>
+            <br/>
+              {shippersReferenceNumber} / &nbsp;
+								{contractQuoteReferenceNumber}
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Mode of Transport:</b>
+            </span>
             <br />
+            {transport_modeOfTransportUNCEFACT}
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Container Size:</b>
+            </span>
             <br />
+            {consignment_containerSizeTypeISO}
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Container Type:</b>
+            </span>
+            <br />
+            {consignment_containerReeferType}
           </td>
         </tr>
 
@@ -469,10 +495,10 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         }}
       >
         <tr css={tableTr} style={{ fontSize: "0.8rem" }}>
-          <td css={tableTd}>CONTAINER NO : {consignment_containerNumber}</td>
-          <td css={tableTd}>TEMPERATURE : {measure_temperatureSettingForReeferContainers}</td>
-          <td css={tableTd}>VENT : {ventilation}</td>
-          <td css={tableTd}>HUMIDITY : {humidity}</td>
+          <td css={tableTd}><b>CONTAINER NO. :</b> {consignment_containerNumber}</td>
+          <td css={tableTd}><b>TEMPERATURE :</b> {measure_temperatureSettingForReeferContainers}</td>
+          <td css={tableTd}><b>VENT :</b> {ventilation}</td>
+          <td css={tableTd}><b>HUMIDITY :</b> {humidity}</td>
         </tr>
       </table>
       <table style={{ width: "100%", border: "2px solid black", borderTop: "0", padding: "0px", borderSpacing: "0px" }}>
@@ -484,19 +510,19 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Freight & Charges
+            <b>Freight & Charges</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Units
+            <b>Units</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Currency
+            <b>Currency</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Prepaid
+            <b>Prepaid</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Collect
+            <b>Collect</b>
           </td>
         </tr>
         <tr css={tableTr}>
@@ -510,19 +536,19 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Freight Payable at
+            <b>Freight Payable at</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Freight Payable by
+            <b>Freight Payable by</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            No. of Original Bill of Ladings
+            <b>No. of Original Bill of Ladings</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Place of Issue
+            <b>Place of Issue</b>
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            Date of Issue
+            <b>Date of Issue</b>
           </td>
         </tr>
         <tr css={tableTr}>
@@ -547,7 +573,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
 
         <tr css={tableTr}>
           <td css={tableTd} colSpan={5}>
-            <span style={{ fontSize: "0.8rem" }}>Destination Agent:</span>
+            <span style={{ fontSize: "0.8rem" }}><b>Destination Agent:</b></span>
             <br />
             {carrier_name},<br />
             {carrier_contact_name},<br />
