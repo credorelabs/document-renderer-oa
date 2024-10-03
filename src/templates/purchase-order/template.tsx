@@ -282,32 +282,6 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               }}
               colSpan={2}
             >
-              <b>Signer IP:</b>&nbsp;{signerIPAddress}
-            </td>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 1px 1px 0px",
-                borderStyle: "solid",
-                borderColor: "black",
-                textAlign: "right"
-              }}
-              colSpan={2}
-            >
-              <b>Signer Location:</b>&nbsp;{signerLocation}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 0px 1px 1px",
-                borderStyle: "solid",
-                borderColor: "black"
-                // width: "50%"
-              }}
-              colSpan={2}
-            >
               <b>Blockchain:</b>&nbsp;{blockchainName}
             </td>
             <td
