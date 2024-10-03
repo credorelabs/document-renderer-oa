@@ -29,4 +29,6 @@ export interface Prom extends v2.OpenAttestationDocument {
   drawee: string;
   drawerWalletAddress: string;
   draweeWalletAddress: string;
+  signerLocation?: string;
+  signerIPAddress?: string;
 }

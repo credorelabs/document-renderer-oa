@@ -43,7 +43,9 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     bankHolderName,
     subTotal,
     blockchainName,
-    mintTxHash
+    mintTxHash,
+    signerIPAddress,
+    signerLocation
   } = document;
 
   const containerStyle = css`
@@ -298,6 +300,32 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             marginTop: "2rem"
           }}
         >
+          <tr css={tableTr}>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 0px 1px 1px",
+                borderStyle: "solid",
+                borderColor: "black"
+                // width: "50%"
+              }}
+              colSpan={2}
+            >
+              <b>Signer IP:</b>&nbsp;{signerIPAddress}
+            </td>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 1px 1px 0px",
+                borderStyle: "solid",
+                borderColor: "black",
+                textAlign: "right"
+              }}
+              colSpan={2}
+            >
+              <b>Signer Location:</b>&nbsp;{signerLocation}
+            </td>
+          </tr>
           <tr css={tableTr}>
             <td
               style={{

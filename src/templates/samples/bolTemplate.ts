@@ -99,6 +99,8 @@ export const billOfLadingCertificate: BillOfLadingData = {
 
   currency: "USD",
 
+  exporterSignIp: "127.345.23.134",
+  shippingCompanySignIp: "132.234.45.67",
   issuers: [
     {
       name: "CREDORE",

@@ -29,6 +29,8 @@ export const promissoryTemplate: Prom = {
   txHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
   drawerWalletAddress: "c594c93e-c74b-4937-bf2a-c47135fad8ce:string:0x6F8DB93537748De1e9Dfc7BAC1FFFfee278E1DF4",
   draweeWalletAddress: "192bfada-0bdd-462f-ad32-ae270c2d41e3:string:0x92Da16147624B4Cb8A49b3cfe39909599d6D7DbB",
+  signerLocation: "Bhubaneswar",
+  signerIPAddress: "137.345.23.10",
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller",

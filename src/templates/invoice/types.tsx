@@ -39,6 +39,8 @@ export interface Invoice extends v2.OpenAttestationDocument {
   subTotal: string;
   blockchainName?: string;
   mintTxHash?: string;
+  signerLocation?: string;
+  signerIPAddress?: string;
 }
 
 interface InvoiceLine {

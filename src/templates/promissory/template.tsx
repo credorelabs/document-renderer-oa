@@ -37,7 +37,9 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     drawerWalletAddress,
     draweeWalletAddress,
     drawer,
-    drawee
+    drawee,
+    signerIPAddress,
+    signerLocation
   } = document;
   const containerStyle = css`
     margin: auto;
@@ -390,6 +392,14 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   </div>
                 ) : null}
                 <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
+                  <div>
+                    <b>Signer IP Address:</b>&nbsp;{signerIPAddress}
+                  </div>
+                  <div>
+                    <b>Signer Location:</b>&nbsp;{signerLocation}
+                  </div>
+                </div>
+                <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem", marginTop:"-1rem" }}>
                   <div>
                     <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
                   </div>

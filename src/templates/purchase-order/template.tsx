@@ -23,7 +23,9 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
     productDetails,
     blockchainName,
     mintTxHash,
-    importerDns
+    importerDns,
+    signerIPAddress,
+    signerLocation
   } = document;
 
   const containerStyle = css`
@@ -254,7 +256,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               </td>
               <td
                 style={{
-                  // padding: "0.5rem",
+                  padding: "0.5rem",
                   // paddingLeft: "0.5rem",
                   borderWidth: "1px",
                   borderStyle: "solid",
@@ -269,6 +271,32 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
           : (
             <></>
           )}
+          <tr css={tableTr}>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 0px 1px 1px",
+                borderStyle: "solid",
+                borderColor: "black"
+                // width: "50%"
+              }}
+              colSpan={2}
+            >
+              <b>Signer IP:</b>&nbsp;{signerIPAddress}
+            </td>
+            <td
+              style={{
+                padding: "0.5rem",
+                borderWidth: "1px 1px 1px 0px",
+                borderStyle: "solid",
+                borderColor: "black",
+                textAlign: "right"
+              }}
+              colSpan={2}
+            >
+              <b>Signer Location:</b>&nbsp;{signerLocation}
+            </td>
+          </tr>
           <tr css={tableTr}>
             <td
               style={{
