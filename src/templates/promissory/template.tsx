@@ -39,7 +39,8 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
     drawer,
     drawee,
     signerIPAddress,
-    signerLocation
+    signerLocation,
+    pNoteProof
   } = document;
   const containerStyle = css`
     margin: auto;
@@ -406,6 +407,17 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                   <div>
                     <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
                   </div>
+                </div>
+                <div style={{ margin: "2rem", fontSize: "0.8rem", marginTop:"-1rem" }}>
+                <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :<br/></span> <div style={{width:"100%", textAlign:"right"}}>{pNoteProof?.a0},&nbsp;
+              {pNoteProof?.a1},<br />
+              &nbsp;{pNoteProof?.b0},&nbsp;{pNoteProof?.b1},<br />
+              &nbsp;{pNoteProof?.b2},&nbsp;{pNoteProof?.b3},<br />
+              &nbsp;{pNoteProof?.c0},&nbsp;{pNoteProof?.c1}</div>
+              <br />
+              <br />
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
+              {pNoteProof?.scalarPubKey0},&nbsp;{pNoteProof?.scalarPubKey1}
                 </div>
               </tbody>
             </table>
