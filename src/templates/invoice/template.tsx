@@ -45,7 +45,8 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     blockchainName,
     mintTxHash,
     signerIPAddress,
-    signerLocation
+    signerLocation,
+    invoiceProof
   } = document;
 
   const containerStyle = css`
@@ -80,8 +81,8 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               {supplier_address} <br />
               ✉️:&nbsp;{supplier_contact_email} <br />
               📞:&nbsp;{supplier_contact_phone} <br />
-              VAT No.:&nbsp;{supplier_vat_number} <br/>
-              LEI:&nbsp;{supplier_lei_number} 
+              VAT No.:&nbsp;{supplier_vat_number} <br />
+              LEI:&nbsp;{supplier_lei_number}
             </td>
             <td css={tableTd} colSpan={2} style={{ textAlign: "right" }}>
               <h1 style={{ textAlign: "right", marginBottom: "0" }}>
@@ -100,7 +101,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               {customer_address} <br />
               ✉️:&nbsp;{customer_contact_email} <br />
               📞:&nbsp;{customer_contact_phone} <br />
-              VAT No.:&nbsp;{customer_vat_number} <br/>
+              VAT No.:&nbsp;{customer_vat_number} <br />
               LEI:&nbsp;{customer_lei_number}
             </td>
             <th css={tableTd} style={{ textAlign: "center" }}>
@@ -236,56 +237,61 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               </td>
             </tr>
           ))}
-        </table>
+          {/* </table> */}
 
-        <table
-          style={{
-            width: "100%",
-            padding: "0px",
-            borderSpacing: "0px",
-            marginTop: "1em",
-            textAlign: "right"
-          }}
-        >
-          <tr>
-            <td style={{ padding: "0.4em" }}>
-              <b>SUBTOTAL</b>
-            </td>
-            <td>{subTotal}</td>
-          </tr>
-          <tr>
-            <td style={{ padding: "0.4em" }}>
-              <b>TAX</b>
-            </td>
-            <td>
-              ({taxAmount}%)&nbsp;{result}
-            </td>
-          </tr>
-          <tr>
-            <td style={{ padding: "0.4em" }}>
-              <b>CREDITTED AMOUNT</b>
-            </td>
-            <td>{creditedAmount}</td>
-          </tr>
-
-          <tr>
-            <td colSpan={2}>
-              <div
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={6}>
+              <table
                 style={{
-                  marginLeft: "auto",
-                  marginRight: "0",
-                  border: "1px solid black",
-                  width: "45%"
+                  width: "100%",
+                  padding: "0px",
+                  borderSpacing: "0px",
+                  marginTop: "1em",
+                  textAlign: "right"
                 }}
-              ></div>
-            </td>
-          </tr>
-          <tr>
-            <td style={{ padding: "0.4em" }}>
-              <b>INVOICE TOTAL</b>
-            </td>
-            <td>
-              {currency}&nbsp;{amount}
+              >
+                <tr>
+                  <td style={{ padding: "0.4em" }}>
+                    <b>SUBTOTAL</b>
+                  </td>
+                  <td>{subTotal}</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: "0.4em" }}>
+                    <b>TAX</b>
+                  </td>
+                  <td>
+                    ({taxAmount}%)&nbsp;{result}
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ padding: "0.4em" }}>
+                    <b>CREDITTED AMOUNT</b>
+                  </td>
+                  <td>{creditedAmount}</td>
+                </tr>
+
+                <tr>
+                  <td colSpan={2}>
+                    <div
+                      style={{
+                        marginLeft: "auto",
+                        marginRight: "0",
+                        border: "1px solid black",
+                        width: "45%"
+                      }}
+                    ></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ padding: "0.4em" }}>
+                    <b>INVOICE TOTAL</b>
+                  </td>
+                  <td>
+                    {currency}&nbsp;{amount}
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
         </table>
@@ -359,6 +365,19 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
               Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
               prohibited. Verify its integrity and authenticity through approved channels.
+            </td>
+          </tr>
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {invoiceProof?.[0]?.a0},&nbsp;
+              {invoiceProof?.[0]?.a1},<br />
+              &nbsp;{invoiceProof?.[0]?.b0},&nbsp;{invoiceProof?.[0]?.b1},<br />
+              &nbsp;{invoiceProof?.[0]?.b2},&nbsp;{invoiceProof?.[0]?.b3},<br />
+              &nbsp;{invoiceProof?.[0]?.c0},&nbsp;{invoiceProof?.[0]?.c1}
+              <br />
+              <br />
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
+              {invoiceProof?.[0]?.scalarPubKey0},&nbsp;{invoiceProof?.[0]?.scalarPubKey1}
             </td>
           </tr>
         </table>

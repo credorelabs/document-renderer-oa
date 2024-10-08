@@ -41,6 +41,7 @@ export interface Invoice extends v2.OpenAttestationDocument {
   mintTxHash?: string;
   signerLocation?: string;
   signerIPAddress?: string;
+  invoiceProof?: InvoiceProof[];
 }
 
 interface InvoiceLine {
@@ -50,4 +51,17 @@ interface InvoiceLine {
   discount: string;
   line_total: string;
   hsCode: string;
+}
+
+interface InvoiceProof {
+  a0: string;
+  a1: string;
+  b0: string;
+  b1: string;
+  b2: string;
+  b3: string;
+  c0: string;
+  c1: string;
+  scalarPubKey0: string;
+  scalarPubKey1: string;
 }
