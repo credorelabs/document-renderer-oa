@@ -41,7 +41,7 @@ export interface Invoice extends v2.OpenAttestationDocument {
   mintTxHash?: string;
   signerLocation?: string;
   signerIPAddress?: string;
-  invoiceProof?: InvoiceProof[];
+  invoiceProof?: InvoiceProof;
 }
 
 interface InvoiceLine {
