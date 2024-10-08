@@ -369,15 +369,15 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
-              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {invoiceProof?.[0]?.a0},&nbsp;
-              {invoiceProof?.[0]?.a1},<br />
-              &nbsp;{invoiceProof?.[0]?.b0},&nbsp;{invoiceProof?.[0]?.b1},<br />
-              &nbsp;{invoiceProof?.[0]?.b2},&nbsp;{invoiceProof?.[0]?.b3},<br />
-              &nbsp;{invoiceProof?.[0]?.c0},&nbsp;{invoiceProof?.[0]?.c1}
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {invoiceProof?.a0},&nbsp;
+              {invoiceProof?.a1},<br />
+              &nbsp;{invoiceProof?.b0},&nbsp;{invoiceProof?.b1},<br />
+              &nbsp;{invoiceProof?.b2},&nbsp;{invoiceProof?.b3},<br />
+              &nbsp;{invoiceProof?.c0},&nbsp;{invoiceProof?.c1}
               <br />
               <br />
               <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
-              {invoiceProof?.[0]?.scalarPubKey0},&nbsp;{invoiceProof?.[0]?.scalarPubKey1}
+              {invoiceProof?.scalarPubKey0},&nbsp;{invoiceProof?.scalarPubKey1}
             </td>
           </tr>
         </table>
