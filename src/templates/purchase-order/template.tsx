@@ -25,7 +25,8 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
     mintTxHash,
     importerDns,
     signerIPAddress,
-    signerLocation
+    signerLocation,
+    poProof
   } = document;
 
   const containerStyle = css`
@@ -304,6 +305,19 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
               Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
               prohibited. Verify its integrity and authenticity through approved channels.
+            </td>
+          </tr>
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {poProof?.a0},&nbsp;
+              {poProof?.a1},<br />
+              &nbsp;{poProof?.b0},&nbsp;{poProof?.b1},<br />
+              &nbsp;{poProof?.b2},&nbsp;{poProof?.b3},<br />
+              &nbsp;{poProof?.c0},&nbsp;{poProof?.c1}
+              <br />
+              <br />
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
+              {poProof?.scalarPubKey0},&nbsp;{poProof?.scalarPubKey1}
             </td>
           </tr>
         </table>

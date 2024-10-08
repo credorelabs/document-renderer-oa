@@ -31,4 +31,19 @@ export interface Prom extends v2.OpenAttestationDocument {
   draweeWalletAddress: string;
   signerLocation?: string;
   signerIPAddress?: string;
+  pNoteProof?: PNoteProof;
+}
+
+
+interface PNoteProof {
+  a0: string;
+  a1: string;
+  b0: string;
+  b1: string;
+  b2: string;
+  b3: string;
+  c0: string;
+  c1: string;
+  scalarPubKey0: string;
+  scalarPubKey1: string;
 }
