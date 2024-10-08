@@ -100,4 +100,19 @@ export interface BillOfLadingData extends v2.OpenAttestationDocument {
 
   exporterSignIp?: string;
   shippingCompanySignIp?: string;
+  bolProof?: BolProof;
+}
+
+
+interface BolProof {
+  a0: string;
+  a1: string;
+  b0: string;
+  b1: string;
+  b2: string;
+  b3: string;
+  c0: string;
+  c1: string;
+  scalarPubKey0: string;
+  scalarPubKey1: string;
 }

@@ -105,7 +105,8 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     currency,
     consignment_containerReeferType,
     exporterSignIp,
-    shippingCompanySignIp
+    shippingCompanySignIp,
+    bolProof
   } = document;
 
   const containerStyle = css`
@@ -648,6 +649,19 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             prohibited. Verify its integrity and authenticity through approved channels.
           </td>
         </tr>
+        <tr css={tableTr}>
+            <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {bolProof?.a0},&nbsp;
+              {bolProof?.a1},<br />
+              &nbsp;{bolProof?.b0},&nbsp;{bolProof?.b1},<br />
+              &nbsp;{bolProof?.b2},&nbsp;{bolProof?.b3},<br />
+              &nbsp;{bolProof?.c0},&nbsp;{bolProof?.c1}
+              <br />
+              <br />
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
+              {bolProof?.scalarPubKey0},&nbsp;{bolProof?.scalarPubKey1}
+            </td>
+          </tr>
         <div css={tableTd} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
           <div>
             <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
