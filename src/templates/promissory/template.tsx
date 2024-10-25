@@ -366,7 +366,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     <div style={{ marginTop: "0.5rem" }}>
                       <div style={{ marginBottom: "0.3rem" }}>
                         <span style={{ color: "red", fontWeight: "bolder" }}>Email:&nbsp;&nbsp;</span>
-                        <span style={{ fontSize: "1.3rem" }}>{signerEmail}</span>
+                        <span style={{ fontSize: "1.3rem" }}>{drawerEmail}</span>
                       </div>
                       <span style={{ color: "red", fontWeight: "bolder" }}>Time Stamp:&nbsp;&nbsp;</span>
                       <span style={{ fontSize: "1.3rem" }}>
@@ -408,7 +408,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
                   </div>
                 </div>
-                <div style={{ margin: "2rem", fontSize: "0.8rem", marginTop:"-1rem" }}>
+                {/* <div style={{ margin: "2rem", fontSize: "0.8rem", marginTop:"-1rem" }}>
                 <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :<br/></span> <div style={{width:"100%", textAlign:"right"}}>{pNoteProof?.a0},&nbsp;
               {pNoteProof?.a1},<br />
               &nbsp;{pNoteProof?.b0},&nbsp;{pNoteProof?.b1},<br />
@@ -418,7 +418,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
               <br />
               <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
               {pNoteProof?.scalarPubKey0},&nbsp;{pNoteProof?.scalarPubKey1}
-                </div>
+                </div> */}
               </tbody>
             </table>
           </div>
