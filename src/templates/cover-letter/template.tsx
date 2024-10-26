@@ -42,9 +42,6 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
                 height={80}
                 style={{ width: "14rem", height: "2rem" }}
               />
-              <div style={{ width: "22rem", fontWeight: "bold" }}>
-                Strengthening Global Trade Partnerships Through Legally Recognized Electronic Trade Documentation
-              </div>
             </div>
             <div style={{ width: "25rem", textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
               {fromCompanyName}
