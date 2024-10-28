@@ -392,20 +392,20 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                     document as "Surrendered".
                   </div>
                 ) : null}
-                <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
+                {/* <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
                   <div>
                     <b>Signer IP Address:</b>&nbsp;{signerIPAddress}
                   </div>
                   <div>
                     <b>Signer Location:</b>&nbsp;{signerLocation}
                   </div>
-                </div>
+                </div> */}
                 <div style={{ margin: "2rem", display: "flex", justifyContent: "space-between", fontSize: "0.8rem", marginTop:"-1rem" }}>
                   <div>
                     <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
                   </div>
                   <div>
-                    <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
+                    <b>Genesis Transaction Hash:</b>&nbsp;{drawer === '254900C2H1JZ97YSWN16' ? '0xbc698994f9b65738463f08958d43a9cd62cc8b98942f9c572baa4a7374a47f8d':txHash?.split("/").pop()}
                   </div>
                 </div>
                 {/* <div style={{ margin: "2rem", fontSize: "0.8rem", marginTop:"-1rem" }}>
