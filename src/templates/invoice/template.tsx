@@ -367,7 +367,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               prohibited. Verify its integrity and authenticity through approved channels.
             </td>
           </tr>
-          <tr css={tableTr}>
+          {/* <tr css={tableTr}>
             <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
               <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {invoiceProof?.a0},&nbsp;
               {invoiceProof?.a1},<br />
@@ -379,7 +379,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
               {invoiceProof?.scalarPubKey0},&nbsp;{invoiceProof?.scalarPubKey1}
             </td>
-          </tr>
+          </tr> */}
         </table>
       </div>
     </>

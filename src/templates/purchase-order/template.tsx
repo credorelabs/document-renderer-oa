@@ -241,7 +241,8 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
           }}
         >
           {/* {importerDns ? ( */}
-          {purchasePartiesDetails?.importerEmail==='a2zhoneywala@gmail.com' && purchasePartiesDetails?.exporterEmail==='kp_sambhavani@yahoo.com' ?
+          {purchasePartiesDetails?.importerEmail === "a2zhoneywala@gmail.com" &&
+          purchasePartiesDetails?.exporterEmail === "kp_sambhavani@yahoo.com" ? (
             <tr css={tableTr}>
               <td
                 style={{
@@ -253,7 +254,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
                 }}
                 colSpan={2}
               >
-                <b>Importer DNS:</b>&nbsp;&nbsp;did:ethr:{'0x25BB0773137D254d1647De4c2ACc019B9ac05A'}
+                <b>Importer DNS:</b>&nbsp;&nbsp;did:ethr:{"0x25BB0773137D254d1647De4c2ACc019B9ac05A"}
               </td>
               <td
                 style={{
@@ -266,10 +267,10 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
                 }}
                 colSpan={2}
               >
-                <b>Exporter DNS:</b>&nbsp;&nbsp;did:ethr:{'0x4d87d254ef8055D16f2c5B60fe3c1876A5Df3334'}
+                <b>Exporter DNS:</b>&nbsp;&nbsp;did:ethr:{"0x4d87d254ef8055D16f2c5B60fe3c1876A5Df3334"}
               </td>
             </tr>
-          : (
+          ) : (
             <></>
           )}
           <tr css={tableTr}>
@@ -307,7 +308,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               prohibited. Verify its integrity and authenticity through approved channels.
             </td>
           </tr>
-          <tr css={tableTr}>
+          {/* <tr css={tableTr}>
             <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
               <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {poProof?.a0},&nbsp;
               {poProof?.a1},<br />
@@ -319,7 +320,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
               <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
               {poProof?.scalarPubKey0},&nbsp;{poProof?.scalarPubKey1}
             </td>
-          </tr>
+          </tr> */}
         </table>
       </div>
     </>

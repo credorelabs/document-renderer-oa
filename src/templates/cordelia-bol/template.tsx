@@ -288,9 +288,9 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Shipper/ Export /Forwarder References</b>
             </span>
-            <br/>
-              {shippersReferenceNumber} / &nbsp;
-								{contractQuoteReferenceNumber}
+            <br />
+            {shippersReferenceNumber} / &nbsp;
+            {contractQuoteReferenceNumber}
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
@@ -418,15 +418,14 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <td colSpan={3} style={{ width: "50%" }} css={tableTd}>
               {measure_totalNumberOfContainers} X {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
               {goods_numberOfPackages} Packages <br />
-              {isJSONString(goods_descriptionOfGoods.replaceAll("&quot;", '"')) && 
+              {isJSONString(goods_descriptionOfGoods.replaceAll("&quot;", '"')) &&
                 JSON.parse(goods_descriptionOfGoods.replaceAll("&quot;", '"')).map((item: any, index: number) => (
                   <p>
                     {item?.hsCode} - {item?.desc}
                   </p>
-              ))}
-
+                ))}
               {!isJSONString(goods_descriptionOfGoods.replaceAll("&quot;", '"')) && goods_descriptionOfGoods}
-              <div style={{display:"flex", justifyContent:"space-between", margin:"0.5rem 0"}}>
+              <div style={{ display: "flex", justifyContent: "space-between", margin: "0.5rem 0" }}>
                 <span>
                   <strong>INVOICE NO. :</strong> {invoiceNumber}{" "}
                 </span>
@@ -434,7 +433,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
                   <strong>INVOICE DATE :</strong> {moment(invoiceDate).format("YYYY-MM-DD")}&nbsp;&nbsp;&nbsp;
                 </span>
               </div>
-              <div style={{display:"flex", justifyContent:"space-between", margin:"0 0 0.5rem 0"}}>
+              <div style={{ display: "flex", justifyContent: "space-between", margin: "0 0 0.5rem 0" }}>
                 <span>
                   <strong>SB NO:</strong> {shippingBillNo}{" "}
                 </span>
@@ -444,16 +443,15 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
                 </span>
               </div>
               <strong>HSCODE: </strong>
-              <div style={{display:"flex"}}>
-              {isJSONString(goods_HSCode.replaceAll("&quot;", '"')) && 
+              <div style={{ display: "flex" }}>
+                {isJSONString(goods_HSCode.replaceAll("&quot;", '"')) &&
                   JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).map((item: any, index: number) => (
                     <p>
                       {item?.hsCode?.split(" - ")[0]}
                       {index + 1 < JSON.parse(goods_HSCode.replaceAll("&quot;", '"')).length && " , "}
                     </p>
-                ))}
-              {!isJSONString(goods_HSCode.replaceAll("&quot;", '"')) && goods_HSCode}
-
+                  ))}
+                {!isJSONString(goods_HSCode.replaceAll("&quot;", '"')) && goods_HSCode}
               </div>
               <br />
               <strong>Temperature:</strong> {measure_temperatureSettingForReeferContainers} <br />
@@ -498,10 +496,18 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
         }}
       >
         <tr css={tableTr} style={{ fontSize: "0.8rem" }}>
-          <td css={tableTd}><b>CONTAINER NO. :</b> {consignment_containerNumber}</td>
-          <td css={tableTd}><b>TEMPERATURE :</b> {measure_temperatureSettingForReeferContainers}</td>
-          <td css={tableTd}><b>VENT :</b> {ventilation}</td>
-          <td css={tableTd}><b>HUMIDITY :</b> {humidity}</td>
+          <td css={tableTd}>
+            <b>CONTAINER NO. :</b> {consignment_containerNumber}
+          </td>
+          <td css={tableTd}>
+            <b>TEMPERATURE :</b> {measure_temperatureSettingForReeferContainers}
+          </td>
+          <td css={tableTd}>
+            <b>VENT :</b> {ventilation}
+          </td>
+          <td css={tableTd}>
+            <b>HUMIDITY :</b> {humidity}
+          </td>
         </tr>
       </table>
       <table style={{ width: "100%", border: "2px solid black", borderTop: "0", padding: "0px", borderSpacing: "0px" }}>
@@ -576,7 +582,9 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
 
         <tr css={tableTr}>
           <td css={tableTd} colSpan={5}>
-            <span style={{ fontSize: "0.8rem" }}><b>Destination Agent:</b></span>
+            <span style={{ fontSize: "0.8rem" }}>
+              <b>Destination Agent:</b>
+            </span>
             <br />
             {carrier_name},<br />
             {carrier_contact_name},<br />
@@ -609,8 +617,9 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}<br />
-              <b>IP Address:</b>&nbsp;{exporterSignIp}
+              .format("DD/MM/YYYY hh:mm A [IST]")}
+            <br />
+            <b>IP Address:</b>&nbsp;{exporterSignIp}
           </td>
 
           <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
@@ -625,8 +634,9 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}<br />
-              <b>IP Address:</b>&nbsp;{shippingCompanySignIp}
+              .format("DD/MM/YYYY hh:mm A [IST]")}
+            <br />
+            <b>IP Address:</b>&nbsp;{shippingCompanySignIp}
           </td>
         </tr>
       </table>
@@ -649,19 +659,19 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             prohibited. Verify its integrity and authenticity through approved channels.
           </td>
         </tr>
-        <tr css={tableTr}>
-            <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
-              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {bolProof?.a0},&nbsp;
-              {bolProof?.a1},<br />
-              &nbsp;{bolProof?.b0},&nbsp;{bolProof?.b1},<br />
-              &nbsp;{bolProof?.b2},&nbsp;{bolProof?.b3},<br />
-              &nbsp;{bolProof?.c0},&nbsp;{bolProof?.c1}
-              <br />
-              <br />
-              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
-              {bolProof?.scalarPubKey0},&nbsp;{bolProof?.scalarPubKey1}
-            </td>
-          </tr>
+        {/* <tr css={tableTr}>
+          <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
+            <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {bolProof?.a0},&nbsp;
+            {bolProof?.a1},<br />
+            &nbsp;{bolProof?.b0},&nbsp;{bolProof?.b1},<br />
+            &nbsp;{bolProof?.b2},&nbsp;{bolProof?.b3},<br />
+            &nbsp;{bolProof?.c0},&nbsp;{bolProof?.c1}
+            <br />
+            <br />
+            <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
+            {bolProof?.scalarPubKey0},&nbsp;{bolProof?.scalarPubKey1}
+          </td>
+        </tr> */}
         <div css={tableTd} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
           <div>
             <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
