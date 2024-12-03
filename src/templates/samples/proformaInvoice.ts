@@ -1,14 +1,15 @@
 import { v2 } from "@govtechsg/open-attestation";
-import { Invoice } from "../invoice/types";
-export const proformaInvoiceTemplate: Invoice = {
+import { ProformaInvoice } from "../proforma-invoice/types";
+
+export const proformaInvoiceTemplate: ProformaInvoice = {
   invoice_number: "INV202301",
   supplier_name: "ABC Supplier",
   supplier_address: "123 Supplier St, Supplier City",
   supplier_contact_email: "supplier@email.com",
   supplier_contact_name: "Supplier Contact",
   supplier_contact_phone: "123-456-7890",
-  customer_lei_number: 'ASDFGHJKLUYTREFDGHJ',
-  supplier_lei_number: 'SDFGHJKLJHGFDKJHGFD',
+  customer_lei_number: "ASDFGHJKLUYTREFDGHJ",
+  supplier_lei_number: "SDFGHJKLJHGFDKJHGFD",
   customer_name: "XYZ Customer",
   customer_address: "456 Customer Ave, Customer City",
   customer_contact_name: "Customer Contact",
@@ -20,7 +21,7 @@ export const proformaInvoiceTemplate: Invoice = {
   supplier_vat_number: "IN1234567890123Z1",
   customer_vat_number: "GB123456789",
   taxAmount: "50",
-  creditedAmount: "1000",
+  outstanding: "1000",
   contractNumber: "CN456",
   countryOfOrigin: "CountryABC",
   dischargePort: "PortXYZ",
@@ -40,7 +41,16 @@ export const proformaInvoiceTemplate: Invoice = {
   mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
   signerLocation: "Bhubaneswar",
   signerIPAddress: "137.345.23.10",
-
+  paymentMethod: "Bank Transfer",
+  paymentTerms: "Hello",
+  incoterm: {
+    code: "FWB",
+    description: "FRee with board",
+    responsibilityBuyer: "BJHRbjkbgw",
+    responsibilitySeller: "Bjkerngkesw",
+    deliveryPoint: "JANPT"
+  },
+  termsAndConditions: "Hello please pay in time",
   Invoice_Lines: [
     {
       description: "best for sneakers",

@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { css } from "@emotion/core";
-import { Invoice } from "./types";
+import { ProformaInvoice } from "./types";
 import moment from "moment";
 
-export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ document }) => {
+export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaInvoice>> = ({ document }) => {
   const {
     invoice_number,
     customer_name,
@@ -33,7 +33,7 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
     vesselName,
     moisture,
     taxAmount,
-    creditedAmount,
+    outstanding,
     customer_contact_phone,
     buyerContractNumber,
     quantities,
@@ -46,7 +46,11 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
     mintTxHash,
     signerIPAddress,
     signerLocation,
-    invoiceProof
+    invoiceProof,
+    paymentMethod,
+    paymentTerms,
+    incoterm,
+    termsAndConditions
   } = document;
 
   const containerStyle = css`
@@ -85,10 +89,18 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
               LEI:&nbsp;{supplier_lei_number}
             </td>
             <td css={tableTd} colSpan={2} style={{ textAlign: "right" }}>
-              <h1 style={{ textAlign: "right", marginBottom: "0" }}>
-                <b>INVOICE</b>
-              </h1>
-              #{invoice_number}
+              <div style={{ textAlign: "right", display: "flex", justifyContent: "end", flexDirection: "column" }}>
+                <div style={{ display: "flex", justifyContent: "end" }}>
+                  <h2 style={{ textAlign: "right", marginBottom: "0" }}>
+                    <b>INVOICE:</b> &nbsp;<span style={{ fontWeight: 400, fontSize: "1.3rem" }}>{invoice_number}</span>
+                  </h2>
+                </div>
+                <div style={{ display: "flex", justifyContent: "end" }}>
+                  <h2 style={{ textAlign: "right", marginBottom: "0" }}>
+                    <b>INVOICE TYPE:</b> &nbsp;<span style={{ fontWeight: 400, fontSize: "1.3rem" }}>Proforma</span>
+                  </h2>
+                </div>
+              </div>
             </td>
           </tr>
 
@@ -108,13 +120,16 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
               {" "}
               <b>ISSUE DATE</b>{" "}
             </th>
-            <th css={tableTd} style={{ textAlign: "center" }}>
-              {" "}
-              <b>DUE DATE</b>{" "}
-            </th>
+            <td css={tableTd} style={{ textAlign: "center" }}>
+              {moment(invoice_date)
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
+                .format("DD/MM/YYYY")}
+            </td>
           </tr>
 
-          <tr css={tableTr}>
+          {/* <tr css={tableTr}>
             <td css={tableTd} style={{ textAlign: "center" }}>
               {moment(invoice_date)
                 .utc()
@@ -129,28 +144,27 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
                 .add(30, "minutes")
                 .format("DD/MM/YYYY")}
             </td>
-          </tr>
-
-          <th css={tableTd} style={{ textAlign: "center" }}>
-            {" "}
-            <b>DUE AMOUNT</b>{" "}
-          </th>
-
-          <th css={tableTd} style={{ textAlign: "center" }}>
-            {" "}
-            <b>COUNTRY OF ORIGIN</b>{" "}
-          </th>
-
+          </tr> */}
           <tr css={tableTr}>
+            <th css={tableTd} style={{ textAlign: "center" }}>
+              {" "}
+              <b>PAYMENT METHOD</b>{" "}
+            </th>
+
+            <td css={tableTd} style={{ textAlign: "center" }}>
+              {paymentMethod}
+            </td>
+          </tr>
+          {/* <tr css={tableTr}>
             <td css={tableTd} style={{ textAlign: "center" }}>
               {currency}&nbsp;{amount}
             </td>
             <td css={tableTd} style={{ textAlign: "center" }}>
               {countryOfOrigin}
             </td>
-          </tr>
+          </tr> */}
 
-          <tr css={tableTr}>
+          {/* <tr css={tableTr}>
             <td css={tableTd} colSpan={3}>
               <b>BANK DETAILS:</b>&nbsp;
               <br />
@@ -164,10 +178,10 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
               <b>IFSC: </b>
               {IFSCCode}
             </td>
-          </tr>
+          </tr> */}
         </table>
 
-        <h3>Certificate Information:</h3>
+        {/* <h3>Certificate Information:</h3>
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
           <tr css={tableTr}>
             <td css={tableTd}>
@@ -185,7 +199,7 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
               {salesOrderNumber}
             </td>
           </tr>
-        </table>
+        </table> */}
 
         <h3>Transport Details:</h3>
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
@@ -256,19 +270,19 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
                   </td>
                   <td>{subTotal}</td>
                 </tr>
-                <tr>
+                {/* <tr>
                   <td style={{ padding: "0.4em" }}>
                     <b>TAX</b>
                   </td>
                   <td>
                     ({taxAmount}%)&nbsp;{result}
                   </td>
-                </tr>
+                </tr> */}
                 <tr>
                   <td style={{ padding: "0.4em" }}>
-                    <b>CREDITTED AMOUNT</b>
+                    <b>Outstanding</b>
                   </td>
-                  <td>{creditedAmount}</td>
+                  <td>{outstanding}</td>
                 </tr>
 
                 <tr>
@@ -295,6 +309,61 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> 
             </td>
           </tr>
         </table>
+
+        <div
+          style={{
+            fontSize: "1rem",
+            // lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            padding: "0.5rem",
+            marginTop: "2rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold" }}>
+            IncoTerm Rule:
+            <br />
+            <div style={{ fontSize: "0.9rem", marginTop: "0.5rem", fontWeight:"normal" }}>
+              {incoterm?.code} - {incoterm?.description}
+              <br />
+              <span style={{ fontWeight: "bold" }}>Delivery Point:</span> {incoterm?.deliveryPoint}
+              <br />
+              <span style={{ fontWeight: "bold" }}>Responsible Buyer:</span> {incoterm?.responsibilityBuyer}
+              <br />
+              <span style={{ fontWeight: "bold" }}>Responsible Seller:</span> {incoterm?.responsibilitySeller}
+            </div>
+          </span>
+        </div>
+
+        <div
+          style={{
+            fontSize: "0.8rem",
+            lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            borderTop: "0px",
+            padding: "0.5rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold" }}>Terms and Conditions: {termsAndConditions}</span>
+        </div>
+
+        <div
+          style={{
+            fontSize: "0.8rem",
+            lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            borderTop: "0px",
+            padding: "0.5rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold" }}>Payment Terms: {paymentTerms}</span>
+        </div>
+
         <table
           style={{
             width: "100%",

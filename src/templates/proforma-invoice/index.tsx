@@ -2,8 +2,8 @@ import { ProformaInvoiceTemplate } from "./template";
 
 export const ProformaInvoiceTemplates = [
   {
-    id: "invoice",
-    label: "invoice",
+    id: "proformaInvoice",
+    label: "proformaInvoice",
     template: ProformaInvoiceTemplate
   }
 ]

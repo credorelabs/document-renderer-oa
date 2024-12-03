@@ -1,6 +1,6 @@
 import { v2 } from "@govtechsg/open-attestation";
 
-export interface Invoice extends v2.OpenAttestationDocument {
+export interface ProformaInvoice extends v2.OpenAttestationDocument {
   invoice_number: string;
   invoice_date: string;
   due_date: string;
@@ -28,7 +28,7 @@ export interface Invoice extends v2.OpenAttestationDocument {
   vesselName: string;
   moisture: string;
   taxAmount: string;
-  creditedAmount: string;
+  outstanding: string;
   customer_contact_phone: string;
   buyerContractNumber: string;
   quantities: string;
@@ -42,6 +42,18 @@ export interface Invoice extends v2.OpenAttestationDocument {
   signerLocation?: string;
   signerIPAddress?: string;
   invoiceProof?: InvoiceProof;
+  paymentMethod?: string;
+  paymentTerms?: string;
+  incoterm?: IncoTerm;
+  termsAndConditions?: string;
+}
+
+interface IncoTerm {
+  code?: string;                 
+  description?: string;             
+  responsibilityBuyer?: string;     
+  responsibilitySeller?: string;    
+  deliveryPoint?: string;           
 }
 
 interface InvoiceLine {

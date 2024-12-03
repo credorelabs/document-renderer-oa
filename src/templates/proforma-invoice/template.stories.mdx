@@ -1,22 +1,22 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { object } from "@storybook/addon-knobs";
-import { InvoiceTemplate } from "./template";
-import { invoiceTemplate } from "../samples/invoiceTemplate";
+import { ProformaInvoiceTemplate } from "./template";
+import { proformaInvoiceTemplate } from "../samples/proformaInvoice";
 
-<Meta title="MDX|InvoiceTemplate" component={InvoiceTemplate} />
+<Meta title="MDX|ProformaInvoiceTemplate" component={ProformaInvoiceTemplate} />
 
 # InvoiceTemplate component
 
-<Description of={InvoiceTemplate} />
+<Description of={ProformaInvoiceTemplate} />
 
 # Props
 
-<Props of={InvoiceTemplate} />
+<Props of={ProformaInvoiceTemplate} />
 
 # Usage
 
 <Preview>
   <Story name="basic sample">
-    <InvoiceTemplate document={object("document", invoiceTemplate)} />
+    <ProformaInvoiceTemplate document={object("document", proformaInvoiceTemplate)} />
   </Story>
 </Preview>
