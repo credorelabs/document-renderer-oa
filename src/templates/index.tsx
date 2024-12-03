@@ -16,6 +16,7 @@ import { PromisoryTemplate } from "./promissory";
 import { BOLTemplates } from "./cordelia-bol";
 import { PurchaseOrderTemplates } from "./purchase-order";
 import { FiataEBolTemplates } from "./fiata-bol";
+import { ProformaInvoiceTemplates } from "./proforma-invoice";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -30,7 +31,8 @@ export const registry: TemplateRegistry<any> = {
   COVER_LETTER: CoverLetterTemplates,
   PROMISSORY_NOTE: PromisoryTemplate,
   PURCHASE_ORDER: PurchaseOrderTemplates,
-  FIATA_BOL: FiataEBolTemplates
+  FIATA_BOL: FiataEBolTemplates,
+  PROFORMA_INVOICE: ProformaInvoiceTemplates,
 
   // PACKING_LIST:packingListTemplate
 };
