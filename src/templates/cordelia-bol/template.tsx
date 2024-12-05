@@ -137,18 +137,18 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     padding: 1em;
   `;
 
-  useEffect(() => {
-    if (goods_numberOfPackages) {
-      let amountToText = numberToWords.toWords(goods_numberOfPackages);
+  // useEffect(() => {
+  //   if (goods_numberOfPackages) {
+  //     let amountToText = numberToWords.toWords(goods_numberOfPackages);
 
-      setAmountText(
-        amountToText
-          .split(" ")
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ")
-      );
-    }
-  }, [goods_numberOfPackages]);
+  //     setAmountText(
+  //       amountToText
+  //         .split(" ")
+  //         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  //         .join(" ")
+  //     );
+  //   }
+  // }, [goods_numberOfPackages]);
 
   function isJSONString(str: string) {
     try {
