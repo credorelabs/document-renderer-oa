@@ -429,11 +429,11 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaIn
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={4}>
-              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
-              existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
-              ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
-              Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
-              prohibited. Verify its integrity and authenticity through approved channels.
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> 
+              This verifiable document is issued on Credore's platform in accordance with the ICC Digital 
+                  Standards Initiative and TradeTrust recommended format. It holds full legal validity, and any 
+                  unauthorized alterations or modifications are strictly prohibited. You can verify the document's 
+                  integrity, authenticity, and traceability through TradeTrust or its authorized verification channels.
             </td>
           </tr>
           {/* <tr css={tableTr}>
