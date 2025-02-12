@@ -22,6 +22,8 @@ export interface PurchaseOrder extends v2.OpenAttestationDocument {
   signerLocation?: string;
   signerIPAddress?: string;
   poProof?: PoProof;
+  signerDate?: string;
+  signerDns?: string;
 }
 
 interface PoProof {

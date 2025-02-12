@@ -43,6 +43,8 @@ export const proformaInvoiceTemplate: ProformaInvoice = {
   signerIPAddress: "137.345.23.10",
   paymentMethod: "Bank Transfer",
   paymentTerms: "Hello",
+  signerDate: "2023-05-30T04:59:19.539Z",
+  signerDns: "verifiable.credore.xyz",
   incoterm: {
     code: "FWB",
     description: "FRee with board",

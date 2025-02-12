@@ -50,7 +50,9 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaIn
     paymentMethod,
     paymentTerms,
     incoterm,
-    termsAndConditions
+    termsAndConditions,
+    signerDate,
+    signerDns
   } = document;
 
   const containerStyle = css`
@@ -324,7 +326,7 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaIn
           <span style={{ fontWeight: "bold" }}>
             IncoTerm Rule:
             <br />
-            <div style={{ fontSize: "0.9rem", marginTop: "0.5rem", fontWeight:"normal" }}>
+            <div style={{ fontSize: "0.9rem", marginTop: "0.5rem", fontWeight: "normal" }}>
               {incoterm?.code} - {incoterm?.description}
               <br />
               <span style={{ fontWeight: "bold" }}>Delivery Point:</span> {incoterm?.deliveryPoint}
@@ -378,62 +380,76 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaIn
           <tr css={tableTr}>
             <td
               style={{
-                padding: "0.5rem",
+                padding: "0.8rem",
                 borderWidth: "1px 0px 1px 1px",
                 borderStyle: "solid",
                 borderColor: "black"
                 // width: "50%"
               }}
-              colSpan={2}
+              colSpan={4}
             >
-              <b>Signer IP:</b>&nbsp;{signerIPAddress}
-            </td>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 1px 1px 0px",
-                borderStyle: "solid",
-                borderColor: "black",
-                textAlign: "right"
-              }}
-              colSpan={2}
-            >
-              <b>Signer Location:</b>&nbsp;{signerLocation}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 0px 1px 1px",
-                borderStyle: "solid",
-                borderColor: "black"
-                // width: "50%"
-              }}
-              colSpan={2}
-            >
-              <b>Blockchain:</b>&nbsp;{blockchainName}
-            </td>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 1px 1px 0px",
-                borderStyle: "solid",
-                borderColor: "black",
-                textAlign: "right"
-              }}
-              colSpan={2}
-            >
-              <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
+              <span
+                style={{
+                  color: "#DC2626", // Equivalent to text-red-600
+                  fontWeight: 600, // Equivalent to font-semibold
+                  fontSize: "1rem" // Equivalent to text-medium (adjusted to 1rem),.
+                }}
+              >
+                Digitally Signed By:
+              </span>
+
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "0.5rem",
+                  fontSize: "0.9rem"
+                }}
+              >
+                <div>
+                  <span>
+                    <b>Signer Name:</b>&nbsp;{supplier_contact_name}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Timestamp:</b>&nbsp;
+                    {moment
+                      .utc(signerDate)
+                      .add(5, "hours")
+                      .add(30, "minutes")
+                      .format("DD/MM/YYYY hh:mm A [IST]")}
+                  </span>
+                  <br />
+                  <span>
+                    <b>DNS:</b>&nbsp; did:ethr:{signerDns}
+                  </span>
+                </div>
+
+                <div>
+                  <span>
+                    <b>Signer Email:</b>&nbsp;{supplier_contact_email}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Signer IP:</b>&nbsp;{signerIPAddress}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Signer Place:</b>&nbsp;
+                    {signerLocation}
+                  </span>
+                </div>
+              </div>
             </td>
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={4}>
-              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> 
-              This verifiable document is issued on Credore's platform in accordance with the ICC Digital 
-                  Standards Initiative and TradeTrust recommended format. It holds full legal validity, and any 
-                  unauthorized alterations or modifications are strictly prohibited. You can verify the document's 
-                  integrity, authenticity, and traceability through TradeTrust or its authorized verification channels.
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span>
+              This verifiable document is issued on Credore's platform in accordance with the ICC Digital Standards
+              Initiative and TradeTrust recommended format. It holds full legal validity, and any unauthorized
+              alterations or modifications are strictly prohibited. You can verify the document's integrity,
+              authenticity, and traceability through TradeTrust or its authorized verification channels.
             </td>
           </tr>
           {/* <tr css={tableTr}>
@@ -450,6 +466,14 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaIn
             </td>
           </tr> */}
         </table>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            <b>Tx Hash:</b>&nbsp;{mintTxHash}
+          </div>
+          <div>
+            <b>Blockchain:</b>&nbsp;{blockchainName}
+          </div>
+        </div>
       </div>
     </>
   );

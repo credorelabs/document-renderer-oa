@@ -26,7 +26,9 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
     importerDns,
     signerIPAddress,
     signerLocation,
-    poProof
+    poProof,
+    signerDate,
+    signerDns
   } = document;
 
   const containerStyle = css`
@@ -82,7 +84,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
 
         <div style={{ width: "100%", display: "flex", justifyContent: "space-between", margin: "2rem 0" }}>
           <div style={{ width: "40%" }}>
-            <div style={{ backgroundColor: "#B8E7E2", padding: "8px 10px", fontWeight: "bold" }}>IMPORTER</div>
+            <div style={{ backgroundColor: "#e2e8f0", padding: "8px 10px", fontWeight: "bold" }}>IMPORTER</div>
             <div style={{ padding: "10px" }}>
               <b>Company Name:</b>&nbsp;&nbsp;{purchasePartiesDetails?.exporterCompanyName}
               <br />
@@ -103,7 +105,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             </div>
           </div>
           <div style={{ width: "40%" }}>
-            <div style={{ backgroundColor: "#B8E7E2", padding: "8px 10px", fontWeight: "bold" }}>EXPORTER</div>
+            <div style={{ backgroundColor: "#e2e8f0", padding: "8px 10px", fontWeight: "bold" }}>EXPORTER</div>
             <div style={{ padding: "10px" }}>
               <b>Company Name:</b>&nbsp;&nbsp;{purchasePartiesDetails?.importerCompanyName}
               <br />
@@ -133,7 +135,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             borderSpacing: "0px"
           }}
         >
-          <tr css={tableTr} style={{ backgroundColor: "#B8E7E2" }}>
+          <tr css={tableTr} style={{ backgroundColor: "#e2e8f0" }}>
             <th css={tableTd}>Quotation No.</th>
             <th css={tableTd}>Mode Of Transport</th>
             <th css={tableTd}>Place of Delivery</th>
@@ -143,7 +145,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             <td css={tableTd}>{modeOfTransport}</td>
             <td css={tableTd}>{placeOfDelivery}</td>
           </tr>
-          <tr css={tableTr} style={{ backgroundColor: "#B8E7E2" }}>
+          <tr css={tableTr} style={{ backgroundColor: "#e2e8f0" }}>
             <th css={tableTd}>Delivery date</th>
             <th css={tableTd}>Terms of Payment</th>
             <th css={tableTd}>Terms of Delivery</th>
@@ -162,7 +164,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
         </table>
 
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
-          <tr css={tableTr} style={{ backgroundColor: "#B8E7E2" }}>
+          <tr css={tableTr} style={{ backgroundColor: "#e2e8f0" }}>
             <th css={tableTd}>HS Code</th>
             <th css={tableTd}>Item</th>
             <th css={tableTd}>Description of Goods</th>
@@ -240,63 +242,70 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             marginTop: "2rem"
           }}
         >
-          {/* {importerDns ? ( */}
-          {purchasePartiesDetails?.importerEmail === "a2zhoneywala@gmail.com" &&
-          purchasePartiesDetails?.exporterEmail === "kp_sambhavani@yahoo.com" ? (
-            <tr css={tableTr}>
-              <td
-                style={{
-                  padding: "0.5rem",
-                  borderWidth: "1px",
-                  borderStyle: "solid",
-                  borderColor: "black",
-                  width: "50%"
-                }}
-                colSpan={2}
-              >
-                <b>Importer DNS:</b>&nbsp;&nbsp;did:ethr:{"0x25BB0773137D254d1647De4c2ACc019B9ac05A"}
-              </td>
-              <td
-                style={{
-                  padding: "0.5rem",
-                  // paddingLeft: "0.5rem",
-                  borderWidth: "1px",
-                  borderStyle: "solid",
-                  borderColor: "black",
-                  width: "50%"
-                }}
-                colSpan={2}
-              >
-                <b>Exporter DNS:</b>&nbsp;&nbsp;did:ethr:{"0x4d87d254ef8055D16f2c5B60fe3c1876A5Df3334"}
-              </td>
-            </tr>
-          ) : (
-            <></>
-          )}
           <tr css={tableTr}>
             <td
               style={{
-                padding: "0.5rem",
+                padding: "0.8rem",
                 borderWidth: "1px 0px 1px 1px",
                 borderStyle: "solid",
                 borderColor: "black"
                 // width: "50%"
               }}
-              colSpan={2}
+              colSpan={4}
             >
-              <b>Blockchain:</b>&nbsp;{blockchainName}
-            </td>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 1px 1px 0px",
-                borderStyle: "solid",
-                borderColor: "black",
-                textAlign: "right"
-              }}
-              colSpan={2}
-            >
-              <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
+              <span
+                style={{
+                  color: "#DC2626", // Equivalent to text-red-600
+                  fontWeight: 600, // Equivalent to font-semibold
+                  fontSize: "1rem" // Equivalent to text-medium (adjusted to 1rem),.
+                }}
+              >
+                Digitally Signed By:
+              </span>
+
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "0.5rem",
+                  fontSize: "0.9rem"
+                }}
+              >
+                <div>
+                  <span>
+                    <b>Signer Name:</b>&nbsp;{purchasePartiesDetails?.exporterName}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Timestamp:</b>&nbsp;
+                    {moment
+                      .utc(signerDate)
+                      .add(5, "hours")
+                      .add(30, "minutes")
+                      .format("DD/MM/YYYY hh:mm A [IST]")}
+                  </span>
+                  <br />
+                  <span>
+                    <b>DNS:</b>&nbsp; did:ethr:{signerDns}
+                  </span>
+                </div>
+
+                <div>
+                  <span>
+                    <b>Signer Email:</b>&nbsp;{purchasePartiesDetails?.exporterEmail}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Signer IP:</b>&nbsp;{signerIPAddress}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Signer Place:</b>&nbsp;
+                    {signerLocation}
+                  </span>
+                </div>
+              </div>
             </td>
           </tr>
           <tr css={tableTr}>
@@ -322,6 +331,14 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             </td>
           </tr> */}
         </table>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            <b>Tx Hash:</b>&nbsp;{mintTxHash}
+          </div>
+          <div>
+            <b>Blockchain:</b>&nbsp;{blockchainName}
+          </div>
+        </div>
       </div>
     </>
   );

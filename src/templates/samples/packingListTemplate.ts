@@ -90,6 +90,10 @@ export const packingListTemplate: any = {
   mintTxHash: "0x95247fd171e353e1d2a7a1c36f1d869c9f750e0b48d48bfe0675ec622f122af3",
   exporter_signer_place: "Dubai",
   importer_signer_place: "India",
+  signerDate: "2023-05-30T04:59:19.539Z",
+  signerDns: "verifiable.credore.xyz",
+  signerLocation: "Bhubaneswar",
+  signerIPAddress: "137.345.23.10",
   issuers: [
     {
       id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec",

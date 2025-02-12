@@ -37,9 +37,12 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     blockchainName,
     mintTxHash,
     exporter_signer_place,
-    importer_signer_place
+    importer_signer_place,
+    signerDate,
+    signerDns,
+    signerIPAddress,
+    signerLocation
   } = document;
-  console.log(document);
 
   const containerStyle = css`
     width: 80%;
@@ -260,43 +263,6 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
         <table
           style={{
             width: "100%",
-
-            padding: "0px",
-            borderSpacing: "0px",
-            margin: "auto"
-          }}
-        >
-          <tr>
-            <td style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}>
-              <b style={{ color: "red" }}>Digitally signed by Exporter:</b> <br />
-              <b>Name:</b>&nbsp;{invoice?.supplier_name} <br />
-              <b>Place:</b>&nbsp;{exporter_signer_place}
-              <br />
-              <b>Date & Time:</b>&nbsp;
-              {moment(supplier_sign_time)
-                .utc()
-                .add(5, "hours")
-                .add(30, "minutes")
-                .format("DD/MM/YYYY hh:mm A [IST]")}
-            </td>
-            <td style={{ padding: "1rem", borderWidth: "0px 1px 1px 1px", borderStyle: "solid", borderColor: "black" }}>
-              <b style={{ color: "red" }}>Digitally signed by Importer :</b> <br />
-              <b>Name:</b>&nbsp;{chamber_email} <br />
-              <b>Place:</b>&nbsp;{importer_signer_place}
-              <br />
-              <b>Date & Time:</b>&nbsp;
-              {moment(chamber_sign_time)
-                .utc()
-                .add(5, "hours")
-                .add(30, "minutes")
-                .format("DD/MM/YYYY hh:mm A [IST]")}
-            </td>
-          </tr>
-        </table>
-
-        <table
-          style={{
-            width: "100%",
             borderWidth: "0px 1px 1px 1px",
             borderStyle: "solid",
             borderColor: "black",
@@ -307,27 +273,67 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
           <tr css={tableTr}>
             <td
               style={{
-                padding: "0.5rem",
+                padding: "0.8rem",
                 borderWidth: "1px 0px 1px 1px",
                 borderStyle: "solid",
                 borderColor: "black"
                 // width: "50%"
               }}
-              colSpan={2}
+              colSpan={4}
             >
-              <b>Blockchain:</b>&nbsp;{blockchainName}
-            </td>
-            <td
-              style={{
-                padding: "0.5rem",
-                borderWidth: "1px 1px 1px 0px",
-                borderStyle: "solid",
-                borderColor: "black",
-                textAlign: "right"
-              }}
-              colSpan={2}
-            >
-              <b>Genesis transaction hash:</b>&nbsp;{mintTxHash}
+              <span
+                style={{
+                  color: "#DC2626", // Equivalent to text-red-600
+                  fontWeight: 600, // Equivalent to font-semibold
+                  fontSize: "1rem" // Equivalent to text-medium (adjusted to 1rem),.
+                }}
+              >
+                Digitally Signed By:
+              </span>
+
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "0.5rem",
+                  fontSize: "0.9rem"
+                }}
+              >
+                <div>
+                  <span>
+                    <b>Signer Name:</b>&nbsp;{invoice?.supplier_contact_name}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Timestamp:</b>&nbsp;
+                    {moment
+                      .utc(supplier_sign_time)
+                      .add(5, "hours")
+                      .add(30, "minutes")
+                      .format("DD/MM/YYYY hh:mm A [IST]")}
+                  </span>
+                  <br />
+                  <span>
+                    <b>DNS:</b>&nbsp; did:ethr:{signerDns}
+                  </span>
+                </div>
+
+                <div>
+                  <span>
+                    <b>Signer Email:</b>&nbsp;{invoice?.supplier_contact_email}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Signer IP:</b>&nbsp;{signerIPAddress}
+                  </span>
+                  <br />
+                  <span>
+                    <b>Signer Place:</b>&nbsp;
+                    {signerLocation}
+                  </span>
+                </div>
+              </div>
             </td>
           </tr>
           <tr css={tableTr}>

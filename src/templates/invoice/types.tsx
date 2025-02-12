@@ -42,6 +42,8 @@ export interface Invoice extends v2.OpenAttestationDocument {
   signerLocation?: string;
   signerIPAddress?: string;
   invoiceProof?: InvoiceProof;
+  signerDate?: string;
+  signerDns?: string;
 }
 
 interface InvoiceLine {

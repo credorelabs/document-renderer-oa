@@ -41,6 +41,10 @@ export interface ShippingDocument extends v2.OpenAttestationDocument {
   mintTxHash?: string;
   exporter_signer_place?: string;
   importer_signer_place?: string;
+  signerDate?: string;
+  signerDns?: string;
+  signerLocation?: string;
+  signerIPAddress?: string;
 }
 interface Invoice {
   invoice_number: string;
