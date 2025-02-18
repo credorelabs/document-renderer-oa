@@ -321,7 +321,7 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
 
                 <div>
                   <span>
-                    <b>Signer Email:</b>&nbsp;{invoice?.supplier_contact_email}
+                    <b>Signer Email:</b>&nbsp;{invoice?.supplier_contact_email} 
                   </span>
                   <br />
                   <span>
