@@ -28,7 +28,8 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
     signerLocation,
     poProof,
     signerDate,
-    signerDns
+    signerDns,
+    termsAndConditions
   } = document;
 
   const containerStyle = css`
@@ -139,18 +140,12 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
             <th css={tableTd}>Quotation No.</th>
             <th css={tableTd}>Mode Of Transport</th>
             <th css={tableTd}>Place of Delivery</th>
+            <th css={tableTd}>Delivery date</th>
           </tr>
           <tr css={tableTr}>
             <td css={tableTd}>{quotationNumber}</td>
             <td css={tableTd}>{modeOfTransport}</td>
             <td css={tableTd}>{placeOfDelivery}</td>
-          </tr>
-          <tr css={tableTr} style={{ backgroundColor: "#e2e8f0" }}>
-            <th css={tableTd}>Delivery date</th>
-            <th css={tableTd}>Terms of Payment</th>
-            <th css={tableTd}>Terms of Delivery</th>
-          </tr>
-          <tr css={tableTr}>
             <td css={tableTd}>
               {moment(deliveryDate)
                 .utc()
@@ -158,8 +153,38 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
                 .add(30, "minutes")
                 .format("DD/MM/YYYY")}
             </td>
+          </tr>
+          </table>
+          <table
+          style={{
+            width: "100%",
+            border: "2px solid black",
+            marginBottom: "2rem",
+            padding: "0px",
+            borderSpacing: "0px"
+          }}
+        >
+          <tr css={tableTr} style={{ backgroundColor: "#e2e8f0" }}>
+            <th css={tableTd}>Terms of Payment</th>
+            <th css={tableTd}>Terms of Delivery</th>
+            <th css={tableTd}>Terms and Conditions</th>
+          </tr>
+          <tr css={tableTr}>
             <td css={tableTd}>{paymentTerms}</td>
-            <td css={tableTd}>{deliveryIncoTerm}</td>
+            <td css={tableTd}>
+              {deliveryIncoTerm?.code} - {deliveryIncoTerm?.description}<br/>
+              <div style={{ fontSize: "0.875rem", marginTop: "0.25rem" }}>
+                <span style={{ fontWeight: 600 }}>Delivery Point:</span>{" "}
+                {deliveryIncoTerm?.deliveryPoint}
+                <br />
+                <span style={{ fontWeight: 600 }}>Responsible Buyer:</span>{" "}
+                {deliveryIncoTerm?.responsibilityBuyer}
+                <br />
+                <span style={{ fontWeight: 600 }}>Responsible Seller:</span>{" "}
+                {deliveryIncoTerm?.responsibilitySeller}
+              </div>
+            </td>
+            <td css={tableTd}>{termsAndConditions}</td>
           </tr>
         </table>
 

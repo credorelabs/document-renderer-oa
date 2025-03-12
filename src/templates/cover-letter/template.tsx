@@ -31,19 +31,17 @@ export const CoverLetter: FunctionComponent<TemplateProps<Cover>> = ({ document 
     <>
       <div style={{ padding: "3.5rem", paddingTop: "1.25rem" }}>
         <div style={{ display: "flex", flexDirection: "column", marginBottom: "2.5rem" }}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {/* <img src={companyLogo} alt="company logo" style={{ width: "6rem" }} /> */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div>
               <img
                 src={companyLogo}
                 alt="Logo"
-                // loading="lazy"
-                width={180}
-                height={80}
-                style={{ width: "14rem", height: "2rem" }}
+                width={250}
+                height={100}
+                style={{ width: "15rem", maxHeight: "5rem", objectFit: "contain" }}
               />
             </div>
-            <div style={{ width: "25rem", textAlign: "right", fontWeight: "bold", marginTop: "auto" }}>
+            <div style={{ width: "25rem", textAlign: "right", fontWeight: "bold" }}>
               {fromCompanyName}
               <br />
               {fromCompanyEmail}

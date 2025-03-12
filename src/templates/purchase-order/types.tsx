@@ -6,7 +6,7 @@ export interface PurchaseOrder extends v2.OpenAttestationDocument {
   deliveryDate?: string;
   currency?: string;
   modeOfTransport?: string;
-  deliveryIncoTerm?: string;
+  deliveryIncoTerm?: DeliveryIncoterm;
   placeOfDelivery?: string;
   paymentTerms?: string;
   quotationNumber?: string;
@@ -24,6 +24,7 @@ export interface PurchaseOrder extends v2.OpenAttestationDocument {
   poProof?: PoProof;
   signerDate?: string;
   signerDns?: string;
+  termsAndConditions?: string;
 }
 
 interface PoProof {
@@ -37,6 +38,15 @@ interface PoProof {
   c1: string;
   scalarPubKey0: string;
   scalarPubKey1: string;
+}
+
+
+interface DeliveryIncoterm {
+  code?: string;
+  description?: string;
+  responsibilitySeller?: string;
+  deliveryPoint?: string;
+  responsibilityBuyer?: string;
 }
 
 interface purchasePartiesDetails {
