@@ -55,7 +55,7 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
     <>
       <div css={containerStyle}>
         <div style={{ display: "flex", marginTop: "1rem", marginBottom: "1rem" }}>
-          <div style={{ marginLeft: "auto", textAlign: "right", display: "flex", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", width:"100%" }}>
             <img
               src={companyLogo}
               alt="Company Logo"
