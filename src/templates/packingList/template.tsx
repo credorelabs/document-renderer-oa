@@ -48,7 +48,8 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     packingInstructions,
     incoterm,
     termsAndConditions,
-    companyLogo
+    companyLogo,
+    supplier_lei
   } = document;
 
   const containerStyle = css`
@@ -84,22 +85,24 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               ✉️:&nbsp;{invoice?.supplier_contact_email} <br />
               📞:&nbsp; {invoice?.supplier_contact_phone} <br />
               VAT No.:&nbsp;{invoice?.supplier_vat_number} <br />
-              {/* LEI:&nbsp;{invoice?.lei} */}
+              LEI:&nbsp;{supplier_lei}
             </td>
             <td css={tableTd} colSpan={2} style={{ textAlign: "right" }}>
               <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-                <img
-                  src={companyLogo}
-                  alt="Company Logo"
-                  style={{
-                    width: "100px",
-                    height: "auto",
-                    objectFit: "contain",
-                    //   border: "1px solid #e5e7eb",
-                    padding: "4px",
-                    backgroundColor: "#ffffff"
-                  }}
-                />
+                { companyLogo && 
+                  <img
+                    src={companyLogo}
+                    alt="Company Logo"
+                    style={{
+                      width: "100px",
+                      height: "auto",
+                      objectFit: "contain",
+                      //   border: "1px solid #e5e7eb",
+                      padding: "4px",
+                      backgroundColor: "#ffffff"
+                    }}
+                  />
+                }
                 <div>
                   <h1 style={{ textAlign: "right", marginBottom: "0" }}>
                     <b>PACKING LIST NUMBER</b>
@@ -373,15 +376,6 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               </span>
               <br />
               <span>
-                <b>Timestamp:</b>&nbsp;{" "}
-                {moment
-                  .utc(supplier_sign_time)
-                  .add(5, "hours")
-                  .add(30, "minutes")
-                  .format("DD/MM/YYYY hh:mm A [IST]")}
-              </span>
-              <br />
-              <span>
                 <b>DNS:</b>&nbsp;did:ethr:{signerDns}
               </span>
             </div>
@@ -391,12 +385,20 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
               </span>
               <br />
               <span>
+                <b>Timestamp:</b>&nbsp;{" "}
+                {moment
+                  .utc(supplier_sign_time)
+                  .add(5, "hours")
+                  .add(30, "minutes")
+                  .format("DD/MM/YYYY hh:mm A [IST]")}
+              </span>
+              {/* <span>
                 <b>Signer IP:</b>&nbsp;{signerIPAddress}
               </span>
               <br />
               <span>
                 <b>Signer Place:</b>&nbsp;{signerLocation}
-              </span>
+              </span> */}
             </div>
           </div>
         </div>

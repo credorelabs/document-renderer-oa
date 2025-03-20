@@ -92,18 +92,20 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             </td>
             <td css={tableTd} colSpan={2}>
               <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-                <img
-                  src={companyLogo}
-                  alt="Company Logo"
-                  style={{
-                    width: "100px",
-                    height: "auto",
-                    objectFit: "contain",
-                    //   border: "1px solid #e5e7eb",
-                    padding: "4px",
-                    backgroundColor: "#ffffff"
-                  }}
-                />
+              { companyLogo && 
+                  <img
+                    src={companyLogo}
+                    alt="Company Logo"
+                    style={{
+                      width: "100px",
+                      height: "auto",
+                      objectFit: "contain",
+                      //   border: "1px solid #e5e7eb",
+                      padding: "4px",
+                      backgroundColor: "#ffffff"
+                    }}
+                  />
+                }
                 <div style={{ textAlign: "right", display: "flex", justifyContent: "end", flexDirection: "column" }}>
                   <h1 style={{ textAlign: "right", marginBottom: "0" }}>
                     <b>INVOICE</b>
