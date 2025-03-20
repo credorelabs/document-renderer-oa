@@ -50,6 +50,7 @@ export interface ShippingDocument extends v2.OpenAttestationDocument {
   incoterm?: IncoTerm;
   termsAndConditions?: string;
   companyLogo?: string;
+  supplier_lei?: string;
 }
 
 interface IncoTerm {

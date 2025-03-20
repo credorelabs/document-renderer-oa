@@ -108,18 +108,20 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
       {/* Header Section */}
       <div style={{ ...sectionStyle, textAlign: "center", pageBreakAfter: "avoid" as const }}>
         <div style={{ display: "flex", justifyContent: "end", width: "100%" }}>
-          <img
-            src={carrierLogo}
-            alt="Carrier Logo"
-            style={{
-              width: "100px",
-              height: "auto",
-              objectFit: "contain",
-            //   border: "1px solid #e5e7eb",
-              padding: "4px",
-              backgroundColor: "#ffffff",
-            }}
-          />
+        { carrierLogo && 
+                  <img
+                    src={carrierLogo}
+                    alt="Company Logo"
+                    style={{
+                      width: "100px",
+                      height: "auto",
+                      objectFit: "contain",
+                      //   border: "1px solid #e5e7eb",
+                      padding: "4px",
+                      backgroundColor: "#ffffff"
+                    }}
+                  />
+                }
         </div>
         <h2 style={{ margin: "0 0 5px", fontSize: "22px", color: "#111827", fontWeight: "bold" }}>
           SHIPPING INSTRUCTION

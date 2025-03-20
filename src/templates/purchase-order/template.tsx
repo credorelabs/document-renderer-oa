@@ -56,18 +56,20 @@ export const PurchaseOrderTemplate: FunctionComponent<TemplateProps<PurchaseOrde
       <div css={containerStyle}>
         <div style={{ display: "flex", marginTop: "1rem", marginBottom: "1rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", width:"100%" }}>
-            <img
-              src={companyLogo}
-              alt="Company Logo"
-              style={{
-                width: "100px",
-                height: "auto",
-                objectFit: "contain",
-                //   border: "1px solid #e5e7eb",
-                padding: "4px",
-                backgroundColor: "#ffffff"
-              }}
-            />
+            { companyLogo && 
+                  <img
+                    src={companyLogo}
+                    alt="Company Logo"
+                    style={{
+                      width: "100px",
+                      height: "auto",
+                      objectFit: "contain",
+                      //   border: "1px solid #e5e7eb",
+                      padding: "4px",
+                      backgroundColor: "#ffffff"
+                    }}
+                  />
+                }
             <div>
               <span style={{ fontSize: "2.5rem", fontWeight: "bolder" }}>PURCHASE ORDER</span>
               <br />
