@@ -17,6 +17,7 @@ import { BOLTemplates } from "./cordelia-bol";
 import { PurchaseOrderTemplates } from "./purchase-order";
 import { FiataEBolTemplates } from "./fiata-bol";
 import { ProformaInvoiceTemplates } from "./proforma-invoice";
+import { ShippingInstructionTemplates } from "./shipping-instruction";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -33,6 +34,6 @@ export const registry: TemplateRegistry<any> = {
   PURCHASE_ORDER: PurchaseOrderTemplates,
   FIATA_BOL: FiataEBolTemplates,
   PROFORMA_INVOICE: ProformaInvoiceTemplates,
-
+  SHIPPING_INSTRUCTION: ShippingInstructionTemplates
   // PACKING_LIST:packingListTemplate
 };

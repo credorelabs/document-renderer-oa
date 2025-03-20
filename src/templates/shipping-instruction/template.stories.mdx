@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { ShippingInstructionTemplate } from "./template";
+import { shippingInstructionTemplate } from "../samples/siSample";
+
+<Meta title="MDX|ShippingInstructionTemplate" component={ShippingInstructionTemplate} />
+
+# shippingInstructionTemplate component
+
+<Description of={ShippingInstructionTemplate} />
+
+# Props
+
+<Props of={ShippingInstructionTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <ShippingInstructionTemplate document={object("document", shippingInstructionTemplate)} />
+  </Story>
+</Preview>
