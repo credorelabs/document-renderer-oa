@@ -677,7 +677,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
             <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
           </div>
           <div>
-            <b>Genesis Transaction Hash:</b>&nbsp;{tokenRegistryAddress?.split("/").pop()}
+            <b>Genesis Transaction Hash:</b>&nbsp;{mintTxHash}
           </div>
         </div>
       </table>
