@@ -41,7 +41,14 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     signerDate,
     signerDns,
     signerIPAddress,
-    signerLocation
+    signerLocation,
+    consignment,
+    containerNo,
+    deliveryInstructions,
+    packingInstructions,
+    incoterm,
+    termsAndConditions,
+    companyLogo
   } = document;
 
   const containerStyle = css`
@@ -49,7 +56,6 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
     margin: auto;
     background-size: cover;
     background-position: center;
-    border: 1px solid black;
   `;
 
   const tableTr = css`
@@ -63,289 +69,364 @@ export const PackingListTemplate: FunctionComponent<TemplateProps<ShippingDocume
   return (
     <div>
       <div css={containerStyle}>
-        <table style={{ width: "100%", padding: "0px", borderSpacing: "0px" }}>
+        <h2 className="my-3" style={{ textAlign: "center" }}>
+          PACKING LIST
+        </h2>
+        <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
           <tr css={tableTr}>
-            <td style={{ width: "50%", textAlign: "center" }} css={tableTd} colSpan={2}>
-              <img src="https://www.credore.xyz/assets/images/Logo.png" alt="credore stamp" style={{ width: "10em" }} />
-            </td>
-            <td css={tableTd} colSpan={2}>
-              <h3>
-                <b>PACKING LIST FOR {packingNumber}</b>
-                <br />
-              </h3>
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd} rowSpan={3} colSpan={2}>
-              <b>Ship From:</b>
+            <td css={tableTd}>
+              <h2 style={{ marginBottom: "-0.5em" }}>
+                <b>{invoice?.supplier_contact_name}</b>
+              </h2>
               <br />
-              {invoice?.supplier_contact_name},<br />
-              {invoice?.supplier_name},<br />
-              {invoice?.supplier_address},<br />
-              {invoice?.supplier_contact_email},<br />
-              {invoice?.supplier_contact_phone}
+              {invoice?.supplier_name} <br />
+              {invoice?.supplier_address} <br />
+              ✉️:&nbsp;{invoice?.supplier_contact_email} <br />
+              📞:&nbsp; {invoice?.supplier_contact_phone} <br />
+              VAT No.:&nbsp;{invoice?.supplier_vat_number} <br />
+              {/* LEI:&nbsp;{invoice?.lei} */}
             </td>
-            <td css={tableTd} colSpan={2}>
-              <b>Invoice Number:</b>&nbsp;{invoice?.invoice_number}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd} colSpan={2}>
-              <b>Seller :</b>&nbsp;{seller}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd} colSpan={2}>
-              <b>Buyer :</b>&nbsp;{buyer}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd} rowSpan={3} colSpan={2}>
-              <b>Ship To:</b>
-              <br />
-              {invoice?.customer_contact_name},<br />
-              {invoice?.customer_name},<br />
-              {invoice?.customer_address},<br />
-              {invoice?.customer_contact_email},<br />
-              {invoice?.customer_contact_phone}
-            </td>
-            <td css={tableTd} colSpan={2}>
-              <b>Packing No.:</b>&nbsp;{packingNumber}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd} colSpan={2}>
-              <b>Seller Reference No.:</b>&nbsp;{sellerReferrence}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd} colSpan={2}>
-              <b>Buyer Reference No.:</b>&nbsp;{buyerReference}
-            </td>
-          </tr>
-        </table>
-
-        <table style={{ width: "100%", padding: "0px", borderSpacing: "0px", marginTop: "3em" }}>
-          <tr css={tableTr}>
-            <td css={tableTd}>
-              <b>Port Of Loading:</b>&nbsp;{portOfLading}
-            </td>
-            <td css={tableTd}>
-              <b>Port Of Discharge :</b>&nbsp;{portOfDischarge}
-            </td>
-            <td css={tableTd}>
-              <b>Place Of Delivery :</b>&nbsp;{placeOfDelivery}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd}>
-              <b>Temperature:</b>&nbsp;{temperature}°c
-            </td>
-            <td css={tableTd}>
-              <b>No Of Packages:</b>&nbsp;{noOfPackages}
-            </td>
-            <td css={tableTd}>
-              <b>Volume:</b>&nbsp;{totalVolume}
-            </td>
-          </tr>
-          <tr css={tableTr}>
-            <td css={tableTd}>
-              <b>Weight:</b>&nbsp;{totalWeight}
-            </td>
-            <td css={tableTd}>
-              <b>Weight Unit:</b>&nbsp;{weightUnit}
-            </td>
-            <td css={tableTd}>
-              <b>Conveyance Ref No:</b>&nbsp;{conveyanceRefNo}
-            </td>
-          </tr>
-          {/* <tr css={tableTr}>
-            <td css={tableTd}><b>Consignment:</b>&nbsp;{consignment}</td>
-            <td css={tableTd} colSpan={2}>
-              <b>Container No:</b>&nbsp;{containerNo}
-            </td>
-          </tr> */}
-        </table>
-
-        <h3 style={{ marginTop: "2em", paddingLeft: "0.5rem" }}>Items Information:</h3>
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-
-            padding: "0px",
-            borderSpacing: "0px"
-          }}
-        >
-          <tr style={{ backgroundColor: "#B8E7E2" }}>
-            <th style={{ display: "table-cell", padding: "0.5rem", border: "2px solid black" }}>Name</th>
-            <th style={{ display: "table-cell", padding: "0.5rem", border: "2px solid black" }}>Quantity</th>
-            <th style={{ display: "table-cell", padding: "0.5rem", border: "2px solid black" }}>Shipping Marks</th>
-            <th style={{ display: "table-cell", padding: "0.5rem", border: "2px solid black" }}>HS Code</th>
-            <th style={{ display: "table-cell", padding: "0.5rem", border: "2px solid black" }}>Type Of Packing</th>
-          </tr>
-
-          {goods?.map((item: any, index: any) => (
-            <tr
-              key={index}
-              style={{
-                marginTop: "0",
-                marginBottom: "0",
-                fontSize: "0.875rem",
-                backgroundColor: "#ffffff",
-                border: "1.5px solid black"
-              }}
-            >
-              <td
-                style={{
-                  color: "#4b5563",
-                  fontWeight: 500,
-                  paddingLeft: "1.5rem",
-                  paddingRight: "1.5rem",
-                  paddingTop: "0.75rem",
-                  paddingBottom: "0.75rem"
-                }}
-              >
-                {item.name}
-              </td>
-              <td
-                style={{
-                  color: "#4b5563",
-                  fontWeight: 500,
-                  paddingLeft: "1.5rem",
-                  paddingRight: "1.5rem",
-                  paddingTop: "0.75rem",
-                  paddingBottom: "0.75rem"
-                }}
-              >
-                {item.quantity}
-              </td>
-              <td
-                style={{
-                  color: "#4b5563",
-                  fontWeight: 500,
-                  paddingLeft: "1.5rem",
-                  paddingRight: "1.5rem",
-                  paddingTop: "0.75rem",
-                  paddingBottom: "0.75rem"
-                }}
-              >
-                {item.shippingMarks}
-              </td>
-              <td
-                style={{
-                  color: "#4b5563",
-                  fontWeight: 500,
-                  paddingLeft: "1.5rem",
-                  paddingRight: "1.5rem",
-                  paddingTop: "0.75rem",
-                  paddingBottom: "0.75rem"
-                }}
-              >
-                {item.hsCode}
-              </td>
-              <td
-                style={{
-                  color: "#4b5563",
-                  fontWeight: 500,
-                  paddingLeft: "1.5rem",
-                  paddingRight: "1.5rem",
-                  paddingTop: "0.75rem",
-                  paddingBottom: "0.75rem"
-                }}
-              >
-                {item.typeOfPacking}
-              </td>
-            </tr>
-          ))}
-        </table>
-
-        <table
-          style={{
-            width: "100%",
-            borderWidth: "0px 1px 1px 1px",
-            borderStyle: "solid",
-            borderColor: "black",
-            padding: "0px",
-            borderSpacing: "0px"
-          }}
-        >
-          <tr css={tableTr}>
-            <td
-              style={{
-                padding: "0.8rem",
-                borderWidth: "1px 0px 1px 1px",
-                borderStyle: "solid",
-                borderColor: "black"
-                // width: "50%"
-              }}
-              colSpan={4}
-            >
-              <span
-                style={{
-                  color: "#DC2626", // Equivalent to text-red-600
-                  fontWeight: 600, // Equivalent to font-semibold
-                  fontSize: "1rem" // Equivalent to text-medium (adjusted to 1rem),.
-                }}
-              >
-                Digitally Signed By:
-              </span>
-
-              <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginTop: "0.5rem",
-                  fontSize: "0.9rem"
-                }}
-              >
+            <td css={tableTd} colSpan={2} style={{ textAlign: "right" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+                <img
+                  src={companyLogo}
+                  alt="Company Logo"
+                  style={{
+                    width: "100px",
+                    height: "auto",
+                    objectFit: "contain",
+                    //   border: "1px solid #e5e7eb",
+                    padding: "4px",
+                    backgroundColor: "#ffffff"
+                  }}
+                />
                 <div>
-                  <span>
-                    <b>Signer Name:</b>&nbsp;{invoice?.supplier_contact_name}
-                  </span>
-                  <br />
-                  <span>
-                    <b>Timestamp:</b>&nbsp;
-                    {moment
-                      .utc(supplier_sign_time)
-                      .add(5, "hours")
-                      .add(30, "minutes")
-                      .format("DD/MM/YYYY hh:mm A [IST]")}
-                  </span>
-                  <br />
-                  <span>
-                    <b>DNS:</b>&nbsp; did:ethr:{signerDns}
-                  </span>
-                </div>
-
-                <div>
-                  <span>
-                    <b>Signer Email:</b>&nbsp;{invoice?.supplier_contact_email} 
-                  </span>
-                  <br />
-                  <span>
-                    <b>Signer IP:</b>&nbsp;{signerIPAddress}
-                  </span>
-                  <br />
-                  <span>
-                    <b>Signer Place:</b>&nbsp;
-                    {signerLocation}
-                  </span>
+                  <h1 style={{ textAlign: "right", marginBottom: "0" }}>
+                    <b>PACKING LIST NUMBER</b>
+                  </h1>
+                  #{packingNumber}
                 </div>
               </div>
             </td>
           </tr>
+        </table>
+
+        <h3 className="font-inter text-xl font-bold mt-4 p-2">Document Information:</h3>
+        <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
           <tr css={tableTr}>
-            <td css={tableTd} colSpan={4}>
-              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> 
-                  This verifiable document is issued on Credore's platform in accordance with the ICC Digital 
-                  Standards Initiative and TradeTrust recommended format. It holds full legal validity, and any 
-                  unauthorized alterations or modifications are strictly prohibited. You can verify the document's 
-                  integrity, authenticity, and traceability through TradeTrust or its authorized verification channels.
+            <td css={tableTd}>
+              <b>PACKING LIST NO.:</b>
+              <br />
+              {packingNumber}
+            </td>
+            <td css={tableTd}>
+              <b>INVOICE NUMBER:</b> <br />
+              {invoice?.invoice_number}
+            </td>
+            <td css={tableTd}>
+              <b>SELLER REFERENCE.:</b>
+              <br />
+              {sellerReferrence}
+            </td>
+            <td css={tableTd}>
+              <b>BUYER REFERENCE.:</b>
+              <br />
+              {buyerReference}
+            </td>
+            <td css={tableTd}>
+              <b>TRANSPORT CONTRACT NUMBER.:</b>
+              <br />
+              {transportContractNumber}
+            </td>
+            {/* <td css={tableTd}>
+                  <b>COMPANY NAME:</b>
+                  <br />
+                  {company}
+                </td> */}
+          </tr>
+        </table>
+
+        <h3 className="font-inter text-xl font-bold mt-4 p-2">Party Details:</h3>
+        <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+          <tr css={tableTr}>
+            <td css={tableTd}>
+              <b>SELLER:</b>
+              <br />
+              {seller}
+            </td>
+            <td css={tableTd}>
+              <b>BUYER:</b>
+              <br />
+              {buyer}
+            </td>
+            <td css={tableTd}>
+              <b>TRANSPORT SERVICE PROVIDER:</b>
+              <br />
+              {transportServiceProvider}
+            </td>
+            <td css={tableTd}>
+              <b>CONVEYANCE REF.NO.:</b>
+              <br />
+              {conveyanceRefNo}
+            </td>
+            <td css={tableTd}>
+              <b>CONSIGNMENT.:</b>
+              <br />
+              {consignment}
+            </td>
+            <td css={tableTd}>
+              <b>CONTAINER.NO.:</b>
+              <br />
+              {containerNo}
             </td>
           </tr>
         </table>
+
+        <h3 className="mt-5 font-inter text-xl font-bold p-2">Location Details:</h3>
+        <div className="flex justify-center items-center">
+          <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+            <tr css={tableTr}>
+              <td css={tableTd}>
+                <b>PORT OF LADING:</b>
+                <br />
+                {portOfLading}
+              </td>
+              <td css={tableTd}>
+                <b>PORT OF DISCHARGE:</b> <br />
+                {portOfDischarge}
+              </td>
+              <td css={tableTd}>
+                <b>PLACE OF DELIVERY:</b>
+                <br />
+                {placeOfDelivery}
+              </td>
+              <td css={tableTd}>
+                <b>MODE OF TRANSPORT:</b>
+                <br />
+                {modeOfTransport}
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 className="mt-5 font-inter text-xl font-bold p-2">Measurement Details:</h3>
+        <div className="flex justify-center items-center">
+          <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+            <tr css={tableTr}>
+              <td css={tableTd}>
+                <b>TEMPERATURE:</b>
+                <br />
+                {temperature}°c
+              </td>
+              <td css={tableTd}>
+                <b>NO.OF.PACKAGES:</b> <br />
+                {noOfPackages}
+              </td>
+              <td css={tableTd}>
+                <b>VOL:</b>
+                <br />
+                {totalVolume}
+              </td>
+              <td css={tableTd}>
+                <b>WEIGHT:</b>
+                <br />
+                {totalWeight + " " + weightUnit}
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 className="mt-5 font-inter text-xl font-bold p-2">Transport Details:</h3>
+        <div className="flex justify-center items-center">
+          <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+            <tr css={tableTr}>
+              <td css={tableTd}>
+                <b>CONVEYANCE REFERENCE NO.:</b>
+                <br />
+                {conveyanceRefNo}
+              </td>
+              <td css={tableTd}>
+                <b>NO. OF PACKAGES:</b>
+                <br />
+                {noOfPackages}
+              </td>
+              <td css={tableTd}>
+                <b>MODE OF TRANSPORT:</b>
+                <br />
+                {modeOfTransport}
+              </td>
+              <td css={tableTd}>
+                <b>CONSIGNMENT:</b>
+                <br />
+                {consignment}
+              </td>
+              <td css={tableTd}>
+                <b>CONTAINER NO:</b>
+                <br />
+                {containerNo}
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 className="mt-5 font-inter text-xl font-bold p-2">Instructions:</h3>
+        <div className="flex justify-center items-center">
+          <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+            <tr css={tableTr}>
+              <td css={tableTd}>
+                <b>DELIVERY INSTRUCTION.:</b>
+                <br />
+                {deliveryInstructions}
+              </td>
+              <td css={tableTd}>
+                <b>PACKING INSTRUCTION:</b>
+                <br />
+                {packingInstructions}
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <h3>Item Informations:</h3>
+        <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+          <tr css={tableTr} style={{ backgroundColor: "#B8E7E2" }}>
+            <th css={tableTd}>Name</th>
+            <th css={tableTd}>Quantity</th>
+            <th css={tableTd}>Shipping Marks</th>
+            <th css={tableTd}>HS Code</th>
+            <th css={tableTd}>Type Of Packing</th>
+          </tr>
+
+          {goods.map((item, index) => (
+            <tr key={index} css={tableTr}>
+              <td css={tableTd}>{item?.name}</td>
+              <td css={tableTd}>{item?.quantity}</td>
+              <td css={tableTd}>{item?.shippingMarks}</td>
+              <td css={tableTd}>{item?.hsCode}</td>
+              <td css={tableTd}>{item?.typeOfPacking}</td>
+            </tr>
+          ))}
+        </table>
+
+        <h3>Terms & Conditions:</h3>
+        <div
+          style={{
+            fontSize: "0.8rem",
+            lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            padding: "0.5rem",
+            marginTop: "0.2rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold" }}>
+            INCOTERM RULE :<br />
+          </span>
+          <div style={{ fontSize: "0.9rem", marginTop: "0.5rem", fontWeight: "normal" }}>
+            {incoterm?.code} - {incoterm?.description}
+            <br />
+            <span style={{ fontWeight: "bold" }}>Delivery Point:</span> {incoterm?.deliveryPoint}
+            <br />
+            <span style={{ fontWeight: "bold" }}>Responsible Buyer:</span> {incoterm?.responsibilityBuyer}
+            <br />
+            <span style={{ fontWeight: "bold" }}>Responsible Seller:</span> {incoterm?.responsibilitySeller}
+          </div>
+        </div>
+        <div
+          style={{
+            fontSize: "0.8rem",
+            lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            borderTop: "0px",
+            padding: "0.5rem",
+            marginBottom: "2rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold" }}>TERMS & CONDITIONS : </span>
+          {termsAndConditions}
+        </div>
+
+        <div
+          style={{
+            fontSize: "0.8rem",
+            lineHeight: "1rem",
+            marginTop: "2rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            borderBottom: "0",
+            padding: "0.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            justifyContent: "spaceBetween"
+          }}
+        >
+          <span style={{ color: "red", fontWeight: "bold" }}>Digitally Signed By:</span>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div>
+              <span>
+                <b>Signer Name:</b>&nbsp;{invoice?.supplier_contact_name}{" "}
+              </span>
+              <br />
+              <span>
+                <b>Timestamp:</b>&nbsp;{" "}
+                {moment
+                  .utc(supplier_sign_time)
+                  .add(5, "hours")
+                  .add(30, "minutes")
+                  .format("DD/MM/YYYY hh:mm A [IST]")}
+              </span>
+              <br />
+              <span>
+                <b>DNS:</b>&nbsp;did:ethr:{signerDns}
+              </span>
+            </div>
+            <div>
+              <span>
+                <b>Signer Email:</b>&nbsp;{invoice?.supplier_contact_email}
+              </span>
+              <br />
+              <span>
+                <b>Signer IP:</b>&nbsp;{signerIPAddress}
+              </span>
+              <br />
+              <span>
+                <b>Signer Place:</b>&nbsp;{signerLocation}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            fontSize: "0.8rem",
+            lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            padding: "0.5rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This verifiable document is
+          issued on Credore's platform in accordance with the ICC Digital Standards Initiative and TradeTrust
+          recommended format. It holds full legal validity, and any unauthorized alterations or modifications are
+          strictly prohibited. You can verify the document's integrity, authenticity, and traceability through
+          TradeTrust or its authorized verification channels.
+        </div>
+        <div
+          style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}
+          className="flex justify-between text-sm"
+        >
+          <div>
+            <b>Tx Hash:</b>&nbsp;{mintTxHash}
+          </div>
+          <div>
+            <b>Blockchain:</b>&nbsp;{blockchainName}
+          </div>
+        </div>
       </div>
     </div>
   );
