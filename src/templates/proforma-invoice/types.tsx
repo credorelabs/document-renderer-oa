@@ -48,6 +48,7 @@ export interface ProformaInvoice extends v2.OpenAttestationDocument {
   termsAndConditions?: string;
   signerDate?: string;
   signerDns?: string;
+  companyLogo?: string;
 }
 
 interface IncoTerm {
