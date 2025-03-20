@@ -52,7 +52,8 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaIn
     incoterm,
     termsAndConditions,
     signerDate,
-    signerDns
+    signerDns,
+    companyLogo
   } = document;
 
   const containerStyle = css`
@@ -90,17 +91,31 @@ export const ProformaInvoiceTemplate: FunctionComponent<TemplateProps<ProformaIn
               VAT No.:&nbsp;{supplier_vat_number} <br />
               LEI:&nbsp;{supplier_lei_number}
             </td>
-            <td css={tableTd} colSpan={2} style={{ textAlign: "right" }}>
-              <div style={{ textAlign: "right", display: "flex", justifyContent: "end", flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "end" }}>
-                  <h2 style={{ textAlign: "right", marginBottom: "0" }}>
-                    <b>INVOICE:</b> &nbsp;<span style={{ fontWeight: 400, fontSize: "1.3rem" }}>{invoice_number}</span>
-                  </h2>
-                </div>
-                <div style={{ display: "flex", justifyContent: "end" }}>
-                  <h2 style={{ textAlign: "right", marginBottom: "0" }}>
-                    <b>INVOICE TYPE:</b> &nbsp;<span style={{ fontWeight: 400, fontSize: "1.3rem" }}>Proforma</span>
-                  </h2>
+            <td css={tableTd} colSpan={2} >
+              <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+                <img
+                  src={companyLogo}
+                  alt="Company Logo"
+                  style={{
+                    width: "100px",
+                    height: "auto",
+                    objectFit: "contain",
+                    //   border: "1px solid #e5e7eb",
+                    padding: "4px",
+                    backgroundColor: "#ffffff"
+                  }}
+                />
+                <div style={{ textAlign: "right", display: "flex", justifyContent: "end", flexDirection: "column" }}>
+                  <div style={{ display: "flex", justifyContent: "end" }}>
+                    <h2 style={{ textAlign: "right", marginBottom: "0" }}>
+                      <b>INVOICE:</b> &nbsp;<span style={{ fontWeight: 400, fontSize: "1.3rem" }}>{invoice_number}</span>
+                    </h2>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "end" }}>
+                    <h2 style={{ textAlign: "right", marginBottom: "0" }}>
+                      <b>INVOICE TYPE:</b> &nbsp;<span style={{ fontWeight: 400, fontSize: "1.3rem" }}>Proforma</span>
+                    </h2>
+                  </div>
                 </div>
               </div>
             </td>

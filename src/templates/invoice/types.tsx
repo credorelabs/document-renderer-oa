@@ -44,6 +44,18 @@ export interface Invoice extends v2.OpenAttestationDocument {
   invoiceProof?: InvoiceProof;
   signerDate?: string;
   signerDns?: string;
+  incoterm?: IncoTerm;
+  termsAndConditions?: string;
+  companyLogo?: string;
+  paymentMethod?: string;
+}
+
+interface IncoTerm {
+  code?: string;                 
+  description?: string;             
+  responsibilityBuyer?: string;     
+  responsibilitySeller?: string;    
+  deliveryPoint?: string;           
 }
 
 interface InvoiceLine {

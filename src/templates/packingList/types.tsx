@@ -45,7 +45,21 @@ export interface ShippingDocument extends v2.OpenAttestationDocument {
   signerDns?: string;
   signerLocation?: string;
   signerIPAddress?: string;
+  deliveryInstructions?: string;
+  packingInstructions?: string;
+  incoterm?: IncoTerm;
+  termsAndConditions?: string;
+  companyLogo?: string;
 }
+
+interface IncoTerm {
+  code?: string;                 
+  description?: string;             
+  responsibilityBuyer?: string;     
+  responsibilitySeller?: string;    
+  deliveryPoint?: string;           
+}
+
 interface Invoice {
   invoice_number: string;
   invoice_date: string;

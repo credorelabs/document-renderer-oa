@@ -47,8 +47,12 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     signerIPAddress,
     signerLocation,
     invoiceProof,
+    incoterm,
+    termsAndConditions,
     signerDate,
-    signerDns
+    signerDns,
+    companyLogo,
+    paymentMethod
   } = document;
 
   const containerStyle = css`
@@ -86,11 +90,27 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               VAT No.:&nbsp;{supplier_vat_number} <br />
               LEI:&nbsp;{supplier_lei_number}
             </td>
-            <td css={tableTd} colSpan={2} style={{ textAlign: "right" }}>
-              <h1 style={{ textAlign: "right", marginBottom: "0" }}>
-                <b>INVOICE</b>
-              </h1>
-              #{invoice_number}
+            <td css={tableTd} colSpan={2}>
+              <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+                <img
+                  src={companyLogo}
+                  alt="Company Logo"
+                  style={{
+                    width: "100px",
+                    height: "auto",
+                    objectFit: "contain",
+                    //   border: "1px solid #e5e7eb",
+                    padding: "4px",
+                    backgroundColor: "#ffffff"
+                  }}
+                />
+                <div style={{ textAlign: "right", display: "flex", justifyContent: "end", flexDirection: "column" }}>
+                  <h1 style={{ textAlign: "right", marginBottom: "0" }}>
+                    <b>INVOICE</b>
+                  </h1>
+                  #{invoice_number}
+                </div>
+              </div>
             </td>
           </tr>
 
@@ -164,7 +184,9 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
               <b>Account Number: </b>
               {bankAccountNo} <br />
               <b>IFSC: </b>
-              {IFSCCode}
+              {IFSCCode} <br/>
+              <b>Payment Method: </b>
+              {paymentMethod} <br/>
             </td>
           </tr>
         </table>
@@ -297,6 +319,47 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             </td>
           </tr>
         </table>
+
+
+        <div
+          style={{
+            fontSize: "1rem",
+            // lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            padding: "0.5rem",
+            marginTop: "2rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold" }}>
+            IncoTerm Rule:
+            <br />
+            <div style={{ fontSize: "0.9rem", marginTop: "0.5rem", fontWeight: "normal" }}>
+              {incoterm?.code} - {incoterm?.description}
+              <br />
+              <span style={{ fontWeight: "bold" }}>Delivery Point:</span> {incoterm?.deliveryPoint}
+              <br />
+              <span style={{ fontWeight: "bold" }}>Responsible Buyer:</span> {incoterm?.responsibilityBuyer}
+              <br />
+              <span style={{ fontWeight: "bold" }}>Responsible Seller:</span> {incoterm?.responsibilitySeller}
+            </div>
+          </span>
+        </div>
+
+        <div
+          style={{
+            fontSize: "0.8rem",
+            lineHeight: "1rem",
+            opacity: "0.8",
+            textAlign: "justify",
+            border: "2px solid black",
+            borderTop: "0px",
+            padding: "0.5rem"
+          }}
+        >
+          <span style={{ fontWeight: "bold" }}>Terms and Conditions: {termsAndConditions}</span>
+        </div>
         <table
           style={{
             width: "100%",
