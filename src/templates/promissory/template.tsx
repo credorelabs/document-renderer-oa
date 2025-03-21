@@ -175,7 +175,7 @@ export const PromissoryTemplate: FunctionComponent<TemplateProps<Prom>> = ({ doc
                           .utc(commitmentDate)
                           .add(5, "hours")
                           .add(30, "minutes")
-                          .format("DD/MM/YYYY hh:mm A [IST]")}
+                          .format("DD/MM/YYYY")}
                       </b>
                     </div>
                   </div>
