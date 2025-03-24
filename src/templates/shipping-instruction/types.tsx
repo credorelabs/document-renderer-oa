@@ -1,6 +1,10 @@
 import { v2 } from "@govtechsg/open-attestation";
 
 export interface ShippingInstruction extends v2.OpenAttestationDocument {
+    recipient?: Recipient;
+}
+
+interface Recipient extends v2.Recipient {
     carrierLogo?: string;
     documentPartiesShipper?: DocumentPartiesShipper;
     documentCarrierCarrier?: DocumentCarrierCarrier;
@@ -35,7 +39,6 @@ export interface ShippingInstruction extends v2.OpenAttestationDocument {
     shipperSignature?: Signature;
     carrierSignature?: Signature;
 }
-
 interface Signature {
     name?: string;
     timeStamp?: string;

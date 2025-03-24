@@ -14,6 +14,7 @@ const PAYMENT_METHODS = [
 ];
 
 export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<ShippingInstruction>> = ({ document }) => {
+  const recipient = document.recipient ?? {};
   const {
     carrierLogo,
     documentPartiesShipper,
@@ -46,9 +47,8 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
     customsReference,
     advanceManifestFilings,
     houseBillofLading,
-    carrierSignature, // Added from the footer section
-    shipperSignature, // Added from the footer section
-  } = document;
+    carrierSignature
+  } = recipient;
 
   const tableBorderStyle: React.CSSProperties = { border: "1px solid #e5e7eb" };
   const headerStyle: React.CSSProperties = {
@@ -57,7 +57,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
     padding: "8px 12px",
     fontWeight: "bold",
     textAlign: "left",
-    fontSize: "13px",
+    fontSize: "13px"
   };
   const cellStyle: React.CSSProperties = {
     padding: "8px 12px",
@@ -65,7 +65,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
     fontSize: "12px",
     color: "#374151",
     wordBreak: "break-word",
-    maxWidth: "180mm",
+    maxWidth: "180mm"
   };
   const subHeaderStyle: React.CSSProperties = {
     backgroundColor: "#d1d5db",
@@ -73,7 +73,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
     fontWeight: "bold",
     textAlign: "left",
     fontSize: "12px",
-    color: "#1f2937",
+    color: "#1f2937"
   };
   const sectionHeaderStyle: React.CSSProperties = {
     backgroundColor: "#e5e7eb",
@@ -81,14 +81,13 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
     fontWeight: "bold",
     fontSize: "14px",
     color: "#1f2937",
-    marginBottom: "8px",
+    marginBottom: "8px"
   };
   const sectionStyle: React.CSSProperties = {
     pageBreakInside: "avoid" as const,
     pageBreakBefore: "auto" as const,
-    marginBottom: "20px",
+    marginBottom: "20px"
   };
-
 
   return (
     <div
@@ -101,27 +100,27 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         border: "2px solid #1f2937",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
         display: "block",
-        boxSizing: "border-box",
+        boxSizing: "border-box"
       }}
       id="shipping-instruction-document"
     >
       {/* Header Section */}
       <div style={{ ...sectionStyle, textAlign: "center", pageBreakAfter: "avoid" as const }}>
         <div style={{ display: "flex", justifyContent: "end", width: "100%" }}>
-        { carrierLogo && 
-                  <img
-                    src={carrierLogo}
-                    alt="Company Logo"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      objectFit: "contain",
-                      //   border: "1px solid #e5e7eb",
-                      padding: "4px",
-                      backgroundColor: "#ffffff"
-                    }}
-                  />
-                }
+          {carrierLogo && (
+            <img
+              src={carrierLogo}
+              alt="Company Logo"
+              style={{
+                width: "100px",
+                height: "auto",
+                objectFit: "contain",
+                //   border: "1px solid #e5e7eb",
+                padding: "4px",
+                backgroundColor: "#ffffff"
+              }}
+            />
+          )}
         </div>
         <h2 style={{ margin: "0 0 5px", fontSize: "22px", color: "#111827", fontWeight: "bold" }}>
           SHIPPING INSTRUCTION
@@ -129,7 +128,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
       </div>
 
       {/* Shipper and Carrier */}
-      <div style={{ ...sectionStyle, display: "flex", justifyContent: "space-between", pageBreakInside: "avoid" as const }}>
+      <div
+        style={{ ...sectionStyle, display: "flex", justifyContent: "space-between", pageBreakInside: "avoid" as const }}
+      >
         <div style={{ width: "48%" }}>
           <div style={sectionHeaderStyle}>SHIPPER</div>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
@@ -145,8 +146,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             <strong>Email:</strong> {documentPartiesShipper?.email || "--"}
           </p>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>LEI:</strong>{" "}
-            {documentPartiesShipper?.lei || "--"}
+            <strong>LEI:</strong> {documentPartiesShipper?.lei || "--"}
           </p>
         </div>
         <div style={{ width: "48%" }}>
@@ -164,8 +164,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             <strong>Email:</strong> {documentCarrierCarrier?.email || "--"}
           </p>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>LEI:</strong>{" "}
-            {documentCarrierCarrier?.lei || "--"}
+            <strong>LEI:</strong> {documentCarrierCarrier?.lei || "--"}
           </p>
         </div>
       </div>
@@ -184,9 +183,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             <tr style={tableBorderStyle}>
               <td style={cellStyle}>{shippingInstructionsReference || "--"}</td>
               <td style={cellStyle}>{bookingReferenceNumber || "--"}</td>
-              <td style={cellStyle}>
-                {shippingInstructionsStatus?.replace("_", " ") || "--"}
-              </td>
+              <td style={cellStyle}>{shippingInstructionsStatus?.replace("_", " ") || "--"}</td>
             </tr>
           </tbody>
         </table>
@@ -197,7 +194,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th colSpan={3} style={headerStyle}>GENERAL DETAILS</th>
+              <th colSpan={3} style={headerStyle}>
+                GENERAL DETAILS
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -229,7 +228,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th colSpan={3} style={headerStyle}>LOCATION & TRANSPORT EQUIPMENT</th>
+              <th colSpan={3} style={headerStyle}>
+                LOCATION & TRANSPORT EQUIPMENT
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -258,7 +259,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {utilizedTransportEquipments?.map((item, index) => (
               <React.Fragment key={index}>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Transport Equipment {index + 1}</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Transport Equipment {index + 1}
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -276,22 +279,21 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                     <strong>Equipment Ref:</strong>{" "}
                     {item?.shipperOwnedEquipment?.isShipperOwned
                       ? item?.shipperOwnedEquipment?.equipment?.equipmentReference
-                      : item?.carrierOwnedEquipment?.equipment?.equipmentReference ||
-                        "--"}
+                      : item?.carrierOwnedEquipment?.equipment?.equipmentReference || "--"}
                   </td>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
                     <strong>ISO Code:</strong> {item?.shipperOwnedEquipment?.equipment?.ISOEquipmentCode || "--"}
                   </td>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
-                    <strong>Tare Weight:</strong>{" "}
-                    {item?.shipperOwnedEquipment?.equipment?.tareWeight?.value || "--"}{" "}
+                    <strong>Tare Weight:</strong> {item?.shipperOwnedEquipment?.equipment?.tareWeight?.value || "--"}{" "}
                     {item?.shipperOwnedEquipment?.equipment?.tareWeight?.unit || ""}
                   </td>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td colSpan={3} style={cellStyle}>
                     <strong>Seals:</strong>{" "}
-                    {item?.seals?.map((seal, idx) => `${idx + 1}. ${seal?.number} - ${seal?.source}`).join(", ") || "--"}
+                    {item?.seals?.map((seal, idx) => `${idx + 1}. ${seal?.number} - ${seal?.source}`).join(", ") ||
+                      "--"}
                   </td>
                 </tr>
               </React.Fragment>
@@ -305,14 +307,15 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th colSpan={3} style={headerStyle}>PARTY CONTACT DETAILS</th>
+              <th colSpan={3} style={headerStyle}>
+                PARTY CONTACT DETAILS
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr style={tableBorderStyle}>
               <td colSpan={3} style={cellStyle}>
-                <strong>Carrier Agent at Destination:</strong>{" "}
-                {isCarriersAgentAtDestinationRequired ? "Yes" : "No"}
+                <strong>Carrier Agent at Destination:</strong> {isCarriersAgentAtDestinationRequired ? "Yes" : "No"}
               </td>
             </tr>
             <tr style={tableBorderStyle}>
@@ -349,7 +352,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {partyContactDetails?.map((item, index) => (
               <React.Fragment key={index}>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Contact {index + 1}</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Contact {index + 1}
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -373,7 +378,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th colSpan={3} style={headerStyle}>REGULATORY & COMPLIANCE</th>
+              <th colSpan={3} style={headerStyle}>
+                REGULATORY & COMPLIANCE
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -385,7 +392,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {exportLicense?.reference && (
               <>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Export License</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Export License
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -418,7 +427,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {importLicense?.reference && (
               <>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Import License</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Import License
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -451,7 +462,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {advanceManifestFilings?.manifestTypeCode && (
               <>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Advance Manifest Filings</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Advance Manifest Filings
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -478,7 +491,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {customsReference?.type && (
               <>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Customs Reference</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Customs Reference
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -496,7 +511,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {references?.type && (
               <>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Reference</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Reference
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td colSpan={3} style={cellStyle}>
@@ -515,14 +532,18 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th colSpan={3} style={headerStyle}>CONSIGNMENT ITEMS</th>
+              <th colSpan={3} style={headerStyle}>
+                CONSIGNMENT ITEMS
+              </th>
             </tr>
           </thead>
           <tbody>
             {consignmentItems?.map((item, index) => (
               <React.Fragment key={index}>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Item {index + 1}</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Item {index + 1}
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -633,22 +654,18 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                     </tr>
                     <tr style={tableBorderStyle}>
                       <td style={{ ...cellStyle, width: "33.33%" }}>
-                        <strong>Package Code:</strong>{" "}
-                        {cargoItem?.OuterPackaging?.packageCode || "--"}
+                        <strong>Package Code:</strong> {cargoItem?.OuterPackaging?.packageCode || "--"}
                       </td>
                       <td style={{ ...cellStyle, width: "33.33%" }}>
-                        <strong>No. of Packages:</strong>{" "}
-                        {cargoItem?.OuterPackaging?.numberOfPackages || "--"}
+                        <strong>No. of Packages:</strong> {cargoItem?.OuterPackaging?.numberOfPackages || "--"}
                       </td>
                       <td style={{ ...cellStyle, width: "33.33%" }}>
-                        <strong>Description:</strong>{" "}
-                        {cargoItem?.OuterPackaging?.description || "--"}
+                        <strong>Description:</strong> {cargoItem?.OuterPackaging?.description || "--"}
                       </td>
                     </tr>
                     <tr style={tableBorderStyle}>
                       <td colSpan={3} style={cellStyle}>
-                        <strong>Wood Declaration:</strong>{" "}
-                        {cargoItem?.OuterPackaging?.woodDeclaration || "--"}
+                        <strong>Wood Declaration:</strong> {cargoItem?.OuterPackaging?.woodDeclaration || "--"}
                       </td>
                     </tr>
                     {cargoItem?.customsReference && (
@@ -704,7 +721,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
-              <th colSpan={3} style={headerStyle}>HOUSE BILL OF LADING</th>
+              <th colSpan={3} style={headerStyle}>
+                HOUSE BILL OF LADING
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -716,7 +735,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
             {isHouseBillOfLadingsIssued && (
               <>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Basic Details</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Basic Details
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -727,7 +748,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                   </td>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
                     <strong>Payment Method:</strong>{" "}
-                    {PAYMENT_METHODS.find((item) => item.value === houseBillofLading?.methodOfPayment)?.label || "--"}
+                    {PAYMENT_METHODS.find(item => item.value === houseBillofLading?.methodOfPayment)?.label || "--"}
                   </td>
                 </tr>
                 <tr style={tableBorderStyle}>
@@ -735,12 +756,13 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                     <strong>To Order:</strong> {houseBillofLading?.isToOrder ? "Yes" : "No"}
                   </td>
                   <td colSpan={2} style={{ ...cellStyle, width: "66.66%" }}>
-                    <strong>Routing Countries:</strong>{" "}
-                    {houseBillofLading?.routingOfConsignmentCountries?.[0] || "--"}
+                    <strong>Routing Countries:</strong> {houseBillofLading?.routingOfConsignmentCountries?.[0] || "--"}
                   </td>
                 </tr>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Place of Acceptance</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Place of Acceptance
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -754,7 +776,9 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                   </td>
                 </tr>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Place of Delivery</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Place of Delivery
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
@@ -768,11 +792,14 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                   </td>
                 </tr>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Document Parties</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Document Parties
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
-                    <strong>Consignee:</strong> {houseBillofLading?.documentParties?.consignee?.partyCompanyName || "--"}
+                    <strong>Consignee:</strong>{" "}
+                    {houseBillofLading?.documentParties?.consignee?.partyCompanyName || "--"}
                   </td>
                   <td style={{ ...cellStyle, width: "33.33%" }}>
                     <strong>Buyer:</strong> {houseBillofLading?.documentParties?.buyer?.partyCompanyName || "--"}
@@ -793,11 +820,14 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                   </td>
                 </tr>
                 <tr>
-                  <th colSpan={3} style={subHeaderStyle}>Consignment Items</th>
+                  <th colSpan={3} style={subHeaderStyle}>
+                    Consignment Items
+                  </th>
                 </tr>
                 <tr style={tableBorderStyle}>
                   <td colSpan={3} style={cellStyle}>
-                    <strong>Description of Goods:</strong> {houseBillofLading?.ConsignmentItems?.descriptionOfGoods || "--"}
+                    <strong>Description of Goods:</strong>{" "}
+                    {houseBillofLading?.ConsignmentItems?.descriptionOfGoods || "--"}
                   </td>
                 </tr>
                 {houseBillofLading?.ConsignmentItems?.nationalCommodityCode && (
@@ -809,14 +839,16 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                     </tr>
                     <tr style={tableBorderStyle}>
                       <td style={{ ...cellStyle, width: "33.33%" }}>
-                        <strong>Type:</strong> {houseBillofLading?.ConsignmentItems?.nationalCommodityCode?.type || "--"}
+                        <strong>Type:</strong>{" "}
+                        {houseBillofLading?.ConsignmentItems?.nationalCommodityCode?.type || "--"}
                       </td>
                       <td style={{ ...cellStyle, width: "33.33%" }}>
                         <strong>Country Code:</strong>{" "}
                         {houseBillofLading?.ConsignmentItems?.nationalCommodityCode?.countryCode || "--"}
                       </td>
                       <td style={{ ...cellStyle, width: "33.33%" }}>
-                        <strong>Value:</strong> {houseBillofLading?.ConsignmentItems?.nationalCommodityCode?.values || "--"}
+                        <strong>Value:</strong>{" "}
+                        {houseBillofLading?.ConsignmentItems?.nationalCommodityCode?.values || "--"}
                       </td>
                     </tr>
                   </>
@@ -898,7 +930,8 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
                       </td>
                       <td colSpan={2} style={{ ...cellStyle, width: "66.66%" }}>
                         <strong>Seals:</strong>{" "}
-                        {item?.seals?.map((seal, idx) => `${idx + 1}. ${seal?.number} - ${seal?.source}`).join(", ") || "--"}
+                        {item?.seals?.map((seal, idx) => `${idx + 1}. ${seal?.number} - ${seal?.source}`).join(", ") ||
+                          "--"}
                       </td>
                     </tr>
                   </React.Fragment>
@@ -918,44 +951,32 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
           display: "flex",
           justifyContent: "space-between",
           border: "1px solid #e5e7eb",
-          padding: "10px",
+          padding: "10px"
         }}
       >
-        <div style={{ width: "48%", textAlign: "left", borderRight: "1px solid #e5e7eb" }}>
+        <div style={{ width: "100%", textAlign: "left", borderRight: "1px solid #e5e7eb" }}>
           <h3 style={{ margin: "0 0 10px", fontSize: "14px", color: "red", fontWeight: "bold" }}>
             Accepted & Digitally Signed By Carrier
           </h3>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Name:</strong> {carrierSignature?.name || "--"}
-          </p>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Timestamp:</strong>{" "}
-            {carrierSignature?.timeStamp ? moment(carrierSignature?.timeStamp).format("DD/MM/YYYY") : "--"}
-          </p>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Signer IP:</strong> {carrierSignature?.ip || "--"}
-          </p>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Signer Place:</strong> {carrierSignature?.place || "--"}
-          </p>
-        </div>
-        <div style={{ width: "48%" }}>
-          <h3 style={{ margin: "0 0 10px", fontSize: "14px", color: "red", fontWeight: "bold" }}>
-            Digitally Signed By Shipper
-          </h3>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Name:</strong> {shipperSignature?.name || "--"}
-          </p>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Timestamp:</strong>{" "}
-            {shipperSignature?.timeStamp ? moment(shipperSignature?.timeStamp).format("DD/MM/YYYY") : "--"}
-          </p>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Signer IP:</strong> {shipperSignature?.ip || "--"}
-          </p>
-          <p style={{ margin: "0", fontSize: "12px" }}>
-            <strong>Signer Place:</strong> {shipperSignature?.place || "--"}
-          </p>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div>
+              <p style={{ margin: "0", fontSize: "12px" }}>
+                <strong>Name:</strong> {carrierSignature?.name || "--"}
+              </p>
+              <p style={{ margin: "0", fontSize: "12px" }}>
+                <strong>Timestamp:</strong>{" "}
+                {carrierSignature?.timeStamp ? moment(carrierSignature?.timeStamp).format("DD/MM/YYYY") : "--"}
+              </p>
+            </div>
+            <div>
+              <p style={{ margin: "0", fontSize: "12px" }}>
+                <strong>Signer IP:</strong> {carrierSignature?.ip || "--"}
+              </p>
+              <p style={{ margin: "0", fontSize: "12px" }}>
+                <strong>Signer Place:</strong> {carrierSignature?.place || "--"}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
