@@ -50,6 +50,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
     carrierSignature
   } = recipient;
 
+  console.log(recipient)
   const tableBorderStyle: React.CSSProperties = { border: "1px solid #e5e7eb" };
   const headerStyle: React.CSSProperties = {
     backgroundColor: "#1f2937",

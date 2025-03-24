@@ -34,6 +34,6 @@ export const registry: TemplateRegistry<any> = {
   PURCHASE_ORDER: PurchaseOrderTemplates,
   FIATA_BOL: FiataEBolTemplates,
   PROFORMA_INVOICE: ProformaInvoiceTemplates,
-  SHIPPING_INSTRUCTION: ShippingInstructionTemplates
+  SHIPPING_INSTRUCTIONS: ShippingInstructionTemplates
   // PACKING_LIST:packingListTemplate
 };

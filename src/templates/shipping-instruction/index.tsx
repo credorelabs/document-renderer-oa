@@ -2,8 +2,8 @@ import { ShippingInstructionTemplate } from "./template";
 
 export const ShippingInstructionTemplates = [
   {
-    id: "purchaseOrder",
-    label: "purchaseOrder",
+    id: "shippingInstruction",
+    label: "shippingInstruction",
     template: ShippingInstructionTemplate
   }
 ]
