@@ -1,6 +1,10 @@
 import { v2 } from "@govtechsg/open-attestation";
 
 export interface Invoice extends v2.OpenAttestationDocument {
+    recipient?: Recipient;
+}
+
+export interface Recipient extends v2.Recipient {
   invoice_number: string;
   invoice_date: string;
   due_date: string;

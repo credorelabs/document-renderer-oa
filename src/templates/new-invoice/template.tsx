@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { css } from "@emotion/core";
-import { Invoice } from "./types";
+import { Invoice, Recipient } from "./types";
 import moment from "moment";
 
-export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ document }) => {
+export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ document }) => {
+  const recipient = (document.recipient ?? {}) as Recipient;
   const {
     invoice_number,
     customer_name,
@@ -53,7 +54,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     signerDns,
     companyLogo,
     paymentMethod
-  } = document;
+  } = recipient;
 
   const containerStyle = css`
     margin: auto;
@@ -463,9 +464,9 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
           </tr> */}
         </table>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>
+          {/* <div>
             <b>Tx Hash:</b>&nbsp;{mintTxHash}
-          </div>
+          </div> */}
           <div>
             <b>Blockchain:</b>&nbsp;{blockchainName}
           </div>
