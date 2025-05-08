@@ -1,6 +1,6 @@
 import { CargoDocumentTemplate } from "./template";
 
-export const ShippingInstructionTemplates = [
+export const CargoDocumentTemplates = [
   {
     id: "cargoDocumentTemplate",
     label: "cargoDocumentTemplate",

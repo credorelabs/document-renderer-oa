@@ -22,34 +22,7 @@ export const cargoDocumentTemplate: CargoDocument = {
     invoicePayableAt: {
       UNLocationCode: "AE ARP - Ahmed Bin Rashid Port"
     },
-    utilizedTransportEquipments: [
-      {
-        shippingMarks: "SM12345",
-        emptyIndicatorCode: "FULL",
-        seals: [
-          {
-            number: "SN564",
-            source: "CAR"
-          }
-        ],
-        shipperOwnedEquipment: {
-          isShipperOwned: true,
-          equipment: {
-            equipmentReference: "dtr",
-            ISOEquipmentCode: "iso",
-            tareWeight: {
-              value: 567,
-              unit: "KGM"
-            }
-          }
-        },
-        carrierOwnedEquipment: {
-          equipment: {
-            equipmentReference: "CONT123"
-          }
-        }
-      }
-    ],
+
     isCarriersAgentAtDestinationRequired: false,
     documentParties: {
       shipper: {
@@ -105,13 +78,7 @@ export const cargoDocumentTemplate: CargoDocument = {
       issueDate: "2025-02-01",
       expiryDate: "2025-11-30"
     },
-    advanceManifestFilings: {
-      manifestTypeCode: "ICS2",
-      countryCode: "AE",
-      selfFilerCode: "SF123",
-      advanceManifestFilingsHouseBLPerformedBy: "Carrier",
-      identificationNumber: "ID98765"
-    },
+
     customsReference: {
       type: "Customs Decl",
       countryCode: "IN",
@@ -182,93 +149,7 @@ export const cargoDocumentTemplate: CargoDocument = {
         ]
       }
     ],
-    isHouseBillOfLadingsIssued: true,
-    houseBillofLading: {
-      houseBillOfLadingReference: "HBL001",
-      isCargoDeliveredInICS2Zone: false,
-      isToOrder: true,
-      routingOfConsignmentCountries: ["AE", "IN"],
-      methodOfPayment: "H",
-      placeOfAcceptance: {
-        UNLocationCode: "IN BOM",
-        countryCode: "IN",
-        locationName: "Mumbai"
-      },
-      placeOfFinalDelivery: {
-        UNLocationCode: "AE DXB",
-        countryCode: "AE",
-        locationName: "Dubai"
-      },
-      documentParties: {
-        buyer: {
-          partyCompanyName: "Buyer Party"
-        },
-        consignee: {
-          partyCompanyName: "Consignee Party"
-        },
-        endorsee: {
-          partyCompanyName: "Endorsee Party"
-        },
-        issueTo: {
-          partyCompanyName: "Issue to party"
-        },
-        notifyParties: {
-          partyCompanyName: "Notify party name"
-        },
-        seller: {
-          partyCompanyName: "Seller party name"
-        },
-        shipper: {
-          partyCompanyName: "Shipper party"
-        },
-        other: {
-          partyFunction: "Agent",
-          otherParty: {
-            partyCompanyName: "Other Party"
-          }
-        }
-      },
-      ConsignmentItems: {
-        descriptionOfGoods: ["Electronics - Laptops"],
-        nationalCommodityCode: {
-          type: "NCC",
-          countryCode: "AE",
-          values: "NCCVAL003"
-        },
-        cargoItems: [
-          {
-            equipmentReference: "dtr",
-            cargoGrossWeight: {
-              value: 1000,
-              unit: "KGM"
-            },
-            packageCode: "BX",
-            numberOfPackages: "10",
-            shippingMarks: "SHPMRK001",
-            UNNumber: "UN1234"
-          }
-        ],
-        customsReferences: {
-          type: "HBL Customs",
-          countryCode: "IN",
-          values: "HBLREF004"
-        }
-      },
-      UtilizedTransportEquipments: [
-        {
-          equipmentReference: "dtr",
-          isShipperOwned: true,
-          emptyIndicatorCode: "FULL",
-          ISOEquipmentCode: "iso",
-          seals: [
-            {
-              number: "SN564",
-              source: "CAR"
-            }
-          ]
-        }
-      ]
-    },
+
     bookingReferenceNumber: "BOOKING-AS-123",
     bookingStatus: "CONFIRMED",
     originPort: "BE KRI - Kaprijke",
