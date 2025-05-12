@@ -20,6 +20,7 @@ import { ProformaInvoiceTemplates } from "./proforma-invoice";
 import { ShippingInstructionTemplates } from "./shipping-instruction";
 import { NewInvoiceTemplates } from "./new-invoice";
 import { NewProformaInvoiceTemplates } from "./proforma-invoice-new";
+import { CargoDocumentTemplates } from "./transport-document";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -38,6 +39,7 @@ export const registry: TemplateRegistry<any> = {
   PROFORMA_INVOICE: ProformaInvoiceTemplates,
   SHIPPING_INSTRUCTION: ShippingInstructionTemplates,
   COMMERCIAL_INVOICE: NewInvoiceTemplates,
-  PROFORMA_INVOICE_V2: NewProformaInvoiceTemplates
+  PROFORMA_INVOICE_V2: NewProformaInvoiceTemplates,
+  DCSA_BOL: CargoDocumentTemplates,
   // PACKING_LIST:packingListTemplate
 };

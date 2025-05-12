@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { CargoDocumentTemplate } from "./template";
+import { cargoDocumentTemplate } from "../samples/transportDocSample";
+
+<Meta title="MDX|CargoDocumentTemplate" component={CargoDocumentTemplate} />
+
+# cargoDocumentTemplate component
+
+<Description of={CargoDocumentTemplate} />
+
+# Props
+
+<Props of={CargoDocumentTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <CargoDocumentTemplate document={object("document", cargoDocumentTemplate)} />
+  </Story>
+</Preview>
