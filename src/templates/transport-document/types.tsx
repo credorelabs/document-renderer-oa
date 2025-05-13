@@ -60,8 +60,8 @@ interface Recipient extends v2.Recipient {
     shipperSignature?: Signature;
     carrierSignature?: Signature;
 
-    blNumber?: string;
-    // bookingReferenceNumber?: string;
+    dcsaBlNumber?: string;
+    carrierClause?: string;
     consignment_containerNumber?: string;
     consignment_containerSizeTypeISO?: string;
     consignment_fullOrEmptyIndicator?: string;

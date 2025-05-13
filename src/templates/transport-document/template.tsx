@@ -18,8 +18,11 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
   const recipient = document.recipient ?? {};
   const {
     carrierLogo,
-    blNumber,
-    // bookingReferenceNumber,
+    dcsaBlNumber,
+    transportDocumentSubReference,
+    shippingInstructionsReference,
+    isShippedOnBoardType,
+    carrierClause,
     consignment_containerNumber,
     consignment_containerSizeTypeISO,
     consignment_fullOrEmptyIndicator,
@@ -218,7 +221,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <span style={{ fontSize: "0.8rem" }}>
               <b>B/L Number:</b>
             </span>
-            &nbsp;{blNumber}
+            &nbsp;{dcsaBlNumber}
           </td>
         </tr>
         <tr css={tableTr}>
