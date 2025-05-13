@@ -7,6 +7,8 @@ export const cargoDocumentTemplate: CargoDocument = {
     shippingInstructionsStatus: "COMPLETED",
     organisationName: "Esmos_Cartel",
     dcsaBolReferenceNumber: "BOL-123456",
+    exporterCompanyName: "Esmos_Cartel",
+    exporterLei: "LEI-1234567890",
     dcsaBlNumber: "BOL-123456",
     transportDocumentTypeCode: "BOL",
     isShippedOnBoardType: true,
