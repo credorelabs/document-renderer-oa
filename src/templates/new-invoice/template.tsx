@@ -78,11 +78,31 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
     <>
       <div css={containerStyle}>
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
+          { companyLogo && (
+            <tr css={tableTr}>
+              <td colSpan={4}>
+                <img 
+                  src={companyLogo} 
+                  alt="company logo" 
+                  style={{
+                    width: "150px",
+                    height: "auto",
+                    objectFit: "contain",
+                    // border: "1px solid #e5e7eb",
+                    padding: "15px",
+                    backgroundColor: "#ffffff",
+                    marginLeft: "10px"
+                  }}
+                />
+              </td>
+            </tr>
+          )}
+
           <tr css={tableTr}>
-            <td css={tableTd}>
-              <h2 style={{ marginBottom: "-0.5em" }}>
+            <td css={tableTd} style={{width: "60%"}}>
+              <h3 style={{ marginBottom: "-0.5em" }}>
                 <b>{supplier_contact_name}</b>
-              </h2>
+              </h3>
               <br />
               {supplier_name} <br />
               {supplier_address} <br />
@@ -92,28 +112,19 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
               LEI:&nbsp;{supplier_lei_number}
             </td>
             <td css={tableTd} colSpan={2}>
-              <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-              { companyLogo && 
-                  <img
-                    src={companyLogo}
-                    alt="Company Logo"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      objectFit: "contain",
-                      //   border: "1px solid #e5e7eb",
-                      padding: "4px",
-                      backgroundColor: "#ffffff"
-                    }}
-                  />
-                }
-                <div style={{ textAlign: "right", display: "flex", justifyContent: "end", flexDirection: "column" }}>
-                  <h1 style={{ textAlign: "right", marginBottom: "0" }}>
-                    <b>INVOICE</b>
-                  </h1>
-                  #{invoice_number}
-                </div>
-              </div>
+            <div style={{ display: "flex", gap: "1.25rem", margin: "0" }}>
+              <h3 style={{ textAlign: "right", marginBottom: "0" }}>
+                <b>INVOICE:</b>
+              </h3>
+              <span style={{marginTop: "1.3rem"}}>#{invoice_number}</span>
+            </div>
+
+            <div style={{ display: "flex", gap: "1.25rem" }}>
+              <h3 style={{ textAlign: "right", marginBottom: "0" }}>
+                <b>INVOICE TYPE:</b>
+              </h3>
+              <span style={{marginTop: "1.3rem"}}>Commercial</span>
+            </div>
             </td>
           </tr>
 
@@ -180,21 +191,18 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
               <b>BANK DETAILS:</b>&nbsp;
               <br />
               <br />
-              <b>Bank Name: </b>
-              {bankName} <br />
-              <b>Account Name: </b>
-              {bankHolderName} <br />
-              <b>Account Number: </b>
-              {bankAccountNo} <br />
-              <b>IFSC: </b>
-              {IFSCCode} <br/>
-              <b>Payment Method: </b>
-              {paymentMethod} <br/>
+              <div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Bank Name: </b>{bankName} <br /></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Account Name: </b>{bankHolderName} <br /></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Account Number: </b>{bankAccountNo} <br /></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>IFSC: </b>{IFSCCode} <br/></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Payment Method: </b>{paymentMethod} <br/></div>
+              </div>
             </td>
           </tr>
         </table>
 
-        <h3>Certificate Information:</h3>
+        <h3>Contract & Agreement:</h3>
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
           <tr css={tableTr}>
             <td css={tableTd}>
@@ -234,10 +242,10 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
           </tr>
         </table>
 
-        <h3 style={{ marginTop: "2em" }}>Items Information:</h3>
+        <h3 style={{ marginTop: "2em" }}>Item Informations:</h3>
 
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
-          <tr css={tableTr} style={{ backgroundColor: "#B8E7E2" }}>
+          <tr css={tableTr} style={{ backgroundColor: "#cbd5e1" }}>
             <th css={tableTd}>Product Code</th>
             <th css={tableTd}>Description of Goods</th>
             <th css={tableTd}>Unit Quantity</th>
@@ -248,80 +256,78 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
 
           {Invoice_Lines.map((item, index) => (
             <tr css={tableTr} key={index} className="my-0 text-sm bg-white border dark:bg-gray-800">
-              <td css={tableTd}>{item.hsCode}</td>
-              <td css={tableTd}>{item.description}</td>
-              <td style={{ textAlign: "right" }} css={tableTd}>
+              <td css={tableTd} style={{border: "0", borderBottom: "1px black solid", borderTop: "1px black solid"}}>{item.hsCode}</td>
+              <td css={tableTd} style={{border: "0", borderBottom: "1px black solid", borderTop: "1px black solid"}}>{item.description}</td>
+              <td css={tableTd} style={{border: "0", borderBottom: "1px black solid", borderTop: "1px black solid"}}>
                 {item.quantity}
               </td>
-              <td style={{ textAlign: "right" }} css={tableTd}>
+              <td css={tableTd} style={{border: "0", borderBottom: "1px black solid", borderTop: "1px black solid"}}>
                 {parseFloat(item.unit_price).toFixed(2)}
               </td>
-              <td style={{ textAlign: "right" }} css={tableTd}>
+              <td css={tableTd} style={{border: "0", borderBottom: "1px black solid", borderTop: "1px black solid"}}>
                 {item.discount ? item.discount : 0} %
               </td>
-              <td style={{ textAlign: "right" }} css={tableTd}>
+              <td css={tableTd} style={{border: "0", borderBottom: "1px black solid", borderTop: "1px black solid"}}>
                 {item.line_total}
               </td>
             </tr>
           ))}
           {/* </table> */}
 
-          <tr css={tableTr}>
-            <td css={tableTd} colSpan={6}>
-              <table
-                style={{
-                  width: "100%",
-                  padding: "0px",
-                  borderSpacing: "0px",
-                  marginTop: "1em",
-                  textAlign: "right"
-                }}
-              >
-                <tr>
-                  <td style={{ padding: "0.4em" }}>
-                    <b>SUBTOTAL</b>
-                  </td>
-                  <td>{subTotal}</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: "0.4em" }}>
-                    <b>TAX</b>
-                  </td>
-                  <td>
-                    ({taxAmount}%)&nbsp;{result}
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: "0.4em" }}>
-                    <b>CREDITTED AMOUNT</b>
-                  </td>
-                  <td>{creditedAmount}</td>
-                </tr>
+          </table>
 
-                <tr>
-                  <td colSpan={2}>
-                    <div
-                      style={{
-                        marginLeft: "auto",
-                        marginRight: "0",
-                        border: "1px solid black",
-                        width: "45%"
-                      }}
-                    ></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: "0.4em" }}>
-                    <b>INVOICE TOTAL</b>
-                  </td>
-                  <td>
-                    {currency}&nbsp;{amount}
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
+        
+          <table
+            style={{
+              width: "100%",
+              padding: "0px",
+              borderSpacing: "0px",
+              marginTop: "1em",
+              textAlign: "right"
+            }}
+          >
+            <tr>
+              <td style={{ padding: "0.4em" }}>
+                <b>SUBTOTAL</b>
+              </td>
+              <td>{subTotal}</td>
+            </tr>
+            <tr>
+              <td style={{ padding: "0.4em" }}>
+                <b>TAX</b>
+              </td>
+              <td>
+                ({taxAmount}%)&nbsp;{result}
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: "0.4em" }}>
+                <b>CREDITED AMOUNT</b>
+              </td>
+              <td>{creditedAmount}</td>
+            </tr>
+
+            <tr>
+              <td colSpan={2}>
+                <div
+                  style={{
+                    marginLeft: "auto",
+                    marginRight: "0",
+                    border: "1px solid black",
+                    width: "45%"
+                  }}
+                ></div>
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: "0.4em" }}>
+                <b>INVOICE TOTAL</b>
+              </td>
+              <td>
+                {currency}&nbsp;{amount}
+              </td>
+            </tr>
+          </table>
 
 
         <div
@@ -361,7 +367,12 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
             padding: "0.5rem"
           }}
         >
-          <span style={{ fontWeight: "bold" }}>Terms and Conditions: {termsAndConditions}</span>
+          <span style={{ fontWeight: "bold" }}>Terms and Conditions:</span> <br />
+          <div className="mt-2 font-medium"
+            dangerouslySetInnerHTML={{
+              __html: termsAndConditions || ""
+            }}
+          />
         </div>
         <table
           style={{
@@ -442,8 +453,8 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={4}>
-              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> 
-              This verifiable document is issued on Credore's platform in accordance with the ICC Digital 
+              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Note :</span>&nbsp;
+                This verifiable document is issued on Credore's platform in accordance with the ICC Digital 
                   Standards Initiative and TradeTrust recommended format. It holds full legal validity, and any 
                   unauthorized alterations or modifications are strictly prohibited. You can verify the document's 
                   integrity, authenticity, and traceability through TradeTrust or its authorized verification channels.
