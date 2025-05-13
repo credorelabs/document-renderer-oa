@@ -115,6 +115,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     consignment_containerReeferType,
     exporterSignIp,
     shippingCompanySignIp,
+    containerType,
+    containerSize,
   } = recipient;
 
   console.log(recipient)
@@ -316,14 +318,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Container Size:</b>
             </span>
             <br />
-            {consignment_containerSizeTypeISO}
+            {containerSize}
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Container Type:</b>
             </span>
             <br />
-            {consignment_containerReeferType}
+            {containerType}
           </td>
         </tr>
 

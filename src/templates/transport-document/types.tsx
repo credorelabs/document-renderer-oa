@@ -167,6 +167,7 @@ interface Recipient extends v2.Recipient {
 
     exporterSignIp?: string;
     shippingCompanySignIp?: string;
+    containerSize?: string;
 
 }
 interface Signature {
