@@ -172,7 +172,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
   return (
     <div css={containerStyle}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        {primaryLogo && (
+        {/* {primaryLogo && (
           <img
             src={primaryLogo}
             alt="company logo"
@@ -184,7 +184,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               objectFit: "contain"
             }}
           />
-        )}
+        )} */}
         {/* {secondaryLogo && (
               <img
                 src={secondaryLogo}
@@ -202,6 +202,27 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         style={{ width: "100%", border: "2px solid black", borderBottom: "0", padding: "0px", borderSpacing: "0px" }}
       >
         <tr css={tableTr}>
+          <td css={tableTd} colSpan={2}> {primaryLogo && (
+            <img
+              src={primaryLogo}
+              alt="company logo"
+              style={{
+                marginBottom: "2rem",
+                marginTop: "2rem",
+                maxWidth: "150px",
+                maxHeight: "auto",
+                objectFit: "contain"
+              }}
+            />
+          )}</td>
+          <td css={tableTd} colSpan={2}>
+            <span style={{ fontSize: "0.8rem" }}>
+              <b>B/L Number:</b>
+            </span>
+            &nbsp;{dcsaBlNumber}
+          </td>
+        </tr>
+        <tr css={tableTr}>
           <td css={tableTd} style={{ width: "50%" }} rowSpan={2} colSpan={2}>
             <span style={{ fontSize: "0.8rem" }}>Shipper</span>
             <br />
@@ -218,12 +239,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               {exporterPhone},<br />
             </span>
           </td>
-          <td css={tableTd} colSpan={2}>
-            <span style={{ fontSize: "0.8rem" }}>
-              <b>B/L Number:</b>
-            </span>
-            &nbsp;{dcsaBlNumber}
-          </td>
+
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} rowSpan={3} colSpan={2}>
