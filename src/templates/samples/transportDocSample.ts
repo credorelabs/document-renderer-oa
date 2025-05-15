@@ -175,7 +175,7 @@ export const cargoDocumentTemplate: CargoDocument = {
     preCarriageBy: "VESSEL",
     onCarriageBy: "BARGE",
     universalExportVoyageReference: "UNVYR123",
-    carrierLogo: "https://imgs.search.brave.com/ju0dBzUiF5JbCT6wRZGfy61um0D9ntUXUU9GsSggplk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzYxLzIvbmlsZS1j/YXJnby1jYXJyaWVy/LXVnYW5kYS1sb2dv/LXBuZ19zZWVrbG9n/by02MTA1MzgucG5n",
+    primaryLogo: "https://imgs.search.brave.com/ju0dBzUiF5JbCT6wRZGfy61um0D9ntUXUU9GsSggplk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzYxLzIvbmlsZS1j/YXJnby1jYXJyaWVy/LXVnYW5kYS1sb2dv/LXBuZ19zZWVrbG9n/by02MTA1MzgucG5n",
   },
   issuers: [
     {

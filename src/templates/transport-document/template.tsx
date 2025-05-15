@@ -17,7 +17,7 @@ const PAYMENT_METHODS = [
 export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocument>> = ({ document }) => {
   const recipient = document.recipient ?? {};
   const {
-    carrierLogo,
+    primaryLogo,
     dcsaBlNumber,
     transportDocumentSubReference,
     shippingInstructionsReference,
@@ -109,7 +109,6 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     importer_lei,
     notify_lei,
     carrier_lei,
-    primaryLogo,
     secondaryLogo,
     currency,
     consignment_containerReeferType,
@@ -173,9 +172,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
   return (
     <div css={containerStyle}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        {carrierLogo && (
+        {primaryLogo && (
           <img
-            src={carrierLogo}
+            src={primaryLogo}
             alt="company logo"
             style={{
               marginBottom: "2rem",
@@ -233,16 +232,21 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             <span style={{ fontSize: "0.8rem" }}>
-              NON-NEGOTIABLE UNLESS CONSIGNED “TO ORDER” .<br /> RECEIVED BY THE CARRIER THE GOODS SPECIFIED BELOW IN
-              APPARENT GOOD ORDER AND CONDITION, UNLESS OTHERWISE STATED HEREIN, FOR TRANSPORTATION TO SUCH PLACE AS
-              AGREED, AUTHORIZED, OR PERMITTED HEREIN AND SUBJECT TO ALL TERMS AND CONDITIONS APPEARING ON FRONT AND
-              REVERSE OF THIS BILL OF LADING TO WHICH THE SHIPPER AGREES BY ACCEPTING THIS BILL OF LADING, ANY LOCAL
-              PRIVILEGES AND CUSTOMS NOTWITHSTANDING. THE PARTICULARS OF THE CARGO GIVEN BELOW ARE AS STATED BY THE
-              SHIPPER. THE WEIGHT, MEASURE, QUANTITY, CONDITION, CONTENTS, AND VALUE OF THE GOODS ARE UNKNOWN TO THE
-              CARRIER. IN WITNESS WHEREOF AS MANY ORIGINAL COPIES OF THIS BILL OF LADING AS STATED BELOW HAVE BEEN
-              SIGNED, AND IF ANY ONE OF THIS IS ACCOMPLISHED, OTHERS ARE VOID. IF REQUIRED BY THE CARRIER, AT LEAST ONE
-              ORIGINAL BILL OF LADING, DULY ENDORSED, MUST BE SURRENDERED IN EXCHANGE FOR THE GOODS, OR A DELIVERY
-              ORDER.
+              NON-NEGOTIABLE UNLESS CONSIGNED “TO ORDER” .<br /> RECEIVED BY
+              THE CARRIER THE GOODS SPECIFIED BELOW IN APPARENT GOOD ORDER AND
+              CONDITION, UNLESS OTHERWISE STATED HEREIN, FOR TRANSPORTATION TO
+              SUCH PLACE AS AGREED, AUTHORIZED, OR PERMITTED HEREIN AND
+              SUBJECT TO ALL TERMS AND CONDITIONS APPEARING ON FRONT AND
+              REVERSE OF THIS BILL OF LADING TO WHICH THE SHIPPER AGREES BY
+              ACCEPTING THIS BILL OF LADING, ANY LOCAL PRIVILEGES AND CUSTOMS
+              NOTWITHSTANDING. THE PARTICULARS OF THE CARGO GIVEN BELOW ARE AS
+              STATED BY THE SHIPPER. THE WEIGHT, MEASURE, QUANTITY, CONDITION,
+              CONTENTS, AND VALUE OF THE GOODS ARE UNKNOWN TO THE CARRIER. IN
+              WITNESS WHEREOF AS MANY ORIGINAL COPIES OF THIS BILL OF LADING
+              AS STATED BELOW HAVE BEEN SIGNED, AND IF ANY ONE OF THIS IS
+              ACCOMPLISHED, OTHERS ARE VOID. IF REQUIRED BY THE CARRIER, AT
+              LEAST ONE ORIGINAL BILL OF LADING, DULY ENDORSED, MUST BE
+              SURRENDERED IN EXCHANGE FOR THE GOODS, OR A DELIVERY ORDER.
             </span>
           </td>
         </tr>
@@ -619,7 +623,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
-            <b style={{ color: "red" }}>Digitally signed by Exporter :</b> <br /> <br />
+            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{exporterName} <br />
             <b>Signer Place:</b>&nbsp;{exporter_signer_place}
             <br />
@@ -631,23 +635,6 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               .format("DD/MM/YYYY hh:mm A [IST]")}
             <br />
             <b>IP Address:</b>&nbsp;{exporterSignIp}
-          </td>
-
-          <td css={tableTd} colSpan={2} style={{ padding: "1rem" }}>
-            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-            {/* exporterName */}
-            <b>Signer Place:</b>&nbsp;{carrier_signer_place}
-            {/* {exporter_signer_place} */}
-            <br />
-            <b>Date & Time:</b>&nbsp;
-            {moment(shipping_company_sign_time)
-              .utc()
-              .add(5, "hours")
-              .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
-            <br />
-            <b>IP Address:</b>&nbsp;{shippingCompanySignIp}
           </td>
         </tr>
       </table>
