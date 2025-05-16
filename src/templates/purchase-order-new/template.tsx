@@ -2,7 +2,6 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { NewPurchaseOrder, Recipient } from "./types";
 import moment from "moment";
-import QRCodeSVG from "qrcode.react";
 
 export const NewPurchaseOrderTemplate: FunctionComponent<TemplateProps<NewPurchaseOrder>> = ({ document }) => {
   const recipient = (document.recipient ?? {}) as Recipient;
