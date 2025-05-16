@@ -227,16 +227,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <span style={{ fontSize: "0.8rem" }}>Shipper</span>
             <br />
             <span style={{ fontSize: "1.1rem" }}>
-              {exporterCompanyName},<br />
+              Esmos_Cartel,<br />
               {exporterLei && (
                 <>
-                  <b>LEI number:</b>&nbsp;{exporterLei}
+                  <b>LEI number:</b>&nbsp;22334434343433454332
                   <br />
                 </>
               )}
-              {exporterAddress},<br />
-              {exporterEmail},<br />
-              {exporterPhone},<br />
+              Cross Road No 4 Shanti Nagar Baridhi , Jamshedpur,<br />
+              qa2@yopmail.com,<br />
+              +91860093629933,<br />
             </span>
           </td>
 
@@ -248,7 +248,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             <span style={{ fontSize: "0.8rem" }}>
-              NON-NEGOTIABLE UNLESS CONSIGNED “TO ORDER” .<br /> RECEIVED BY
+              NEGOTIABLE UNLESS CONSIGNED “TO ORDER” .<br /> RECEIVED BY
               THE CARRIER THE GOODS SPECIFIED BELOW IN APPARENT GOOD ORDER AND
               CONDITION, UNLESS OTHERWISE STATED HEREIN, FOR TRANSPORTATION TO
               SUCH PLACE AS AGREED, AUTHORIZED, OR PERMITTED HEREIN AND
@@ -271,16 +271,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <span style={{ fontSize: "0.8rem" }}>Consignee</span>
             <br />
             <span style={{ fontSize: "1.2rem" }}>
-              {importerCompanyName},<br />
+              MICROSOFT CORPORATION,<br />
               {importer_lei && (
                 <>
-                  <b>LEI number:</b>&nbsp;{importer_lei}
+                  <b>LEI number:</b>&nbsp;INR2EJN1ERAN0W5ZP974
                   <br />
                 </>
               )}
-              {importerAddress},<br />
-              {importer_email},<br />
-              {importer_phone},<br />
+              Cross Road No4, Shanti Nagar, Baridhi Basti, Baridhi,,<br />
+              abhilashcredore@yopmail.com,<br />
+              56743223,<br />
             </span>
           </td>
         </tr>
@@ -302,17 +302,18 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             <span style={{ fontSize: "1.1rem" }}>
-              {notify_name},<br />
-              {notify_lei && (
-                <>
-                  <b>LEI number:</b>&nbsp;{notify_lei}
-                  <br />
-                </>
-              )}
+              HALD,<br />
+              Haldiram wala,<br />
+
+              <>
+                <b>LEI number:</b>&nbsp; 969500CMJ8VMARSGGI31
+                <br />
+              </>
+
               {/* {notify_contact_name},<br /> */}
-              {notify_address},<br />
-              {notify_contact_email},<br />
-              {notify_contact_phone}
+              HALDIRAM VILLAGE KHERKI DAULA,DELHI JAIPUR HIGHWAY,GURGAON,SADAR BAZAR, GURGAON, IN, 122001,<br />
+              raj@credore.xyz,<br />
+              83923433
             </span>
           </td>
           <td css={tableTd}>
@@ -320,7 +321,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Shipper/ Export /Forwarder References</b>
             </span>
             <br />
-            {shippersReferenceNumber} / &nbsp;
+            fcbae0dc-911f-40df-a07a-48c16247726e   / &nbsp;
             {contractQuoteReferenceNumber}
           </td>
           <td css={tableTd}>
@@ -328,7 +329,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Mode of Transport:</b>
             </span>
             <br />
-            {transport_modeOfTransportUNCEFACT}
+            VESSEL
           </td>
         </tr>
 
@@ -338,14 +339,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Container Size:</b>
             </span>
             <br />
-            {containerSize}
+            20ft
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Container Type:</b>
             </span>
             <br />
-            {containerType}
+            reefer cargo booking
           </td>
         </tr>
 
@@ -355,14 +356,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Place of Receipt:</b>
             </span>
             <br />
-            {location_placeOfReceipt}
+            IN NSA - Nhava Sheva (Jawaharlal Nehru)
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Port of Loading:</b>
             </span>
             <br />
-            {location_portOfLoading}
+            IN PPT - Paradip Port
           </td>
         </tr>
         <tr css={tableTr}>
@@ -376,14 +377,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Port of Discharge</b>
             </span>
             <br />
-            {location_portOfDischarge}
+            AE JEA - Jebel Ali
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Place of Delivery/Final Destination</b>
             </span>
             <br />
-            {location_placeOfDelivery}
+            AE JEA - Jebel Ali
           </td>
         </tr>
 
@@ -394,14 +395,15 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             <br />
-            {/* {location_portOfDischarge} */}
+            TRUCK
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Vessel & Voyage</b>
             </span>
             <br />
-            {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber}
+            {/* {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber} */}
+            Mersk / Mersk1234
           </td>
         </tr>
       </table>
@@ -438,11 +440,12 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <tr css={tableTr}>
             <td css={tableTd}>
               <div style={{ position: "relative", top: "0px" }}>
-                {consignment_containerNumber}&nbsp;/&nbsp;{sealNumber}
+                {/* BOOKING-AS-BOOKING0252 &nbsp;/&nbsp;{sealNumber} */}
+                BOOKING-AS-BOOKING0252 &nbsp;/&nbsp;CAR / SN12
               </div>
             </td>
             <td css={tableTd}>
-              {goods_numberOfPackages} Packages
+              4 Packages
               <br />
               {/* {consignment_containerSizeTypeISO} */}
             </td>
@@ -458,15 +461,15 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               {!isJSONString((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')) && goods_descriptionOfGoods}
               <div style={{ display: "flex", justifyContent: "space-between", margin: "0.5rem 0" }}>
                 <span>
-                  <strong>INVOICE NO. :</strong> {invoiceNumber}{" "}
+                  <strong>DOCUMENT TYPE. :</strong> Proforma Invoice{" "}
                 </span>
                 <span>
-                  <strong>INVOICE DATE :</strong> {moment(invoiceDate).format("YYYY-MM-DD")}&nbsp;&nbsp;&nbsp;
+                  <strong>DOCUMENT NO :</strong> PINV-in9010&nbsp;&nbsp;&nbsp;
                 </span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", margin: "0 0 0.5rem 0" }}>
                 <span>
-                  <strong>SB NO:</strong> {shippingBillNo}{" "}
+                  <strong>SB NO:</strong> fcbae0dc-911f-40df-a07a-48c16247726e{" "}
                 </span>
                 <span>
                   <strong>DATE: </strong>
@@ -482,12 +485,13 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
                       {index + 1 < JSON.parse((goods_HSCode ?? "").replaceAll("&quot;", '"')).length && " , "}
                     </p>
                   ))}
-                {!isJSONString((goods_HSCode ?? "").replaceAll("&quot;", '"')) && goods_HSCode}
+                {/* {!isJSONString((goods_HSCode ?? "").replaceAll("&quot;", '"')) && goods_HSCode} */}
+                3003
               </div>
               <br />
-              <strong>Temperature:</strong> {measure_temperatureSettingForReeferContainers} <br />
-              <strong>Humidity:</strong> {humidity} <br />
-              <strong>Ventilation:</strong> {ventilation}
+              <strong>Temperature:</strong>  0 CEL <br />
+              <strong>Humidity:</strong> 0 <br />
+              <strong>Ventilation:</strong> NO
               <br />
               <br />
               SHIPPED ON BOARD{" "}
@@ -503,8 +507,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <br />
               <br />
             </td>
-            <td css={tableTd}>{measure_weight}</td>
-            <td css={tableTd}>{measure_volume}</td>
+            <td css={tableTd}>1</td>
+            <td css={tableTd}>KGM</td>
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={7}>
@@ -528,16 +532,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       >
         <tr css={tableTr} style={{ fontSize: "0.8rem" }}>
           <td css={tableTd}>
-            <b>CONTAINER NO. :</b> {consignment_containerNumber}
+            <b>CONTAINER NO. :</b> Mersk1234
           </td>
           <td css={tableTd}>
-            <b>TEMPERATURE :</b> {measure_temperatureSettingForReeferContainers}
+            <b>TEMPERATURE :</b> 0 CEL
           </td>
           <td css={tableTd}>
-            <b>VENT :</b> {ventilation}
+            <b>VENT :</b> NO
           </td>
           <td css={tableTd}>
-            <b>HUMIDITY :</b> {humidity}
+            <b>HUMIDITY :</b> 0
           </td>
         </tr>
       </table>
