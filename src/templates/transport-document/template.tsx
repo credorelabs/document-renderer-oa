@@ -370,6 +370,10 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} style={{ width: "50%" }} rowSpan={2} colSpan={2}>
             <span style={{ fontSize: "0.8rem", position: "relative", top: "-40px" }}>Also Notify</span>
             <br />
+            <strong>LEI</strong>:  335800E6C75YGSGD5T66,<br />
+            TATA STEEL LIMITED,<br />
+            Raj,<br />
+            7978186407<br />
             <span style={{ fontSize: "1.1rem" }}></span>
           </td>
           <td css={tableTd}>
@@ -570,13 +574,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           </td>
         </tr>
         <tr css={tableTr}>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>10000</td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            {currency}
+            USD
+            {/* {currency} */}
           </td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>YES</td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>YES</td>
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
@@ -597,14 +602,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            {location_placeOfPaymentUNLOCODE}
+            AE JEA - Jebel Ali
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            {importerCompanyName}
+            MICROSOFT CORPORATION
           </td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>NA</td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            {location_placeOfReceipt}
+            IN PPT - Paradip Port
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
             {moment(date_actualDateOfPlaceOfReceipt)
