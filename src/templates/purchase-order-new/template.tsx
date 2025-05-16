@@ -387,7 +387,7 @@ export const NewPurchaseOrderTemplate: FunctionComponent<TemplateProps<NewPurcha
                 fontSize: "14px",
               }}
             >
-              Unit Quantity
+              Unit Quantity(Kg)
             </th>
             <th
               style={{
