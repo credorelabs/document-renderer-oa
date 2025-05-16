@@ -118,7 +118,7 @@ export const newProformaInvoiceTemplate: NewProformaInvoice = {
     }
   ],
   $template: {
-    name: "PROFORMA_INVOICE",
+    name: "PROFORMA_INVOICE_V2",
     type: v2.TemplateType.EmbeddedRenderer,
     url: "http://localhost:3000"
   }

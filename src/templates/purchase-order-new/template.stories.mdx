@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { NewPurchaseOrderTemplate } from "./template";
+import { purchaseOrderTemplateNew } from '../samples/purchaseOrderNew';
+
+<Meta title="MDX|NewPurchaseOrderTemplate" component={NewPurchaseOrderTemplate} />
+
+# purchaseOrderTemplate component
+
+<Description of={NewPurchaseOrderTemplate} />
+
+# Props
+
+<Props of={NewPurchaseOrderTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <NewPurchaseOrderTemplate document={object("document", purchaseOrderTemplateNew)} />
+  </Story>
+</Preview>

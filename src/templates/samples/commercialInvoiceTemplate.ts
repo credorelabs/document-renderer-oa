@@ -107,7 +107,7 @@ export const commercialInvoiceTemplate: Invoice = {
     }
   ],
   $template: {
-    name: "INVOICE",
+    name: "COMMERCIAL_INVOICE",
     type: v2.TemplateType.EmbeddedRenderer,
     url: "http://localhost:3000"
   }
