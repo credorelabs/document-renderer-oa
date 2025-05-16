@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import moment from "moment";
 import { CargoDocument } from "./types";
+import { css } from "@emotion/core";
 
 const PAYMENT_METHODS = [
   { value: "A", label: "Payment in Cash (A)" },
@@ -16,393 +17,693 @@ const PAYMENT_METHODS = [
 export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocument>> = ({ document }) => {
   const recipient = document.recipient ?? {};
   const {
-    carrierLogo,
-    documentPartiesShipper,
-    documentCarrierCarrier,
-    shippingInstructionsReference,
-    organisationName,
-    dcsaBolReferenceNumber,
-    bookingReferenceNumber,
-    bookingStatus,
-    originPort,
-    destinationPort,
-    expectedDepartureDate,
-    expectedArrivalAtPlaceOfDeliveryStartDate,
-    shippingLine,
-    vesselName,
-    universalExportVoyageReference,
-    containerType,
-    numberOfContainer,
-    shippingInstructionsStatus,
-    transportDocumentTypeCode,
-    shipper,
-    carrier,
-    isShippedOnBoardType,
-    isToOrder,
-    transportDocumentReference,
+    primaryLogo,
+    dcsaBlNumber,
     transportDocumentSubReference,
-    freightPaymentTermCode,
-    receivedForShipmentDate,
-    requestedCarrierCertificates,
-    requestedCarrierClauses,
-    displayedNameForPlaceOfReceipt,
-    displayedNameForPortOfLoad,
-    displayedNameForPlaceOfDelivery,
-    displayedNameForPortOfDischarge,
-    invoicePayableAt,
-    placeOfIssue,
-    plannedArrivalDate,
-    plannedDepartureDate,
-    preCarriageBy,
-    onCarriageBy,
-    utilizedTransportEquipments,
-    isCarriersAgentAtDestinationRequired,
-    documentParties,
-    partyContactDetails,
-    isCargoDeliveredInICS2Zone,
-    exportLicense,
-    importLicense,
-    consignmentItems,
-    isHouseBillOfLadingsIssued,
-    references,
-    customsReference,
-    advanceManifestFilings,
-    houseBillofLading,
-    carrierSignature
+    shippingInstructionsReference,
+    isShippedOnBoardType,
+    carrierClause,
+    consignment_containerNumber,
+    consignment_containerSizeTypeISO,
+    consignment_fullOrEmptyIndicator,
+    contractQuoteReferenceNumber,
+    date_actualDateOfPlaceOfDelivery,
+    date_actualDateOfPlaceOfReceipt,
+    date_actualTimeOfArrival,
+    date_actualTimeOfDeparture,
+    date_estimatedDateOfPlaceOfDelivery,
+    date_estimatedDateOfPlaceOfReceipt,
+    date_estimatedTimeOfArrival,
+    date_estimatedTimeOfDeparture,
+    freightForwardersReferenceNumber,
+    goods_HSCode,
+    goods_IMDG,
+    goods_dangerLevel,
+    goods_descriptionOfGoods,
+    goods_numberOfPackages,
+    goods_productIdentifier,
+    goods_properShippingTechnicalName,
+    goods_typeOfPackagingCEFACT,
+    location_placeOfDelivery,
+    location_placeOfPaymentUNLOCODE,
+    location_placeOfReceipt,
+    location_portOfDischarge,
+    location_portOfLoading,
+    measure_temperatureSettingForReeferContainers,
+    measure_temperatureUnitsUNCEFACT,
+    measure_totalNumberOfContainers,
+    measure_volume,
+    measure_weight,
+    party_SCAC,
+    party_SMFG,
+    party_consignee,
+    party_notifyParty,
+    party_shipper,
+    shippersReferenceNumber,
+    terms,
+    transport_IMOvesselNumber,
+    transport_conveyanceReferenceNumber,
+    transport_modeOfTransportUNCEFACT,
+    transport_vesselName,
+
+    importerCompanyName,
+    importerAddress,
+    importerName,
+    importer_email,
+    importer_phone,
+    importer_address,
+
+    exporterCompanyName,
+    exporterAddress,
+    exporterName,
+    exporter_sign_time,
+    exporterEmail,
+    exporterPhone,
+
+    shipping_company_sign_time,
+    shipping_company_signer,
+
+    carrier_name,
+    carrier_contact_name,
+    carrier_address,
+    carrier_contact_email,
+    carrier_contact_phone,
+
+    notify_name,
+    notify_contact_name,
+    notify_address,
+    notify_contact_email,
+    notify_contact_phone,
+    carrier_signer_place,
+    exporter_signer_place,
+    blockchainName,
+    mintTxHash,
+    shippingBillNo,
+    invoiceNumber,
+    invoiceDate,
+    sealNumber,
+    humidity,
+    ventilation,
+    tokenRegistryAddress,
+    exporterLei,
+    importer_lei,
+    notify_lei,
+    carrier_lei,
+    secondaryLogo,
+    currency,
+    consignment_containerReeferType,
+    exporterSignIp,
+    shippingCompanySignIp,
+    containerType,
+    containerSize,
   } = recipient;
 
   console.log(recipient)
-  const tableBorderStyle: React.CSSProperties = { border: "1px solid #e5e7eb" };
-  const headerStyle: React.CSSProperties = {
-    backgroundColor: "#1f2937",
-    color: "#ffffff",
-    padding: "8px 12px",
-    fontWeight: "bold",
-    textAlign: "left",
-    fontSize: "13px"
-  };
-  const cellStyle: React.CSSProperties = {
-    padding: "8px 12px",
-    verticalAlign: "top",
-    fontSize: "12px",
-    color: "#374151",
-    wordBreak: "break-word",
-    maxWidth: "180mm"
-  };
-  const subHeaderStyle: React.CSSProperties = {
-    backgroundColor: "#d1d5db",
-    padding: "6px 12px",
-    fontWeight: "bold",
-    textAlign: "left",
-    fontSize: "12px",
-    color: "#1f2937"
-  };
-  const sectionHeaderStyle: React.CSSProperties = {
-    backgroundColor: "#e5e7eb",
-    padding: "6px 12px",
-    fontWeight: "bold",
-    fontSize: "14px",
-    color: "#1f2937",
-    marginBottom: "8px"
-  };
-  const sectionStyle: React.CSSProperties = {
-    pageBreakInside: "avoid" as const,
-    pageBreakBefore: "auto" as const,
-    marginBottom: "20px"
-  };
+  const containerStyle = css`
+      margin: auto;
+      padding: 15px;
+      width: 80%;
+      font-family: sans-serif;
+    `;
+
+  // const containerStyle = css`
+  //   width: 80%;
+  //   margin: auto;
+  //   padding: 20px;
+  //   background-image: url(${background});
+  //   background-size: cover;
+  //   background-position: center;
+  //   @media print {
+  //     background-image: url(${background});
+  //   }
+  // `;
+
+  const tableTr = css`
+      border: 1px solid black;
+    `;
+
+  const tableTd = css`
+      border: 1px solid black;
+      padding: 1em;
+    `;
+
+  // useEffect(() => {
+  //   if (goods_numberOfPackages) {
+  //     let amountToText = numberToWords.toWords(goods_numberOfPackages);
+
+  //     setAmountText(
+  //       amountToText
+  //         .split(" ")
+  //         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  //         .join(" ")
+  //     );
+  //   }
+  // }, [goods_numberOfPackages]);
+
+  function isJSONString(str: string) {
+    try {
+      JSON.parse(str);
+      return true; // It's a valid JSON string
+    } catch (error) {
+      return false; // It's not a valid JSON string
+    }
+  }
 
   return (
-    <div
-      style={{
-        fontFamily: "Arial, sans-serif",
-        fontSize: "12px",
-        padding: "10px",
-        width: "210mm",
-        margin: "auto",
-        border: "2px solid #1f2937",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
-        display: "block",
-        boxSizing: "border-box"
-      }}
-      id="shipping-instruction-document"
-    >
-      {/* Header Section */}
-      <div style={{ ...sectionStyle, textAlign: "center", pageBreakAfter: "avoid" as const }}>
-        <div style={{ display: "flex", justifyContent: "end", width: "100%" }}>
-          {carrierLogo && (
+    <div css={containerStyle}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        {/* {primaryLogo && (
+          <img
+            src={primaryLogo}
+            alt="company logo"
+            style={{
+              marginBottom: "2rem",
+              marginTop: "2rem",
+              maxWidth: "150px",
+              maxHeight: "auto",
+              objectFit: "contain"
+            }}
+          />
+        )} */}
+        {/* {secondaryLogo && (
+              <img
+                src={secondaryLogo}
+                alt="company logo"
+                style={{
+                  width: "150px",
+                  height: "auto",
+                  margin: "2rem 0 2rem 2rem",
+                  objectFit: "contain"
+                }}
+              />
+            )} */}
+      </div>
+      <table
+        style={{ width: "100%", border: "2px solid black", borderBottom: "0", padding: "0px", borderSpacing: "0px" }}
+      >
+        <tr css={tableTr}>
+          <td css={tableTd} colSpan={2}> {primaryLogo && (
             <img
-              src={carrierLogo}
-              alt="Company Logo"
+              src={primaryLogo}
+              alt="company logo"
               style={{
-                width: "100px",
-                height: "auto",
-                objectFit: "contain",
-                //   border: "1px solid #e5e7eb",
-                padding: "4px",
-                backgroundColor: "#ffffff"
+                marginBottom: "2rem",
+                marginTop: "2rem",
+                maxWidth: "150px",
+                maxHeight: "auto",
+                objectFit: "contain"
               }}
             />
-          )}
-        </div>
-        <h2 style={{ margin: "0 0 5px", fontSize: "22px", color: "#111827", fontWeight: "bold" }}>
-          TRANSPORT DOCUMENT
-        </h2>
-        <p style={{ margin: "0 0 5px", fontSize: "18px", color: "#111827", fontWeight: "bold" }}>
-          {dcsaBolReferenceNumber}
-        </p>
-      </div>
+          )}</td>
+          <td css={tableTd} colSpan={2}>
+            <span style={{ fontSize: "0.8rem" }}>
+              <b>B/L Number:</b>
+            </span>
+            &nbsp;{dcsaBlNumber}
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ width: "50%" }} rowSpan={2} colSpan={2}>
+            <span style={{ fontSize: "0.8rem" }}>Shipper</span>
+            <br />
+            <span style={{ fontSize: "1.1rem" }}>
+              Esmos_Cartel,<br />
+              {exporterLei && (
+                <>
+                  <b>LEI number:</b>&nbsp;22334434343433454332
+                  <br />
+                </>
+              )}
+              Cross Road No 4 Shanti Nagar Baridhi , Jamshedpur,<br />
+              qa2@yopmail.com,<br />
+              +91860093629933,<br />
+            </span>
+          </td>
 
-      {/* Shipper and Carrier */}
-      <div
-        style={{ ...sectionStyle, display: "flex", justifyContent: "space-between", pageBreakInside: "avoid" as const }}
-      >
-        <div style={{ width: "48%" }}>
-          <div style={sectionHeaderStyle}>BOOKING DETAILS</div>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Reference No:</strong> {bookingReferenceNumber || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Status:</strong> {bookingStatus || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Origin Port:</strong> {originPort || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Destination Port:</strong> {destinationPort || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Departure Date:</strong> {expectedDepartureDate || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Arrival Date:</strong> {expectedArrivalAtPlaceOfDeliveryStartDate || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Shipping Line:</strong> {shippingLine || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Vessel:</strong> {vesselName || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Container Type:</strong> {containerType || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>No. Of Containers:</strong> {numberOfContainer || "--"}
-          </p>
-        </div>
-        <div style={{ width: "48%" }}>
-          <div style={sectionHeaderStyle}>SHIPPING INSTRUCTIONS</div>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Reference No:</strong> {shippingInstructionsReference || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Status:</strong> {shippingInstructionsStatus || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Shipper:</strong> {shipper || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Carrier:</strong> {carrier || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Invoice Payable At:</strong> {invoicePayableAt?.UNLocationCode || "--"}
-          </p>
-          <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Place Of Issue:</strong> {placeOfIssue?.UNLocationCode || "--"}
-          </p>
-        </div>
-      </div>
-
-      {/* General Details */}
-      <div style={sectionStyle}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th colSpan={4} style={headerStyle}>
-                BASIC DOCUMENT INFORMATION
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={tableBorderStyle}>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>BL Reference Number:</strong> {dcsaBolReferenceNumber || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Booking Reference Number:</strong> {bookingReferenceNumber || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Shipping Instruction Reference Number:</strong> {shippingInstructionsReference || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Carrier:</strong> {carrier || "--"}
-              </td>
-            </tr>
-            <tr style={tableBorderStyle}>
-              <td colSpan={2} style={{ ...cellStyle, width: "66.66%" }}>
-                <strong>Shipper:</strong> {shipper || "--"}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* Location & Transport Equipment */}
-      <div style={sectionStyle}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th colSpan={4} style={headerStyle}>
-                TRANSPORT DOCUMENT DETAILS
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={tableBorderStyle}>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Transport Document Reference Number:</strong> {transportDocumentReference || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Transport Document Sub Reference Number:</strong> {transportDocumentSubReference || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Shipped on Board Type:</strong> {isShippedOnBoardType ? "Yes" : "No"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Freight Payment Term:</strong> {freightPaymentTermCode || "--"}
-              </td>
-            </tr>
-            <tr style={tableBorderStyle}>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>To Order:</strong> {isToOrder ? "Yes" : "No"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Issue Date:</strong> {isToOrder ? "Yes" : "No"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Received for Shipment Date:</strong> {moment(receivedForShipmentDate).utc().format("DD-MM-YYYY")}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* Party Contact Details */}
-      <div style={sectionStyle}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th colSpan={3} style={headerStyle}>
-                LOCATION AND ISSUANCE
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={tableBorderStyle}>
-              <td colSpan={3} style={cellStyle}>
-                <strong>Displayed Name for Place of Receipt:</strong> {displayedNameForPlaceOfReceipt || "--"}
-              </td>
-            </tr>
-            <tr style={tableBorderStyle}>
-              <td style={{ ...cellStyle, width: "33.33%" }}>
-                <strong>Displayed Name for Place of Delivery:</strong> {displayedNameForPlaceOfDelivery || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "33.33%" }}>
-                <strong>Displayed Name for Port of Load:</strong> {displayedNameForPortOfLoad || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "33.33%" }}>
-                <strong>Displayed Name for Port of Discharge:</strong> {displayedNameForPortOfDischarge || "--"}
-              </td>
-            </tr>
-            <tr style={tableBorderStyle}>
-              <td style={{ ...cellStyle, width: "33.33%" }}>
-                <strong>Place of Issue:</strong> {placeOfIssue?.UNLocationCode || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "33.33%" }}>
-                <strong>Invoice Payable At:</strong> {invoicePayableAt?.UNLocationCode || "--"}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* Regulatory & Compliance */}
-      <div style={sectionStyle}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th colSpan={4} style={headerStyle}>
-                TRANSPORT INFORMATION
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={tableBorderStyle}>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Planned Arrival Date:</strong> {moment(plannedArrivalDate).utc().format("DD-MM-YYYY")}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Planned Departure Date:</strong> {moment(plannedDepartureDate).utc().format("DD-MM-YYYY")}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Pre Carriage By:</strong> {preCarriageBy || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>On Carriage By:</strong>{" "}
-                {onCarriageBy || "--"}
-              </td>
-            </tr>
-            <tr style={tableBorderStyle}>
-              <td colSpan={1} style={cellStyle}>
-                <strong>Vessel Name:</strong>{" "}
-                {vesselName || "--"}
-              </td>
-              <td style={{ ...cellStyle, width: "25%" }}>
-                <strong>Universal Export Voyage Number:</strong> {universalExportVoyageReference || "--"}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-
-
-      {/* Footer Signatures */}
-      <div
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} rowSpan={3} colSpan={2}>
+            <span style={{ fontSize: "0.7rem" }}>
+              <b>Ocean Bill of Lading or Multimodal Bill of Lading</b>
+            </span>
+            <br />
+            <span style={{ fontSize: "0.8rem" }}>
+              NEGOTIABLE UNLESS CONSIGNED “TO ORDER” .<br /> RECEIVED BY
+              THE CARRIER THE GOODS SPECIFIED BELOW IN APPARENT GOOD ORDER AND
+              CONDITION, UNLESS OTHERWISE STATED HEREIN, FOR TRANSPORTATION TO
+              SUCH PLACE AS AGREED, AUTHORIZED, OR PERMITTED HEREIN AND
+              SUBJECT TO ALL TERMS AND CONDITIONS APPEARING ON FRONT AND
+              REVERSE OF THIS BILL OF LADING TO WHICH THE SHIPPER AGREES BY
+              ACCEPTING THIS BILL OF LADING, ANY LOCAL PRIVILEGES AND CUSTOMS
+              NOTWITHSTANDING. THE PARTICULARS OF THE CARGO GIVEN BELOW ARE AS
+              STATED BY THE SHIPPER. THE WEIGHT, MEASURE, QUANTITY, CONDITION,
+              CONTENTS, AND VALUE OF THE GOODS ARE UNKNOWN TO THE CARRIER. IN
+              WITNESS WHEREOF AS MANY ORIGINAL COPIES OF THIS BILL OF LADING
+              AS STATED BELOW HAVE BEEN SIGNED, AND IF ANY ONE OF THIS IS
+              ACCOMPLISHED, OTHERS ARE VOID. IF REQUIRED BY THE CARRIER, AT
+              LEAST ONE ORIGINAL BILL OF LADING, DULY ENDORSED, MUST BE
+              SURRENDERED IN EXCHANGE FOR THE GOODS, OR A DELIVERY ORDER.
+            </span>
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} rowSpan={2} colSpan={2}>
+            <span style={{ fontSize: "0.8rem" }}>Consignee</span>
+            <br />
+            <span style={{ fontSize: "1.2rem" }}>
+              MICROSOFT CORPORATION,<br />
+              {importer_lei && (
+                <>
+                  <b>LEI number:</b>&nbsp;INR2EJN1ERAN0W5ZP974
+                  <br />
+                </>
+              )}
+              Cross Road No4, Shanti Nagar, Baridhi Basti, Baridhi,,<br />
+              abhilashcredore@yopmail.com,<br />
+              56743223,<br />
+            </span>
+          </td>
+        </tr>
+      </table>
+      <table
         style={{
-          ...sectionStyle,
-          pageBreakBefore: "auto" as const,
-          marginTop: "30px",
-          display: "flex",
-          justifyContent: "space-between",
-          border: "1px solid #e5e7eb",
-          padding: "10px"
+          width: "100%",
+          border: "2px solid black",
+          borderTop: "1px",
+          borderBottom: "0",
+          padding: "0px",
+          borderSpacing: "0px"
         }}
       >
-        <div style={{ width: "100%", textAlign: "left", borderRight: "1px solid #e5e7eb" }}>
-          <h3 style={{ margin: "0 0 10px", fontSize: "14px", color: "red", fontWeight: "bold" }}>
-            Accepted & Digitally Signed By Carrier
-          </h3>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div>
-              <p style={{ margin: "0", fontSize: "12px" }}>
-                <strong>Name:</strong> {carrierSignature?.name || "--"}
-              </p>
-              <p style={{ margin: "0", fontSize: "12px" }}>
-                <strong>Timestamp:</strong>{" "}
-                {carrierSignature?.timeStamp ? moment(carrierSignature?.timeStamp).format("DD/MM/YYYY") : "--"}
-              </p>
-            </div>
-            <div>
-              <p style={{ margin: "0", fontSize: "12px" }}>
-                <strong>Signer IP:</strong> {carrierSignature?.ip || "--"}
-              </p>
-              <p style={{ margin: "0", fontSize: "12px" }}>
-                <strong>Signer Place:</strong> {carrierSignature?.place || "--"}
-              </p>
-            </div>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ width: "50%" }} rowSpan={3} colSpan={2}>
+            <span style={{ fontSize: "0.8rem" }}>
+              Notify Party (Carrier not responsible for failure to notify and no claim shall attach therefrom)
+            </span>
+            <br />
+            <span style={{ fontSize: "1.1rem" }}>
+              HALD,<br />
+              Haldiram wala,<br />
+
+              <>
+                <b>LEI number:</b>&nbsp; 969500CMJ8VMARSGGI31
+                <br />
+              </>
+
+              {/* {notify_contact_name},<br /> */}
+              HALDIRAM VILLAGE KHERKI DAULA,DELHI JAIPUR HIGHWAY,GURGAON,SADAR BAZAR, GURGAON, IN, 122001,<br />
+              raj@credore.xyz,<br />
+              83923433
+            </span>
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Shipper/ Export /Forwarder References</b>
+            </span>
+            <br />
+            fcbae0dc-911f-40df-a07a-48c16247726e   / &nbsp;
+            {contractQuoteReferenceNumber}
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Mode of Transport:</b>
+            </span>
+            <br />
+            VESSEL
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Container Size:</b>
+            </span>
+            <br />
+            20ft
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Container Type:</b>
+            </span>
+            <br />
+            reefer cargo booking
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Place of Receipt:</b>
+            </span>
+            <br />
+            IN NSA - Nhava Sheva (Jawaharlal Nehru)
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Port of Loading:</b>
+            </span>
+            <br />
+            IN PPT - Paradip Port
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ width: "50%" }} rowSpan={2} colSpan={2}>
+            <span style={{ fontSize: "0.8rem", position: "relative", top: "-40px" }}>Also Notify</span>
+            <br />
+            <strong>LEI</strong>:  335800E6C75YGSGD5T66,<br />
+            TATA STEEL LIMITED,<br />
+            Raj,<br />
+            7978186407<br />
+            <span style={{ fontSize: "1.1rem" }}></span>
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Port of Discharge</b>
+            </span>
+            <br />
+            AE JEA - Jebel Ali
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Place of Delivery/Final Destination</b>
+            </span>
+            <br />
+            AE JEA - Jebel Ali
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Pre-carriage by</b>
+            </span>
+            <br />
+            <br />
+            TRUCK
+          </td>
+          <td css={tableTd}>
+            <span style={{ fontSize: "0.7rem", top: "0" }}>
+              <b>Vessel & Voyage</b>
+            </span>
+            <br />
+            {/* {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber} */}
+            Mersk / Mersk1234
+          </td>
+        </tr>
+      </table>
+      <table
+        style={{
+          width: "100%",
+          border: "2px solid black",
+          borderTop: "1px",
+          borderBottom: "0",
+          padding: "0px",
+          borderSpacing: "0px"
+        }}
+      >
+        <thead>
+          <tr css={tableTr}>
+            <th css={tableTd}>
+              <span style={{ fontSize: "0.8rem" }}>Container No.s & Seal No.s</span>
+            </th>
+            <th css={tableTd}>
+              <span style={{ fontSize: "0.8rem" }}>Marks & No. of Packages</span>
+            </th>
+            <th css={tableTd} colSpan={3}>
+              <span style={{ fontSize: "0.8rem" }}>Description of Goods & Packages</span>
+            </th>
+            <th css={tableTd}>
+              <span style={{ fontSize: "0.8rem" }}>Gross Weight of Cargo (KG)</span>
+            </th>
+            <th css={tableTd}>
+              <span style={{ fontSize: "0.8rem" }}>Measurement (CBM)</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr css={tableTr}>
+            <td css={tableTd}>
+              <div style={{ position: "relative", top: "0px" }}>
+                {/* BOOKING-AS-BOOKING0252 &nbsp;/&nbsp;{sealNumber} */}
+                BOOKING-AS-BOOKING0252 &nbsp;/&nbsp;CAR / SN12
+              </div>
+            </td>
+            <td css={tableTd}>
+              4 Packages
+              <br />
+              {/* {consignment_containerSizeTypeISO} */}
+            </td>
+            <td colSpan={3} style={{ width: "50%" }} css={tableTd}>
+              {measure_totalNumberOfContainers} X {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
+              {goods_numberOfPackages} Packages <br />
+              {isJSONString((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')) &&
+                JSON.parse((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                  <p>
+                    {item?.hsCode} - {item?.desc}
+                  </p>
+                ))}
+              {!isJSONString((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')) && goods_descriptionOfGoods}
+              <div style={{ display: "flex", justifyContent: "space-between", margin: "0.5rem 0" }}>
+                <span>
+                  <strong>DOCUMENT TYPE. :</strong> Proforma Invoice{" "}
+                </span>
+                <span>
+                  <strong>DOCUMENT NO :</strong> PINV-in9010&nbsp;&nbsp;&nbsp;
+                </span>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", margin: "0 0 0.5rem 0" }}>
+                <span>
+                  <strong>SB NO:</strong> fcbae0dc-911f-40df-a07a-48c16247726e{" "}
+                </span>
+                <span>
+                  <strong>DATE: </strong>
+                  {moment(date_estimatedDateOfPlaceOfReceipt).format("YYYY-MM-DD")}&nbsp;&nbsp;&nbsp;
+                </span>
+              </div>
+              <strong>HSCODE: </strong>
+              <div style={{ display: "flex" }}>
+                {isJSONString((goods_HSCode ?? "").replaceAll("&quot;", '"')) &&
+                  JSON.parse((goods_HSCode ?? "").replaceAll("&quot;", '"')).map((item: any, index: number) => (
+                    <p>
+                      {item?.hsCode?.split(" - ")[0]}
+                      {index + 1 < JSON.parse((goods_HSCode ?? "").replaceAll("&quot;", '"')).length && " , "}
+                    </p>
+                  ))}
+                {/* {!isJSONString((goods_HSCode ?? "").replaceAll("&quot;", '"')) && goods_HSCode} */}
+                3003
+              </div>
+              <br />
+              <strong>Temperature:</strong>  0 CEL <br />
+              <strong>Humidity:</strong> 0 <br />
+              <strong>Ventilation:</strong> NO
+              <br />
+              <br />
+              SHIPPED ON BOARD{" "}
+              {moment(date_actualDateOfPlaceOfReceipt)
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
+                .format("DD/MM/YYYY")}{" "}
+              <br />
+              FREIGHT PREPAID <br />
+              CY/CY <br />
+              FCL/FC <br />
+              <br />
+              <br />
+            </td>
+            <td css={tableTd}>1</td>
+            <td css={tableTd}>KGM</td>
+          </tr>
+          <tr css={tableTr}>
+            <td css={tableTd} colSpan={7}>
+              <div style={{ fontSize: "0.7rem" }}>
+                <b>Additional Information for Refrigerated Cargo / Hazardous Cargo / OOG Cargo</b> &nbsp;&nbsp;THE
+                SHIPPING LINE SHALL NOT BE RESPONSIBLE FOR THE OUTTURN IF THE CARGO HAS BEEN HOT-LOADED.
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table
+        style={{
+          width: "100%",
+          border: "2px solid black",
+          borderTop: "0",
+          borderBottom: "0",
+          padding: "0px",
+          borderSpacing: "0px"
+        }}
+      >
+        <tr css={tableTr} style={{ fontSize: "0.8rem" }}>
+          <td css={tableTd}>
+            <b>CONTAINER NO. :</b> Mersk1234
+          </td>
+          <td css={tableTd}>
+            <b>TEMPERATURE :</b> 0 CEL
+          </td>
+          <td css={tableTd}>
+            <b>VENT :</b> NO
+          </td>
+          <td css={tableTd}>
+            <b>HUMIDITY :</b> 0
+          </td>
+        </tr>
+      </table>
+      <table style={{ width: "100%", border: "2px solid black", borderTop: "0", padding: "0px", borderSpacing: "0px" }}>
+        <tr css={tableTr} style={{ fontSize: "0.7rem" }}>
+          <td css={tableTd} style={{ textAlign: "center" }} colSpan={5}>
+            All cargo-related particulars above as furnished by the Shipper but without responsibility and
+            representation by Carrier
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Freight & Charges</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Units</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Currency</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Prepaid</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Collect</b>
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>10000</td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            USD
+            {/* {currency} */}
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>YES</td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>YES</td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Freight Payable at</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Freight Payable by</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>No. of Original Bill of Ladings</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Place of Issue</b>
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            <b>Date of Issue</b>
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            AE JEA - Jebel Ali
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            MICROSOFT CORPORATION
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>NA</td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            IN PPT - Paradip Port
+          </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+            {moment(date_actualDateOfPlaceOfReceipt)
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
+              .format("DD/MM/YYYY")}
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd} colSpan={5}>
+            <span style={{ fontSize: "0.8rem" }}>
+              <b>Destination Agent:</b>
+            </span>
+            <br />
+            {carrier_name},<br />
+            {carrier_contact_name},<br />
+            {carrier_address},<br />
+            {carrier_contact_email},<br />
+            {carrier_contact_phone}
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style={{
+          width: "100%",
+          borderWidth: "2px 2px 0px 2px",
+          borderStyle: "solid",
+          borderColor: "black",
+          padding: "0px",
+          borderSpacing: "0px",
+          marginTop: "3em"
+        }}
+      >
+        <tr css={tableTr}>
+          <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
+            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
+            <b>Name:</b>&nbsp;{exporterName} <br />
+            <b>Signer Place:</b>&nbsp;{exporter_signer_place}
+            <br />
+            <b>Date & Time:</b>&nbsp;
+            {moment(exporter_sign_time)
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
+              .format("DD/MM/YYYY hh:mm A [IST]")}
+            <br />
+            <b>IP Address:</b>&nbsp;{exporterSignIp}
+          </td>
+        </tr>
+      </table>
+      <table
+        style={{
+          width: "100%",
+          borderWidth: "0px 2px 2px 2px",
+          borderStyle: "solid",
+          borderColor: "black",
+          padding: "0px",
+          borderSpacing: "0px"
+        }}
+      >
+        <tr css={tableTr}>
+          <td css={tableTd} colSpan={4}>
+            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
+            existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
+            ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
+            Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
+            prohibited. Verify its integrity and authenticity through approved channels.
+          </td>
+        </tr>
+        {/* <tr css={tableTr}>
+            <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {bolProof?.a0},&nbsp;
+              {bolProof?.a1},<br />
+              &nbsp;{bolProof?.b0},&nbsp;{bolProof?.b1},<br />
+              &nbsp;{bolProof?.b2},&nbsp;{bolProof?.b3},<br />
+              &nbsp;{bolProof?.c0},&nbsp;{bolProof?.c1}
+              <br />
+              <br />
+              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
+              {bolProof?.scalarPubKey0},&nbsp;{bolProof?.scalarPubKey1}
+            </td>
+          </tr> */}
+        <div css={tableTd} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
+          <div>
+            <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
+          </div>
+          <div>
+            <b>Genesis Transaction Hash:</b>&nbsp;{mintTxHash}
           </div>
         </div>
-      </div>
+      </table>
     </div>
   );
 };
