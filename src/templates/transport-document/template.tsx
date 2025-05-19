@@ -90,6 +90,13 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     carrier_contact_email,
     carrier_contact_phone,
 
+    other_name,
+    other_contact_name,
+    other_address,
+    other_contact_email,
+    other_contact_phone,
+    other_lei,
+
     notify_name,
     notify_contact_name,
     notify_address,
@@ -100,7 +107,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     carrier_signer_place,
     exporter_signer_place,
     blockchainName,
-    mintTxHash,
+    txHash,
+    carrierSignIp,
+    carrierSignTime,
     shippingBillNo,
     invoiceNumber,
     invoiceDate,
@@ -117,6 +126,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     shippingCompanySignIp,
     containerType,
     containerSize,
+    onCarriageBy,
+    preCarriageBy,
+    numberOfPackages,
+    documentType,
+    documentReferenceNumber,
+    expectedArrivalAtPlaceOfDeliveryStartDate,
+    containerNumber,
+    temperature,
+    grossWeight,
+    grossWeightUnit
   } = recipient;
 
   console.log(recipient)
@@ -332,7 +351,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Mode of Transport:</b>
             </span>
             <br />
-            VESSEL
+            {onCarriageBy}
           </td>
         </tr>
 
@@ -342,14 +361,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Container Size:</b>
             </span>
             <br />
-            20ft
+            {containerSize}
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Container Type:</b>
             </span>
             <br />
-            reefer cargo booking
+            {containerType}
           </td>
         </tr>
 
@@ -359,24 +378,26 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Place of Receipt:</b>
             </span>
             <br />
-            IN NSA - Nhava Sheva (Jawaharlal Nehru)
+            {location_placeOfReceipt}
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Port of Loading:</b>
             </span>
             <br />
-            IN PPT - Paradip Port
+            {location_portOfLoading}
           </td>
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: "50%" }} rowSpan={2} colSpan={2}>
             <span style={{ fontSize: "0.8rem", position: "relative", top: "-40px" }}>Also Notify</span>
             <br />
-            <strong>LEI</strong>:  335800E6C75YGSGD5T66,<br />
-            TATA STEEL LIMITED,<br />
-            Raj,<br />
-            7978186407<br />
+            <strong>LEI</strong>:  {other_lei},<br />
+            {other_name},<br />
+            {other_contact_name},<br />
+            {other_address},<br />
+            {other_contact_email},<br />
+            {other_contact_phone}<br />
             <span style={{ fontSize: "1.1rem" }}></span>
           </td>
           <td css={tableTd}>
@@ -384,14 +405,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Port of Discharge</b>
             </span>
             <br />
-            AE JEA - Jebel Ali
+            {location_portOfDischarge}
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
               <b>Place of Delivery/Final Destination</b>
             </span>
             <br />
-            AE JEA - Jebel Ali
+            {location_placeOfDelivery}
           </td>
         </tr>
 
@@ -402,7 +423,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             <br />
-            TRUCK
+            {preCarriageBy}
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
@@ -448,11 +469,11 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <td css={tableTd}>
               <div style={{ position: "relative", top: "0px" }}>
                 {/* BOOKING-AS-BOOKING0252 &nbsp;/&nbsp;{sealNumber} */}
-                BOOKING-AS-BOOKING0252 &nbsp;/&nbsp;CAR / SN12
+                {dcsaBlNumber} &nbsp;/&nbsp;{sealNumber}
               </div>
             </td>
             <td css={tableTd}>
-              4 Packages
+              {numberOfPackages}
               <br />
               {/* {consignment_containerSizeTypeISO} */}
             </td>
@@ -468,19 +489,19 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               {!isJSONString((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')) && goods_descriptionOfGoods}
               <div style={{ display: "flex", justifyContent: "space-between", margin: "0.5rem 0" }}>
                 <span>
-                  <strong>DOCUMENT TYPE. :</strong> Proforma Invoice{" "}
+                  <strong>DOCUMENT TYPE. :</strong> {documentType} {" "}
                 </span>
                 <span>
-                  <strong>DOCUMENT NO :</strong> PINV-in9010&nbsp;&nbsp;&nbsp;
+                  <strong>DOCUMENT NO :</strong> {documentReferenceNumber}&nbsp;&nbsp;&nbsp;
                 </span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", margin: "0 0 0.5rem 0" }}>
                 <span>
-                  <strong>SB NO:</strong> fcbae0dc-911f-40df-a07a-48c16247726e{" "}
+                  <strong>SB NO:</strong> {shippingInstructionsReference}{" "}
                 </span>
                 <span>
                   <strong>DATE: </strong>
-                  {moment(date_estimatedDateOfPlaceOfReceipt).format("YYYY-MM-DD")}&nbsp;&nbsp;&nbsp;
+                  {moment(expectedArrivalAtPlaceOfDeliveryStartDate).format("YYYY-MM-DD")}&nbsp;&nbsp;&nbsp;
                 </span>
               </div>
               <strong>HSCODE: </strong>
@@ -493,7 +514,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
                     </p>
                   ))}
                 {/* {!isJSONString((goods_HSCode ?? "").replaceAll("&quot;", '"')) && goods_HSCode} */}
-                3003
+                {goods_HSCode}
               </div>
               <br />
               <strong>Temperature:</strong>  0 CEL <br />
@@ -514,8 +535,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <br />
               <br />
             </td>
-            <td css={tableTd}>1</td>
-            <td css={tableTd}>KGM</td>
+            <td css={tableTd}>{grossWeight}</td>
+            <td css={tableTd}>{grossWeightUnit}</td>
           </tr>
           <tr css={tableTr}>
             <td css={tableTd} colSpan={7}>
@@ -539,16 +560,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       >
         <tr css={tableTr} style={{ fontSize: "0.8rem" }}>
           <td css={tableTd}>
-            <b>CONTAINER NO. :</b> Mersk1234
+            <b>CONTAINER NO. :</b> {containerNumber}
           </td>
           <td css={tableTd}>
-            <b>TEMPERATURE :</b> 0 CEL
+            <b>TEMPERATURE :</b> {temperature}
           </td>
           <td css={tableTd}>
-            <b>VENT :</b> NO
+            <b>VENT :</b> {ventilation}
           </td>
           <td css={tableTd}>
-            <b>HUMIDITY :</b> 0
+            <b>HUMIDITY :</b> {humidity}
           </td>
         </tr>
       </table>
@@ -630,6 +651,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             {carrier_name},<br />
+            {carrier_lei},<br />
             {carrier_contact_name},<br />
             {carrier_address},<br />
             {carrier_contact_email},<br />
@@ -653,16 +675,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{exporterName} <br />
-            <b>Signer Place:</b>&nbsp;Bhubaneswar, Odisha, 751024
+            <b>Signer Place:</b>&nbsp;{carrier_signer_place}
             <br />
             <b>Date & Time:</b>&nbsp;
-            {moment(exporter_sign_time)
+            {moment(carrierSignTime)
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
             <br />
-            <b>IP Address:</b>&nbsp; 10.0.11.177
+            <b>IP Address:</b>&nbsp; {carrierSignIp}
           </td>
         </tr>
       </table>
@@ -703,7 +725,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
           </div>
           <div>
-            <b>Genesis Transaction Hash:</b>&nbsp;{mintTxHash}
+            <b>Genesis Transaction Hash:</b>&nbsp;{txHash}
           </div>
         </div>
       </table>

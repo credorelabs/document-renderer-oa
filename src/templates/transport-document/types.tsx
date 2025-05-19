@@ -146,6 +146,13 @@ interface Recipient extends v2.Recipient {
     notify_contact_email?: string;
     notify_contact_phone?: string;
 
+    other_name?: string;
+    other_contact_name?: string;
+    other_address?: string;
+    other_lei?: string;
+    other_contact_email?: string;
+    other_contact_phone?: string;
+
     blockchainName?: string;
     mintTxHash?: string;
     carrier_signer_place?: string;
@@ -169,6 +176,16 @@ interface Recipient extends v2.Recipient {
     shippingCompanySignIp?: string;
     containerSize?: string;
 
+    carrierSignTime?: string;
+    carrierSignIp?: string;
+    txHash?: string;
+    numberOfPackages?: string;
+    documentType?: string;
+    documentReferenceNumber?: string;
+    containerNumber?: string;
+    temperature?: string;
+    grossWeight?: string;
+    grossWeightUnit ?: string;
 }
 interface Signature {
     name?: string;
