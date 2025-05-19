@@ -227,16 +227,17 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <span style={{ fontSize: "0.8rem" }}>Shipper</span>
             <br />
             <span style={{ fontSize: "1.1rem" }}>
-              Esmos_Cartel,<br />
+             {exporterCompanyName},<br />
               {exporterLei && (
                 <>
-                  <b>LEI number:</b>&nbsp;22334434343433454332
+                  <b>LEI number:</b>&nbsp;{exporterLei}
                   <br />
                 </>
               )}
-              Cross Road No 4 Shanti Nagar Baridhi , Jamshedpur,<br />
-              qa2@yopmail.com,<br />
-              +91860093629933,<br />
+              {exporterName},
+              {exporterAddress},<br />
+              {exporterEmail},<br />
+             {exporterPhone},<br />
             </span>
           </td>
 
@@ -650,7 +651,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{exporterName} <br />
-            <b>Signer Place:</b>&nbsp;{exporter_signer_place}
+            <b>Signer Place:</b>&nbsp;Bhubaneswar, Odisha, 751024
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(exporter_sign_time)
@@ -659,7 +660,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
             <br />
-            <b>IP Address:</b>&nbsp;{exporterSignIp}
+            <b>IP Address:</b>&nbsp; 10.0.11.177
           </td>
         </tr>
       </table>
