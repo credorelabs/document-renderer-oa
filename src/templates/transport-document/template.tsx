@@ -72,6 +72,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     importer_email,
     importer_phone,
     importer_address,
+    importer_lei,
 
     exporterCompanyName,
     exporterAddress,
@@ -94,6 +95,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     notify_address,
     notify_contact_email,
     notify_contact_phone,
+    notify_lei,
+
     carrier_signer_place,
     exporter_signer_place,
     blockchainName,
@@ -106,8 +109,6 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     ventilation,
     tokenRegistryAddress,
     exporterLei,
-    importer_lei,
-    notify_lei,
     carrier_lei,
     secondaryLogo,
     currency,
@@ -272,16 +273,17 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <span style={{ fontSize: "0.8rem" }}>Consignee</span>
             <br />
             <span style={{ fontSize: "1.2rem" }}>
-              MICROSOFT CORPORATION,<br />
+              {importerCompanyName},<br />
               {importer_lei && (
                 <>
-                  <b>LEI number:</b>&nbsp;INR2EJN1ERAN0W5ZP974
+                  <b>LEI number:</b>&nbsp;{importer_lei}
                   <br />
                 </>
               )}
-              Cross Road No4, Shanti Nagar, Baridhi Basti, Baridhi,,<br />
-              abhilashcredore@yopmail.com,<br />
-              56743223,<br />
+              {importerName},
+              {importer_address},<br />
+              {importer_email},<br />
+              {importer_phone},<br />
             </span>
           </td>
         </tr>
@@ -303,18 +305,18 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             <span style={{ fontSize: "1.1rem" }}>
-              HALD,<br />
-              Haldiram wala,<br />
+              {notify_name},<br />
+              {notify_contact_name},<br />
 
               <>
-                <b>LEI number:</b>&nbsp; 969500CMJ8VMARSGGI31
+                <b>LEI number:</b>&nbsp; {notify_lei}
                 <br />
               </>
 
               {/* {notify_contact_name},<br /> */}
-              HALDIRAM VILLAGE KHERKI DAULA,DELHI JAIPUR HIGHWAY,GURGAON,SADAR BAZAR, GURGAON, IN, 122001,<br />
-              raj@credore.xyz,<br />
-              83923433
+              {notify_address},<br />
+              {notify_contact_email},<br />
+              {notify_contact_phone},<br />
             </span>
           </td>
           <td css={tableTd}>
