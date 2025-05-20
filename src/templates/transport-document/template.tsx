@@ -611,7 +611,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         <tr css={tableTr}>
           <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{carrier_name} <br />
+            <b>Name:</b>&nbsp;{carrier_contact_name} <br />
             <b>Signer Place:</b>&nbsp;{carrier_signer_place}
             <br />
             <b>Date & Time:</b>&nbsp;
