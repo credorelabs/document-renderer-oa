@@ -19,55 +19,19 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
   const {
     primaryLogo,
     dcsaBlNumber,
-    transportDocumentSubReference,
-    shippingInstructionsReference,
-    isShippedOnBoardType,
-    carrierClause,
-    consignment_containerNumber,
-    consignment_containerSizeTypeISO,
-    consignment_fullOrEmptyIndicator,
-    contractQuoteReferenceNumber,
-    date_actualDateOfPlaceOfDelivery,
+    shippingInstructionsReference,   
+
     date_actualDateOfPlaceOfReceipt,
-    date_actualTimeOfArrival,
-    date_actualTimeOfDeparture,
-    date_estimatedDateOfPlaceOfDelivery,
-    date_estimatedDateOfPlaceOfReceipt,
-    date_estimatedTimeOfArrival,
-    date_estimatedTimeOfDeparture,
-    freightForwardersReferenceNumber,
+    
     goods_HSCode,
-    goods_IMDG,
-    goods_dangerLevel,
     goods_descriptionOfGoods,
     goods_numberOfPackages,
-    goods_productIdentifier,
-    goods_properShippingTechnicalName,
-    goods_typeOfPackagingCEFACT,
     location_placeOfDelivery,
-    location_placeOfPaymentUNLOCODE,
     location_placeOfReceipt,
     location_portOfDischarge,
     location_portOfLoading,
-    measure_temperatureSettingForReeferContainers,
-    measure_temperatureUnitsUNCEFACT,
-    measure_totalNumberOfContainers,
-    measure_volume,
-    measure_weight,
-    party_SCAC,
-    party_SMFG,
-    party_consignee,
-    party_notifyParty,
-    party_shipper,
-    shippersReferenceNumber,
-    terms,
-    transport_IMOvesselNumber,
-    transport_conveyanceReferenceNumber,
-    transport_modeOfTransportUNCEFACT,
-    transport_vesselName,
-
+  
     importerCompanyName,
-    importerAddress,
     importerName,
     importer_email,
     importer_phone,
@@ -77,12 +41,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     exporterCompanyName,
     exporterAddress,
     exporterName,
-    exporter_sign_time,
     exporterEmail,
     exporterPhone,
-
-    shipping_company_sign_time,
-    shipping_company_signer,
 
     carrier_name,
     carrier_contact_name,
@@ -105,25 +65,15 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     notify_lei,
 
     carrier_signer_place,
-    exporter_signer_place,
     blockchainName,
     txHash,
     carrierSignIp,
     carrierSignTime,
-    shippingBillNo,
-    invoiceNumber,
-    invoiceDate,
     sealNumber,
     humidity,
     ventilation,
-    tokenRegistryAddress,
     exporterLei,
     carrier_lei,
-    secondaryLogo,
-    currency,
-    consignment_containerReeferType,
-    exporterSignIp,
-    shippingCompanySignIp,
     containerType,
     containerSize,
     onCarriageBy,
@@ -135,7 +85,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     containerNumber,
     temperature,
     grossWeight,
-    grossWeightUnit
+    grossWeightUnit,
+    numberOfContainer,
   } = recipient;
 
   console.log(recipient)
@@ -344,7 +295,6 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
             <br />
             fcbae0dc-911f-40df-a07a-48c16247726e   / &nbsp;
-            {contractQuoteReferenceNumber}
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
@@ -478,15 +428,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               {/* {consignment_containerSizeTypeISO} */}
             </td>
             <td colSpan={3} style={{ width: "50%" }} css={tableTd}>
-              {measure_totalNumberOfContainers} X {consignment_containerSizeTypeISO} CONTAINERS SAID TO CONTAIN <br />
+              {numberOfContainer} X {containerSize} CONTAINERS SAID TO CONTAIN <br />
               {goods_numberOfPackages} Packages <br />
-              {isJSONString((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')) &&
-                JSON.parse((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')).map((item: any, index: number) => (
-                  <p>
-                    {item?.hsCode} - {item?.desc}
-                  </p>
-                ))}
-              {!isJSONString((goods_descriptionOfGoods ?? "").replaceAll("&quot;", '"')) && goods_descriptionOfGoods}
+              
               <div style={{ display: "flex", justifyContent: "space-between", margin: "0.5rem 0" }}>
                 <span>
                   <strong>DOCUMENT TYPE. :</strong> {documentType} {" "}
@@ -506,14 +450,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               </div>
               <strong>HSCODE: </strong>
               <div style={{ display: "flex" }}>
-                {isJSONString((goods_HSCode ?? "").replaceAll("&quot;", '"')) &&
-                  JSON.parse((goods_HSCode ?? "").replaceAll("&quot;", '"')).map((item: any, index: number) => (
-                    <p>
-                      {item?.hsCode?.split(" - ")[0]}
-                      {index + 1 < JSON.parse((goods_HSCode ?? "").replaceAll("&quot;", '"')).length && " , "}
-                    </p>
-                  ))}
-                {/* {!isJSONString((goods_HSCode ?? "").replaceAll("&quot;", '"')) && goods_HSCode} */}
+                
                 {goods_HSCode}
               </div>
               <br />
@@ -523,7 +460,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <br />
               <br />
               SHIPPED ON BOARD{" "}
-              {moment(date_actualDateOfPlaceOfReceipt)
+              {moment(expectedArrivalAtPlaceOfDeliveryStartDate)
                 .utc()
                 .add(5, "hours")
                 .add(30, "minutes")

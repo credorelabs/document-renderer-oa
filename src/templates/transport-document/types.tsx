@@ -184,7 +184,7 @@ interface Recipient extends v2.Recipient {
     documentReferenceNumber?: string;
     containerNumber?: string;
     temperature?: string;
-    grossWeight?: string;
+    grossWeight?: number;
     grossWeightUnit ?: string;
 }
 interface Signature {
