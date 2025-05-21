@@ -49,7 +49,7 @@ export const cargoDocumentTemplate: CargoDocument = {
   carrierSignTime: "2025-05-25T10:00:00.000Z",
   sealNumber: "SEAL789456",
   humidity: "60%",
-  ventilation: "Standard",
+  ventilation: false,
   exporterLei: "LEI-1237894560",
   carrier_lei: "LEI-6541239870",
   containerType: "dry cargo",

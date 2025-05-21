@@ -294,7 +294,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Shipper/ Export /Forwarder References</b>
             </span>
             <br />
-            fcbae0dc-911f-40df-a07a-48c16247726e   / &nbsp;
+            {shippingInstructionsReference}   / &nbsp;
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
@@ -503,7 +503,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <b>TEMPERATURE :</b> {temperature}
           </td>
           <td css={tableTd}>
-            <b>VENT :</b> {ventilation}
+            <b>VENT :</b> {ventilation === true ? "Yes" : "No"}
           </td>
           <td css={tableTd}>
             <b>HUMIDITY :</b> {humidity}

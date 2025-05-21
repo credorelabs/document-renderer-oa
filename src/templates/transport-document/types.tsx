@@ -163,7 +163,7 @@ interface Recipient extends v2.Recipient {
     invoiceDate?: string;
     sealNumber?: string;
     humidity?: string;
-    ventilation?: string;
+    ventilation?: boolean;
     tokenRegistryAddress?: string;
 
     primaryLogo?: string;
