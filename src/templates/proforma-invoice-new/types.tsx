@@ -54,6 +54,18 @@ export interface Recipient extends v2.Recipient {
   signerDate?: string;
   signerDns?: string;
   companyLogo?: string;
+  consignee?: PartyDetails;
+  notifyParty?: PartyDetails;
+}
+
+interface PartyDetails {
+  partyName?: string;
+  partyCompanyName?: string;
+  partyAddress?: string;
+  leiNumber?: string;
+  partyEmail?: string;
+  partyISD?: string;
+  partyPhone?: string;
 }
 
 interface IncoTerm {

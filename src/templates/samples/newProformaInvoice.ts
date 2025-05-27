@@ -88,6 +88,24 @@ export const newProformaInvoiceTemplate: NewProformaInvoice = {
         hsCode: "HSCODE001"
       }
     ],
+    consignee: {
+      leiNumber: "335800E6C75YGSGD5T66",
+      partyCompanyName: "TATA STEEL LIMITED",
+      partyAddress: "BOMBAY HOUSE, 24, HOMI MODY STREET,FORT, MUMBAI, MUMBAI, IN, 400001",
+      partyName: "Praduman",
+      partyEmail: "praduman@credore.xyz",
+      partyPhone: "7008297411",
+      partyISD: "+91",
+    },
+    notifyParty: {
+      leiNumber: "335800E6C75YGSGD5T66",
+      partyCompanyName: "TATA STEEL LIMITED",
+      partyAddress: "BOMBAY HOUSE, 24, HOMI MODY STREET,FORT, MUMBAI, MUMBAI, IN, 400001",
+      partyName: "Praduman",
+      partyEmail: "praduman@credore.xyz",
+      partyPhone: "7008297411",
+      partyISD: "+91",
+    },
 
     invoiceProof: {
       a0: "1883415604158045018758784307621608541141656088150671126336919119463579281976",

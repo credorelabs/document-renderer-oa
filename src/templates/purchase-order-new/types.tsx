@@ -30,6 +30,20 @@ export interface Recipient extends v2.Recipient {
   signerDns?: string;
   termsAndConditions?: string;
   companyLogo?: string;
+  consignee?: PartyDetails;
+  notifyParty?: PartyDetails;
+}
+
+interface PartyDetails {
+  partyName?: string;
+  partyCompanyName?: string;
+  partyAddress?: string;
+  leiNumber?: string;
+  partyEmail?: string;
+  partyISD?: string;
+  partyPhone?: string;
+  partyCountry?: string;
+  partyPinCode?: string;
 }
 
 interface PoProof {

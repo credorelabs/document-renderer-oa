@@ -90,6 +90,24 @@ export const commercialInvoiceTemplate: Invoice = {
       scalarPubKey0: "16551728319327439168317300279856018011041840639624811157340627997761414256717",
       scalarPubKey1: "21676599011130813512183056032443407887594316023951962444664078281579755267315"
     },
+    consignee: {
+      leiNumber: "335800E6C75YGSGD5T66",
+      partyCompanyName: "TATA STEEL LIMITED",
+      partyAddress: "BOMBAY HOUSE, 24, HOMI MODY STREET,FORT, MUMBAI, MUMBAI, IN, 400001",
+      partyName: "Praduman",
+      partyEmail: "praduman@credore.xyz",
+      partyPhone: "7008297411",
+      partyISD: "+91",
+    },
+    notifyParty: {
+      leiNumber: "335800E6C75YGSGD5T66",
+      partyCompanyName: "TATA STEEL LIMITED",
+      partyAddress: "BOMBAY HOUSE, 24, HOMI MODY STREET,FORT, MUMBAI, MUMBAI, IN, 400001",
+      partyName: "Praduman",
+      partyEmail: "praduman@credore.xyz",
+      partyPhone: "7008297411",
+      partyISD: "+91",
+    },
   },
 
   issuers: [

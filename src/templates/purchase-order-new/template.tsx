@@ -31,6 +31,8 @@ export const NewPurchaseOrderTemplate: FunctionComponent<TemplateProps<NewPurcha
     signerDns,
     termsAndConditions,
     companyLogo,
+    consignee,
+    notifyParty
   } = recipient;
 
   let taxAm = parseInt(tax, 10);
@@ -172,6 +174,94 @@ export const NewPurchaseOrderTemplate: FunctionComponent<TemplateProps<NewPurcha
             </div>
             <div style={{ marginTop: "8px" }}>
               <b style={{ color: "#000000" }}>LEI:</b> {purchasePartiesDetails?.importerLei || ""}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style={{ width: "100%", display: "flex" }}>
+        <div style={{ width: "50%", borderWidth: "0", borderRightWidth: "2px", borderStyle: "solid", borderColor: "#B8B9BD" }}>
+          <div
+            style={{
+              backgroundColor: "#E2E8F0",
+              borderWidth: "0",
+              borderBottomWidth: "2px",
+              borderTopWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#B8B9BD",
+              padding: "12px 20px",
+              fontWeight: 700,
+              fontSize: "14px",
+            }}
+          >
+            CONSIGNEE
+          </div>
+          <div style={{ padding: "12px 20px", color: "#656565", fontWeight: 600, fontSize: "14px" }}>
+            <div>
+              <b style={{ color: "#000000" }}>Company Name:</b> {consignee?.partyCompanyName || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Contact Name:</b> {consignee?.partyName || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Street Address:</b> {consignee?.partyAddress || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Country:</b> {consignee?.partyCountry || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Pin Code:</b> {consignee?.partyPinCode || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Phone Number:</b> {consignee?.partyISD || "- -"}&nbsp;{consignee?.partyPhone}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Email:</b> {consignee?.partyEmail || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>LEI:</b> {consignee?.leiNumber || "- -"}
+            </div>
+          </div>
+        </div>
+        <div style={{ width: "50%" }}>
+          <div
+            style={{
+              backgroundColor: "#E2E8F0",
+              borderWidth: "0",
+              borderBottomWidth: "2px",
+              borderTopWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#B8B9BD",
+              padding: "12px 20px",
+              fontWeight: 700,
+              fontSize: "14px",
+            }}
+          >
+            NOTIFY PARTY
+          </div>
+          <div style={{ padding: "12px 20px", color: "#656565", fontWeight: 600, fontSize: "14px" }}>
+            <div>
+              <b style={{ color: "#000000" }}>Company Name:</b> {notifyParty?.partyCompanyName || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Contact Name:</b> {notifyParty?.partyName || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Street Address:</b> {notifyParty?.partyAddress || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Country:</b> {notifyParty?.partyCountry || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Pin Code:</b> {notifyParty?.partyPinCode || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Phone Number:</b> {notifyParty?.partyISD || "- -"}&nbsp;{notifyParty?.partyPhone}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>Email:</b> {notifyParty?.partyEmail || "- -"}
+            </div>
+            <div style={{ marginTop: "8px" }}>
+              <b style={{ color: "#000000" }}>LEI:</b> {notifyParty?.leiNumber || "- -"}
             </div>
           </div>
         </div>

@@ -53,7 +53,9 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
     signerDate,
     signerDns,
     companyLogo,
-    paymentMethod
+    paymentMethod,
+    consignee,
+    notifyParty
   } = recipient;
 
   const containerStyle = css`
@@ -201,6 +203,53 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
             </td>
           </tr>
         </table>
+
+        {(consignee || notifyParty) &&
+                <>
+                  <h3>
+                    Document Parties:
+                  </h3>
+                  <table
+                    style={{
+                      width: "100%",
+                      border: "2px solid black",
+                      padding: "0px",
+                      borderSpacing: "0px",
+                    }}
+                  >
+                    <tr css={tableTr}>
+                      {consignee && 
+                        <td css={tableTd}>
+                          <b>CONSIGNEE PARTY:</b><br/>
+                          <span style={{marginTop: "1rem"}}>
+                            {consignee?.partyName},<br/>
+                            {consignee?.partyCompanyName},<br/>
+                            {consignee?.partyAddress}<br/>
+                            LEI No.:&nbsp;{consignee?.leiNumber}<br/>
+                            ✉️:&nbsp;{consignee?.partyEmail}<br />
+                            📞:&nbsp;{consignee?.partyISD}&nbsp;{consignee?.partyPhone}
+                            <br />
+                          </span>
+                        </td>
+                      }
+                      {notifyParty &&
+                        <td css={tableTd}>
+                          <b>NOTIFY PARTY:</b><br/>
+                          <span style={{marginTop: "1rem"}}>
+                            {notifyParty?.partyName},<br/>
+                            {notifyParty?.partyCompanyName},<br/>
+                            {notifyParty?.partyAddress}<br/>
+                            LEI No.:&nbsp;{notifyParty?.leiNumber}<br/>
+                            ✉️:&nbsp;{notifyParty?.partyEmail}<br />
+                            📞:&nbsp;{notifyParty?.partyISD}&nbsp;{notifyParty?.partyPhone}
+                            <br />
+                          </span>
+                        </td>
+                      }
+                    </tr>
+                  </table>
+                </>
+              }
 
         <h3>Contract & Agreement:</h3>
         <table style={{ width: "100%", border: "2px solid black", padding: "0px", borderSpacing: "0px" }}>
