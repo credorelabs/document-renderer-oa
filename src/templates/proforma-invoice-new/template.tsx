@@ -719,7 +719,7 @@ export const NewProformaInvoiceTemplate: FunctionComponent<TemplateProps<NewProf
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", padding: "8px 0" }}>
           <div>
-            <b>Blockchain:</b> {blockchainName || ""}
+            <b>Blockchain:</b> {blockchainName==="xinfin"?"XDC Network":blockchainName}
           </div>
         </div>
       </div>

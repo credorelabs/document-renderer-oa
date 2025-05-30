@@ -528,7 +528,7 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
             <b>Tx Hash:</b>&nbsp;{mintTxHash}
           </div> */}
           <div>
-            <b>Blockchain:</b>&nbsp;{blockchainName}
+            <b>Blockchain:</b>&nbsp;{blockchainName==="xinfin"?"XDC Network":blockchainName}
           </div>
         </div>
       </div>
