@@ -242,19 +242,21 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} rowSpan={2} colSpan={2}>
             <span style={{ fontSize: "0.8rem" }}>Consignee</span>
             <br />
-            <span style={{ fontSize: "1.2rem" }}>
-              {importerCompanyName},<br />
-              {importer_lei && (
-                <>
-                  <b>LEI number:</b>&nbsp;{importer_lei}
-                  <br />
-                </>
-              )}
-              {importerName},
-              {importer_address},<br />
-              {importer_email},<br />
-              {importer_phone},<br />
-            </span>
+            {importerCompanyName &&
+              <span style={{ fontSize: "1.2rem" }}>
+                {importerCompanyName},<br />
+                {importer_lei && (
+                  <>
+                    <b>LEI number:</b>&nbsp;{importer_lei}
+                    <br />
+                  </>
+                )}
+                {importerName},
+                {importer_address},<br />
+                {importer_email},<br />
+                {importer_phone},<br />
+              </span>
+            }
           </td>
         </tr>
       </table>
@@ -274,20 +276,22 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               Notify Party (Carrier not responsible for failure to notify and no claim shall attach therefrom)
             </span>
             <br />
-            <span style={{ fontSize: "1.1rem" }}>
-              {notify_name},<br />
-              {notify_contact_name},<br />
+            {notify_name &&
+              <span style={{ fontSize: "1.1rem" }}>
+                {notify_name},<br />
+                {notify_contact_name},<br />
 
-              <>
-                <b>LEI number:</b>&nbsp; {notify_lei}
-                <br />
-              </>
+                <>
+                  <b>LEI number:</b>&nbsp; {notify_lei}
+                  <br />
+                </>
 
-              {/* {notify_contact_name},<br /> */}
-              {notify_address},<br />
-              {notify_contact_email},<br />
-              {notify_contact_phone},<br />
-            </span>
+                {/* {notify_contact_name},<br /> */}
+                {notify_address},<br />
+                {notify_contact_email},<br />
+                {notify_contact_phone},<br />
+              </span>
+            }
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
@@ -342,13 +346,17 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} style={{ width: "50%" }} rowSpan={2} colSpan={2}>
             <span style={{ fontSize: "0.8rem", position: "relative", top: "-40px" }}>Also Notify</span>
             <br />
-            <strong>LEI</strong>:  {other_lei},<br />
-            {other_name},<br />
-            {other_contact_name},<br />
-            {other_address},<br />
-            {other_contact_email},<br />
-            {other_contact_phone}<br />
-            <span style={{ fontSize: "1.1rem" }}></span>
+            {other_name &&
+              <>
+                <strong>LEI</strong>:  {other_lei},<br />
+                {other_name},<br />
+                {other_contact_name},<br />
+                {other_address},<br />
+                {other_contact_email},<br />
+                {other_contact_phone}<br />
+                <span style={{ fontSize: "1.1rem" }}></span>
+              </>
+            }
           </td>
           <td css={tableTd}>
             <span style={{ fontSize: "0.7rem", top: "0" }}>
@@ -587,12 +595,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Destination Agent:</b>
             </span>
             <br />
-            {carrier_name},<br />
-            {carrier_lei},<br />
-            {carrier_contact_name},<br />
-            {carrier_address},<br />
-            {carrier_contact_email},<br />
-            {carrier_contact_phone}
+            { carrier_name &&
+              <>
+                {carrier_name},<br />
+                {carrier_lei},<br />
+                {carrier_contact_name},<br />
+                {carrier_address},<br />
+                {carrier_contact_email},<br />
+                {carrier_contact_phone}
+              </>
+            }
           </td>
         </tr>
       </table>
