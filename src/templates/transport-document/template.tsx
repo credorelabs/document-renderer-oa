@@ -3,6 +3,7 @@ import { TemplateProps } from "@govtechsg/decentralized-renderer-react-component
 import moment from "moment";
 import { CargoDocument } from "./types";
 import { css } from "@emotion/core";
+import eBl from "./eBL_t&c.png";
 
 const PAYMENT_METHODS = [
   { value: "A", label: "Payment in Cash (A)" },
@@ -677,6 +678,20 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
           </div>
         </div>
+      </table>
+
+      <table
+        style={{
+          width: "100%",
+          borderWidth: "2px",
+          borderStyle: "solid",
+          borderColor: "black",
+          padding: "0px",
+          borderSpacing: "0px",
+          marginTop: "2rem"
+        }}
+      >
+        <img src={eBl} alt='bl t&c' style={{width:"100%"}}/>
       </table>
     </div>
   );
