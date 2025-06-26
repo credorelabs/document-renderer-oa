@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { NewPromissoryNoteTemplate } from "./template";
+import { promissoryTemplate } from "../samples/promissoryTemplate";
+
+<Meta title="MDX|NewPromissoryNoteTemplate" component={NewPromissoryNoteTemplate} />
+
+# PhytoTemplate component
+
+<Description of={NewPromissoryNoteTemplate} />
+
+# Props
+
+<Props of={NewPromissoryNoteTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <NewPromissoryNoteTemplate document={object("document", promissoryTemplate)} />
+  </Story>
+</Preview>
