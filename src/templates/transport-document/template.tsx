@@ -519,7 +519,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           </td>
         </tr>
       </table>
-      <table style={{ width: "100%", border: "2px solid black", borderTop: "0", padding: "0px", borderSpacing: "0px" }}>
+      <table style={{ width: "100%", border: "2px solid black", borderTop: "0", borderBottom: "0", padding: "0px", borderSpacing: "0px" }}>
         <tr css={tableTr} style={{ fontSize: "0.7rem" }}>
           <td css={tableTd} style={{ textAlign: "center" }} colSpan={5}>
             All cargo-related particulars above as furnished by the Shipper but without responsibility and
@@ -591,7 +591,21 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd} colSpan={5}>
+          <td css={tableTd} colSpan={3} style={{ padding: "1rem", width: "50%" }}>
+            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
+            <b>Name:</b>&nbsp;{carrier_contact_name} <br />
+            <b>Signer Place:</b>&nbsp;{carrier_signer_place}
+            <br />
+            <b>Date & Time:</b>&nbsp;
+            {moment(carrierSignTime)
+              .utc()
+              .add(5, "hours")
+              .add(30, "minutes")
+              .format("DD/MM/YYYY hh:mm A [IST]")}
+            <br />
+            <b>IP Address:</b>&nbsp; {carrierSignIp}
+          </td>
+          <td css={tableTd} colSpan={2}>
             <span style={{ fontSize: "0.8rem" }}>
               <b>Destination Agent:</b>
             </span>
@@ -609,35 +623,6 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           </td>
         </tr>
       </table>
-
-      <table
-        style={{
-          width: "100%",
-          borderWidth: "2px 2px 0px 2px",
-          borderStyle: "solid",
-          borderColor: "black",
-          padding: "0px",
-          borderSpacing: "0px",
-          marginTop: "3em"
-        }}
-      >
-        <tr css={tableTr}>
-          <td css={tableTd} colSpan={2} style={{ padding: "1rem", width: "50%" }}>
-            <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{carrier_contact_name} <br />
-            <b>Signer Place:</b>&nbsp;{carrier_signer_place}
-            <br />
-            <b>Date & Time:</b>&nbsp;
-            {moment(carrierSignTime)
-              .utc()
-              .add(5, "hours")
-              .add(30, "minutes")
-              .format("DD/MM/YYYY hh:mm A [IST]")}
-            <br />
-            <b>IP Address:</b>&nbsp; {carrierSignIp}
-          </td>
-        </tr>
-      </table>
       <table
         style={{
           width: "100%",
@@ -648,7 +633,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           borderSpacing: "0px"
         }}
       >
-        <tr css={tableTr}>
+        {/* <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
             <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
             existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
@@ -656,7 +641,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
             prohibited. Verify its integrity and authenticity through approved channels.
           </td>
-        </tr>
+        </tr> */}
         {/* <tr css={tableTr}>
             <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
               <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {bolProof?.a0},&nbsp;
