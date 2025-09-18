@@ -55,7 +55,9 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
     companyLogo,
     paymentMethod,
     consignee,
-    notifyParty
+    notifyParty,
+    invoiceNumber,
+    buyerContract
   } = recipient;
 
   const containerStyle = css`
@@ -118,7 +120,7 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
               <h3 style={{ textAlign: "right", marginBottom: "0" }}>
                 <b>INVOICE:</b>
               </h3>
-              <span style={{marginTop: "1.3rem"}}>#{invoice_number}</span>
+              <span style={{marginTop: "1.3rem"}}>#{invoice_number || invoiceNumber}</span>
             </div>
 
             <div style={{ display: "flex", gap: "1.25rem" }}>
@@ -261,7 +263,7 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
             </td>
             <td css={tableTd}>
               <b>BUYER CONTRACT NO.:</b> <br />
-              {buyerContractNumber}
+              {buyerContractNumber || buyerContract}
             </td>
             <td css={tableTd}>
               <b>SALES ORDER NO.:</b>
