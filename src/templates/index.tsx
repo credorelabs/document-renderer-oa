@@ -46,6 +46,6 @@ export const registry: TemplateRegistry<any> = {
   DCSA_BOL: CargoDocumentTemplates,
   PURCHASE_ORDER_V2: NewPurchaseOrderTemplates,
   PROMISSORY_NOTE_V2: NewPromissoryNoteTemplates,
-  FIATA_BL: FiataBLTemplates
+  FIATA_BL: FiataBLTemplates,
   // PACKING_LIST:packingListTemplate
 };
