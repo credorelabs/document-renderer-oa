@@ -23,6 +23,7 @@ import { NewProformaInvoiceTemplates } from "./proforma-invoice-new";
 import { CargoDocumentTemplates } from "./transport-document";
 import { NewPurchaseOrderTemplates } from "./purchase-order-new";
 import { NewPromissoryNoteTemplates } from "./promissory-note-v2";
+import { FiataBLTemplates } from "./fiata-bl";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -44,6 +45,7 @@ export const registry: TemplateRegistry<any> = {
   PROFORMA_INVOICE_V2: NewProformaInvoiceTemplates,
   DCSA_BOL: CargoDocumentTemplates,
   PURCHASE_ORDER_V2: NewPurchaseOrderTemplates,
-  PROMISSORY_NOTE_V2: NewPromissoryNoteTemplates
+  PROMISSORY_NOTE_V2: NewPromissoryNoteTemplates,
+  FIATA_BL: FiataBLTemplates
   // PACKING_LIST:packingListTemplate
 };
