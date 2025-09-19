@@ -120,6 +120,10 @@ export const FiataBLTemplate: FunctionComponent<TemplateProps<FiataBL>> = ({ doc
                   </span>
                   <br />
                   <span>
+                    <b>Signer IP:</b>&nbsp;{signerIPAddress}
+                  </span>
+                  <br />
+                  <span>
                     <b>Timestamp:</b>&nbsp;
                     {moment
                       .utc(signerDate)
@@ -135,10 +139,6 @@ export const FiataBLTemplate: FunctionComponent<TemplateProps<FiataBL>> = ({ doc
                   </span>
                   <br />
                   <span>
-                    <b>Signer IP:</b>&nbsp;{signerIPAddress}
-                  </span>
-                  <br />
-                  <span>
                     <b>Signer Place:</b>&nbsp;
                     {signerLocation}
                   </span>
@@ -147,14 +147,6 @@ export const FiataBLTemplate: FunctionComponent<TemplateProps<FiataBL>> = ({ doc
             </td>
           </tr>
         </table>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>
-            <b>Tx Hash:</b>&nbsp;{txHash}
-          </div>
-          <div>
-            <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
-          </div>
-        </div>
       </div>
     </>
   );
