@@ -5,8 +5,8 @@ export interface Invoice extends v2.OpenAttestationDocument {
 }
 
 export interface Recipient extends v2.Recipient {
-  invoice_number: string;
-  invoiceNumber: string;
+  invoice_number?: string;
+  invoiceNumber?: string;
   invoice_date: string;
   due_date: string;
   amount: string;
@@ -35,8 +35,8 @@ export interface Recipient extends v2.Recipient {
   taxAmount: string;
   creditedAmount: string;
   customer_contact_phone: string;
-  buyerContractNumber: string;
-  buyerContract: string;
+  buyerContractNumber?: string;
+  buyerContract?: string;
   quantities: string;
   bankName: string;
   bankAccountNo: string;
