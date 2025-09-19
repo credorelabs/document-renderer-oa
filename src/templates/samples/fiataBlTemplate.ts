@@ -2,20 +2,16 @@ import { v2 } from "@govtechsg/open-attestation";
 import { FiataBL } from "../fiata-bl/types";
 
 export const fiataBlCertificate: FiataBL = {
-    issuers: [
-        {
-          id: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller",
-          name: "CREDORE",
-          revocation: {
-            type: v2.RevocationType.None
-          },
-          identityProof: {
-            location: "tt.credore.xyz",
-            type: v2.IdentityProofType.DNSDid,
-            key: "did:ethr:0x49c11F25f101CE6B0f5bBE12d316AB9Ecc1bFbec#controller"
-          }
-        }
-      ],
+  issuers: [
+    {
+      name: "Demo Issuer",
+      tokenRegistry: "0xc5E039FCdda54E8F507962EA66529C5FD1Ab126D",
+      identityProof: {
+        type: v2.IdentityProofType.DNSTxt,
+        location: "8742f7ec-a70d-45b2-9b38-75453f314f57:string:title.shoundiksamaj.in"
+      }
+    }
+  ],
   $template: {
     name: "FIATA_BL",
     type: v2.TemplateType.EmbeddedRenderer,

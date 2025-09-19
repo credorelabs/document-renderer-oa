@@ -146,15 +146,6 @@ export const FiataBLTemplate: FunctionComponent<TemplateProps<FiataBL>> = ({ doc
               </div>
             </td>
           </tr>
-          <tr css={tableTr}>
-            <td css={tableTd} colSpan={4}>
-              <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Note :</span>&nbsp; This verifiable document is
-              issued on Credore's platform in accordance with the ICC Digital Standards Initiative and TradeTrust
-              recommended format. It holds full legal validity, and any unauthorized alterations or modifications are
-              strictly prohibited. You can verify the document's integrity, authenticity, and traceability through
-              TradeTrust or its authorized verification channels.
-            </td>
-          </tr>
         </table>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
