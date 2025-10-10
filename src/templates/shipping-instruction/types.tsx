@@ -7,7 +7,7 @@ export interface ShippingInstruction extends v2.OpenAttestationDocument {
 interface Recipient extends v2.Recipient {
     carrierLogo?: string;
     documentPartiesShipper?: DocumentPartiesShipper;
-    documentCarrierCarrier?: DocumentCarrierCarrier;
+    documentPartiesCarrier?: DocumentCarrierCarrier;
     shippingInstructionsReference?: string;
     organisationName?: string;
     bookingReferenceNumber?: string;

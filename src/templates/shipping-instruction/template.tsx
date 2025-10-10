@@ -18,7 +18,7 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
   const {
     carrierLogo,
     documentPartiesShipper,
-    documentCarrierCarrier,
+    documentPartiesCarrier,
     shippingInstructionsReference,
     organisationName,
     bookingReferenceNumber,
@@ -153,19 +153,19 @@ export const ShippingInstructionTemplate: FunctionComponent<TemplateProps<Shippi
         <div style={{ width: "48%" }}>
           <div style={sectionHeaderStyle}>CARRIER</div>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Company Name:</strong> {documentCarrierCarrier?.companyName || "--"}
+            <strong>Company Name:</strong> {documentPartiesCarrier?.companyName || "--"}
           </p>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Contact Name:</strong> {documentCarrierCarrier?.contactName || "--"}
+            <strong>Contact Name:</strong> {documentPartiesCarrier?.contactName || "--"}
           </p>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Phone Number:</strong> {documentCarrierCarrier?.phoneNumber || "--"}
+            <strong>Phone Number:</strong> {documentPartiesCarrier?.phoneNumber || "--"}
           </p>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>Email:</strong> {documentCarrierCarrier?.email || "--"}
+            <strong>Email:</strong> {documentPartiesCarrier?.email || "--"}
           </p>
           <p style={{ margin: "0 0 4px", fontSize: "12px" }}>
-            <strong>LEI:</strong> {documentCarrierCarrier?.lei || "--"}
+            <strong>LEI:</strong> {documentPartiesCarrier?.lei || "--"}
           </p>
         </div>
       </div>
