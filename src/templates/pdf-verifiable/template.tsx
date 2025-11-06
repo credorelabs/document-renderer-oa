@@ -46,9 +46,9 @@ export const PDFVerifiableTemplate: FunctionComponent<TemplateProps<PDFVerifiabl
               <iframe
                 src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fileUrl)}`}
                 width="100%"
-                height="600px"
+                height="800px"
                 style={{ border: "none" }}
-                title="FBL Document"
+                title="PDF Document"
               />
             </div>
             <div style={{ marginTop: "0.5rem" }}>
