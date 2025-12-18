@@ -13,12 +13,25 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
     customer_contact_name,
     customer_address,
     customer_lei_number,
+    customerName,
+    customerContactEmail,
+    customerContactName,
+    customerPhoneNumber,
+    customerAddress,
+    leiNum,
+    customerVat,
     supplier_lei_number,
     supplier_name,
     supplier_contact_email,
     supplier_contact_name,
     supplier_contact_phone,
     supplier_address,
+    supplierContactName,
+    supplierName,
+    supplierContactEmail,
+    supplierContactPhone,
+    supplierAddress,
+    supplierVat,
     invoice_date,
     due_date,
     amount,
@@ -105,15 +118,15 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
           <tr css={tableTr}>
             <td css={tableTd} style={{width: "60%"}}>
               <h3 style={{ marginBottom: "-0.5em" }}>
-                <b>{supplier_contact_name}</b>
+                <b>{supplier_contact_name || supplierContactName}</b>
               </h3>
               <br />
-              {supplier_name} <br />
-              {supplier_address} <br />
-              ✉️:&nbsp;{supplier_contact_email} <br />
-              📞:&nbsp;{supplier_contact_phone} <br />
-              VAT No.:&nbsp;{supplier_vat_number} <br />
-              LEI:&nbsp;{supplier_lei_number}
+              {supplier_name || supplierName} <br />
+              {supplier_address || supplierAddress} <br />
+              ✉️:&nbsp;{supplier_contact_email || supplierContactEmail} <br />
+              📞:&nbsp;{supplier_contact_phone || supplierContactPhone} <br />
+              VAT No.:&nbsp;{supplier_vat_number ||supplierVat} <br />
+              LEI:&nbsp;{supplier_lei_number || leiNum}
             </td>
             <td css={tableTd} colSpan={2}>
             <div style={{ display: "flex", gap: "1.25rem", margin: "0" }}>
@@ -137,12 +150,12 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
               <b>BILL TO:</b> <br />
               <br />
               {customer_contact_name}, <br />
-              {customer_name}, <br />
-              {customer_address} <br />
-              ✉️:&nbsp;{customer_contact_email} <br />
-              📞:&nbsp;{customer_contact_phone} <br />
-              VAT No.:&nbsp;{customer_vat_number} <br />
-              LEI:&nbsp;{customer_lei_number}
+              {customer_name|| customerName}, <br />
+              {customer_address || customerAddress} <br />
+              ✉️:&nbsp;{customer_contact_email || customerContactEmail } <br />
+              📞:&nbsp;{customer_contact_phone || customerPhoneNumber } <br />
+              VAT No.:&nbsp;{customer_vat_number || customerVat} <br />
+              LEI:&nbsp;{customer_lei_number || leiNum}
             </td>
             <th css={tableTd} style={{ textAlign: "center" }}>
               {" "}

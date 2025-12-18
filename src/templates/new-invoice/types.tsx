@@ -1,7 +1,7 @@
 import { v2 } from "@govtechsg/open-attestation";
 
 export interface Invoice extends v2.OpenAttestationDocument {
-    recipient?: Recipient;
+  recipient?: Recipient;
 }
 
 export interface Recipient extends v2.Recipient {
@@ -56,6 +56,19 @@ export interface Recipient extends v2.Recipient {
   paymentMethod?: string;
   consignee?: PartyDetails;
   notifyParty?: PartyDetails;
+  customerName?: string;
+  customerContactEmail?: string;
+  customerContactName?: string;
+  customerAddress?: string;
+  leiNum?: string;
+  customerPhoneNumber?: string;
+  customerVat?: string;
+  supplierContactName?: string;
+  supplierName?: string;
+  supplierContactEmail?: string;
+  supplierContactPhone?: string;
+  supplierAddress?: string;
+  supplierVat?: string;
 }
 
 interface PartyDetails {
@@ -69,11 +82,11 @@ interface PartyDetails {
 }
 
 interface IncoTerm {
-  code?: string;                 
-  description?: string;             
-  responsibilityBuyer?: string;     
-  responsibilitySeller?: string;    
-  deliveryPoint?: string;           
+  code?: string;
+  description?: string;
+  responsibilityBuyer?: string;
+  responsibilitySeller?: string;
+  deliveryPoint?: string;
 }
 
 interface InvoiceLine {
