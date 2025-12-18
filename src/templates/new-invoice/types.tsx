@@ -28,8 +28,10 @@ export interface Recipient extends v2.Recipient {
   countryOfOrigin: string;
   contractNumber: string;
   salesOrderNumber: string;
-  ladingPort: string;
-  dischargePort: string;
+  ladingPort?: string;
+  dischargePort?: string;
+  loadingPort?: string;
+  dischargedPort?: string;
   vesselName: string;
   moisture: string;
   taxAmount: string;

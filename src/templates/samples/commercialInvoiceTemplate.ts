@@ -39,6 +39,8 @@ export const commercialInvoiceTemplate: Invoice = {
     countryOfOrigin: "CountryABC",
     dischargePort: "PortXYZ",
     ladingPort: "PortABC",
+    loadingPort: "loadingPortABC",
+    dischargedPort: "dischargedPortXYZ",
     moisture: "-",
     salesOrderNumber: "SO456",
     vesselName: "VESSEL",
