@@ -69,6 +69,7 @@ export interface Recipient extends v2.Recipient {
   supplierContactPhone?: string;
   supplierAddress?: string;
   supplierVat?: string;
+  selectedBank?: SelectedBank;
 }
 
 interface PartyDetails {
@@ -109,4 +110,19 @@ interface InvoiceProof {
   c1: string;
   scalarPubKey0: string;
   scalarPubKey1: string;
+}
+
+interface SelectedBank {
+  ifsc?: string;
+  balance?: number | null;
+  country?: string;
+  currency?: string;
+  accountId?: string;
+  bank_name?: string;
+  branch_name?: string;
+  account_holder?: string;
+  branch_address?: string;
+  organisationId?: number;
+  payment_method?: string | null;
+  contact_reference?: number;
 }

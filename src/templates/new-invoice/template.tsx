@@ -70,7 +70,8 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
     consignee,
     notifyParty,
     invoiceNumber,
-    buyerContract
+    buyerContract,
+    selectedBank,
   } = recipient;
 
   const containerStyle = css`
@@ -209,10 +210,10 @@ export const NewInvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ 
               <br />
               <br />
               <div>
-                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Bank Name: </b>{bankName} <br /></div>
-                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Account Name: </b>{bankHolderName} <br /></div>
-                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Account Number: </b>{bankAccountNo} <br /></div>
-                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>IFSC: </b>{IFSCCode} <br/></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Bank Name: </b>{bankName || selectedBank?.bank_name} <br /></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Account Name: </b>{bankHolderName || selectedBank?.account_holder} <br /></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Account Number: </b>{bankAccountNo || selectedBank?.accountId} <br /></div>
+                <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>IFSC: </b>{IFSCCode || selectedBank?.ifsc} <br/></div>
                 <div style={{marginBottom:"0.3rem"}}><b style={{color:"#4b5563"}}>Payment Method: </b>{paymentMethod} <br/></div>
               </div>
             </td>
