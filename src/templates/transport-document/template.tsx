@@ -659,9 +659,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <div>
             <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
           </div>
-          <div>
+          {/* <div>
             <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
-          </div>
+          </div> */}
         </div>
       </table>
 

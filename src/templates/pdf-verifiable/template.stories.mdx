@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { PDFVerifiableTemplate } from "./template";
+import { pdfVerifiableCertificate } from '../samples/pdfVerifiableTemplate';
+
+<Meta title="MDX|PDFVerifiableTemplate" component={PDFVerifiableTemplate} />
+
+# PDFVerifiableTemplate component
+
+<Description of={PDFVerifiableTemplate} />
+
+# Props
+
+<Props of={PDFVerifiableTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic sample">
+    <PDFVerifiableTemplate document={object("document", pdfVerifiableCertificate)} />
+  </Story>
+</Preview>

@@ -767,7 +767,7 @@ export const NewPurchaseOrderTemplate: FunctionComponent<TemplateProps<NewPurcha
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", padding: "8px 16px" }}>
             <div>
               <b>Blockchain:</b>{" "}
-              {blockchainName}
+              {blockchainName === "xinfin" ? "XDC Network" : blockchainName}
             </div>
           </div>
         </div>
