@@ -94,7 +94,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             </td>
             <td css={tableTd} colSpan={2}>
               <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-              { companyLogo && 
+              { companyLogo &&
                   <img
                     src={companyLogo}
                     alt="Company Logo"
