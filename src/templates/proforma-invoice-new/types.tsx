@@ -30,6 +30,8 @@ export interface Recipient extends v2.Recipient {
   salesOrderNumber: string;
   ladingPort: string;
   dischargePort: string;
+  loadingPort: string;
+  dischargedPort: string;
   vesselName: string;
   moisture: string;
   taxAmount: string;
@@ -69,11 +71,11 @@ interface PartyDetails {
 }
 
 interface IncoTerm {
-  code?: string;                 
-  description?: string;             
-  responsibilityBuyer?: string;     
-  responsibilitySeller?: string;    
-  deliveryPoint?: string;           
+  code?: string;
+  description?: string;
+  responsibilityBuyer?: string;
+  responsibilitySeller?: string;
+  deliveryPoint?: string;
 }
 
 interface InvoiceLine {

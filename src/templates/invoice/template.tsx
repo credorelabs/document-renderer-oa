@@ -225,7 +225,7 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             </td>
             <td css={tableTd}>
               <b>PORT OF DISCHARGE:</b> <br />
-              {dischargedPort || dischargePort}
+              {dischargedPort }
             </td>
             <td css={tableTd}>
               <b>VESSEL NAME:</b>

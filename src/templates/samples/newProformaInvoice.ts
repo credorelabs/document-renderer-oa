@@ -27,6 +27,8 @@ export const newProformaInvoiceTemplate: NewProformaInvoice = {
     countryOfOrigin: "CountryABC",
     dischargePort: "PortXYZ",
     ladingPort: "PortABC",
+    loadingPort: "loadingPortABC",
+    dischargedPort: "dischargedPortXYZ",
     moisture: "-",
     salesOrderNumber: "SO456",
     vesselName: "VESSEL",

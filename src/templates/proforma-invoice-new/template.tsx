@@ -28,7 +28,9 @@ export const NewProformaInvoiceTemplate: FunctionComponent<TemplateProps<NewProf
     countryOfOrigin,
     contractNumber,
     salesOrderNumber,
+    loadingPort,
     ladingPort,
+    dischargedPort ,
     dischargePort,
     vesselName,
     moisture,
@@ -301,7 +303,7 @@ export const NewProformaInvoiceTemplate: FunctionComponent<TemplateProps<NewProf
           >
             <b style={{ fontWeight: 700, fontSize: "14px" }}>PORT OF LADING:</b>
             <br />
-            {ladingPort || ""}
+            {ladingPort || loadingPort || ""}
           </td>
           <td
             style={{
@@ -314,7 +316,7 @@ export const NewProformaInvoiceTemplate: FunctionComponent<TemplateProps<NewProf
           >
             <b style={{ fontWeight: 700, fontSize: "14px" }}>PORT OF DISCHARGE:</b>
             <br />
-            {dischargePort || ""}
+            {dischargePort ||  dischargedPort || ""}
           </td>
           <td
             style={{
