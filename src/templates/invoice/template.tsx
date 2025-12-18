@@ -28,7 +28,9 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
     countryOfOrigin,
     contractNumber,
     salesOrderNumber,
+    loadingPort,
     ladingPort,
+    dischargedPort ,
     dischargePort,
     vesselName,
     moisture,
@@ -219,11 +221,11 @@ export const InvoiceTemplate: FunctionComponent<TemplateProps<Invoice>> = ({ doc
             <td css={tableTd}>
               <b>PORT OF LADING:</b>
               <br />
-              {ladingPort}
+              {loadingPort || ladingPort}
             </td>
             <td css={tableTd}>
               <b>PORT OF DISCHARGE:</b> <br />
-              {dischargePort}
+              {dischargedPort || dischargePort}
             </td>
             <td css={tableTd}>
               <b>VESSEL NAME:</b>

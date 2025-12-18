@@ -25,6 +25,7 @@ Make sure to edit the following files according to your module's info:
 - add your own template (in `src/templates` folder) and configure correctly the template registry (in `src/templates/index.tsx` file)
 
 ## Commands
+1st run the below command, then run npm run storybook
 export NODE_OPTIONS=--openssl-legacy-provider
 ```sh
 $ npm run storybook # open storybook and start editing your components

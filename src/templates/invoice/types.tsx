@@ -23,6 +23,8 @@ export interface Invoice extends v2.OpenAttestationDocument {
   countryOfOrigin: string;
   contractNumber: string;
   salesOrderNumber: string;
+  loadingPort: string;
+  dischargedPort: string;
   ladingPort: string;
   dischargePort: string;
   vesselName: string;
