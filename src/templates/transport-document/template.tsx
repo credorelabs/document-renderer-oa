@@ -572,14 +572,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            AE JEA - Jebel Ali
+            
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            MICROSOFT CORPORATION
+           
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>NA</td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            IN PPT - Paradip Port
+           
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
             {moment(date_actualDateOfPlaceOfReceipt)
