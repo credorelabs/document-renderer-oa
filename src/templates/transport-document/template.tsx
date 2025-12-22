@@ -544,14 +544,14 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           </td>
         </tr>
         <tr css={tableTr}>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}>10000</td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            USD
+            
             {/* {currency} */}
           </td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}>YES</td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}>YES</td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}></td>
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
