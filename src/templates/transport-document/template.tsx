@@ -88,6 +88,10 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     grossWeight,
     grossWeightUnit,
     numberOfContainer,
+    invoicePayableAt,
+    placeOfIssue,
+    transport_vesselName,
+    transport_IMOvesselNumber
   } = recipient;
 
   console.log(recipient)
@@ -389,8 +393,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               <b>Vessel & Voyage</b>
             </span>
             <br />
-            {/* {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber} */}
-            Mersk / Mersk1234
+            {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber}
+            {/* Mersk / Mersk1234 */}
           </td>
         </tr>
       </table>
@@ -572,17 +576,17 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            
+            {invoicePayableAt}
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
            
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>NA</td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-           
+           {placeOfIssue}
           </td>
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            {moment(date_actualDateOfPlaceOfReceipt)
+            {date_actualDateOfPlaceOfReceipt && moment(date_actualDateOfPlaceOfReceipt)
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
