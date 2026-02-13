@@ -412,12 +412,12 @@ export const NewPromissoryNoteTemplate: FunctionComponent<TemplateProps<NewPromi
                   <div>
                     <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : blockchainName}
                   </div>
-                  <div>
+                  {/* <div>
                     <b>Genesis Transaction Hash:</b>&nbsp;
                     {drawer === "254900C2H1JZ97YSWN16"
                       ? "0xbc698994f9b65738463f08958d43a9cd62cc8b98942f9c572baa4a7374a47f8d"
                       : txHash?.split("/").pop()}
-                  </div>
+                  </div> */}
                 </div>
                 {/* <div style={{ margin: "2rem", fontSize: "0.8rem", marginTop:"-1rem" }}>
                 <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :<br/></span> <div style={{width:"100%", textAlign:"right"}}>{pNoteProof?.a0},&nbsp;
