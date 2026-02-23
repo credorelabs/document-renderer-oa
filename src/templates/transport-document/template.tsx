@@ -598,7 +598,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} colSpan={3} style={{ padding: "1rem", width: "50%" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{carrier_contact_name} <br />
-            <b>Signer Place:</b>&nbsp;{carrier_signer_place}
+            {/* <b>Signer Place:</b>&nbsp;{carrier_signer_place} */}
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(carrierSignTime)
@@ -607,7 +607,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               .add(30, "minutes")
               .format("DD/MM/YYYY hh:mm A [IST]")}
             <br />
-            <b>IP Address:</b>&nbsp; {carrierSignIp}
+            {/* <b>IP Address:</b>&nbsp; {carrierSignIp} */}
           </td>
           <td css={tableTd} colSpan={2}>
             <span style={{ fontSize: "0.8rem" }}>
