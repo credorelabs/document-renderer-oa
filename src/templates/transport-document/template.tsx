@@ -592,6 +592,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               .add(30, "minutes")
               .format("DD/MM/YYYY")}
           </td>
+          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+             {moment(carrierSignTime).format("DD/MM/YYYY")}
+          </td>
         </tr>
 
         <tr css={tableTr}>
