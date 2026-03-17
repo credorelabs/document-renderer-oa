@@ -585,13 +585,13 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
            {placeOfIssue}
           </td>
-          <td css={tableTd} style={{ fontSize: "0.8rem" }}>
+          {/* <td css={tableTd} style={{ fontSize: "0.8rem" }}>
             {date_actualDateOfPlaceOfReceipt && moment(date_actualDateOfPlaceOfReceipt)
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
               .format("DD/MM/YYYY")}
-          </td>
+          </td> */}
           <td css={tableTd} style={{ fontSize: "0.8rem" }}>
              {moment(carrierSignTime).format("DD/MM/YYYY")}
           </td>
