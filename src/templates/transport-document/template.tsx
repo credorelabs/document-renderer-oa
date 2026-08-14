@@ -664,7 +664,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           </tr> */}
         <div css={tableTd} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
           <div>
-            <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : "polygon"}
+            <b>Blockchain:</b>&nbsp;{blockchainName === "xinfin" ? "XDC Network" : "XDC Network"}
           </div>
           {/* <div>
             <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
