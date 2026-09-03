@@ -1,0 +1,140 @@
+import { v2 } from "@govtechsg/open-attestation";
+import { BulkBOLData } from "../bulkbol/types";
+
+export const billOfLadingCertificate: BulkBOLData = {
+  documentNumber: "BULK-EBL-TEST-1005",
+  referenceNumber: "CNT123",
+  vesselName: "VesselXYZ",
+  portOfLoading: "Loading Port",
+  portOfDischarge: "Discharge Port",
+  freightPayable: "Prepaid",
+  charterPartyDate: "2023-11-25T12:00:00Z",
+  cargoDescription: "Cargo Description",
+  cargoGrossWeight: "5000",
+  cargoWeightUnit: "Kilograms",
+  measurement: "2000",
+  measurementUnit: "Cubic Meters",
+  placeOfIssue: "Issue Place",
+  dateOfIssue: "2023-11-25T12:00:00Z",
+  numberOfOriginals: "3",
+  shippedOnBoardDate: "2023-11-25T12:00:00Z",
+  scac: "SCAC123",
+  shippedOnDeck: "Yes",
+  termsAndConditions: "Terms and Conditions",
+  date_actualDateOfPlaceOfDelivery: "2023-11-30T10:00:00Z",
+  date_actualDateOfPlaceOfReceipt: "2023-11-25T12:00:00Z",
+  date_actualTimeOfArrival: "2023-11-28T08:30:00Z",
+  date_actualTimeOfDeparture: "2023-11-28T09:30:00Z",
+  date_estimatedDateOfPlaceOfDelivery: "2023-12-01T10:00:00Z",
+  date_estimatedDateOfPlaceOfReceipt: "2023-11-27T12:00:00Z",
+  date_estimatedTimeOfArrival: "2023-11-30T08:30:00Z",
+  date_estimatedTimeOfDeparture: "2023-11-30T09:30:00Z",
+  freightForwardersReferenceNumber: "FFR123",
+  goods_HSCode: "Str",
+  goods_IMDG: "IMDG123",
+  goods_dangerLevel: "High",
+  goods_descriptionOfGoods:
+    '[{"hsCode":"071334 - Vegetables, leguminous; bambara beans (Vigna subterranea or Voandzeia subterranea), shelled, whether or not skinned or split, dried","desc":"vegetablesss"},{"hsCode":"030119 - Fish; live, ornamental, other than freshwater","desc":"Live fish"},{"hsCode":"300242 - Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products; for veterinary medicine","desc":"Corona vaccine"}]',
+  goods_numberOfPackages: "100",
+  goods_productIdentifier: "PID123",
+  goods_properShippingTechnicalName: "Shipping goods",
+  goods_typeOfPackagingCEFACT: "TypeA",
+  location_placeOfDelivery: "Delivery Place",
+  location_placeOfPaymentUNLOCODE: "Payment UNLOCODE",
+  location_placeOfReceipt: "Receipt Place",
+  location_portOfDischarge: "Discharge Port",
+  location_portOfLoading: "Loading Port",
+  measure_temperatureSettingForReeferContainers: "Temperature Setting",
+  measure_temperatureUnitsUNCEFACT: "Temperature Units",
+  measure_totalNumberOfContainers: "Total Number of Containers",
+  measure_volume: "Volume",
+  measure_weight: "Weight",
+  party_SCAC: "SCAC123",
+  party_SMFG: "SMFG123",
+  party_consignee: "Consignee Name",
+  party_notifyParty: "Notify Party Name",
+  party_shipper: "Shipper Name",
+  shippersReferenceNumber: "SRN123",
+  transport_IMOvesselNumber: "IMO1234567",
+  transport_conveyanceReferenceNumber: "CRN123",
+  transport_modeOfTransportUNCEFACT: "Marine",
+  transport_vesselName: "Vessel Name",
+  exporter_sign_time: "2023-11-30T09:30:00Z",
+  exporterEmail: "exporter@example.com",
+  exporterPhone: "+1234567890",
+  exporterAddress: "123 Exporter St, City, Country",
+  exporterName: "Exporter Name",
+  exporterLei: "LEI123",
+  exporterCompanyName: "Exporter Company Name",
+
+  importerCompanyName: "Importer Company Name",
+  importerAddress: "123 Importer St, City, Country",
+  importerName: "Importer Name",
+  importer_email: "importer@example.com",
+  importer_phone: "+1234567890",
+  importer_lei: "LEI456",
+  importer_address: "123 Importer St, City, Country",
+
+  shipping_company_sign_time: "2023-11-30T09:30:00Z",
+  shipping_company_signer: "Shipping Company Signer",
+
+  carrier_name: "Carrier Name",
+  carrier_contact_name: "Carrier Contact Name",
+  carrier_address: "123 Carrier St, City, Country",
+  carrier_contact_email: "carrier@example.com",
+  carrier_contact_phone: "+1234567890",
+
+  notify_name: "Notify Name",
+  notify_contact_name: "Notify Contact Name",
+  notify_address: "123 Notify St, City, Country",
+  notify_lei: "LEI789",
+  notify_contact_email: "notify@example.com",
+  notify_contact_phone: "+1234567890",
+
+  blockchainName: "Blockchain Name",
+  mintTxHash: "Mint Tx Hash",
+  carrier_signer_place: "Carrier Signer Place",
+  exporter_signer_place: "Exporter Signer Place",
+
+  shippingBillNo: "Shipping Bill No",
+  invoiceNumber: "Invoice Number",
+  invoiceDate: "Invoice Date",
+  ventilation: "Ventilation",
+  tokenRegistryAddress: "Token Registry Address",
+
+  primaryLogo: "https://stock.adobe.com/search?k=%22company+logo%22",
+  secondaryLogo: "https://stock.adobe.com/search?k=%22company+logo%22",
+
+  consignment_containerReeferType: "Dry",
+
+  exporterSignIp: "192.168.1.1",
+  shippingCompanySignIp: "192.168.1.2",
+
+  bolProof: {
+    a0: "1883415604158045018758784307621608541141656088150671126336919119463579281976",
+    a1: "481486531415174545861518055832704512332066754785381752517889213186204020854",
+    b0: "19472865000851586587233492554418613501307819590551265018263417518504616128719",
+    b1: "19042321348336369171156220546957910039570548376126055917178173290093728727059",
+    b2: "12454320893011956406728307167101154280673518520526064558279469282445580260562",
+    b3: "6135457810494506073647459415868749459270479612062963917114595795650808536942",
+    c0: "632298289898394378764433953656537542932208624038552230205734932116637754329",
+    c1: "20512704515447428000231780480269601301199455727786440182564501953727451428201",
+    scalarPubKey0: "16551728319327439168317300279856018011041840639624811157340627997761414256717",
+    scalarPubKey1: "21676599011130813512183056032443407887594316023951962444664078281579755267315"
+  },
+  issuers: [
+    {
+      name: "CREDORE",
+      tokenRegistry: "0x0687bD3B7Df4DaF3A66140293601aF67ed83eC37",
+      identityProof: {
+        type: v2.IdentityProofType.DNSTxt,
+        location: "td.credore.xyz"
+      }
+    }
+  ],
+  $template: {
+    name: "BULK_EBL",
+    type: v2.TemplateType.EmbeddedRenderer,
+    url: "http://localhost:3000"
+  }
+};
