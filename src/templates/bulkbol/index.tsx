@@ -2,8 +2,8 @@ import { BulkBOLTemplate } from "./template";
 
 export const BulkBOLTemplates = [
   {
-    id: "bulkBOL",
-    label: "bulkBOL",
+    id: "BULK_EBL",
+    label: "BULK_EBL",
     template: BulkBOLTemplate
   }
-]
+];
