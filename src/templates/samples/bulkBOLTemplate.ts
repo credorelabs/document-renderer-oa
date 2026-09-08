@@ -1,7 +1,7 @@
 import { v2 } from "@govtechsg/open-attestation";
 import { BulkBOLData } from "../bulkbol/types";
 
-export const billOfLadingCertificate: BulkBOLData = {
+export const bulkEblTemplate: BulkBOLData = {
   documentNumber: "BULK-EBL-TEST-1005",
   referenceNumber: "CNT123",
   vesselName: "VesselXYZ",

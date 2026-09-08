@@ -7,7 +7,7 @@ import background from './boeBackground.svg'
 import credoreLogo from 'https://www.credore.xyz/assets/images/Logo.png'
 import moment from 'moment'
 
-export const BulkBOLTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
+export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
   const {
     documentNumber,
     referenceNumber,
@@ -172,27 +172,19 @@ export const BulkBOLTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     }
   }
 
-  const newDate = new Date(charterPartyDate)
+  const formatDate = (date?: string) => {
+    if (!date) return ''
 
-  const formattedCharterPartyDate = newDate.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  })
+    return new Date(date).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    })
+  }
 
-  const newDate1 = new Date(shippedOnBoardDate)
-  const formattedShippedOnBoardDate = newDate1.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  })
-
-  const newDate2 = new Date(dateOfIssue)
-  const formattedDateOfIssue = newDate2.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  })
+  const formattedCharterPartyDate = formatDate(charterPartyDate)
+  const formattedShippedOnBoardDate = formatDate(shippedOnBoardDate)
+  const formattedDateOfIssue = formatDate(dateOfIssue)
 
   return (
     <div css={containerStyle}>

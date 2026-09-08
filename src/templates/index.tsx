@@ -25,6 +25,7 @@ import { NewPurchaseOrderTemplates } from "./purchase-order-new";
 import { NewPromissoryNoteTemplates } from "./promissory-note-v2";
 import { FiataBLTemplates } from "./fiata-bl";
 import { PDFVerifiableTemplates } from "./pdf-verifiable";
+import { BulkEblTemplates } from "./bulkbol";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -49,5 +50,6 @@ export const registry: TemplateRegistry<any> = {
   PROMISSORY_NOTE_V2: NewPromissoryNoteTemplates,
   FIATA_BL: FiataBLTemplates,
   PDF_VERIFIABLE: PDFVerifiableTemplates,
+  BULK_EBL: BulkEblTemplates,
   // PACKING_LIST:packingListTemplate
 };

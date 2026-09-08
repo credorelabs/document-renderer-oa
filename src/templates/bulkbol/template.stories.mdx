@@ -1,22 +1,22 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { object } from "@storybook/addon-knobs";
-import { BulkBOLTemplate } from "./template";
-import { billOfLadingCertificate } from "../samples/bulkBOLTemplate";
+import { BulkEblTemplate } from "./template";
+import { bulkEblTemplate } from "../samples/bulkBOLTemplate";
 
 <Meta title="MDX|BulkBOLTemplate" component={BulkBOLTemplate} />
 
 # BulkBOLTemplate component
 
-<Description of={BulkBOLTemplate} />
+<Description of={BulkEblTemplate} />
 
 # Props
 
-<Props of={BulkBOLTemplate} />
+<Props of={BulkEblTemplate} />
 
 # Usage
 
 <Preview>
   <Story name="basic sample">
-    <BulkBOLTemplate document={object("document", billOfLadingCertificate)} />
+    <BulkEblTemplate document={object("document", bulkEblTemplate)} />
   </Story>
 </Preview>

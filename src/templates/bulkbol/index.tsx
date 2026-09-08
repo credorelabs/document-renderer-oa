@@ -1,9 +1,9 @@
-import { BulkBOLTemplate } from "./template";
-console.log("BulkBOLTemplate", BulkBOLTemplate);
-export const BulkBOLTemplates = [
+import { BulkEblTemplate } from "./template";
+console.log("BulkEblTemplate", BulkEblTemplate);
+export const BulkEblTemplates = [
   {
-    id: "BULK_EBL",
-    label: "BULK_EBL",
-    template: BulkBOLTemplate
+    id: "bulkEbl",
+    label: "bulkEbl",
+    template: BulkEblTemplate
   }
 ];
