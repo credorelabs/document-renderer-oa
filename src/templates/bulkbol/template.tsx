@@ -7,25 +7,6 @@ import moment from 'moment'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
   const {
-    documentNumber,
-    referenceNumber,
-    vesselName,
-    portOfLoading,
-    portOfDischarge,
-    freightPayable,
-    charterPartyDate,
-    cargoDescription,
-    cargoGrossWeight,
-    cargoWeightUnit,
-    measurement,
-    measurementUnit,
-    placeOfIssue,
-    dateOfIssue,
-    numberOfOriginals,
-    shippedOnBoardDate,
-    scac,
-    shippedOnDeck,
-    termsAndConditions,
     date_actualDateOfPlaceOfDelivery,
     date_actualDateOfPlaceOfReceipt,
     date_actualTimeOfArrival,
@@ -95,17 +76,13 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     notify_lei,
     notify_contact_email,
     notify_contact_phone,
-
-    blockchainName,
     mintTxHash,
-    carrier_signer_place,
     exporter_signer_place,
 
     shippingBillNo,
     invoiceNumber,
     invoiceDate,
     ventilation,
-    tokenRegistryAddress,
 
     primaryLogo,
     secondaryLogo,
@@ -116,11 +93,37 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     shippingCompanySignIp
   } = document
 
-  const parties = document.recipient?.parties
+  const recipient = document.recipient
+  const scac = recipient?.scac
+  const parties = recipient?.parties
   const shipper = parties?.shipper
   const carrier = parties?.carrier
   const consignee = parties?.consignee
   const recipientNotifyParty = parties?.notifyParty
+  
+  const vesselName = recipient?.vesselName
+  const dateOfIssue = recipient?.dateOfIssue
+  const measurement = recipient?.measurement
+  const documentType = recipient?.documentType
+  const placeOfIssue = recipient?.placeOfIssue
+  const portOfLoading = recipient?.portOfLoading
+  const shippedOnDeck = recipient?.shippedOnDeck
+  const blockchainName = recipient?.blockchainName
+  const documentNumber = recipient?.documentNumber
+  const freightPayable = recipient?.freightPayable
+  const cargoWeightUnit = recipient?.cargoWeightUnit
+  const measurementUnit = recipient?.measurementUnit
+  const portOfDischarge = recipient?.portOfDischarge
+  const referenceNumber = recipient?.referenceNumber
+  const cargoDescription = recipient?.cargoDescription
+  const cargoGrossWeight = recipient?.cargoGrossWeight
+  const charterPartyDate = recipient?.charterPartyDate
+  const numberOfOriginals = recipient?.numberOfOriginals
+  const shippedOnBoardDate = recipient?.shippedOnBoardDate
+  const termsAndConditions = recipient?.termsAndConditions
+  const carrier_signer_place = recipient?.carrier_signer_place
+  const tokenRegistryAddress = recipient?.tokenRegistryAddress
+
 
   const displayedExporterName = exporterName || shipper?.name
   const displayedExporterAddress = exporterAddress || shipper?.address
@@ -225,8 +228,8 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <div
           style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50%' }}
         >
-          <b style={{ fontSize: '1.2rem', color: '#29564b' }}>BILL OF LADING</b>
-          <span style={{ fontSize: '.75rem' }}>ELECTRONIC</span>
+          <b style={{ fontSize: '1.2rem', color: '#29564b' }}>ELECTRONIC BILL OF LADING</b>
+          {/* <span style={{ fontSize: '.75rem' }}>ELECTRONIC</span> */}
 
           <table style={{ width: '100%', border: '1px solid #CCC', padding: '0px', borderSpacing: '0px' }}>
             <tr css={tableTr}>
