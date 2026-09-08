@@ -9,7 +9,7 @@
 // ];
 
 import { BOLTemplate } from "./template";
-
+console.log("BOLTemplate", BOLTemplate);
 export const BOLTemplates = [
   {
     id: "billOfLading",

@@ -115,14 +115,14 @@ export const BulkBOLTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     consignment_containerReeferType,
 
     exporterSignIp,
-    shippingCompanySignIp,
-    bolProof
+    shippingCompanySignIp
   } = document
 
   const containerStyle = css`
     margin: auto;
     padding: 15px;
-    width: 80%;
+    width: 70%;
+    border: 1px solid #666;
   `
 
   // const containerStyle = css`
@@ -143,7 +143,24 @@ export const BulkBOLTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
 
   const tableTd = css`
     border: 1px solid black;
-    padding: 1em;
+    padding: 0.5em;
+    vertical-align: top;
+    font-size: 14px;
+    width: 50%;
+  `
+  const cellHeader = css`
+    color: #29564b;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 5px;
+  `
+
+  const cellTitle = css`
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 12px;
+    color: #666;
   `
 
   function isJSONString (str: string) {
@@ -155,245 +172,219 @@ export const BulkBOLTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     }
   }
 
+  const newDate = new Date(charterPartyDate)
+
+  const formattedCharterPartyDate = newDate.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  })
+
+  const newDate1 = new Date(shippedOnBoardDate)
+  const formattedShippedOnBoardDate = newDate1.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  })
+
+  const newDate2 = new Date(dateOfIssue)
+  const formattedDateOfIssue = newDate2.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  })
+
   return (
     <div css={containerStyle}>
-      <table style={{ width: '100%', border: '2px solid black', padding: '0px', borderSpacing: '0px' }}>
+      <div
+        style={{
+          margin: 'auto',
+          marginLeft: '0',
+          marginBottom: '0.5rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}
+      >
+        <div style={{ width: '50%' }}>
+          <img
+            src='https://www.credore.xyz/assets/images/Logo.png'
+            alt='credore stamp'
+            style={{ height: '4em', width: 'auto' }}
+          />
+        </div>
+        <div
+          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50%' }}
+        >
+          <b style={{ fontSize: '1.2rem', color: '#29564b' }}>BILL OF LADING</b>
+          <span style={{ fontSize: '.75rem' }}>ELECTRONIC</span>
+
+          <table style={{ width: '100%', border: '1px solid #CCC', padding: '0px', borderSpacing: '0px' }}>
+            <tr css={tableTr}>
+              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>B/L No:</td>
+              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>Reference No: </td>
+            </tr>
+            <tr css={tableTr}>
+              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>{documentNumber}</td>
+              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>{shippersReferenceNumber}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <table style={{ width: '100%', border: '1px solid #333', padding: '0px', borderSpacing: '0px' }}>
         <tr css={tableTr}>
-          <td style={{ width: '50%', textAlign: 'center' }} css={tableTd} colSpan={2}>
-            <img src='https://www.credore.xyz/assets/images/Logo.png' alt='credore stamp' style={{ width: '10em' }} />
-          </td>
-          <td css={tableTd} colSpan={2}>
-            <h3>
-              <b>BILL OF LADING FOR {exporterCompanyName}</b>
-            </h3>
-          </td>
-        </tr>
-        <tr css={tableTr}>
-          <td css={tableTd} rowSpan={3} colSpan={2}>
-            <b>Exporter / Shipper / Consignor:</b>
-            <br />
+          <td css={tableTd}>
+            <h6 css={cellHeader}> 1. SHIPPER / EXPORTER</h6>
             {exporterCompanyName},<br />
             {exporterName},<br />
             {exporterAddress},<br />
             {exporterEmail},<br />
             {exporterPhone}
           </td>
-          <td css={tableTd} colSpan={2}>
-            <b>B/L Number:</b>&nbsp;{documentNumber}
+          <td css={tableTd}>
+            <h6 css={cellHeader}> 2. CONSIGNEE</h6>
+            <span>TO ORDER</span>
           </td>
         </tr>
-        <tr css={tableTr}>
-          <td css={tableTd} colSpan={2}>
-            <b>Shipper Reference No.:</b>&nbsp;{shippersReferenceNumber}
-          </td>
-        </tr>
-        <tr css={tableTr}>
-          <td css={tableTd} colSpan={2}>
-            <b>Booking Reference No.:</b>&nbsp;{referenceNumber}
-          </td>
-        </tr>
-        <tr css={tableTr}>
-          <td css={tableTd} rowSpan={3} colSpan={2}>
-            <b>Consignee:</b>
-            <br />
-            {importerCompanyName},<br /> {importerName},<br />
-            {importerAddress},<br /> {importer_email},<br />
-            {importer_phone}
-          </td>
-          {/* <td css={tableTd} colSpan={2}>
-            <b>Consignment Container No.:</b>&nbsp;{consignment_containerNumber}
-          </td> */}
-        </tr>
-        {/* <tr css={tableTr}>
-          <td css={tableTd} colSpan={2}>
-            <b>Consignment Indicator:</b>&nbsp;{consignment_fullOrEmptyIndicator}
-          </td>
-        </tr>
-        <tr css={tableTr}>
-          <td css={tableTd} colSpan={2}>
-            <b>Contract Quote Reference No.:</b>&nbsp;{contractQuoteReferenceNumber}
-          </td>
-        </tr> */}
 
         <tr css={tableTr}>
-          <td css={tableTd} colSpan={2}>
-            <b>Carrier:</b>
-            <br />
-            {carrier_name},<br />
-            {carrier_contact_name},<br />
-            {carrier_address},<br />
-            {carrier_contact_email},<br />
-            {carrier_contact_phone}
+          <td css={tableTd}>
+            <h6 css={cellHeader}> 3. Frieght payable as per charter party dated</h6>
+            <b css={{ cellTitle }}>Charter Party dated:</b> {formattedCharterPartyDate}
           </td>
-          <td css={tableTd} colSpan={2}>
-            <b>Notify Party:</b>
-            <br />
+          <td css={tableTd}>
+            <h6 css={cellHeader}> 4. Notify Party</h6>
             {notify_name},<br />
-            {notify_contact_name},<br />
-            {notify_address},<br />
-            {notify_contact_email},<br />
+            {notify_contact_name}
+            <br />
+            {notify_address}
+            <br />
+            {notify_contact_email}
+            <br />
             {notify_contact_phone}
           </td>
         </tr>
+
         <tr css={tableTr}>
           <td css={tableTd}>
-            <b>Actual date of delivery:</b>
-            <br />
-            {moment(date_actualDateOfPlaceOfDelivery).utc().add(5, 'hours').add(30, 'minutes').format('DD/MM/YYYY')}
+            <h6 css={cellHeader}> 5. Port of Lading</h6>
+            {portOfLoading}
           </td>
           <td css={tableTd}>
-            <b>Actual date of receipt:</b>
-            <br />
-            {moment(date_actualDateOfPlaceOfReceipt).utc().add(5, 'hours').add(30, 'minutes').format('DD/MM/YYYY')}
-          </td>
-          <td css={tableTd}>
-            <b>Actual time of arrival:</b>
-            <br />
-            {moment(date_actualTimeOfArrival).utc().add(5, 'hours').add(30, 'minutes').format('hh:mm A [IST]')}
-          </td>
-          <td css={tableTd}>
-            <b>Actual time of departure:</b>
-            <br />
-            {moment(date_actualTimeOfDeparture).utc().add(5, 'hours').add(30, 'minutes').format('hh:mm A [IST]')}
+            <h6 css={cellHeader}> 6. Port of Discharge</h6>
+            {portOfDischarge}
           </td>
         </tr>
 
         <tr css={tableTr}>
           <td css={tableTd}>
-            <b>Estimated date of delivery:</b>
-            <br />
-            {moment(date_estimatedDateOfPlaceOfDelivery).utc().add(5, 'hours').add(30, 'minutes').format('DD/MM/YYYY')}
+            <h6 css={cellHeader}> 7. Vessel:</h6>
+            {vesselName}
           </td>
           <td css={tableTd}>
-            <b>Estimated date of receipt:</b>
-            <br />
-            {moment(date_estimatedDateOfPlaceOfReceipt).utc().add(5, 'hours').add(30, 'minutes').format('DD/MM/YYYY')}
-          </td>
-          <td css={tableTd}>
-            <b>Estimated time of arrival:</b>
-            <br />
-            {moment(date_estimatedTimeOfArrival).utc().add(5, 'hours').add(30, 'minutes').format('hh:mm A [IST]')}
-          </td>
-          <td css={tableTd}>
-            <b>Estimated time of departure:</b>
-            <br />
-            {moment(date_estimatedTimeOfDeparture).utc().add(5, 'hours').add(30, 'minutes').format('hh:mm A [IST]')}
+            <h6 css={cellHeader}> 8. Reference No.</h6>
+            {shippersReferenceNumber}
           </td>
         </tr>
 
         <tr css={tableTr}>
-          {/* <td css={tableTd}>
-            <b>Container Size: </b>&nbsp;{consignment_containerSizeTypeISO}
-          </td> */}
-          <td css={tableTd}>
-            <b>Weight:</b>&nbsp;{measure_weight}&nbsp;KG
-          </td>
-          <td css={tableTd}>
-            <b>Volume:</b>&nbsp;{measure_volume}&nbsp;m^3
-          </td>
           <td css={tableTd} colSpan={2}>
-            <b>Place of Payment Unlocode:</b>&nbsp;{location_placeOfPaymentUNLOCODE}
-          </td>
-        </tr>
-
-        <tr css={tableTr}>
-          <td css={tableTd}>
-            <b>Place of Delivery:</b>&nbsp;{location_placeOfDelivery}
-          </td>
-          <td css={tableTd}>
-            <b>Place of Receipt:</b>&nbsp;{location_placeOfReceipt}
-          </td>
-          <td css={tableTd}>
-            <b>Port of Loading:</b>&nbsp;{location_portOfLoading}
-          </td>
-          <td css={tableTd}>
-            <b>Port of Discharge:</b>&nbsp;{location_portOfDischarge}
-          </td>
-        </tr>
-
-        <tr css={tableTr}>
-          <td css={tableTd}>
-            <b>IMO Vessel No.:</b>&nbsp;{transport_IMOvesselNumber}
-          </td>
-          <td css={tableTd}>
-            <b>Conveyance Reference No.:</b>&nbsp;{transport_conveyanceReferenceNumber}
-          </td>
-          <td css={tableTd}>
-            <b>Mode of Transport:</b>&nbsp;{transport_modeOfTransportUNCEFACT}
-          </td>
-          <td css={tableTd}>
-            <b>Vessel:</b>&nbsp;{transport_vesselName}
+            <h6 css={cellHeader}> 9. B/L No.</h6>
+            {documentNumber}
           </td>
         </tr>
       </table>
 
       <table
-        style={{ width: '100%', border: '2px solid black', padding: '0px', borderSpacing: '0px', marginTop: '3em' }}
+        style={{
+          width: '100%',
+          border: '1px solid #333',
+          borderTopWidth: 0,
+          padding: '0px',
+          borderSpacing: '0px',
+          marginTop: 0
+        }}
       >
         <tr css={tableTr}>
-          <td css={tableTd}>
-            <b>Freight Forwarders Reference No.:</b>&nbsp;{freightForwardersReferenceNumber}
+          <td css={tableTd} style={{ width: '60%' }}>
+            <h6 css={cellHeader}> 10. Description of Goods</h6>
           </td>
-          <td css={tableTd}>
-            <b>HS Code:</b>&nbsp;
-            <div style={{ display: 'flex', marginTop: '-0.5rem' }}>
-              {isJSONString(goods_HSCode.replaceAll('&quot;', '"')) &&
-                JSON.parse(goods_HSCode.replaceAll('&quot;', '"')).map((item: any, index: number) => (
-                  <p>
-                    {item?.hsCode?.split(' - ')[0]}
-                    {index + 1 < JSON.parse(goods_HSCode.replaceAll('&quot;', '"')).length && ' , '}
-                  </p>
-                ))}
-              {!isJSONString(goods_HSCode.replaceAll('&quot;', '"')) && goods_HSCode}
-            </div>
+
+          <td css={tableTd} style={{ width: '20%' }}>
+            <h6 css={cellHeader}> 11. Cargo Gross Weight</h6>
           </td>
-          <td css={tableTd}>
-            <b>IMDG:</b>&nbsp;{goods_IMDG}
+
+          <td css={tableTd} style={{ width: '20%' }}>
+            <h6 css={cellHeader}> 12. Measurement</h6>
           </td>
         </tr>
+
         <tr css={tableTr}>
-          <td css={tableTd}>
-            <b>Danger level:</b>&nbsp;{goods_dangerLevel}
-          </td>
-          <td css={tableTd}>
+          <td css={tableTd} style={{ width: '60%' }}>
             <b>Goods description:</b>&nbsp;
             {isJSONString(goods_descriptionOfGoods.replaceAll('&quot;', '"')) &&
               JSON.parse(goods_descriptionOfGoods.replaceAll('&quot;', '"')).map((item: any, index: number) => (
                 <p>
-                  {item?.hsCode} - {item?.desc}
+                  HS Code: {item?.hsCode} - {item?.desc}
                 </p>
               ))}
             {!isJSONString(goods_descriptionOfGoods.replaceAll('&quot;', '"')) && goods_descriptionOfGoods}
           </td>
-          <td css={tableTd}>
-            <b>No. of Goods:</b>&nbsp;{goods_numberOfPackages}
+
+          <td css={tableTd} style={{ width: '20%' }}>
+            {cargoGrossWeight} {cargoWeightUnit}
+          </td>
+
+          <td css={tableTd} style={{ width: '20%' }}>
+            {measurement} {measurementUnit}
           </td>
         </tr>
+
         <tr css={tableTr}>
-          <td css={tableTd}>
-            <b>No. of Packages:</b>&nbsp;{goods_numberOfPackages}
-          </td>
-          <td css={tableTd}>
-            <b>Product Identifier:</b>&nbsp;{goods_productIdentifier}
-          </td>
-          <td css={tableTd}>
-            <b>Type of Packaging:</b>&nbsp;{goods_typeOfPackagingCEFACT}
+          <td css={tableTd} colSpan={3}>
+            <h6 css={cellHeader}> 13. Shipped on Deck(If Applicable)</h6>
+            {shippedOnDeck ? 'Yes' : 'None'}
           </td>
         </tr>
+      </table>
+
+      <table
+        style={{
+          width: '100%',
+          border: '1px solid #333',
+          borderTopWidth: 0,
+          padding: '0px',
+          borderSpacing: '0px',
+          marginTop: 0
+        }}
+      >
         <tr css={tableTr}>
-          <td css={tableTd}>
-            <b>Shipping name:</b>&nbsp;{goods_properShippingTechnicalName}
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 14. Shipped on Board Date</h6>
+            {formattedShippedOnBoardDate}
           </td>
-          <td css={tableTd}>
-            <b>No. of Containers:</b>&nbsp;{measure_totalNumberOfContainers}
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 15. Place of Issue</h6>
+            {placeOfIssue}
           </td>
-          <td css={tableTd}>
-            <b>Temperature:</b>&nbsp;{measure_temperatureSettingForReeferContainers}
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 16. Date of Issue</h6>
+            {formattedDateOfIssue}
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 17. Number of Original B/Ls</h6>
+            {numberOfOriginals}
           </td>
         </tr>
+
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
-            <b>Terms:</b>&nbsp;{termsAndConditions}
+            <h6 css={cellHeader}> 18. SCAC (Applicable for Shipments to USA)</h6>
+            {scac}
           </td>
         </tr>
       </table>
