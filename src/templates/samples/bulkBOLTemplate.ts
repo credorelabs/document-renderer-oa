@@ -3,52 +3,53 @@ import { BulkBOLData } from "../bulkbol/types";
 
 export const bulkEblTemplate: BulkBOLData = {
   recipient:{
-    "scac": "12",
-      "parties": {
-        "carrier": {
-          "name": "Carrier",
-          "address": "One Didsbury Point 2 The Avenue, Manchester, GB, M20 2EY",
-          "organisationId": "25"
+    scac: "12",
+      parties: {
+        carrier: {
+          name: "Carrier",
+          address: "One Didsbury Point 2 The Avenue, Manchester, GB, M20 2EY",
+          organisationId: "25"
         },
         "shipper": {
-          "name": "Asif",
-          "address": "One Didsbury Point 2 The Avenue, Manchester, GB, M20 2EY",
-          "organisationId": "34"
+          name: "Asif",
+          address: "One Didsbury Point 2 The Avenue, Manchester, GB, M20 2EY",
+          organisationId: "34"
         },
         "consignee": {
-          "name": "Asif",
-          "address": "2rf-171 sangram shai camo noamundi,jharkhand",
-          "organisationId": "34"
+          name: "Asif",
+          address: "2rf-171 sangram shai camo noamundi,jharkhand",
+          organisationId: "34"
         },
         "notifyParty": {
-          "name": "Asif",
-          "address": "2rf-171 sangram shai camo noamundi,jharkhand",
-          "organisationId": "34"
+          name: "Asif",
+          address: "2rf-171 sangram shai camo noamundi,jharkhand",
+          organisationId: "34"
         }
       },
-      "vesselName": "vessel",
-      "dateOfIssue": "2026-09-23T00:00:00.000Z",
-      "measurement": "20",
-      "documentType": "EBL",
-      "placeOfIssue": "12",
-      "portOfLoading": "AD PAS - Pas de la Casa",
-      "shippedOnDeck": true,
-      "blockchainName": "xinfin",
-      "documentNumber": "EBL12-021",
-      "freightPayable": "odisha",
-      "cargoWeightUnit": "KG",
-      "measurementUnit": "CBM",
-      "portOfDischarge": "AI MBB - Meads Bay Beach",
-      "referenceNumber": "23",
-      "cargoDescription": "Sausages and similar products, of meat, meat offal, blood or insects; food preparations based on these products",
-      "cargoGrossWeight": "12",
-      "charterPartyDate": "2026-09-04T00:00:00.000Z",
-      "numberOfOriginals": "1",
-      "shippedOnBoardDate": "2026-09-18T00:00:00.000Z",
-      "termsAndConditions": "Ok odne",
-      "carrier_signer_place": "Tiruppur, India",
-      "tokenRegistryAddress": "0x60dCA7EBFa69FbaC186Bc8201A3AA46553C68DC1"
+      vesselName: "vessel",
+      dateOfIssue: "2026-09-23T00:00:00.000Z",
+      measurement: "20",
+      documentType: "EBL",
+      placeOfIssue: "12",
+      portOfLoading: "AD PAS - Pas de la Casa",
+      shippedOnDeck: true,
+      blockchainName: "xinfin",
+      documentNumber: "EBL12-021",
+      freightPayable: "odisha",
+      cargoWeightUnit: "KG",
+      measurementUnit: "CBM",
+      portOfDischarge: "AI MBB - Meads Bay Beach",
+      referenceNumber: "23",
+      cargoDescription: "Sausages and similar products, of meat, meat offal, blood or insects; food preparations based on these products",
+      cargoGrossWeight: "12",
+      charterPartyDate: "2026-09-04T00:00:00.000Z",
+      numberOfOriginals: "1",
+      shippedOnBoardDate: "2026-09-18T00:00:00.000Z",
+      termsAndConditions: "Ok odne",
+      carrier_signer_place: "Tiruppur, India",
+      tokenRegistryAddress: "0x60dCA7EBFa69FbaC186Bc8201A3AA46553C68DC1"
   },
+
   bolProof: {
     a0: "1883415604158045018758784307621608541141656088150671126336919119463579281976",
     a1: "481486531415174545861518055832704512332066754785381752517889213186204020854",

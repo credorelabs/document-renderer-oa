@@ -7,44 +7,7 @@ import moment from 'moment'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
   const {
-    date_actualDateOfPlaceOfDelivery,
-    date_actualDateOfPlaceOfReceipt,
-    date_actualTimeOfArrival,
-    date_actualTimeOfDeparture,
-    date_estimatedDateOfPlaceOfDelivery,
-    date_estimatedDateOfPlaceOfReceipt,
-    date_estimatedTimeOfArrival,
-    date_estimatedTimeOfDeparture,
-    freightForwardersReferenceNumber,
-    goods_HSCode,
-    goods_IMDG,
-    goods_dangerLevel,
-    goods_descriptionOfGoods,
-    goods_numberOfPackages,
-    goods_productIdentifier,
-    goods_properShippingTechnicalName,
-    goods_typeOfPackagingCEFACT,
-    location_placeOfDelivery,
-    location_placeOfPaymentUNLOCODE,
-    location_placeOfReceipt,
-    location_portOfDischarge,
-    location_portOfLoading,
-    measure_temperatureSettingForReeferContainers,
-    measure_temperatureUnitsUNCEFACT,
-    measure_totalNumberOfContainers,
-    measure_volume,
-    measure_weight,
-    party_SCAC,
-    party_SMFG,
-    party_consignee,
-    party_notifyParty,
-    party_shipper,
     shippersReferenceNumber,
-    transport_IMOvesselNumber,
-    transport_conveyanceReferenceNumber,
-    transport_modeOfTransportUNCEFACT,
-    transport_vesselName,
-
     exporter_sign_time,
     exporterEmail,
     exporterPhone,
@@ -53,41 +16,14 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     exporterLei,
     exporterCompanyName,
 
-    importerCompanyName,
-    importerAddress,
-    importerName,
-    importer_email,
-    importer_phone,
-    importer_lei,
-    importer_address,
-
     shipping_company_sign_time,
     shipping_company_signer,
-
-    carrier_name,
-    carrier_contact_name,
-    carrier_address,
-    carrier_contact_email,
-    carrier_contact_phone,
-
     notify_name,
     notify_contact_name,
     notify_address,
-    notify_lei,
     notify_contact_email,
     notify_contact_phone,
-    mintTxHash,
     exporter_signer_place,
-
-    shippingBillNo,
-    invoiceNumber,
-    invoiceDate,
-    ventilation,
-
-    primaryLogo,
-    secondaryLogo,
-
-    consignment_containerReeferType,
 
     exporterSignIp,
     shippingCompanySignIp
@@ -131,12 +67,12 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
   const displayedNotifyName = notify_name || recipientNotifyParty?.name
   const displayedNotifyAddress = notify_address || recipientNotifyParty?.address
   const displayedScac = scac || document.recipient?.scac
-  const displayedGoodsDescription = goods_descriptionOfGoods || cargoDescription
+  // const displayedGoodsDescription = goods_descriptionOfGoods || cargoDescription
 
   const containerStyle = css`
     margin: auto;
     padding: 15px;
-    width: 70%;
+    width: 75%;
     border: 1px solid #666;
   `
 
@@ -173,21 +109,20 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
 
   const cellTitle = css`
     font-weight: bold;
-    font-family: monospace;
     font-size: 12px;
     color: #666;
   `
 
-  function parseGoodsDescription (value?: string): Array<{ hsCode?: string; desc?: string }> | undefined {
-    if (!value) return undefined
+  // function parseGoodsDescription (value?: string): Array<{ hsCode?: string; desc?: string }> | undefined {
+  //   if (!value) return undefined
 
-    try {
-      const parsedValue = JSON.parse(value.replace(/&quot;/g, '"'))
-      return Array.isArray(parsedValue) ? parsedValue : undefined
-    } catch (error) {
-      return undefined
-    }
-  }
+  //   try {
+  //     const parsedValue = JSON.parse(value.replace(/&quot;/g, '"'))
+  //     return Array.isArray(parsedValue) ? parsedValue : undefined
+  //   } catch (error) {
+  //     return undefined
+  //   }
+  // }
 
   const formatDate = (date?: string) => {
     if (!date) return ''
@@ -202,7 +137,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
   const formattedCharterPartyDate = formatDate(charterPartyDate)
   const formattedShippedOnBoardDate = formatDate(shippedOnBoardDate)
   const formattedDateOfIssue = formatDate(dateOfIssue)
-  const parsedGoodsDescription = parseGoodsDescription(goods_descriptionOfGoods)
+  // const parsedGoodsDescription = parseGoodsDescription(goods_descriptionOfGoods)
   const isShippedOnDeck = ['yes', 'true'].includes(String(shippedOnDeck).toLowerCase())
   const reference = referenceNumber || shippersReferenceNumber
 
@@ -231,28 +166,28 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <b style={{ fontSize: '1.2rem', color: '#29564b' }}>ELECTRONIC BILL OF LADING</b>
           {/* <span style={{ fontSize: '.75rem' }}>ELECTRONIC</span> */}
 
-          <table style={{ width: '100%', border: '1px solid #CCC', padding: '0px', borderSpacing: '0px' }}>
+          <table style={{ width: '100%', border: '1px solid #666', padding: '0px', borderSpacing: '0px', borderRadius: '5px'  }}>
             <tr css={tableTr}>
-              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>B/L No:</td>
-              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>Reference No: </td>
+              <td style={{ border: '1px solid #666', padding: '.5em' }}>B/L No:</td>
+              <td style={{ border: '1px solid #666', padding: '.5em' }}>Reference No: </td>
             </tr>
             <tr css={tableTr}>
-              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>{documentNumber}</td>
-              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>{reference}</td>
+              <td style={{ border: '1px solid #666', padding: '.5em' }}>{documentNumber}</td>
+              <td style={{ border: '1px solid #666', padding: '.5em' }}>{reference}</td>
             </tr>
           </table>
         </div>
       </div>
 
-      <table style={{ width: '100%', border: '1px solid #333', padding: '0px', borderSpacing: '0px' }}>
+      <table style={{ width: '100%', border: '1px solid #666', padding: '0px', borderSpacing: '0px', borderRadius: '5px' }}>
         <tr css={tableTr}>
           <td css={tableTd}>
             <h6 css={cellHeader}> 1. SHIPPER / EXPORTER</h6>
             {exporterCompanyName || shipper?.name},<br />
             {displayedExporterName},<br />
-            {displayedExporterAddress},<br />
-            {exporterEmail},<br />
-            {exporterPhone}
+            {displayedExporterAddress}
+            {exporterEmail && <>, <br />{exporterEmail}</>}
+            {exporterPhone && <>, <br />{exporterPhone}</>}
           </td>
           <td css={tableTd}>
             <h6 css={cellHeader}> 2. CONSIGNEE</h6>
@@ -320,36 +255,37 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         }}
       >
         <tr css={tableTr}>
-          <td css={tableTd} style={{ width: '60%' }}>
+          <td css={tableTd} style={{ width: '50%' }}>
             <h6 css={cellHeader}> 10. Description of Goods</h6>
           </td>
 
-          <td css={tableTd} style={{ width: '20%' }}>
+          <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 11. Cargo Gross Weight</h6>
           </td>
 
-          <td css={tableTd} style={{ width: '20%' }}>
+          <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 12. Measurement</h6>
           </td>
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd} style={{ width: '60%' }}>
+          <td css={tableTd} style={{ width: '50%' }}>
             <b>Goods description:</b>&nbsp;
-            {parsedGoodsDescription &&
+            {cargoDescription}
+            {/* {parsedGoodsDescription &&
               parsedGoodsDescription.map((item, index) => (
                 <p key={`${item.hsCode || 'goods'}-${index}`}>
                   HS Code: {item?.hsCode} - {item?.desc}
                 </p>
               ))}
-            {!parsedGoodsDescription && goods_descriptionOfGoods}
+            {!parsedGoodsDescription && goods_descriptionOfGoods} */}
           </td>
 
-          <td css={tableTd} style={{ width: '20%' }}>
+          <td css={tableTd} style={{ width: '25%' }}>
             {cargoGrossWeight} {cargoWeightUnit}
           </td>
 
-          <td css={tableTd} style={{ width: '20%' }}>
+          <td css={tableTd} style={{ width: '25%' }}>
             {measurement} {measurementUnit}
           </td>
         </tr>
