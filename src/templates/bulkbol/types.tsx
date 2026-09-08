@@ -14,13 +14,18 @@ interface BulkBOLRecipient extends v2.Recipient {
     consignee?: BulkBOLParty
     notifyParty?: BulkBOLParty
   }
+  vesselName?: string
+  dateOfIssue?: string
+  documentNumber?: string
 }
+
+
 
 export interface BulkBOLData extends v2.OpenAttestationDocument {
   recipient?: BulkBOLRecipient
-  documentNumber?: string
+  // documentNumber?: string
   referenceNumber?: string
-  vesselName?: string
+  // vesselName?: string
   portOfLoading?: string
   portOfDischarge?: string
   freightPayable?: string
@@ -31,7 +36,7 @@ export interface BulkBOLData extends v2.OpenAttestationDocument {
   measurement?: string
   measurementUnit?: string
   placeOfIssue?: string
-  dateOfIssue?: string
+  // dateOfIssue?: string
   numberOfOriginals?: string
   shippedOnBoardDate?: string
   scac?: string
