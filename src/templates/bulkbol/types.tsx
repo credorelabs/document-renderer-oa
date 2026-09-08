@@ -108,10 +108,10 @@ export interface BulkBOLData extends v2.OpenAttestationDocument {
 
   exporterSignIp?: string;
   shippingCompanySignIp?: string;
-  bolProof?: BolProof;
+  bolProof?: BulkBolProof;
 }
 
-interface BolProof {
+interface BulkBolProof {
   a0: string;
   a1: string;
   b0: string;
