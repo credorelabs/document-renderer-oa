@@ -3,8 +3,6 @@ import { TemplateProps } from '@govtechsg/decentralized-renderer-react-component
 import { css } from '@emotion/core'
 // import { CocTemplateCertificate } from "../samples/cooTemplate";
 import { BulkBOLData } from './types'
-import background from './boeBackground.svg'
-import credoreLogo from 'https://www.credore.xyz/assets/images/Logo.png'
 import moment from 'moment'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
@@ -163,12 +161,14 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     color: #666;
   `
 
-  function isJSONString (str: string) {
+  function parseGoodsDescription (value?: string): Array<{ hsCode?: string; desc?: string }> | undefined {
+    if (!value) return undefined
+
     try {
-      JSON.parse(str)
-      return true // It's a valid JSON string
+      const parsedValue = JSON.parse(value.replace(/&quot;/g, '"'))
+      return Array.isArray(parsedValue) ? parsedValue : undefined
     } catch (error) {
-      return false // It's not a valid JSON string
+      return undefined
     }
   }
 
@@ -185,6 +185,9 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
   const formattedCharterPartyDate = formatDate(charterPartyDate)
   const formattedShippedOnBoardDate = formatDate(shippedOnBoardDate)
   const formattedDateOfIssue = formatDate(dateOfIssue)
+  const parsedGoodsDescription = parseGoodsDescription(goods_descriptionOfGoods)
+  const isShippedOnDeck = ['yes', 'true'].includes(String(shippedOnDeck).toLowerCase())
+  const reference = referenceNumber || shippersReferenceNumber
 
   return (
     <div css={containerStyle}>
@@ -218,7 +221,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
             </tr>
             <tr css={tableTr}>
               <td style={{ border: '1px solid #CCC', padding: '.5em' }}>{documentNumber}</td>
-              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>{shippersReferenceNumber}</td>
+              <td style={{ border: '1px solid #CCC', padding: '.5em' }}>{reference}</td>
             </tr>
           </table>
         </div>
@@ -243,7 +246,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd}>
             <h6 css={cellHeader}> 3. Frieght payable as per charter party dated</h6>
-            <b css={{ cellTitle }}>Charter Party dated:</b> {formattedCharterPartyDate}
+            <b css={cellTitle}>Charter Party dated:</b> {formattedCharterPartyDate}
           </td>
           <td css={tableTd}>
             <h6 css={cellHeader}> 4. Notify Party</h6>
@@ -276,7 +279,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           </td>
           <td css={tableTd}>
             <h6 css={cellHeader}> 8. Reference No.</h6>
-            {shippersReferenceNumber}
+            {reference}
           </td>
         </tr>
 
@@ -315,13 +318,13 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '60%' }}>
             <b>Goods description:</b>&nbsp;
-            {isJSONString(goods_descriptionOfGoods.replaceAll('&quot;', '"')) &&
-              JSON.parse(goods_descriptionOfGoods.replaceAll('&quot;', '"')).map((item: any, index: number) => (
-                <p>
+            {parsedGoodsDescription &&
+              parsedGoodsDescription.map((item, index) => (
+                <p key={`${item.hsCode || 'goods'}-${index}`}>
                   HS Code: {item?.hsCode} - {item?.desc}
                 </p>
               ))}
-            {!isJSONString(goods_descriptionOfGoods.replaceAll('&quot;', '"')) && goods_descriptionOfGoods}
+            {!parsedGoodsDescription && goods_descriptionOfGoods}
           </td>
 
           <td css={tableTd} style={{ width: '20%' }}>
@@ -336,7 +339,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd} colSpan={3}>
             <h6 css={cellHeader}> 13. Shipped on Deck(If Applicable)</h6>
-            {shippedOnDeck ? 'Yes' : 'None'}
+            {isShippedOnDeck ? 'Yes' : 'None'}
           </td>
         </tr>
       </table>

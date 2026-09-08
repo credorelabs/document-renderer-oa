@@ -32,7 +32,7 @@ export interface BulkBOLData extends v2.OpenAttestationDocument {
   goods_HSCode: string;
   goods_IMDG: string;
   goods_dangerLevel: string;
-  goods_descriptionOfGoods: string;
+  goods_descriptionOfGoods?: string;
   goods_numberOfPackages: string;
   goods_productIdentifier: string;
   goods_properShippingTechnicalName: string;
