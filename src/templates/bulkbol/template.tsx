@@ -116,6 +116,20 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     shippingCompanySignIp
   } = document
 
+  const parties = document.recipient?.parties
+  const shipper = parties?.shipper
+  const carrier = parties?.carrier
+  const consignee = parties?.consignee
+  const recipientNotifyParty = parties?.notifyParty
+
+  const displayedExporterName = exporterName || shipper?.name
+  const displayedExporterAddress = exporterAddress || shipper?.address
+  const displayedCarrierName = shipping_company_signer || carrier?.name
+  const displayedNotifyName = notify_name || recipientNotifyParty?.name
+  const displayedNotifyAddress = notify_address || recipientNotifyParty?.address
+  const displayedScac = scac || document.recipient?.scac
+  const displayedGoodsDescription = goods_descriptionOfGoods || cargoDescription
+
   const containerStyle = css`
     margin: auto;
     padding: 15px;
@@ -231,15 +245,16 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd}>
             <h6 css={cellHeader}> 1. SHIPPER / EXPORTER</h6>
-            {exporterCompanyName},<br />
-            {exporterName},<br />
-            {exporterAddress},<br />
+            {exporterCompanyName || shipper?.name},<br />
+            {displayedExporterName},<br />
+            {displayedExporterAddress},<br />
             {exporterEmail},<br />
             {exporterPhone}
           </td>
           <td css={tableTd}>
             <h6 css={cellHeader}> 2. CONSIGNEE</h6>
-            <span>TO ORDER</span>
+            {consignee?.name || 'TO ORDER'}
+            {consignee?.address && <><br />{consignee.address}</>}
           </td>
         </tr>
 
@@ -250,10 +265,10 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           </td>
           <td css={tableTd}>
             <h6 css={cellHeader}> 4. Notify Party</h6>
-            {notify_name},<br />
+            {displayedNotifyName},<br />
             {notify_contact_name}
             <br />
-            {notify_address}
+            {displayedNotifyAddress}
             <br />
             {notify_contact_email}
             <br />
@@ -379,7 +394,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
             <h6 css={cellHeader}> 18. SCAC (Applicable for Shipments to USA)</h6>
-            {scac}
+            {displayedScac}
           </td>
         </tr>
       </table>

@@ -1,6 +1,23 @@
 import { v2 } from "@govtechsg/open-attestation";
 
+interface BulkBOLParty {
+  name?: string
+  address?: string
+  organisationId?: string | number
+}
+
+interface BulkBOLRecipient extends v2.Recipient {
+  scac?: string
+  parties?: {
+    carrier?: BulkBOLParty
+    shipper?: BulkBOLParty
+    consignee?: BulkBOLParty
+    notifyParty?: BulkBOLParty
+  }
+}
+
 export interface BulkBOLData extends v2.OpenAttestationDocument {
+  recipient?: BulkBOLRecipient
   documentNumber?: string
   referenceNumber?: string
   vesselName?: string
