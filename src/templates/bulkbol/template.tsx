@@ -7,6 +7,8 @@ import moment from 'moment'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
   const {
+    recipient,
+    bolProof,
     shippersReferenceNumber,
     exporter_sign_time,
     exporterEmail,
@@ -29,7 +31,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     shippingCompanySignIp
   } = document
 
-  const recipient = document.recipient
+  // const recipient = document.recipient
   const scac = recipient?.scac
   const parties = recipient?.parties
   const shipper = parties?.shipper
