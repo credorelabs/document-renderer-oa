@@ -73,4 +73,5 @@ export interface BulkBOLData extends v2.OpenAttestationDocument {
 
   exporterSignIp: string
   shippingCompanySignIp: string
+  currency: string
 }
