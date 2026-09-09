@@ -3,6 +3,7 @@ import { TemplateProps } from '@govtechsg/decentralized-renderer-react-component
 import { css } from '@emotion/core'
 // import { CocTemplateCertificate } from "../samples/cooTemplate";
 import { BulkBOLData } from './types'
+import eBl from "./eBL_t&c.png";
 import moment from 'moment'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
@@ -499,6 +500,20 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
             prohibited. Verify its integrity and authenticity through approved channels.</b>
           </td>
         </tr>
+      </table>
+
+      <table
+        style={{
+          width: "100%",
+          borderWidth: "2px",
+          borderStyle: "solid",
+          borderColor: "black",
+          padding: "0px",
+          borderSpacing: "0px",
+          marginTop: "2rem"
+        }}
+      >
+        <img src={eBl} alt='bl t&c' style={{width:"100%"}}/>
       </table>
     </div>
   )
