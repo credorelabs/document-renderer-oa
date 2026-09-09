@@ -38,11 +38,6 @@ interface BulkBOLRecipient extends v2.Recipient {
   tokenRegistryAddress?: string
 }
 
-export interface BulkBOLData extends v2.OpenAttestationDocument {
-  recipient?: BulkBOLRecipient
-  bolProof?: BulkBolProof
-}
-
 interface BulkBolProof {
   a0: string
   a1: string
@@ -54,4 +49,28 @@ interface BulkBolProof {
   c1: string
   scalarPubKey0: string
   scalarPubKey1: string
+}
+
+export interface BulkBOLData extends v2.OpenAttestationDocument {
+  recipient?: BulkBOLRecipient
+  bolProof?: BulkBolProof
+  issuers: v2.Issuer[]
+  exporter_sign_time: string
+  exporterEmail: string
+  exporterPhone: string
+  exporterAddress: string
+  exporterName: string
+  exporterCompanyName: string
+
+  shipping_company_sign_time: string
+  shipping_company_signer: string
+  notify_name: string
+  notify_contact_name: string
+  notify_address: string
+  notify_contact_email: string
+  notify_contact_phone: string
+  exporter_signer_place: string
+
+  exporterSignIp: string
+  shippingCompanySignIp: string
 }
