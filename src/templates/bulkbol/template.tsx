@@ -29,7 +29,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
     shippingCompanySignIp,
     currency
   } = document
-  
+
   console.log('recipient', recipient)
   // const recipient = document.recipient
   const scac = recipient?.scac
@@ -226,14 +226,25 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd}>
             <h6 css={cellHeader}> 4. Notify Party</h6>
             <div style={{ marginLeft: 15 }}>
-              {displayedNotifyName},<br />
-              {notify_contact_name}
-              <br />
-              {displayedNotifyAddress}
-              <br />
-              {notify_contact_email}
-              <br />
-              {notify_contact_phone}
+              {displayedNotifyName}
+              {displayedNotifyAddress && (
+                <>
+                  ,<br /> {displayedNotifyAddress}
+                  
+                </>
+              )}
+              {notify_contact_email && (
+                <>
+                  , <br />
+                  Email:&nbsp;{notify_contact_email}
+                </>
+              )}
+              {notify_contact_phone && (
+                <>
+                  , <br />
+                  Phone:&nbsp;{notify_contact_phone}
+                </>
+              )}
             </div>
           </td>
         </tr>
@@ -377,24 +388,66 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         </tr>
       </table>
 
+      {/* Carrier Signature Section */}
       <table
-        style={{ width: '100%', border: '2px solid #333', padding: '0px', borderSpacing: '0px', marginTop: '3em' }}
+        style={{
+          width: '100%',
+          border: '2px solid #333',
+          borderTopWidth: 0,
+          padding: '0px',
+          borderSpacing: '0px',
+          marginTop: 0
+        }}
       >
         <tr css={tableTr}>
-          <td css={tableTd}>
-            TAKEN IN CHARGE IN APPARENTLY GOOD CONDITION HEREIN AT THE PLACE OF RECEIPT FOR TRANSPORT AND DELIVERY AS
-            MENTIONED ABOVE, UNLESS OTHERWISE STATED. THE MTO IN ACCORDANCE WITH THE PROVISIONS CONTAINED IN THE MTD
-            UNDERTAKES TO PERFORM OR TO PROCURE THE PREFORMANCE OF THE MULTIMODAL TRANSPORT FROM THE PLACE AT WHICH THE
-            GOODS ARE TAKEN IN CHARGE, TO THE PLACE DESIGNATED FOR DELIVERY AND ASSUMES RESPONSIBILITY FOR SUCH
-            TRANSPORT.
+          <td css={tableTd} style={{ width: '50%', borderRight: 'none' }}>
+            <h6 css={cellHeader}> 19. Signed By</h6>
+            <div style={{ marginLeft: 20 }}>
+              <b css={cellTitle}> For and on behalf of the Carrier</b>
+            </div>
+            <div style={{ marginLeft: 20, marginTop: 10}}>
+              <h6 css={cellHeader}> {displayedCarrierName}</h6>
+            </div>
+            <div style={{ marginLeft: 20, marginTop: 80 }}>
+              <b css={cellTitle}> Digitally signed on: </b>&nbsp; {formattedDateOfIssue}
+              <br />
+              <b css={cellTitle}> Name: </b>&nbsp; {displayedCarrierName} <br />
+              <b css={cellTitle}> Title:&nbsp; </b>Authorised Signatory
+            </div>
           </td>
-        </tr>
 
-        <tr css={tableTr}>
-          <td css={tableTd}>
-            ONE OF THE MTD(S) MUST BE SURRENDERED, DULY ENDORSED IN EXCHANGE FOR THE GOODS, IN WITNESS WHERE OF THE
-            ORIGINAL MTD ALL OF THIS TENOR AND DATE HAVE BEEN SIGNED IN THE NUMBER INDICATED BELOW ONE OF WHICH BEING
-            ACCOMPLISHED THE OTHER(S) TO BE VOID
+          <td css={tableTd} style={{ width: '50%', borderLeft: 'none' }}>
+            <div
+              style={{
+                border: '2px solid #336',
+                padding: '1rem',
+                borderRadius: '10px',
+                marginRight: '1rem',
+                boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+                backgroundColor: '#d0eef6'
+              }}
+            >
+              <h6 css={cellHeader}> Electronic Bill of Lading</h6>
+              This is an Electronic Original Bill of Lading . The authenticity of this document may be verified at&nbsp;
+              <a
+                href='https://dev.verify.credore.xyz/'
+                target='_blank'
+                rel='noopener noreferrer'
+                style={{ color: 'rgb(6, 70, 98)', textDecoration: 'none' }}
+              >
+                <b>www.dev.verify.credore.xyz</b>
+              </a>
+              <div style={{ padding: '1rem', alignItems: 'center' }}>
+                <img
+                  src='https://www.credore.xyz/assets/images/Logo.png'
+                  alt='credore stamp'
+                  style={{ height: '3em', width: 'auto' }}
+                />
+              </div>
+              <b css={cellTitle}>Document Id: </b>&nbsp;{documentNumber} <br />
+              <b css={cellTitle}>Blockchain Name: </b>&nbsp;{blockchainName} <br />
+              <b css={cellTitle}>Issued electronically on: </b>&nbsp;{formattedDateOfIssue} <br />
+            </div>
           </td>
         </tr>
       </table>
@@ -402,42 +455,31 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       <table
         style={{
           width: '100%',
-          borderWidth: '2px 2px 0px 2px',
-          borderStyle: 'solid',
-          borderColor: 'black',
+          border: '2px solid #333',
           padding: '0px',
           borderSpacing: '0px',
-          marginTop: '3em'
+          marginTop: 20
         }}
       >
         <tr css={tableTr}>
-          <td css={tableTd} colSpan={2} style={{ padding: '1rem' }}>
-            <b style={{ color: 'red' }}>Digitally signed by Exporter :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{displayedExporterName} <br />
-            <b>Signer Place:</b>&nbsp;{portOfLoading}
-            <br />
-            <b>Date & Time:</b>&nbsp;
-            {moment(exporter_sign_time).utc().add(5, 'hours').add(30, 'minutes').format('DD/MM/YYYY hh:mm A [IST]')}
-            <br />
-            <b>IP Address:</b>&nbsp;{exporterSignIp}
-          </td>
-
-          <td css={tableTd} colSpan={2} style={{ padding: '1rem', width: '50%' }}>
-            <b style={{ color: 'red' }}>Digitally signed by Carrier :</b> <br /> <br />
-            <b>Name:</b>&nbsp;{displayedCarrierName} <br />
-            <b>Signer Place:</b>&nbsp;{portOfLoading}
-            <br />
-            <b>Date & Time:</b>&nbsp;
-            {moment(shipping_company_sign_time)
-              .utc()
-              .add(5, 'hours')
-              .add(30, 'minutes')
-              .format('DD/MM/YYYY hh:mm A [IST]')}
-            <br />
-            <b>IP Address:</b>&nbsp;{shippingCompanySignIp}
+          <td css={tableTd} style={{ textAlign: 'justify' }}>
+            <h6 css={cellHeader} style={{ marginBottom: 5, textAlign: 'center' }}>
+              20. Terms and Conditions
+            </h6>
+            <ul>
+              <li>The Carrier shall be bound by the terms and conditions of the Charter Party dated as mentioned above, including any amendments thereto.</li>
+              <li>The Carrier shall not be liable for any loss of or damage to the cargo howsoever arising, or for delay in delivery, occasioned by any cause whatsoever, including but not limited to Acts of God, dangers of the sea, perils of navigation, strikes, lock-outs, or any other causes beyond the Carrier's control.</li>
+              <li>The Merchant acknowledges that the Carrier shall be entitled to rely upon any clause, liberty, privilege, exemption or immunity contained in the Charter Party.</li>
+              <li>All claims, disputes and matters arising under or in connection with this Bill of Lading shall be governed by and construed in accordance with the law and jurisdiction of the courts as per the Charter Party.</li>
+              <li>This Bill of Lading, any dispute or claim arising out of or in connection with it, and any non-contractual obligations arising out of or in connection with it, are subject to the jurisdiction of the courts as per the Charter Party.</li> 
+              <li>The fact that this is an Electronic Bill of Lading shall not affect any rights or obligations of the parties as set out in the Charter Party.</li>
+            </ul>
           </td>
         </tr>
       </table>
+
+
+      
       <table
         style={{
           width: '100%',
@@ -450,11 +492,11 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
-            <span style={{ fontWeight: 'bold', fontSize: '0.8rem' }}>Disclaimer :</span> This document, originally
+            <b css={cellTitle}>Disclaimer:</b> <b css={cellTitle} style={{fontWeight:'normal'}}>This document, originally
             existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
             ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
             Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
-            prohibited. Verify its integrity and authenticity through approved channels.
+            prohibited. Verify its integrity and authenticity through approved channels.</b>
           </td>
         </tr>
       </table>
