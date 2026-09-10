@@ -205,7 +205,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
                   }}
                 >
                   <b style={{ fontSize: '1.5rem', color: '#FFF' }}>BILL OF LADING</b>
-                  <span style={{ fontSize: '1.25rem', color: '#FFF' }}>&nbsp;(ELECTRONIC)</span>
+                  <span style={{ fontSize: '1.5rem', color: '#FFF'}}>&nbsp;(ELECTRONIC)</span>
                 </div>
               </td>
             </tr>
@@ -221,7 +221,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
                   textTransform: 'uppercase'
                 }}
               >
-                B/L No:
+                B/L No
               </td>
               <td
                 style={{
@@ -233,12 +233,25 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
                   textTransform: 'uppercase'
                 }}
               >
-                Reference No:{' '}
+                Reference No{' '}
               </td>
             </tr>
             <tr css={tableTr}>
-              <td style={{ border: '1px solid #29564b', borderRight: 'none', padding: '.25em' }}>{documentNumber}</td>
-              <td style={{ border: '1px solid #29564b', padding: '.25em' }}>{referenceNumber}</td>
+              <td
+                style={{
+                  border: '1px solid #29564b',
+                  borderRight: 'none',
+                  padding: '.25em',
+                  fontSize: '1rem',
+                  fontFamily: 'monospace'
+                }}
+              >
+                {documentNumber}
+              </td>
+
+              <td style={{ border: '1px solid #29564b', padding: '.25em', fontSize: '1rem', fontFamily: 'monospace' }}>
+                {referenceNumber}
+              </td>
             </tr>
           </table>
         </div>
@@ -495,10 +508,10 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
             </div>
             <img src={signature} alt='carrier signature' style={{ height: '5em', width: 'auto', border: 'none' }} />
             <div css={cellContent} style={{ marginLeft: 20, marginTop: 0 }}>
-              <b css={cellTitle}> Digitally signed on: </b>&nbsp; {formattedDateOfIssue}
+              <b css={cellTitle}> Digitally signed on:</b>&nbsp;{formattedDateOfIssue}
               <br />
-              <b css={cellTitle}> Name: </b>&nbsp; {displayedCarrierName} <br />
-              <b css={cellTitle}> Title:&nbsp; </b>Authorised Signatory
+              <b css={cellTitle}> Name:</b>&nbsp;{displayedCarrierName} <br />
+              <b css={cellTitle}> Title:&nbsp;</b>Authorised Signatory
             </div>
           </td>
 
@@ -526,64 +539,23 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
               >
                 <b>www.dev.verify.credore.xyz</b>
               </a>
-              <div style={{ padding: '1rem', alignItems: 'center' }}>
+              <div style={{ padding: '0.75rem', alignItems: 'center' }}>
                 <img
                   src='https://www.credore.xyz/assets/images/Logo.png'
                   alt='credore stamp'
-                  style={{ height: '3em', width: 'auto' }}
+                  style={{ height: '2em', width: 'auto' }}
                 />
               </div>
-              <b css={cellTitle}>Document Id: </b>&nbsp;{documentNumber} <br />
-              <b css={cellTitle}>Blockchain Name: </b>&nbsp;{blockchainName} <br />
-              <b css={cellTitle}>Issued electronically on: </b>&nbsp;{formattedDateOfIssue} <br />
+              <b css={cellTitle}>Document Id: </b>&nbsp;
+              <span css={cellContent}>{documentNumber}</span>
+              <br />
+              <b css={cellTitle}>Blockchain Name: </b>&nbsp;
+              <span css={cellContent}>{blockchainName}</span>
+              <br />
+              <b css={cellTitle}>Issued electronically on: </b>&nbsp;
+              <span css={cellContent}>{formattedDateOfIssue}</span>
+              <br />
             </div>
-          </td>
-        </tr>
-      </table>
-
-      <table
-        style={{
-          width: '100%',
-          border: '2px solid #333',
-          padding: '0px',
-          borderSpacing: '0px',
-          marginTop: 20
-        }}
-      >
-        <tr css={tableTr}>
-          <td css={tableTd} style={{ textAlign: 'justify' }}>
-            <h6 css={cellHeader} style={{ marginBottom: 5, textAlign: 'center' }}>
-              20.Terms and Conditions
-            </h6>
-            <ul>
-              <li css={cellContent}>
-                The Carrier shall be bound by the terms and conditions of the Charter Party dated as mentioned above,
-                including any amendments thereto.
-              </li>
-              <li css={cellContent}>
-                The Carrier shall not be liable for any loss of or damage to the cargo howsoever arising, or for delay
-                in delivery, occasioned by any cause whatsoever, including but not limited to Acts of God, dangers of
-                the sea, perils of navigation, strikes, lock-outs, or any other causes beyond the Carrier's control.
-              </li>
-              <li css={cellContent}>
-                The Merchant acknowledges that the Carrier shall be entitled to rely upon any clause, liberty,
-                privilege, exemption or immunity contained in the Charter Party.
-              </li>
-              <li css={cellContent}>
-                All claims, disputes and matters arising under or in connection with this Bill of Lading shall be
-                governed by and construed in accordance with the law and jurisdiction of the courts as per the Charter
-                Party.
-              </li>
-              <li css={cellContent}>
-                This Bill of Lading, any dispute or claim arising out of or in connection with it, and any
-                non-contractual obligations arising out of or in connection with it, are subject to the jurisdiction of
-                the courts as per the Charter Party.
-              </li>
-              <li css={cellContent}>
-                The fact that this is an Electronic Bill of Lading shall not affect any rights or obligations of the
-                parties as set out in the Charter Party.
-              </li>
-            </ul>
           </td>
         </tr>
       </table>
