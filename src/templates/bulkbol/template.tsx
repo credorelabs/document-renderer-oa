@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 import { BulkBOLData } from './types'
 import eBl from './eBL_t&c.png'
 import eBLBg from './paper-bg.png'
-import signature from './signature.png'
+import signature from './digital-signature.png'
 import carrierLogo from './carrier-logo.png'
 import moment from 'moment'
 
@@ -205,7 +205,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
                   }}
                 >
                   <b style={{ fontSize: '1.5rem', color: '#FFF' }}>BILL OF LADING</b>
-                  <span style={{ fontSize: '1.5rem', color: '#FFF'}}>&nbsp;(ELECTRONIC)</span>
+                  <span style={{ fontSize: '1.5rem', color: '#FFF' }}>&nbsp;(ELECTRONIC)</span>
                 </div>
               </td>
             </tr>
@@ -500,18 +500,22 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '50%', borderRight: 'none' }}>
             <h6 css={cellHeader}> 19.Signed By</h6>
-            <div css={cellContent} style={{ marginLeft: 20 }}>
-              <b css={cellTitle}> For and on behalf of the Carrier</b>
-            </div>
-            <div css={cellContent} style={{ marginLeft: 20, marginTop: 10 }}>
-              <h6 css={cellHeader}> {displayedCarrierName}</h6>
-            </div>
-            <img src={signature} alt='carrier signature' style={{ height: '5em', width: 'auto', border: 'none' }} />
-            <div css={cellContent} style={{ marginLeft: 20, marginTop: 0 }}>
-              <b css={cellTitle}> Digitally signed on:</b>&nbsp;{formattedDateOfIssue}
-              <br />
-              <b css={cellTitle}> Name:</b>&nbsp;{displayedCarrierName} <br />
-              <b css={cellTitle}> Title:&nbsp;</b>Authorised Signatory
+            <div style={{ marginLeft: 20 }}>
+              <div css={cellContent}>
+                <b css={cellTitle}> For and on behalf of the Carrier</b>
+              </div>
+              <div css={cellContent} style={{ marginTop: 10 }}>
+                <h6 css={cellHeader}> {displayedCarrierName}</h6>
+              </div>
+
+              <img src={signature} alt='carrier signature' style={{ height: '5em', width: 'auto' }} />
+
+              <div css={cellContent} style={{ marginTop: 0 }}>
+                <b css={cellTitle}> Digitally signed on:</b>&nbsp;{formattedDateOfIssue}
+                <br />
+                <b css={cellTitle}> Name:</b>&nbsp;{displayedCarrierName} <br />
+                <b css={cellTitle}> Title:&nbsp;</b>Authorised Signatory
+              </div>
             </div>
           </td>
 
