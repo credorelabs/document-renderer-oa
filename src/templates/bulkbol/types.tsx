@@ -14,6 +14,7 @@ interface BulkBOLRecipient extends v2.Recipient {
     consignee?: BulkBOLParty
     notifyParty?: BulkBOLParty
   }
+  carrierLogo?: string
   vesselName?: string
   dateOfIssue?: string
   measurement?: string

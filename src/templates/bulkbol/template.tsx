@@ -3,7 +3,10 @@ import { TemplateProps } from '@govtechsg/decentralized-renderer-react-component
 import { css } from '@emotion/core'
 // import { CocTemplateCertificate } from "../samples/cooTemplate";
 import { BulkBOLData } from './types'
-import eBl from "./eBL_t&c.png";
+import eBl from './eBL_t&c.png'
+import eBLBg from './paper-bg.png'
+import signature from './signature.png'
+import carrierLogo from './carrier-logo.png'
 import moment from 'moment'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
@@ -95,24 +98,31 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
   `
 
   const tableTd = css`
-    border: 1px solid black;
+    border: 1px solid #ccc;
     padding: 0.5em;
     vertical-align: top;
     font-size: 14px;
+    font-family: monospace;
     width: 50%;
   `
   const cellHeader = css`
     color: #29564b;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 15px;
     margin: 0;
     margin-bottom: 5px;
+    font-family: monospace;
   `
 
   const cellTitle = css`
     font-weight: bold;
     font-size: 14px;
     color: #666;
+    font-family: monospace;
+  `
+  const cellContent = css`
+    font-size: 14px;
+    font-family: monospace;
   `
 
   // function parseGoodsDescription (value?: string): Array<{ hsCode?: string; desc?: string }> | undefined {
@@ -142,9 +152,10 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
   // const parsedGoodsDescription = parseGoodsDescription(goods_descriptionOfGoods)
   const isShippedOnDeck = ['yes', 'true'].includes(String(shippedOnDeck).toLowerCase())
   // const reference = referenceNumber || shippersReferenceNumber
+  const displayCarrierLogo = recipient?.carrierLogo || carrierLogo
 
   return (
-    <div css={containerStyle}>
+    <div css={containerStyle} style={{ background: `url(${eBLBg})`, marginTop: 20 }}>
       <div
         style={{
           margin: 'auto',
@@ -155,27 +166,79 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           alignItems: 'center'
         }}
       >
-        <div style={{ width: '50%' }}>
-          <img
-            src='https://demo.credore.in/ship-logo.png'
-            alt='credore stamp'
-            style={{ height: '7em', width: 'auto' }}
-          />
+        <div style={{ width: '50%', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          <img src={displayCarrierLogo} alt='Logo' style={{ height: '5em', width: 'auto' }} />
+          {!displayCarrierLogo && (
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <b style={{ fontSize: '2.25rem', color: '#29564b', display: 'block', textTransform: 'uppercase' }}>
+                {displayedCarrierName}
+              </b>
+              {/* <span style={{ fontWeight: 'bold', fontSize: '1rem', color: '#29564b' }}>(ELECTRONIC)</span> */}
+            </div>
+          )}
         </div>
         <div
           style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50%' }}
         >
-          <b style={{ fontSize: '1.2rem', color: '#29564b', marginBottom: 5 }}>ELECTRONIC BILL OF LADING</b>
-          {/* <span style={{ fontSize: '.75rem' }}>ELECTRONIC</span> */}
-
-          <table style={{ width: '100%', border: '2px solid #666', padding: '0px', borderSpacing: '0px' }}>
+          {/* <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
+            <b style={{ fontSize: '1.75rem', color: '#29564b' }}>BILL OF LADING</b>
+            <span style={{ fontSize: '1.25rem', color: '#29564b' }}>(ELECTRONIC)</span>
+          </div> */}
+          <table style={{ width: '100%', border: '1px solid #29564b', padding: '0px', borderSpacing: '0px' }}>
             <tr css={tableTr}>
-              <td style={{ border: '1px solid #666', padding: '.5em' }}>B/L No:</td>
-              <td style={{ border: '1px solid #666', padding: '.5em' }}>Reference No: </td>
+              <td
+                colSpan={2}
+                style={{
+                  textAlign: 'center',
+                  border: '1px solid #29564b',
+                  padding: '.25em',
+                  backgroundColor: '#29564b'
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    alignSelf: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <b style={{ fontSize: '1.5rem', color: '#FFF' }}>BILL OF LADING</b>
+                  <span style={{ fontSize: '1.25rem', color: '#FFF' }}>&nbsp;(ELECTRONIC)</span>
+                </div>
+              </td>
             </tr>
             <tr css={tableTr}>
-              <td style={{ border: '1px solid #666', padding: '.5em' }}>{documentNumber}</td>
-              <td style={{ border: '1px solid #666', padding: '.5em' }}>{referenceNumber}</td>
+              <td
+                style={{
+                  width: '50%',
+                  border: '1px solid #29564b',
+                  borderRight: 'none',
+                  borderBottom: 'none',
+                  padding: '.25em',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase'
+                }}
+              >
+                B/L No:
+              </td>
+              <td
+                style={{
+                  width: '50%',
+                  border: '1px solid #29564b',
+                  borderBottom: 'none',
+                  padding: '.25em',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase'
+                }}
+              >
+                Reference No:{' '}
+              </td>
+            </tr>
+            <tr css={tableTr}>
+              <td style={{ border: '1px solid #29564b', borderRight: 'none', padding: '.25em' }}>{documentNumber}</td>
+              <td style={{ border: '1px solid #29564b', padding: '.25em' }}>{referenceNumber}</td>
             </tr>
           </table>
         </div>
@@ -184,8 +247,8 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       <table style={{ width: '100%', border: '2px solid #333', padding: '0px', borderSpacing: '0px' }}>
         <tr css={tableTr}>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 1. SHIPPER / EXPORTER</h6>
-            <div style={{ marginLeft: 15 }}>
+            <h6 css={cellHeader}> 1.SHIPPER / EXPORTER</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
               {exporterCompanyName || shipper?.name},<br />
               {displayedExporterName},<br />
               {displayedExporterAddress}
@@ -204,8 +267,8 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
             </div>
           </td>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 2. CONSIGNEE</h6>
-            <div style={{ marginLeft: 15 }}>
+            <h6 css={cellHeader}> 2.CONSIGNEE</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
               {consignee?.name || 'TO ORDER'}
               {consignee?.address && (
                 <>
@@ -219,19 +282,18 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
 
         <tr css={tableTr}>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 3. Frieght payable as per charter party dated</h6>
-            <div style={{ marginLeft: 15 }}>
+            <h6 css={cellHeader}> 3.Frieght payable as per charter party dated</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
               <b css={cellTitle}>Charter Party dated:</b> {formattedCharterPartyDate}
             </div>
           </td>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 4. Notify Party</h6>
-            <div style={{ marginLeft: 15 }}>
+            <h6 css={cellHeader}> 4.Notify Party</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
               {displayedNotifyName}
               {displayedNotifyAddress && (
                 <>
                   ,<br /> {displayedNotifyAddress}
-                  
                 </>
               )}
               {notify_contact_email && (
@@ -252,30 +314,40 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
 
         <tr css={tableTr}>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 5. Port of Lading</h6>
-            <div style={{ marginLeft: 15 }}>{portOfLoading}</div>
+            <h6 css={cellHeader}> 5.Port of Lading</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
+              {portOfLoading}
+            </div>
           </td>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 6. Port of Discharge</h6>
-            <div style={{ marginLeft: 15 }}>{portOfDischarge}</div>
+            <h6 css={cellHeader}> 6.Port of Discharge</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
+              {portOfDischarge}
+            </div>
           </td>
         </tr>
 
         <tr css={tableTr}>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 7. Vessel:</h6>
-            <div style={{ marginLeft: 15 }}>{vesselName}</div>
+            <h6 css={cellHeader}> 7.Vessel:</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
+              {vesselName}
+            </div>
           </td>
           <td css={tableTd}>
-            <h6 css={cellHeader}> 8. Reference No.</h6>
-            <div style={{ marginLeft: 15 }}>{referenceNumber}</div>
+            <h6 css={cellHeader}> 8.Reference No.</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
+              {referenceNumber}
+            </div>
           </td>
         </tr>
 
         <tr css={tableTr}>
           <td css={tableTd} colSpan={2}>
-            <h6 css={cellHeader}> 9. B/L No.</h6>
-            <div style={{ marginLeft: 15 }}>{documentNumber}</div>
+            <h6 css={cellHeader}> 9.B/L No.</h6>
+            <div css={cellContent} style={{ marginLeft: 15 }}>
+              {documentNumber}
+            </div>
           </td>
         </tr>
       </table>
@@ -294,28 +366,28 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd} style={{ width: '50%' }}>
             <h6 css={cellHeader} style={{ marginBottom: 0 }}>
               {' '}
-              10. Description of Goods
+              10.Description of Goods
             </h6>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader} style={{ marginBottom: 0 }}>
               {' '}
-              11. Cargo Gross Weight
+              11.Cargo Gross Weight
             </h6>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader} style={{ marginBottom: 0 }}>
               {' '}
-              12. Measurement
+              12.Measurement
             </h6>
           </td>
         </tr>
 
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '50%' }}>
-            <div style={{ marginLeft: 20 }}>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
               <b css={cellTitle}>Goods description:</b>&nbsp;
               {cargoDescription}
               {/* {parsedGoodsDescription &&
@@ -329,13 +401,13 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
-            <div style={{ marginLeft: 20 }}>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
               {cargoGrossWeight} {cargoWeightUnit}
             </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
-            <div style={{ marginLeft: 20 }}>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
               {measurement} {measurementUnit}
             </div>
           </td>
@@ -343,8 +415,10 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
 
         <tr css={tableTr}>
           <td css={tableTd} colSpan={3}>
-            <h6 css={cellHeader}> 13. Shipped on Deck(If Applicable)</h6>
-            <div style={{ marginLeft: 20 }}>{isShippedOnDeck ? 'Yes' : 'None'}</div>
+            <h6 css={cellHeader}> 13.Shipped on Deck(If Applicable)</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {isShippedOnDeck ? 'Yes' : 'None'}
+            </div>
           </td>
         </tr>
       </table>
@@ -361,30 +435,40 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 14. Shipped on Board Date</h6>
-            <div style={{ marginLeft: 20 }}>{formattedShippedOnBoardDate}</div>
+            <h6 css={cellHeader}> 14.Shipped on Board Date</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {formattedShippedOnBoardDate}
+            </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 15. Place of Issue</h6>
-            <div style={{ marginLeft: 20 }}>{placeOfIssue}</div>
+            <h6 css={cellHeader}> 15.Place of Issue</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {placeOfIssue}
+            </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 16. Date of Issue</h6>
-            <div style={{ marginLeft: 20 }}>{formattedDateOfIssue}</div>
+            <h6 css={cellHeader}> 16.Date of Issue</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {formattedDateOfIssue}
+            </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 17. Number of Original B/Ls</h6>
-            <div style={{ marginLeft: 20 }}>{numberOfOriginals}</div>
+            <h6 css={cellHeader}> 17.Number of Original B/Ls</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {numberOfOriginals}
+            </div>
           </td>
         </tr>
 
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
-            <h6 css={cellHeader}> 18. SCAC (Applicable for Shipments to USA)</h6>
-            <div style={{ marginLeft: 20 }}>{displayedScac}</div>
+            <h6 css={cellHeader}> 18.SCAC (Applicable for Shipments to USA)</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {displayedScac}
+            </div>
           </td>
         </tr>
       </table>
@@ -402,14 +486,15 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '50%', borderRight: 'none' }}>
-            <h6 css={cellHeader}> 19. Signed By</h6>
-            <div style={{ marginLeft: 20 }}>
+            <h6 css={cellHeader}> 19.Signed By</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
               <b css={cellTitle}> For and on behalf of the Carrier</b>
             </div>
-            <div style={{ marginLeft: 20, marginTop: 10}}>
+            <div css={cellContent} style={{ marginLeft: 20, marginTop: 10 }}>
               <h6 css={cellHeader}> {displayedCarrierName}</h6>
             </div>
-            <div style={{ marginLeft: 20, marginTop: 80 }}>
+            <img src={signature} alt='carrier signature' style={{ height: '5em', width: 'auto', border: 'none' }} />
+            <div css={cellContent} style={{ marginLeft: 20, marginTop: 0 }}>
               <b css={cellTitle}> Digitally signed on: </b>&nbsp; {formattedDateOfIssue}
               <br />
               <b css={cellTitle}> Name: </b>&nbsp; {displayedCarrierName} <br />
@@ -429,7 +514,10 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
               }}
             >
               <h6 css={cellHeader}> Electronic Bill of Lading</h6>
-              This is an Electronic Original Bill of Lading . The authenticity of this document may be verified at&nbsp;
+              <span css={cellContent}>
+                This is an Electronic Original Bill of Lading . The authenticity of this document may be verified
+                at&nbsp;
+              </span>
               <a
                 href='https://dev.verify.credore.xyz/'
                 target='_blank'
@@ -465,22 +553,41 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd} style={{ textAlign: 'justify' }}>
             <h6 css={cellHeader} style={{ marginBottom: 5, textAlign: 'center' }}>
-              20. Terms and Conditions
+              20.Terms and Conditions
             </h6>
             <ul>
-              <li>The Carrier shall be bound by the terms and conditions of the Charter Party dated as mentioned above, including any amendments thereto.</li>
-              <li>The Carrier shall not be liable for any loss of or damage to the cargo howsoever arising, or for delay in delivery, occasioned by any cause whatsoever, including but not limited to Acts of God, dangers of the sea, perils of navigation, strikes, lock-outs, or any other causes beyond the Carrier's control.</li>
-              <li>The Merchant acknowledges that the Carrier shall be entitled to rely upon any clause, liberty, privilege, exemption or immunity contained in the Charter Party.</li>
-              <li>All claims, disputes and matters arising under or in connection with this Bill of Lading shall be governed by and construed in accordance with the law and jurisdiction of the courts as per the Charter Party.</li>
-              <li>This Bill of Lading, any dispute or claim arising out of or in connection with it, and any non-contractual obligations arising out of or in connection with it, are subject to the jurisdiction of the courts as per the Charter Party.</li> 
-              <li>The fact that this is an Electronic Bill of Lading shall not affect any rights or obligations of the parties as set out in the Charter Party.</li>
+              <li css={cellContent}>
+                The Carrier shall be bound by the terms and conditions of the Charter Party dated as mentioned above,
+                including any amendments thereto.
+              </li>
+              <li css={cellContent}>
+                The Carrier shall not be liable for any loss of or damage to the cargo howsoever arising, or for delay
+                in delivery, occasioned by any cause whatsoever, including but not limited to Acts of God, dangers of
+                the sea, perils of navigation, strikes, lock-outs, or any other causes beyond the Carrier's control.
+              </li>
+              <li css={cellContent}>
+                The Merchant acknowledges that the Carrier shall be entitled to rely upon any clause, liberty,
+                privilege, exemption or immunity contained in the Charter Party.
+              </li>
+              <li css={cellContent}>
+                All claims, disputes and matters arising under or in connection with this Bill of Lading shall be
+                governed by and construed in accordance with the law and jurisdiction of the courts as per the Charter
+                Party.
+              </li>
+              <li css={cellContent}>
+                This Bill of Lading, any dispute or claim arising out of or in connection with it, and any
+                non-contractual obligations arising out of or in connection with it, are subject to the jurisdiction of
+                the courts as per the Charter Party.
+              </li>
+              <li css={cellContent}>
+                The fact that this is an Electronic Bill of Lading shall not affect any rights or obligations of the
+                parties as set out in the Charter Party.
+              </li>
             </ul>
           </td>
         </tr>
       </table>
 
-
-      
       <table
         style={{
           width: '100%',
@@ -493,27 +600,30 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
-            <b css={cellTitle}>Disclaimer:</b> <b css={cellTitle} style={{fontWeight:'normal'}}>This document, originally
-            existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
-            ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
-            Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
-            prohibited. Verify its integrity and authenticity through approved channels.</b>
+            <b css={cellTitle}>Disclaimer:</b>{' '}
+            <b css={cellTitle} style={{ fontWeight: 'normal' }}>
+              This document, originally existing in electronic or paper or both formats, has been converted to the
+              TradeTrust-recommended format, ensuring MLETR compliance. The converted document, in compliance with
+              Section 4(1) of the Electronic Trade Document Act, holds the same legal validity. Any unauthorized
+              alterations or modifications are strictly prohibited. Verify its integrity and authenticity through
+              approved channels.
+            </b>
           </td>
         </tr>
       </table>
 
       <table
         style={{
-          width: "100%",
-          borderWidth: "2px",
-          borderStyle: "solid",
-          borderColor: "black",
-          padding: "0px",
-          borderSpacing: "0px",
-          marginTop: "2rem"
+          width: '100%',
+          borderWidth: '2px',
+          borderStyle: 'solid',
+          borderColor: 'black',
+          padding: '0px',
+          borderSpacing: '0px',
+          marginTop: '2rem'
         }}
       >
-        <img src={eBl} alt='bl t&c' style={{width:"100%"}}/>
+        <img src={eBl} alt='bl t&c' style={{ width: '100%' }} />
       </table>
     </div>
   )
