@@ -26,7 +26,7 @@ export const bulkEblTemplate: BulkBOLData = {
           organisationId: "34"
         }
       },
-      carrierLogo: "https://ccigroup.co.in/wp-content/uploads/2023/09/CCI-Group-2.png",
+      carrierLogo: "",
       vesselName: "vessel",
       dateOfIssue: "2026-09-23T00:00:00.000Z",
       measurement: "20",
