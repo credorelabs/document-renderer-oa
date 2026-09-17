@@ -26,6 +26,7 @@ import { NewPromissoryNoteTemplates } from "./promissory-note-v2";
 import { FiataBLTemplates } from "./fiata-bl";
 import { PDFVerifiableTemplates } from "./pdf-verifiable";
 import { BulkEblTemplates } from "./bulkbol";
+import { W3CCargoDocumentTemplates } from "./transport-document/w3c";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -46,6 +47,7 @@ export const registry: TemplateRegistry<any> = {
   COMMERCIAL_INVOICE: NewInvoiceTemplates,
   PROFORMA_INVOICE_V2: NewProformaInvoiceTemplates,
   DCSA_BOL: CargoDocumentTemplates,
+  DCSA_BOL_W3C: W3CCargoDocumentTemplates,
   PURCHASE_ORDER_V2: NewPurchaseOrderTemplates,
   PROMISSORY_NOTE_V2: NewPromissoryNoteTemplates,
   FIATA_BL: FiataBLTemplates,
