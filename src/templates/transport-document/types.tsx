@@ -4,10 +4,6 @@ export interface CargoDocument extends v2.OpenAttestationDocument {
     recipient?: Recipient;
 }
 
-export interface W3CCargoDocument {
-    credentialSubject?: Recipient | Recipient[];
-}
-
 export interface Recipient extends v2.Recipient {
     carrierLogo?: string;
     documentPartiesShipper?: DocumentPartiesShipper;

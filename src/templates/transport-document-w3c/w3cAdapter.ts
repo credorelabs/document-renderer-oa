@@ -1,4 +1,5 @@
-import { W3CCargoDocument, CargoDocument } from "./types";
+import { CargoDocument } from "../transport-document/types";
+import { W3CCargoDocument } from "./types";
 
 export const adaptW3CDocument = (document: W3CCargoDocument | undefined): CargoDocument => {
   const credentialSubject = document?.credentialSubject;

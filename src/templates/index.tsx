@@ -26,7 +26,7 @@ import { NewPromissoryNoteTemplates } from "./promissory-note-v2";
 import { FiataBLTemplates } from "./fiata-bl";
 import { PDFVerifiableTemplates } from "./pdf-verifiable";
 import { BulkEblTemplates } from "./bulkbol";
-import { W3CCargoDocumentTemplates } from "./transport-document/w3c";
+import { W3CCargoDocumentTemplates } from "./transport-document-w3c";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
