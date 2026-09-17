@@ -1,13 +1,24 @@
 diff --git a/node_modules/@govtechsg/decentralized-renderer-react-components/build/esm/utils.js b/node_modules/@govtechsg/decentralized-renderer-react-components/build/esm/utils.js
-index e79a6d1..603c6f9 100644
+index e79a6d1..b867816 100644
 --- a/node_modules/@govtechsg/decentralized-renderer-react-components/build/esm/utils.js
 +++ b/node_modules/@govtechsg/decentralized-renderer-react-components/build/esm/utils.js
-@@ -49,7 +49,7 @@ var getTemplateName = function getTemplateName(document) {
+@@ -49,8 +49,17 @@ var getTemplateName = function getTemplateName(document) {
      return document.$template.name;
    }
  
 -  if (isV3Document(document) && document.openAttestationMetadata.template) {
-+  if (isV3Document(document) && document.openAttestationMetadata && document.openAttestationMetadata.template) {
-     return document.openAttestationMetadata.template.name;
+-    return document.openAttestationMetadata.template.name;
++  if (isV3Document(document)) {
++    if (document.openAttestationMetadata && document.openAttestationMetadata.template) {
++      return document.openAttestationMetadata.template.name;
++    }
++
++    if (Array.isArray(document.renderMethod)) {
++      var renderMethod = document.renderMethod.find(function (method) {
++        return method && method.templateName;
++      });
++      return renderMethod ? renderMethod.templateName : "";
++    }
    }
  
+   return "";
