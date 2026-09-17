@@ -1,11 +1,7 @@
 import React from "react";
-
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-
 import { adaptW3CDocument } from "./w3cAdapter";
-
 import { W3CCargoDocument } from "./types";
-
 import { CargoDocumentTemplate } from "./template";
 
 export const W3CCargoDocumentTemplate = (

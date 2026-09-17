@@ -5,7 +5,7 @@ export interface CargoDocument extends v2.OpenAttestationDocument {
 }
 
 export interface W3CCargoDocument {
-  credentialSubject?: Recipient;
+    credentialSubject?: Recipient | Recipient[];
 }
 
 export interface Recipient extends v2.Recipient {

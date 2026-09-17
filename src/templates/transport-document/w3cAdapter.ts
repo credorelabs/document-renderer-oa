@@ -1,7 +1,10 @@
 import { W3CCargoDocument, CargoDocument } from "./types";
 
-export const adaptW3CDocument = ( document: W3CCargoDocument ): CargoDocument => {
+export const adaptW3CDocument = (document: W3CCargoDocument | undefined): CargoDocument => {
+  const credentialSubject = document?.credentialSubject;
+  const recipient = Array.isArray(credentialSubject) ? credentialSubject[0] : credentialSubject;
+
   return {
-    recipient: document.credentialSubject ?? {},
+    recipient: recipient ?? {}
   } as CargoDocument;
 };

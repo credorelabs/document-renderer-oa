@@ -94,7 +94,6 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     transport_IMOvesselNumber
   } = recipient;
 
-  console.log(recipient)
   const containerStyle = css`
       margin: auto;
       padding: 15px;
