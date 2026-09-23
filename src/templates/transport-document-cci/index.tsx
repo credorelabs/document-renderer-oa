@@ -1,6 +1,6 @@
 import { CCICargoDocumentTemplate } from "./template";
 
-export const CargoDocumentTemplates = [
+export const CCICargoDocumentTemplates = [
   {
     id: "cargoDocumentTemplate",
     label: "cargoDocumentTemplate",
