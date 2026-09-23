@@ -27,6 +27,7 @@ import { FiataBLTemplates } from "./fiata-bl";
 import { PDFVerifiableTemplates } from "./pdf-verifiable";
 import { BulkEblTemplates } from "./bulkbol";
 import { W3CCargoDocumentTemplates } from "./transport-document-w3c";
+import { CCITemplates } from "./cci-bol";
 
 export const registry: TemplateRegistry<any> = {
   BILL_OF_EXCHANGE: templates,
@@ -53,5 +54,6 @@ export const registry: TemplateRegistry<any> = {
   FIATA_BL: FiataBLTemplates,
   PDF_VERIFIABLE: PDFVerifiableTemplates,
   BULK_EBL: BulkEblTemplates,
+  CCI_BOL_W3C: CCITemplates,
   // PACKING_LIST:packingListTemplate
 };
