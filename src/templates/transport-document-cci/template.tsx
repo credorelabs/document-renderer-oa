@@ -5,8 +5,8 @@ import { CargoDocument } from './types'
 import { css } from '@emotion/core'
 import eBl from './eBL_t&c.png'
 import cciLogo from '../../../public/cci-logo.png'
-import CCITerms from './CCI-Terms.pdf'
-import CredoreTerms from './Credore_eBL_Singapore_Terms_and_Conditions.pdf'
+import CCITerms from '../../../public/CCI-Terms.png'
+import CredoreTerms from '../../../public/Credore_eBL_Terms_and_Conditions.png'
 
 const PAYMENT_METHODS = [
   { value: 'A', label: 'Payment in Cash (A)' },
@@ -610,22 +610,42 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
           </td>
         </tr>
       </table>
+
       <table
         style={{
           width: '100%',
-          // border: '2px solid #333',
-          border: 'none',
-          // borderTop: '1px',
-          borderBottom: '0',
+          borderWidth: '2px',
+          borderStyle: 'solid',
+          borderColor: 'black',
           padding: '0px',
-          borderSpacing: '0px'
+          borderSpacing: '0px',
+          marginTop: '2rem'
         }}
-      ></table>
-      <div>
+      >
+        <h6 style={{ padding: '5px', margin: '10px 0 0 20px', fontSize: 14 }}>CCI Terms & Conditions</h6>
+        <img src={CCITerms} alt='bl t&c' style={{ width: '100%' }} />
+      </table>
+
+      <table
+        style={{
+          width: '100%',
+          borderWidth: '2px',
+          borderStyle: 'solid',
+          borderColor: 'black',
+          padding: '0px',
+          borderSpacing: '0px',
+          marginTop: '2rem'
+        }}
+      >
+        <h6 style={{ padding: '5px', margin: '10px 0 0 20px', fontSize: 14 }}>Credore eBL Terms & Conditions</h6>
+        <img src={CredoreTerms} alt='bl t&c' style={{ width: '100%' }} />
+      </table>
+
+      {/* <div>
         <h6 style={{ padding: '5px', marginBottom: 0 }}>CCI Terms & Conditions</h6>
         <iframe
-          src={CCITerms}
-          // src='/CCI-Terms.pdf'
+          // src={CCITerms}
+          src='/CCI-Terms.pdf'
           width='100%'
           height='600px'
           title='PDF Viewer'
@@ -635,13 +655,13 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
             display: 'block'
           }}
         />
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         <h6 style={{ padding: '5px', marginBottom: 0 }}>Credore eBL Terms & Conditions</h6>
         <iframe
-          src={CredoreTerms}
-          // src='/Credore_eBL_Singapore_Terms_and_Conditions.pdf'
+          // src={CredoreTerms}
+          src='/Credore_eBL_Singapore_Terms_and_Conditions.pdf'
           width='100%'
           height='600px'
           title='PDF Viewer'
@@ -651,7 +671,7 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
             display: 'block'
           }}
         />
-      </div>
+      </div> */}
 
       <table
         style={{
