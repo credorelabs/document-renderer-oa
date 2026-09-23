@@ -5,8 +5,8 @@ import { CargoDocument } from './types'
 import { css } from '@emotion/core'
 import eBl from './eBL_t&c.png'
 import cciLogo from '../../../public/cci-logo.png'
-// import CCITerms from '../../../public/CCI-Terms.pdf'
-// import CredoreTerms from '../../../public/Credore_eBL_Singapore_Terms_and_Conditions.pdf'
+import CCITerms from './CCI-Terms.pdf'
+import CredoreTerms from './Credore_eBL_Singapore_Terms_and_Conditions.pdf'
 
 const PAYMENT_METHODS = [
   { value: 'A', label: 'Payment in Cash (A)' },
@@ -624,8 +624,8 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
       <div>
         <h6 style={{ padding: '5px', marginBottom: 0 }}>CCI Terms & Conditions</h6>
         <iframe
-          // src={CCITerms}
-          src='/CCI-Terms.pdf'
+          src={CCITerms}
+          // src='/CCI-Terms.pdf'
           width='100%'
           height='600px'
           title='PDF Viewer'
@@ -640,8 +640,8 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
       <div>
         <h6 style={{ padding: '5px', marginBottom: 0 }}>Credore eBL Terms & Conditions</h6>
         <iframe
-          // src={CredoreTerms}
-          src='/Credore_eBL_Singapore_Terms_and_Conditions.pdf'
+          src={CredoreTerms}
+          // src='/Credore_eBL_Singapore_Terms_and_Conditions.pdf'
           width='100%'
           height='600px'
           title='PDF Viewer'
