@@ -1,6 +1,6 @@
 import { v2 } from '@govtechsg/open-attestation'
 
-export interface CargoDocument extends v2.OpenAttestationDocument {
+export interface W3CCargoDocument extends v2.OpenAttestationDocument {
   recipient?: Recipient
 }
 
