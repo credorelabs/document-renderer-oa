@@ -21,7 +21,7 @@ const PAYMENT_METHODS = [
 export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocument>> = ({ document }) => {
   const recipient = document.recipient ?? {}
   const {
-    primaryLogo,
+    carrierLogo,
     dcsaBlNumber,
     shippingInstructionsReference,
 
@@ -94,7 +94,8 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
     invoicePayableAt,
     placeOfIssue,
     transport_vesselName,
-    transport_IMOvesselNumber
+    transport_IMOvesselNumber,
+    numberOfOriginals
   } = recipient
 
   const containerStyle = css`
@@ -162,6 +163,7 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
   const tableTdTop = css`
     border: 1px solid #333;
     padding: 0.2em;
+    font-size: 15px;
   `
 
   const cellTitle = css`
@@ -217,30 +219,33 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
           border: '2px solid #333',
           padding: '0px',
           borderSpacing: '0px',
-          paddingBottom: '10px',
-          borderBottom: 'none'
+          paddingBottom: '5px',
+          borderBottom: 'none',
+          background:'#f6f6f6'
         }}
       >
         <tr css={tableTr}>
           <td> </td>
-          <td style={{ width: '20%' }}></td>
-          <td style={{ width: '28%', textAlign: 'center', marginRight: '20px' }}>ORIGINAL</td>
+          <td style={{ width: '23%' }}></td>
+          <td style={{ width: '23%', textAlign: 'center', fontSize: 14, fontWeight: 'bold', letterSpacing: 2, padding:'5px 0' }}>
+            ORIGINAL
+          </td>
           <td style={{ width: '2%' }}></td>
         </tr>
 
         <tr css={tableTr}>
-          <td style={{ width: '50%', fontSize: 24, color: '#333', fontWeight: 'bold', padding: 5 }}>
+          <td style={{ width: '50%', fontSize: 22, color: '#333', fontWeight: 'bold', paddingLeft: 20 }}>
             MULTIMODAL TRANSPORT DOCUMENT
           </td>
-          <td>MTD No.:</td>
-          <td css={tableTdTop}>{dcsaBlNumber}</td>
+          <td style={{ fontSize: 15 }}>MTD No.:</td>
+          <td css={tableTdTop} style={{fontFamily:'monospace', }}>{dcsaBlNumber}</td>
           <td style={{ width: '2%' }}></td>
         </tr>
 
         <tr css={tableTr}>
           <td></td>
-          <td>Shipment Reference No.:</td>
-          <td css={tableTdTop}>{documentReferenceNumber}</td>
+          <td style={{ fontSize: 15 }}>Shipment Reference No.:</td>
+          <td css={tableTdTop} style={{fontFamily:'monospace', paddingLeft:10}}>{documentReferenceNumber}</td>
           <td style={{ width: '2%' }}></td>
         </tr>
       </table>
@@ -606,7 +611,7 @@ export const CCICargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocu
         <tr>
           <td colSpan={5} css={tableTdOneFifth} style={{ textAlign: 'center' }}>
             Weight and measurement of container not to be included <br />
-            (TERMS CONRINUED ON BACK HEREOF)
+            (TERMS CONTINUED ON BACK HEREOF)
           </td>
         </tr>
       </table>
