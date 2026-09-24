@@ -64,7 +64,9 @@ export const cargoDocumentTemplate: CargoDocument = {
   temperature: "25°C",
   grossWeight: 1200,
   grossWeightUnit: "KGM",
-  numberOfContainer: "12"
+  numberOfContainer: "12",
+  transport_vesselName: "Vessel-123",
+  transport_IMOvesselNumber: "12345",
 },
   issuers: [
     {
