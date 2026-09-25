@@ -1,22 +1,22 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { object } from "@storybook/addon-knobs";
-import { CCITemplate } from "./template";
-import { w3cCargoDocument } from "../samples/w3cTransportDocSample";
+import { CCIBolTemplate } from "./template";
+import { cargoDocumentTemplate } from "../samples/transportDocSample";
 
-<Meta title="MDX|CCITemplate" component={CCITemplate} />
+<Meta title="MDX|CCIBolTemplate" component={CCIBolTemplate} />
 
-# W3C Cargo Document Template
+# cargoDocumentTemplate component
 
-<Description of={CCITemplate} />
+<Description of={CCIBolTemplate} />
 
 # Props
 
-<Props of={CCITemplate} />
+<Props of={CCIBolTemplate} />
 
 # Usage
 
 <Preview>
-  <Story name="basic W3C sample">
-    <CCITemplate document={object("document", w3cCargoDocument)} />
+  <Story name="basic sample">
+    <CCIBolTemplate document={object("document", cargoDocumentTemplate)} />
   </Story>
 </Preview>
