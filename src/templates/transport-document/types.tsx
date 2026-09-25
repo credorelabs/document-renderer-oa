@@ -42,9 +42,9 @@ export interface Recipient extends v2.Recipient {
   displayedNameForPortOfLoad?: string[]
   displayedNameForPlaceOfDelivery?: string[]
   displayedNameForPortOfDischarge?: string[]
-//   placeOfIssue?: PlaceOfIssue
-//   invoicePayableAt?: InvoicePayableAt
-  PlaceOfIssue?: string
+  //   placeOfIssue?: PlaceOfIssue
+  //   invoicePayableAt?: InvoicePayableAt
+  placeOfIssue?: string
   invoicePayableAt?: string
   utilizedTransportEquipments?: UtilizedTransportEquipment[]
   isCarriersAgentAtDestinationRequired?: boolean
