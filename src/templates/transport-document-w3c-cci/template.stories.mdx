@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { CCIW3CCargoDocumentTemplate } from "./template";
+import { w3cCargoDocument } from "../samples/w3cTransportDocSample";
+
+<Meta title="MDX|CCIW3CCargoDocumentTemplate" component={CCIW3CCargoDocumentTemplate} />
+
+# W3C Cargo Document Template
+
+<Description of={CCIW3CCargoDocumentTemplate} />
+
+# Props
+
+<Props of={CCIW3CCargoDocumentTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic W3C sample">
+    <CCIW3CCargoDocumentTemplate document={object("document", w3cCargoDocument)} />
+  </Story>
+</Preview>
