@@ -94,7 +94,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     transport_IMOvesselNumber,
     placeOfTranshipment,
     corridor,
-    carrierSignLocation
+    carrierSignLocation,
+    qrCodeData
   } = recipient
 
   const containerStyle = css`

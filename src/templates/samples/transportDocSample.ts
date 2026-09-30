@@ -74,7 +74,13 @@ export const cargoDocumentTemplate: CargoDocument = {
     valueCurrency: "2500.00",
     placeOfTranshipment: "",
     corridor: "SG",
-    carrierSignLocation: ""
+    carrierSignLocation: "",
+    issueDate: "",
+    qrCodeData: {
+      id: "df7760d5-3271-4a69-9c73-3cb573ccf7b5",
+      key: "c7497d58b117d7e6625e29f3090dc4df6f87febcb5ba2794f029202d8db58118",
+      type: "W3CVC"
+    },
   },
   issuers: [
     {
