@@ -9,6 +9,8 @@ import CCITerms from '../../../public/CCI-Terms.png'
 import CredoreTermsSG from '../../../public/Credore_eBL_Terms_and_Conditions_SG.png'
 import CredoreTermsUK from '../../../public/Credore_eBL_Terms_and_Conditions_UK.png'
 import signature from '../../../public/digital-signature.png'
+import carrierLogo from '../../../public/carrier-logo.png'
+import { QRCodeSVG } from 'qrcode.react'
 
 const PAYMENT_METHODS = [
   { value: 'A', label: 'Payment in Cash (A)' },
@@ -205,14 +207,17 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     valueCurrency,
     placeOfTranshipment,
     corridor,
-    carrierSignLocation
+    carrierSignLocation,
+    issueDate,
+    qrCodeData
   } = recipient
 
   const containerStyle = css`
     margin: auto;
     padding: 15px;
-    width: 80%;
+    width: 90%;
     font-family: sans-serif;
+    max-width: 1130px;
   `
 
   // const containerStyle = css`
@@ -282,6 +287,9 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     text-align: left;
     vertical-align: middle !important;
     margin: 0 0 5px;
+    text-transform: uppercase;
+    color: #03271e;
+    line-height: 18px;
   `
   const cellText = css`
     font-size: 12px;
@@ -302,9 +310,24 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     font-size: 12px;
     margin: 0;
     margin-bottom: 5px;
+    line-height: 18px;
   `
   const cellContent = css`
     font-size: 14px;
+  `
+  const signatureCellHeader = css`
+    color: #29564b;
+    font-size: 12px;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+  `
+
+  const signatureCellText = css`
+    color: #29564b;
+    font-size: 12px;
+    margin: 0;
+    line-height: 18px;
   `
 
   const formatDate = (date?: string) => {
@@ -317,11 +340,8 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     })
   }
 
-  const todaysDate = new Date().toString()
-  const formattedTodaysDate = formatDate(todaysDate)
-  const formattedDeliveryStartDate = formatDate(expectedArrivalAtPlaceOfDeliveryStartDate)
-  // const formattedDeliveryEndDate = formatDate(expectedArrivalAtPlaceOfDeliveryEndDate)
-  const formattedDateOfIssue = formatDate(carrierSignTime)
+  const formattedDateOfIssue = formatDate(issueDate)
+  const formattedCarrierSignTime = formatDate(carrierSignTime)
 
   function isJSONString (str: string) {
     try {
@@ -334,11 +354,78 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
 
   return (
     <div css={containerStyle}>
-      {/* <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '2px solid #666' }}> */}
+      {qrCodeData ? (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            margin: 0,
+            border: '2px solid #333',
+            padding: '0.25rem',
+            background: '#DDF2E9'
+          }}
+        >
+          <img src={carrierLogo} alt='Image' style={{ height: '100px', width: 'auto', objectFit: 'contain' }} />
+          <div style={{ fontSize: '1.875rem', lineHeight:'2.25rem', textAlign: 'center', color: '#093228' }}>
+            <b>BILL OF LADING</b> (ELECTRONIC)
+          </div>
+
+          <div>
+            {qrCodeData?.id !== undefined ? (
+              <QRCodeSVG
+                value={`https://dev.verify.credore/viewer?id=${qrCodeData?.id}&key=${qrCodeData?.key}&net=${blockchainName}`}
+                style={{ height: 100, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: 0,
+            border: '2px solid #333',
+            padding: '0.5rem',
+            background: '#DDF2E9',
+            gap: 40
+          }}
+        >
+          <img src={carrierLogo} alt='Image' style={{ height: '100px', width: 'auto', objectFit: 'contain' }} />
+          <div style={{ fontSize: '1.875rem', lineHeight:'2.25rem', textAlign: 'center', color: '#093228' }}>
+            <b>BILL OF LADING</b> (ELECTRONIC)
+          </div>
+        </div>
+      )}
+      {/* <div>
+                  {data?.dcsaBolVerifiableDocument?.qrcode_data?.id !== undefined ? (
+                    <QRCode
+                      value={`${process.env.NEXT_PUBLIC_VERIFY_CREDORE}/viewer?id=${data?.dcsaBolVerifiableDocument?.qrcode_data?.id
+                        }&key=${data?.dcsaBolVerifiableDocument?.qrcode_data?.key}&net=${data?.dcsaBolDetail[1]?.chain}`}
+                      // style={{ marginLeft: "1rem" }}
+                      className="h-[60px] md:h-[80px] lg:h-[100px] !w-auto object-contain p-2"
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  {(data?.application?.chaCarrier?.carrierLogo || data?.data?.chaCarrier?.carrierLogo) && (
+                    <img
+                      src={(data?.application?.chaCarrier?.carrierLogo || data?.data?.chaCarrier?.carrierLogo)}
+                      alt="Image"
+                      className="h-[60px] md:h-[80px] lg:h-[100px] object-contain"
+                    />
+                  )}
+                </div> */}
+
       <table
         style={{
           width: '100%',
           border: '2px solid #333',
+          borderTopWidth: 1,
           padding: '0px',
           borderSpacing: '0px',
           paddingBottom: '5px',
@@ -384,6 +471,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
           <td style={{ width: '2%' }}></td>
         </tr>
       </table>
+
       <table
         style={{
           width: '100%',
@@ -403,17 +491,23 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                       <br />
                     </h6>
                     <p css={cellText}>
-                      {exporterName}
-                      <br />
                       {exporterCompanyName}
                       <br />
                       {exporterAddress}
                       <br />
-                      {exporterEmail}
-                      <br />
-                      {exporterPhone}
-                      <br />
-                      {exporterLei}
+                      {exporterEmail && (
+                        <>
+                          Contact Email: {exporterEmail}
+                          <br />
+                        </>
+                      )}
+                      {exporterPhone && (
+                        <>
+                          Phone No: {exporterPhone}
+                          <br />
+                        </>
+                      )}
+                      {exporterLei && <>LEI No: {exporterLei}</>}
                     </p>
                   </div>
                 </td>
@@ -423,17 +517,23 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                   <div style={{ minHeight: '100px', fontSize: '12px' }}>
                     <h6 css={cellTitle}>Consignee (or order)</h6>
                     <p css={cellText}>
-                      {importerName}
-                      <br />
                       {importerCompanyName}
                       <br />
                       {importer_address}
                       <br />
-                      {importer_email}
-                      <br />
-                      {importer_phone}
-                      <br />
-                      {importer_lei}
+                      {importer_email && (
+                        <>
+                          Contact Email: {importer_email}
+                          <br />
+                        </>
+                      )}
+                      {importer_phone && (
+                        <>
+                          Phone No: {importer_phone}
+                          <br />
+                        </>
+                      )}
+                      {importer_lei && <>LEI No: {importer_lei}</>}
                     </p>
                   </div>
                 </td>
@@ -443,17 +543,23 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                   <div style={{ minHeight: '100px', fontSize: '12px' }}>
                     <h6 css={cellTitle}>Notify Party</h6>
                     <p css={cellText}>
-                      {notify_contact_name}
-                      <br />
                       {notify_name}
                       <br />
                       {notify_address}
                       <br />
-                      {notify_contact_email}
-                      <br />
-                      {notify_contact_phone}
-                      <br />
-                      {notify_lei}
+                      {notify_contact_email && (
+                        <>
+                          Contact Email: {notify_contact_email}
+                          <br />
+                        </>
+                      )}
+                      {notify_contact_phone && (
+                        <>
+                          Phone No: {notify_contact_phone}
+                          <br />
+                        </>
+                      )}
+                      {notify_lei && <>LEI No: {notify_lei}</>}
                     </p>
                   </div>
                 </td>
@@ -468,7 +574,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                 <td css={tableTdRight1Inner}>
                   <div style={{ minHeight: '40px', fontSize: '12px' }}>
                     <h6 css={cellTitle}>Date of Acceptance</h6>
-                    <p css={cellText}>{formattedTodaysDate}</p>
+                    <p css={cellText}>{moment().format('DD/MM/YYYY HH:mm:ss')}</p>
                   </div>
                 </td>
               </tr>
@@ -566,7 +672,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
           <td css={tableTdOneFourth} style={{ borderLeftWidth: 0 }}>
             <div style={{ minHeight: 40 }}>
               <h6 css={cellTitle}>Date or period of Delivery</h6>
-              <p css={cellText}>{formattedDeliveryStartDate}</p>
+              <p css={cellText}>{moment(expectedArrivalAtPlaceOfDeliveryStartDate).format('DD/MM/YYYY')}</p>
             </div>
           </td>
           <td css={tableTdOneFourth} style={{ borderLeftWidth: 0 }}>
@@ -589,7 +695,8 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
           border: '2px solid #333',
           borderSpacing: '0px',
           borderTop: 0,
-          borderBottom: 0
+          borderBottom: 0,
+          minHeight: 200
         }}
       >
         <tr>
@@ -683,7 +790,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
             <div style={{ minHeight: 40 }}>
               <h6 css={cellTitle}>Place and date of issue</h6>
               <p css={cellText}>
-                {placeOfIssue} / {formattedDateOfIssue}
+                {placeOfIssue} / {moment(issueDate).format('DD/MM/YYYY HH:mm:ss')}
                 <br />
                 {}{' '}
               </p>
@@ -722,8 +829,8 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                 backgroundColor: '#d0eef6'
               }}
             >
-              <h6 css={cellHeader}> Electronic Bill of Lading</h6>
-              <p css={cellHeader} style={{ marginTop: 5 }}>
+              <h6 css={signatureCellHeader}> Electronic Bill of Lading</h6>
+              <p css={signatureCellText} style={{ marginTop: 5 }}>
                 This is an Electronic Original Bill of Lading . The authenticity of this document may be verified
                 at&nbsp;{' '}
                 <a
@@ -742,18 +849,18 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                   style={{ height: '2em', width: 'auto' }}
                 />
               </div>
-              <p css={cellHeader}>
+              <p css={signatureCellText}>
                 Document Id:&nbsp;
                 <b>{dcsaBlNumber}</b>
               </p>
 
-              <p css={cellHeader}>
+              <p css={signatureCellText}>
                 Network Name:&nbsp;
                 <b>{blockchainName}</b>
               </p>
-              <p css={cellHeader}>
+              <p css={signatureCellText}>
                 Issued electronically on:&nbsp;
-                <b>{formattedDateOfIssue}</b>
+                <b>{moment(issueDate).format('DD/MM/YYYY HH:mm:ss')}</b>
               </p>
             </div>
           </td>
@@ -761,21 +868,21 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
           <td css={tableTd} style={{ width: '50%', borderWidth: 0, borderLeftWidth: 1 }}>
             {/* <div style={{ minHeight: 40 }}> */}
             <h6 css={cellTitle}> For CCI Worldwide Logistics Private Limited</h6>
-            <p css={cellHeader}>Digitally Signed By</p>
+            <p css={signatureCellText}>Digitally Signed By</p>
 
             <div style={{ marginLeft: 20 }}>
-              <h6 css={cellHeader}> {carrier_contact_name}</h6>
+              <h6 css={cellTitle}> {carrier_contact_name}</h6>
 
-              <img src={signature} alt='carrier signature' style={{ height: '5em', width: 'auto' }} />
+              <img src={signature} alt='carrier signature' style={{ height: '4em', width: 'auto' }} />
 
               <div css={cellContent} style={{ marginTop: 0 }}>
-                <p css={cellHeader}>
-                  Signing Date & Time:&nbsp;<b>{formattedDateOfIssue}</b>
+                <p css={signatureCellText}>
+                  Signing Date & Time:&nbsp;<b>{moment(carrierSignTime).format('DD/MM/YYYY HH:mm:ss')}</b>
                 </p>
-                <p css={cellHeader}>
-                  Place of Signing:&nbsp;<b>{placeOfIssue}</b>
+                <p css={signatureCellText}>
+                  Place of Signing:&nbsp;<b>{carrierSignLocation}</b>
                 </p>
-                <p css={cellHeader}>
+                <p css={signatureCellText}>
                   Signer IP Address:&nbsp;<b>{carrierSignIp}</b>
                 </p>
               </div>
