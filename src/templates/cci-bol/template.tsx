@@ -207,7 +207,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     valueCurrency,
     placeOfTranshipment,
     corridor,
-    carrierSignLocation,
+    carrierSignerPlace,
     issueDate,
     qrCodeData
   } = recipient
@@ -880,7 +880,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                   Signing Date & Time:&nbsp;<b>{moment(carrierSignTime).format('DD/MM/YYYY HH:mm:ss')}</b>
                 </p>
                 <p css={signatureCellText}>
-                  Place of Signing:&nbsp;<b>{carrierSignLocation}</b>
+                  Place of Signing:&nbsp;<b>{carrierSignerPlace}</b>
                 </p>
                 <p css={signatureCellText}>
                   Signer IP Address:&nbsp;<b>{carrierSignIp}</b>
