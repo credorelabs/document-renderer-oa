@@ -47,7 +47,7 @@ export const bulkEblTemplate: BulkBOLData = {
       numberOfOriginals: 1,
       shippedOnBoardDate: "2026-09-18T00:00:00.000Z",
       termsAndConditions: "Ok odne",
-      carrier_signer_place: "Tiruppur, India",
+      carrierSignerPlace: "Tiruppur, India",
       tokenRegistryAddress: "0x60dCA7EBFa69FbaC186Bc8201A3AA46553C68DC1"
   },
   

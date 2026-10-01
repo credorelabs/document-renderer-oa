@@ -176,7 +176,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
 
     blockchainName,
     mintTxHash,
-    carrier_signer_place,
+    carrierSignerPlace,
     exporter_signer_place,
     shippingBillNo,
 
@@ -207,8 +207,9 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     valueCurrency,
     placeOfTranshipment,
     corridor,
-    carrierSignerPlace,
     issueDate,
+    placeOfAcceptance,
+    dateOfAcceptance,
     qrCodeData
   } = recipient
 
@@ -568,13 +569,13 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                 <td css={tableTdLeft1Inner}>
                   <div style={{ minHeight: '40px', fontSize: '12px' }}>
                     <h6 css={cellTitle}>Place of Acceptance</h6>
-                    <p css={cellText}>{carrier_signer_place}</p>
+                    <p css={cellText}>{placeOfAcceptance}</p>
                   </div>
                 </td>
                 <td css={tableTdRight1Inner}>
                   <div style={{ minHeight: '40px', fontSize: '12px' }}>
                     <h6 css={cellTitle}>Date of Acceptance</h6>
-                    <p css={cellText}>{moment().format('DD/MM/YYYY HH:mm:ss')}</p>
+                    <p css={cellText}>{moment(dateOfAcceptance).format('DD/MM/YYYY HH:mm:ss')}</p>
                   </div>
                 </td>
               </tr>

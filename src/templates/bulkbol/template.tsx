@@ -63,7 +63,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
   const numberOfOriginals = recipient?.numberOfOriginals
   const shippedOnBoardDate = recipient?.shippedOnBoardDate
   const termsAndConditions = recipient?.termsAndConditions
-  const carrier_signer_place = recipient?.carrier_signer_place
+  const carrierSignerPlace = recipient?.carrierSignerPlace
   const tokenRegistryAddress = recipient?.tokenRegistryAddress
 
   const displayedExporterName = exporterName || shipper?.name

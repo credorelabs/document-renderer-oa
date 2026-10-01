@@ -35,7 +35,7 @@ interface BulkBOLRecipient extends v2.Recipient {
   numberOfOriginals?: string | number
   shippedOnBoardDate?: string
   termsAndConditions?: string
-  carrier_signer_place?: string
+  carrierSignerPlace?: string
   tokenRegistryAddress?: string
 }
 

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { css } from "@emotion/core";
-import QRCode from "qrcode.react";
+import { QRCodeCanvas } from "qrcode.react";
 
 interface QrCode {
   url: string;
@@ -38,9 +38,15 @@ export const QrCode: FunctionComponent<QrCode> = ({ url, size = 250 }) => (
     `}
   >
     <div className="show-print">
-      <QRCode value={url} size={size} />
-      <div style={{ fontSize: 32, marginLeft: 64 }}>Scan the QR code with your phone camera.</div>
-      <div className="genterated-text">Automatically Generated</div>
+      <QRCodeCanvas value={url} size={size} />
+
+      <div style={{ fontSize: 32, marginLeft: 64 }}>
+        Scan the QR code with your phone camera.
+      </div>
+
+      <div className="genterated-text">
+        Automatically Generated
+      </div>
     </div>
   </div>
 );

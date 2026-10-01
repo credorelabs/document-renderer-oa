@@ -65,7 +65,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     notify_contact_phone,
     notify_lei,
 
-    carrier_signer_place,
+    carrierSignerPlace,
     blockchainName,
     txHash,
     carrierSignIp,
@@ -94,8 +94,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     transport_IMOvesselNumber,
     placeOfTranshipment,
     corridor,
-    carrierSignerPlace,
-    qrCodeData
+    qrCodeData,
+    placeOfAcceptance,
+    dateOfAcceptance,
   } = recipient
 
   const containerStyle = css`
@@ -602,7 +603,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <td css={tableTd} colSpan={3} style={{ padding: '1rem', width: '50%' }}>
             <b style={{ color: 'red' }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{carrier_contact_name} <br />
-            {/* <b>Signer Place:</b>&nbsp;{carrier_signer_place} */}
+            {/* <b>Signer Place:</b>&nbsp;{carrierSignerPlace} */}
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(carrierSignTime).utc().add(5, 'hours').add(30, 'minutes').format('DD/MM/YYYY hh:mm A [IST]')}
