@@ -82,7 +82,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
     notify_address,
     notify_contact_email,
     notify_contact_phone,
-    carrier_signer_place,
+    carrierSignerPlace,
     exporter_signer_place,
     blockchainName,
     mintTxHash,
@@ -446,7 +446,7 @@ export const BOLTemplate: FunctionComponent<TemplateProps<BillOfLadingData>> = (
           <td css={tableTd} colSpan={2} style={{ padding: "1rem", width:"50%" }}>
             <b style={{ color: "red" }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{shipping_company_signer} <br />
-            <b>Signer Place:</b>&nbsp;{carrier_signer_place}
+            <b>Signer Place:</b>&nbsp;{carrierSignerPlace}
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(shipping_company_sign_time)

@@ -43,7 +43,7 @@ export const cargoDocumentTemplate: CargoDocument = {
     notify_contact_email: "michael.chen@notifylogistics.com",
     notify_contact_phone: "+6590123456",
     notify_lei: "LEI-3216549870",
-    carrier_signer_place: "SG SIN - Singapore Port",
+    carrierSignerPlace: "SG SIN - Singapore Port",
     blockchainName: "TradeChain",
     txHash: "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
     carrierSignIp: "192.168.1.100",
@@ -74,13 +74,14 @@ export const cargoDocumentTemplate: CargoDocument = {
     valueCurrency: "2500.00",
     placeOfTranshipment: "",
     corridor: "SG",
-    carrierSignerPlace: "IN MAA - Chennai Port",
     issueDate: "",
     qrCodeData: {
       id: "df7760d5-3271-4a69-9c73-3cb573ccf7b5",
       key: "c7497d58b117d7e6625e29f3090dc4df6f87febcb5ba2794f029202d8db58118",
       type: "W3CVC"
     },
+    placeOfAcceptance:"Bhubaneswar Municipal Corporation, India",
+    dateOfAcceptance:"2026-09-30T12:28:37.306Z",
   },
   issuers: [
     {

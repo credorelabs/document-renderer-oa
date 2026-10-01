@@ -157,7 +157,7 @@ export interface Recipient extends v2.Recipient {
 
   blockchainName?: string
   mintTxHash?: string
-  carrier_signer_place?: string
+  carrierSignerPlace?: string
   exporter_signer_place?: string
   shippingBillNo?: string
 
@@ -191,9 +191,10 @@ export interface Recipient extends v2.Recipient {
   valueCurrency?: string
   placeOfTranshipment?: string
   corridor?: string
-  carrierSignerPlace?: string
   issueDate?: string
   qrCodeData?: QrCodeInfo
+  placeOfAcceptance?: string
+  dateOfAcceptance?: string
 }
 interface Signature {
   name?: string
