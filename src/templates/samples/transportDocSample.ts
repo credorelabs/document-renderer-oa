@@ -74,7 +74,7 @@ export const cargoDocumentTemplate: CargoDocument = {
     valueCurrency: "2500.00",
     placeOfTranshipment: "",
     corridor: "SG",
-    carrierSignLocation: "",
+    carrierSignerPlace: "IN MAA - Chennai Port",
     issueDate: "",
     qrCodeData: {
       id: "df7760d5-3271-4a69-9c73-3cb573ccf7b5",

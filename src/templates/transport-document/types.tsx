@@ -191,7 +191,7 @@ export interface Recipient extends v2.Recipient {
   valueCurrency?: string
   placeOfTranshipment?: string
   corridor?: string
-  carrierSignLocation?: string
+  carrierSignerPlace?: string
   issueDate?: string
   qrCodeData?: QrCodeInfo
 }

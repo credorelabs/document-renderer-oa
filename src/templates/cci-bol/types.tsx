@@ -178,7 +178,7 @@ export interface Recipient extends v2.Recipient {
 
   carrierSignIp?: string
   carrierSignTime?: string
-  carrierSignLocation?: string
+  carrierSignerPlace?: string
   txHash?: string
   numberOfPackages?: string
   documentType?: string
