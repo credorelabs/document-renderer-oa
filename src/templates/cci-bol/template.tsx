@@ -998,7 +998,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
         }}
       >
         <h6 style={{ padding: '5px', margin: '10px 0 0 20px', fontSize: 14 }}>Credore eBL Terms & Conditions</h6>
-        <img src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK} alt='bl t&c' style={{ width: '100%' }} />
+        <img src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK} alt='Credore eBL Terms & Conditions' style={{ width: '100%' }} />
       </table>
 
       {/* <div>
