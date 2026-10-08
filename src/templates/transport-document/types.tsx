@@ -192,7 +192,7 @@ export interface Recipient extends v2.Recipient {
   placeOfTranshipment?: string
   corridor?: string
   issueDate?: string
-  qrCodeData?: QrCodeInfo
+  qrCode?: QrCodeInfo
   placeOfAcceptance?: string
   dateOfAcceptance?: string
 }
@@ -383,7 +383,6 @@ interface DocumentCarrierCarrier {
 }
 
 interface QrCodeInfo {
-  id?: string
-  key?: string
+  uri?: string
   type?: string
 }

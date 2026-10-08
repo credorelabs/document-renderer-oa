@@ -4,6 +4,10 @@ import moment from 'moment'
 import { CargoDocument } from './types'
 import { css } from '@emotion/core'
 import eBl from './eBL_t&c.png'
+import CredoreTermsSG from '../../../public/Credore_eBL_Terms_and_Conditions_SG.png'
+import CredoreTermsUK from '../../../public/Credore_eBL_Terms_and_Conditions_UK.png'
+import carrierLogo from '../../../public/carrier-logo.png'
+import { QRCodeSVG } from 'qrcode.react'
 
 const PAYMENT_METHODS = [
   { value: 'A', label: 'Payment in Cash (A)' },
@@ -94,9 +98,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     transport_IMOvesselNumber,
     placeOfTranshipment,
     corridor,
-    qrCodeData,
+    qrCode,
     placeOfAcceptance,
-    dateOfAcceptance,
+    dateOfAcceptance
   } = recipient
 
   const containerStyle = css`
@@ -104,6 +108,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     padding: 15px;
     width: 80%;
     font-family: sans-serif;
+    max-width: 1130px;
   `
 
   // const containerStyle = css`
@@ -151,60 +156,68 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
 
   return (
     <div css={containerStyle}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {/* {primaryLogo && (
+      {qrCode?.uri ? (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            margin: 0,
+            border: '2px solid #333',
+            borderBottom: '0',
+            padding: '0.25rem',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
+            background: '#DDF2E9'
+          }}
+        >
           <img
-            src={primaryLogo}
-            alt="company logo"
-            style={{
-              marginBottom: "2rem",
-              marginTop: "2rem",
-              maxWidth: "150px",
-              maxHeight: "auto",
-              objectFit: "contain"
-            }}
+            src={primaryLogo ? primaryLogo : carrierLogo}
+            alt='Image'
+            style={{ height: 80, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
           />
-        )} */}
-        {/* {secondaryLogo && (
-              <img
-                src={secondaryLogo}
-                alt="company logo"
-                style={{
-                  width: "150px",
-                  height: "auto",
-                  margin: "2rem 0 2rem 2rem",
-                  objectFit: "contain"
-                }}
+          <div style={{ fontSize: '1.875rem', lineHeight: '2.25rem', textAlign: 'center', color: '#093228' }}>
+            <b>BILL OF LADING</b> (ELECTRONIC)
+          </div>
+
+          <div>
+            {qrCode?.uri !== undefined ? (
+              <QRCodeSVG
+                value={qrCode?.uri}
+                style={{ height: 80, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
               />
-            )} */}
-      </div>
-      <table
-        style={{ width: '100%', border: '2px solid black', borderBottom: '0', padding: '0px', borderSpacing: '0px' }}
-      >
-        <tr css={tableTr}>
-          <td css={tableTd} colSpan={2}>
-            {' '}
-            {primaryLogo && (
-              <img
-                src={primaryLogo}
-                alt='company logo'
-                style={{
-                  marginBottom: '2rem',
-                  marginTop: '2rem',
-                  maxWidth: '150px',
-                  maxHeight: 'auto',
-                  objectFit: 'contain'
-                }}
-              />
+            ) : (
+              <></>
             )}
-          </td>
-          <td css={tableTd} colSpan={2}>
-            <span style={{ fontSize: '0.8rem' }}>
-              <b>B/L Number:</b>
-            </span>
-            &nbsp;{dcsaBlNumber}
-          </td>
-        </tr>
+          </div>
+        </div>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: 0,
+            border: '2px solid #333',
+            padding: '0.5rem',
+            background: '#DDF2E9',
+            gap: 40
+          }}
+        >
+          <img
+            src={primaryLogo ? primaryLogo : carrierLogo}
+            alt='Image'
+            style={{ height: '100px', width: 'auto', objectFit: 'contain' }}
+          />
+          <div style={{ fontSize: '1.875rem', lineHeight: '2.25rem', textAlign: 'center', color: '#093228' }}>
+            <b>BILL OF LADING</b> (ELECTRONIC)
+          </div>
+        </div>
+      )}
+
+      <table
+        style={{ width: '100%', border: '1px solid black', borderBottom: '0', padding: '0px', borderSpacing: '0px' }}
+      >
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '50%' }} rowSpan={2} colSpan={2}>
             <span style={{ fontSize: '0.8rem' }}>Shipper</span>
@@ -222,7 +235,16 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
               {exporterPhone},<br />
             </span>
           </td>
+        
+          <td css={tableTd} colSpan={2}>
+            <span style={{ fontSize: '0.8rem' }}>
+              <b>B/L Number:</b>
+            </span>
+            &nbsp;{dcsaBlNumber}
+          </td>
         </tr>
+        
+        
         <tr css={tableTr}>
           <td css={tableTd} rowSpan={3} colSpan={2}>
             <span style={{ fontSize: '0.7rem' }}>
@@ -243,6 +265,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             </span>
           </td>
         </tr>
+
         <tr css={tableTr}>
           <td css={tableTd} rowSpan={2} colSpan={2}>
             <span style={{ fontSize: '0.8rem' }}>Consignee</span>
@@ -267,7 +290,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       <table
         style={{
           width: '100%',
-          border: '2px solid black',
+          border: '1px solid black',
           borderTop: '1px',
           borderBottom: '0',
           padding: '0px',
@@ -399,7 +422,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       <table
         style={{
           width: '100%',
-          border: '2px solid black',
+          border: '1px solid black',
           borderTop: '1px',
           borderBottom: '0',
           padding: '0px',
@@ -495,7 +518,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       <table
         style={{
           width: '100%',
-          border: '2px solid black',
+          border: '1px solid black',
           borderTop: '0',
           borderBottom: '0',
           padding: '0px',
@@ -520,7 +543,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       <table
         style={{
           width: '100%',
-          border: '2px solid black',
+          border: '1px solid black',
           borderTop: '0',
           borderBottom: '0',
           padding: '0px',
@@ -631,7 +654,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       <table
         style={{
           width: '100%',
-          borderWidth: '0px 2px 2px 2px',
+          borderWidth: '0px 1px 1px 1px',
           borderStyle: 'solid',
           borderColor: 'black',
           padding: '0px',
@@ -681,7 +704,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           marginTop: '2rem'
         }}
       >
-        <img src={eBl} alt='bl t&c' style={{ width: '100%' }} />
+        <img src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK} alt='Credore eBL Terms & Conditions' style={{ width: '100%' }} />
       </table>
     </div>
   )

@@ -8,71 +8,88 @@ import eBLBg from './paper-bg.png'
 import signature from './digital-signature.png'
 import carrierLogo from './carrier-logo.png'
 import moment from 'moment'
+import CredoreTermsSG from '../../../public/Credore_eBL_Terms_and_Conditions_SG.png'
+import CredoreTermsUK from '../../../public/Credore_eBL_Terms_and_Conditions_UK.png'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
-  const {
-    recipient,
-    bolProof,
-    exporter_sign_time,
-    exporterEmail,
-    exporterPhone,
-    exporterAddress,
-    exporterName,
-    exporterCompanyName,
-
-    shipping_company_sign_time,
-    shipping_company_signer,
-    notify_name,
-    notify_contact_name,
-    notify_address,
-    notify_contact_email,
-    notify_contact_phone,
-    exporter_signer_place,
-
-    exporterSignIp,
-    shippingCompanySignIp,
-    currency
-  } = document
+  const { recipient, bolProof, exporter_sign_time, exporterSignIp, shippingCompanySignIp, currency } = document
 
   console.log('recipient', recipient)
   // const recipient = document.recipient
+  const ip = recipient?.ip
   const scac = recipient?.scac
+  const voyage = recipient?.voyage
+
   const parties = recipient?.parties
   const shipper = parties?.shipper
   const carrier = parties?.carrier
   const consignee = parties?.consignee
   const recipientNotifyParty = parties?.notifyParty
 
+  const corridor = recipient?.corridor
+  const goodsType = recipient?.goodsType
+  const netWeight = recipient?.netWeight
   const vesselName = recipient?.vesselName
   const dateOfIssue = recipient?.dateOfIssue
+  const grossWeight = recipient?.grossWeight
   const measurement = recipient?.measurement
   const documentType = recipient?.documentType
   const placeOfIssue = recipient?.placeOfIssue
   const portOfLoading = recipient?.portOfLoading
   const shippedOnDeck = recipient?.shippedOnDeck
+  const volumeMeasure = recipient?.volumeMeasure
   const blockchainName = recipient?.blockchainName
   const documentNumber = recipient?.documentNumber
   const freightPayable = recipient?.freightPayable
+  const placeOfReceipt = recipient?.placeOfReceipt
+  const totalNetWeight = recipient?.totalNetWeight
   const cargoWeightUnit = recipient?.cargoWeightUnit
+  const documentVersion = recipient?.documentVersion
+  const marksAndNumbers = recipient?.marksAndNumbers
   const measurementUnit = recipient?.measurementUnit
+  const placeOfDelivery = recipient?.placeOfDelivery
   const portOfDischarge = recipient?.portOfDischarge
   const referenceNumber = recipient?.referenceNumber
   const cargoDescription = recipient?.cargoDescription
   const cargoGrossWeight = recipient?.cargoGrossWeight
   const charterPartyDate = recipient?.charterPartyDate
+  const totalGrossWeight = recipient?.totalGrossWeight
   const numberOfOriginals = recipient?.numberOfOriginals
   const shippedOnBoardDate = recipient?.shippedOnBoardDate
   const termsAndConditions = recipient?.termsAndConditions
-  const carrierSignerPlace = recipient?.carrierSignerPlace
+  const totalVolumeMeasure = recipient?.totalVolumeMeasure
+  const carrierSignerPlace = recipient?.carrier_signer_place
   const tokenRegistryAddress = recipient?.tokenRegistryAddress
+  const transhipmentLocation = recipient?.transhipmentLocation
+  const transportationServiceRequirement = recipient?.transportationServiceRequirement
 
-  const displayedExporterName = exporterName || shipper?.name
-  const displayedExporterAddress = exporterAddress || shipper?.address
-  const displayedCarrierName = shipping_company_signer || carrier?.name
-  const displayedNotifyName = notify_name || recipientNotifyParty?.name
-  const displayedNotifyAddress = notify_address || recipientNotifyParty?.address
+  const exporterName = shipper?.organizationName || shipper?.contactName
+  const exporterAddress = shipper?.address
+  const exporterEmail = shipper?.email
+  const exporterPhone = shipper?.phone
+  const exporterLeiNo = shipper?.leiNo
+  const totalNumberOfPackages = recipient?.totalNumberOfPackages
+
+  const carrierName = carrier?.organizationName || carrier?.contactName
+  const carrierAddress = carrier?.address
+  const carrierEmail = carrier?.email
+  const carrierPhone = carrier?.phone
+  const carrierLeiNo = carrier?.leiNo
+
+  const notifyName = recipientNotifyParty?.organizationName || recipientNotifyParty?.contactName
+  const notifyAddress = recipientNotifyParty?.address
+  const notifyEmail = recipientNotifyParty?.email
+  const notifyPhone = recipientNotifyParty?.phone
+  const notifyLeiNo = recipientNotifyParty?.leiNo
+
+  const consigneeName = consignee?.organizationName || consignee?.contactName
+  const consigneeAddress = consignee?.address
+  const consigneeEmail = consignee?.email
+  const consigneePhone = consignee?.phone
+  const consigneeLeiNo = consignee?.leiNo
+
   const displayedScac = scac || document.recipient?.scac
-  // const displayedGoodsDescription = goods_descriptionOfGoods || cargoDescription
+  const displayedGoodsDescription = cargoDescription
 
   const containerStyle = css`
     margin: auto;
@@ -171,7 +188,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           {!displayCarrierLogo && (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <b style={{ fontSize: '2.25rem', color: '#29564b', display: 'block', textTransform: 'uppercase' }}>
-                {displayedCarrierName}
+                {carrierName}
               </b>
               {/* <span style={{ fontWeight: 'bold', fontSize: '1rem', color: '#29564b' }}>(ELECTRONIC)</span> */}
             </div>
@@ -257,14 +274,18 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         </div>
       </div>
 
-      <table style={{ width: '100%', border: '2px solid #333', padding: '0px', borderSpacing: '0px' }}>
+      <table style={{ width: '100%', border: '2px solid #333', padding: '0px', borderSpacing: '0px', borderBottomWidth: 0, marginTop: 0 }}>
         <tr css={tableTr}>
           <td css={tableTd}>
             <h6 css={cellHeader}> 1.SHIPPER / EXPORTER</h6>
             <div css={cellContent} style={{ marginLeft: 15 }}>
-              {exporterCompanyName || shipper?.name},<br />
-              {displayedExporterName},<br />
-              {displayedExporterAddress}
+              {exporterName},<br />
+              {exporterAddress && (
+                <>
+                  , <br />
+                  {exporterAddress}
+                </>
+              )}
               {exporterEmail && (
                 <>
                   , <br />
@@ -282,11 +303,23 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd}>
             <h6 css={cellHeader}> 2.CONSIGNEE</h6>
             <div css={cellContent} style={{ marginLeft: 15 }}>
-              {consignee?.name || 'TO ORDER'}
-              {consignee?.address && (
+              {consigneeName || 'TO ORDER'}
+              {consigneeAddress && (
                 <>
-                  <br />
-                  {consignee.address}
+                  , <br />
+                  {consigneeAddress}
+                </>
+              )}
+              {consigneeEmail && (
+                <>
+                  , <br />
+                  {consigneeEmail}
+                </>
+              )}
+              {consigneePhone && (
+                <>
+                  , <br />
+                  {consigneePhone}
                 </>
               )}
             </div>
@@ -303,22 +336,22 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd}>
             <h6 css={cellHeader}> 4.Notify Party</h6>
             <div css={cellContent} style={{ marginLeft: 15 }}>
-              {displayedNotifyName}
-              {displayedNotifyAddress && (
+              {notifyName}
+              {notifyAddress && (
                 <>
-                  ,<br /> {displayedNotifyAddress}
+                  ,<br /> {notifyAddress}
                 </>
               )}
-              {notify_contact_email && (
+              {notifyEmail && (
                 <>
                   , <br />
-                  Email:&nbsp;{notify_contact_email}
+                  Email:&nbsp;{notifyEmail}
                 </>
               )}
-              {notify_contact_phone && (
+              {notifyPhone && (
                 <>
                   , <br />
-                  Phone:&nbsp;{notify_contact_phone}
+                  Phone:&nbsp;{notifyPhone}
                 </>
               )}
             </div>
@@ -370,6 +403,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           width: '100%',
           border: '2px solid #333',
           borderTopWidth: 0,
+          borderBottomWidth: 0,
           padding: '0px',
           borderSpacing: '0px',
           marginTop: 0
@@ -377,60 +411,23 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '50%' }}>
-            <h6 css={cellHeader} style={{ marginBottom: 0 }}>
-              {' '}
-              10.Description of Goods
-            </h6>
-          </td>
-
-          <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader} style={{ marginBottom: 0 }}>
-              {' '}
-              11.Cargo Gross Weight
-            </h6>
-          </td>
-
-          <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader} style={{ marginBottom: 0 }}>
-              {' '}
-              12.Measurement
-            </h6>
-          </td>
-        </tr>
-
-        <tr css={tableTr}>
-          <td css={tableTd} style={{ width: '50%' }}>
+            <h6 css={cellHeader}> 10.Description of Goods</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
-              <b css={cellTitle}>Goods description:</b>&nbsp;
               {cargoDescription}
-              {/* {parsedGoodsDescription &&
-                parsedGoodsDescription.map((item, index) => (
-                  <p key={`${item.hsCode || 'goods'}-${index}`}>
-                    HS Code: {item?.hsCode} - {item?.desc}
-                  </p>
-                ))}
-              {!parsedGoodsDescription && goods_descriptionOfGoods} */}
             </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 11.Cargo Gross Weight</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
               {cargoGrossWeight} {cargoWeightUnit}
             </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 12.Measurement</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
               {measurement} {measurementUnit}
-            </div>
-          </td>
-        </tr>
-
-        <tr css={tableTr}>
-          <td css={tableTd} colSpan={3}>
-            <h6 css={cellHeader}> 13.Shipped on Deck(If Applicable)</h6>
-            <div css={cellContent} style={{ marginLeft: 20 }}>
-              {isShippedOnDeck ? 'Yes' : 'None'}
             </div>
           </td>
         </tr>
@@ -448,40 +445,163 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 14.Shipped on Board Date</h6>
-            <div css={cellContent} style={{ marginLeft: 20 }}>
-              {formattedShippedOnBoardDate}
-            </div>
-          </td>
-
-          <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 15.Place of Issue</h6>
+            <h6 css={cellHeader}> 13.Place of Issue</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
               {placeOfIssue}
             </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 16.Date of Issue</h6>
+            <h6 css={cellHeader}> 14.Date of Issue</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
               {formattedDateOfIssue}
             </div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
-            <h6 css={cellHeader}> 17.Number of Original B/Ls</h6>
+            <h6 css={cellHeader}> 15.Number of Original B/Ls</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
               {numberOfOriginals}
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 16.Shipped on Board Date</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {formattedShippedOnBoardDate}
             </div>
           </td>
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd} colSpan={4}>
+          <td css={tableTd} colSpan={2}>
             <h6 css={cellHeader}> 18.SCAC (Applicable for Shipments to USA)</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
               {displayedScac}
             </div>
+          </td>
+
+          <td css={tableTd} colSpan={2}>
+            <h6 css={cellHeader}> 20.Shipped on Deck </h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {shippedOnDeck ? 'Yes' : 'No'}
+            </div>
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 22.Document version</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              v1.0
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 23.Bill of Lading total pages</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              1
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 24.Carrier</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {carrierName}
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 25.Voyage</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {voyage}
+            </div>
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 26.Locations</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 27.Transportation Service Requirement</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 28.Cargo total gross weight</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {totalGrossWeight} {cargoWeightUnit}
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 29.Total number of packages </h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {totalNumberOfPackages}
+            </div>
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 30.Type of goods </h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+             {goodsType} 
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 31.Marks and numbers</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {marksAndNumbers}
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 32.Cargo net weight</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {netWeight} {cargoWeightUnit}
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 34.Total measurement </h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {totalVolumeMeasure} {measurementUnit}
+            </div>
+          </td>
+        </tr>
+
+<tr css={tableTr}>
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 34.Number of packages </h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+             {totalNumberOfPackages} 
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 35.Issued to party</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {consigneeName || 'TO ORDER'}
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
+            <h6 css={cellHeader}> 36.Cargo total net weight </h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {totalNetWeight} {cargoWeightUnit}
+            </div>
+          </td>
+
+          <td css={tableTd} style={{ width: '25%' }}>
           </td>
         </tr>
       </table>
@@ -499,13 +619,13 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '50%', borderRight: 'none' }}>
-            <h6 css={cellHeader}> 19.Signed By</h6>
+            <h6 css={cellHeader}> 17.Signed By</h6>
             <div style={{ marginLeft: 20 }}>
               <div css={cellContent}>
                 <b css={cellTitle}> For and on behalf of the Carrier</b>
               </div>
               <div css={cellContent} style={{ marginTop: 10 }}>
-                <h6 css={cellHeader}> {displayedCarrierName}</h6>
+                <h6 css={cellHeader}> {carrierName}</h6>
               </div>
 
               <img src={signature} alt='carrier signature' style={{ height: '5em', width: 'auto' }} />
@@ -513,7 +633,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
               <div css={cellContent} style={{ marginTop: 0 }}>
                 <b css={cellTitle}> Digitally signed on:</b>&nbsp;{formattedDateOfIssue}
                 <br />
-                <b css={cellTitle}> Name:</b>&nbsp;{displayedCarrierName} <br />
+                <b css={cellTitle}> Name:</b>&nbsp;{carrierName} <br />
                 <b css={cellTitle}> Title:&nbsp;</b>Authorised Signatory
               </div>
             </div>
@@ -576,6 +696,15 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
       >
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
+            <h6 css={cellHeader}> 19.Terms & Conditions</h6>
+            <div css={cellContent} style={{ marginLeft: 20 }}>
+              {termsAndConditions}
+            </div>
+          </td>
+        </tr>
+
+        <tr css={tableTr}>
+          <td css={tableTd} colSpan={4}>
             <b css={cellTitle}>Disclaimer:</b>{' '}
             <b css={cellTitle} style={{ fontWeight: 'normal' }}>
               This document, originally existing in electronic or paper or both formats, has been converted to the
@@ -599,7 +728,11 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           marginTop: '2rem'
         }}
       >
-        <img src={eBl} alt='bl t&c' style={{ width: '100%' }} />
+        <img
+          src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK}
+          alt='Credore eBL Terms & Conditions'
+          style={{ width: '100%' }}
+        />
       </table>
     </div>
   )

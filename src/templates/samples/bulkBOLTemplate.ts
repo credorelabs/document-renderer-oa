@@ -2,55 +2,84 @@ import { v2 } from "@govtechsg/open-attestation";
 import { BulkBOLData } from "../bulkbol/types";
 
 export const bulkEblTemplate: BulkBOLData = {
-  recipient:{
+  recipient: {
+    ip: "192.168.1.100",
     scac: "12",
-      parties: {
-        carrier: {
-          name: "Carrier",
-          address: "One Didsbury Point 2 The Avenue, Manchester, GB, M20 2EY",
-          organisationId: "25"
-        },
-        "shipper": {
-          name: "Asif",
-          address: "One Didsbury Point 2 The Avenue, Manchester, GB, M20 2EY",
-          organisationId: "34"
-        },
-        "consignee": {
-          name: "Asif",
-          address: "2rf-171 sangram shai camo noamundi,jharkhand",
-          organisationId: "34"
-        },
-        "notifyParty": {
-          name: "Asif",
-          address: "2rf-171 sangram shai camo noamundi,jharkhand",
-          organisationId: "34"
-        }
+    voyage: "voyage-123",
+    parties: {
+      carrier: {
+        contactName: "John Doe",
+        organizationName: "Carrier",
+        address: "Gurgaon, India",
+        email: "carrier1@yopmail.com",
+        phone: "+91-9876543210",
+        leiNo: "25"
       },
-      carrierLogo: "",
-      vesselName: "vessel",
-      dateOfIssue: "2026-09-23T00:00:00.000Z",
-      measurement: "20",
-      documentType: "EBL",
-      placeOfIssue: "12",
-      portOfLoading: "AD PAS - Pas de la Casa",
-      shippedOnDeck: true,
-      blockchainName: "xinfin",
-      documentNumber: "EBL12-021",
-      freightPayable: "odisha",
-      cargoWeightUnit: "KG",
-      measurementUnit: "CBM",
-      portOfDischarge: "AI MBB - Meads Bay Beach",
-      referenceNumber: "23",
-      cargoDescription: "Sausages and similar products, of meat, meat offal, blood or insects; food preparations based on these products",
-      cargoGrossWeight: "12",
-      charterPartyDate: "2026-09-04T00:00:00.000Z",
-      numberOfOriginals: 1,
-      shippedOnBoardDate: "2026-09-18T00:00:00.000Z",
-      termsAndConditions: "Ok odne",
-      carrierSignerPlace: "Tiruppur, India",
-      tokenRegistryAddress: "0x60dCA7EBFa69FbaC186Bc8201A3AA46553C68DC1"
+      shipper: {
+        contactName: "Asif",
+        organizationName: "Exporter",
+        address: "One Didsbury Point 2 The Avenue, Manchester, GB, M20 2EY",
+        email: "exporter@yopmail.com",
+        phone: "+91-8765432109",
+        leiNo: "34"
+      },
+      consignee: {
+        contactName: "Asif",
+        organizationName: "Importers",
+        address: "2rf-171 sangram shai camo noamundi,jharkhand",
+        email: "importer1@yopmail.com",
+        phone: "+91-7654321098",
+        leiNo: "34"
+      },
+      notifyParty: {
+        contactName: "John Doe",
+        organizationName: "Carrier",
+        address: "Gurgaon, India",
+        email: "carrier1@yopmail.com",
+        phone: "+91-9876543210",
+        leiNo: "25"
+      }
+    },
+    corridor: "UK",
+    goodsType: "Steel",
+    netWeight: "50000 MT",
+    vesselName: "vessel",
+    dateOfIssue: "2026-09-23T00:00:00.000Z",
+    grossWeight: "50000 MT",
+    measurement: "20000",
+    documentType: "EBL",
+    placeOfIssue: "MAA - Chennai Port",
+    portOfLoading: "AD PAS - Pas de la Casa",
+    shippedOnDeck: true,
+    volumeMeasure: "20000",
+    blockchainName: "amoy",
+    documentNumber: "EBL12-021",
+    freightPayable: "odisha",
+    placeOfReceipt: "SG SIN - Singapore Port",
+    totalNetWeight: "50000 MT",
+    cargoWeightUnit: "KG",
+    documentVersion: "1.0",
+    marksAndNumbers: "1234567890",
+    measurementUnit: "CBM",
+    placeOfDelivery: "SG SIN - Singapore Port",
+    portOfDischarge: "AI MBB - Meads Bay Beach",
+    referenceNumber: "23",
+    cargoDescription: "Granulated slag (slag sand) from the manufacture of iron or steel",
+    cargoGrossWeight: "55000 MT",
+    charterPartyDate: "2026-09-04T00:00:00.000Z",
+    totalGrossWeight: "55000 MT",
+    numberOfOriginals: 1,
+    shippedOnBoardDate: "2026-09-18T00:00:00.000Z",
+    termsAndConditions: "Ok odne",
+    totalVolumeMeasure: "30000 CBM",
+    carrier_signer_place: "Chennai, India",
+    tokenRegistryAddress: "0x60dCA7EBFa69FbaC186Bc8201A3AA46553C68DC1",
+    transhipmentLocation: "Singapore",
+    transportationServiceRequirement: "Standard",
+    carrierLogo: "",
+    totalNumberOfPackages: "15"
   },
-  
+
   exporter_sign_time: "2026-09-23T00:00:00.000Z",
   exporterEmail: "",
   exporterPhone: "",
