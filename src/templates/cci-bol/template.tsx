@@ -210,7 +210,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     issueDate,
     placeOfAcceptance,
     dateOfAcceptance,
-    qrCodeData
+    qrCode
   } = recipient
 
   const containerStyle = css`
@@ -355,7 +355,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
 
   return (
     <div css={containerStyle}>
-      {qrCodeData ? (
+      {qrCode?.uri ? (
         <div
           style={{
             display: 'flex',
@@ -364,6 +364,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
             margin: 0,
             border: '2px solid #333',
             padding: '0.25rem',
+            paddingLeft: '1rem',
             background: '#DDF2E9'
           }}
         >
@@ -373,10 +374,10 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
           </div>
 
           <div>
-            {qrCodeData?.id !== undefined ? (
+            {qrCode?.uri !== undefined ? (
               <QRCodeSVG
-                value={`https://dev.verify.credore/viewer?id=${qrCodeData?.id}&key=${qrCodeData?.key}&net=${blockchainName}`}
-                style={{ height: 100, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
+                value={qrCode?.uri}
+                style={{ height: 80, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
               />
             ) : (
               <></>

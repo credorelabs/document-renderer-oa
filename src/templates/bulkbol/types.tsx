@@ -1,42 +1,62 @@
 import { v2 } from '@govtechsg/open-attestation'
 
 interface BulkBOLParty {
-  name?: string
+  contactName?: string
+  organizationName?: string
   address?: string
-  organisationId?: string | number
+  email?: string
+  phone?: string
+  leiNo?: string
 }
 
 interface BulkBOLRecipient extends v2.Recipient {
+  ip?: string
   scac?: string
+  voyage?: string
   parties?: {
     carrier?: BulkBOLParty
     shipper?: BulkBOLParty
     consignee?: BulkBOLParty
     notifyParty?: BulkBOLParty
   }
-  carrierLogo?: string
+  corridor?: string
+  goodsType?: string
+  netWeight?: string
   vesselName?: string
   dateOfIssue?: string
+  grossWeight?: string
   measurement?: string
   documentType?: string
   placeOfIssue?: string
   portOfLoading?: string
   shippedOnDeck?: boolean
+  volumeMeasure?: string
   blockchainName?: string
   documentNumber?: string
   freightPayable?: string
+  placeOfReceipt?: string
+  totalNetWeight?: string
   cargoWeightUnit?: string
+  documentVersion?: string
+  marksAndNumbers?: string
   measurementUnit?: string
+  placeOfDelivery?: string
   portOfDischarge?: string
-  referenceNumber?: string
+  referenceNumber?: string | number
   cargoDescription?: string
   cargoGrossWeight?: string
   charterPartyDate?: string
+  totalGrossWeight?: string
   numberOfOriginals?: string | number
   shippedOnBoardDate?: string
   termsAndConditions?: string
-  carrierSignerPlace?: string
+  totalVolumeMeasure?: string
+  carrier_signer_place?: string
   tokenRegistryAddress?: string
+  transhipmentLocation?: string
+  transportationServiceRequirement?: string
+  carrierLogo?: string
+  totalNumberOfPackages?: string
 }
 
 interface BulkBolProof {
