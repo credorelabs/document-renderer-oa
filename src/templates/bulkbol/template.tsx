@@ -16,7 +16,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
 
   console.log('recipient', recipient)
   // const recipient = document.recipient
-  const ip = recipient?.ip
+  const signerIp = recipient?.ip
   const scac = recipient?.scac
   const voyage = recipient?.voyage
 
@@ -274,7 +274,16 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         </div>
       </div>
 
-      <table style={{ width: '100%', border: '2px solid #333', padding: '0px', borderSpacing: '0px', borderBottomWidth: 0, marginTop: 0 }}>
+      <table
+        style={{
+          width: '100%',
+          border: '2px solid #333',
+          padding: '0px',
+          borderSpacing: '0px',
+          borderBottomWidth: 0,
+          marginTop: 0
+        }}
+      >
         <tr css={tableTr}>
           <td css={tableTd}>
             <h6 css={cellHeader}> 1.SHIPPER / EXPORTER</h6>
@@ -330,7 +339,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd}>
             <h6 css={cellHeader}> 3.Frieght payable as per charter party dated</h6>
             <div css={cellContent} style={{ marginLeft: 15 }}>
-              <b css={cellTitle}>Charter Party dated:</b> {formattedCharterPartyDate}
+              <b css={cellTitle}>Charter Party dated:</b> {moment(charterPartyDate).format('DD/MM/YYYY')}
             </div>
           </td>
           <td css={tableTd}>
@@ -454,7 +463,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 14.Date of Issue</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
-              {formattedDateOfIssue}
+              {moment(dateOfIssue).format('DD/MM/YYYY')}
             </div>
           </td>
 
@@ -468,7 +477,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 16.Shipped on Board Date</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
-              {formattedShippedOnBoardDate}
+              {moment(shippedOnBoardDate).format('DD/MM/YYYY')}
             </div>
           </td>
         </tr>
@@ -493,7 +502,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 22.Document version</h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
-              v1.0
+              V{documentVersion}
             </div>
           </td>
 
@@ -522,16 +531,12 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 26.Locations</h6>
-            <div css={cellContent} style={{ marginLeft: 20 }}>
-              
-            </div>
+            <div css={cellContent} style={{ marginLeft: 20 }}></div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 27.Transportation Service Requirement</h6>
-            <div css={cellContent} style={{ marginLeft: 20 }}>
-              
-            </div>
+            <div css={cellContent} style={{ marginLeft: 20 }}></div>
           </td>
 
           <td css={tableTd} style={{ width: '25%' }}>
@@ -553,7 +558,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 30.Type of goods </h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
-             {goodsType} 
+              {goodsType}
             </div>
           </td>
 
@@ -579,11 +584,11 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           </td>
         </tr>
 
-<tr css={tableTr}>
+        <tr css={tableTr}>
           <td css={tableTd} style={{ width: '25%' }}>
             <h6 css={cellHeader}> 34.Number of packages </h6>
             <div css={cellContent} style={{ marginLeft: 20 }}>
-             {totalNumberOfPackages} 
+              {totalNumberOfPackages}
             </div>
           </td>
 
@@ -601,8 +606,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
             </div>
           </td>
 
-          <td css={tableTd} style={{ width: '25%' }}>
-          </td>
+          <td css={tableTd} style={{ width: '25%' }}></td>
         </tr>
       </table>
 
@@ -622,19 +626,20 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
             <h6 css={cellHeader}> 17.Signed By</h6>
             <div style={{ marginLeft: 20 }}>
               <div css={cellContent}>
-                <b css={cellTitle}> For and on behalf of the Carrier</b>
+                For and on behalf of the Carrier <br />
+                <b css={cellTitle} style={{ color: '#062f24', marginLeft: 10, fontSize: '1rem' }}>
+                  {carrier?.contactName}
+                </b>
               </div>
-              <div css={cellContent} style={{ marginTop: 10 }}>
-                <h6 css={cellHeader}> {carrierName}</h6>
-              </div>
-
               <img src={signature} alt='carrier signature' style={{ height: '5em', width: 'auto' }} />
 
               <div css={cellContent} style={{ marginTop: 0 }}>
-                <b css={cellTitle}> Digitally signed on:</b>&nbsp;{formattedDateOfIssue}
+                <b css={cellTitle}> Signing Date & Time:</b>&nbsp;{moment(dateOfIssue).format('DD/MM/YYYY HH:mm:ss')}
                 <br />
-                <b css={cellTitle}> Name:</b>&nbsp;{carrierName} <br />
-                <b css={cellTitle}> Title:&nbsp;</b>Authorised Signatory
+                <b css={cellTitle}> Place of Signing:</b>&nbsp;{placeOfIssue} <br />
+                <b css={cellTitle}> Signer IP Address:&nbsp;</b>
+                {signerIp} <br />
+                <p style={{ fontStyle: 'italic' }}> Authorised Signatory</p>
               </div>
             </div>
           </td>
@@ -677,7 +682,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
               <span css={cellContent}>{blockchainName}</span>
               <br />
               <b css={cellTitle}>Issued electronically on: </b>&nbsp;
-              <span css={cellContent}>{formattedDateOfIssue}</span>
+              <span css={cellContent}>{moment(dateOfIssue).format('DD/MM/YYYY HH:mm:ss')}</span>
               <br />
             </div>
           </td>
