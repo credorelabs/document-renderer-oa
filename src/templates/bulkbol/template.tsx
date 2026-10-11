@@ -10,9 +10,10 @@ import carrierLogo from './carrier-logo.png'
 import moment from 'moment'
 import CredoreTermsSG from '../../../public/Credore_eBL_Terms_and_Conditions_SG.png'
 import CredoreTermsUK from '../../../public/Credore_eBL_Terms_and_Conditions_UK.png'
+import { QRCodeSVG } from 'qrcode.react'
 
 export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({ document }) => {
-  const { recipient, bolProof, exporter_sign_time, exporterSignIp, shippingCompanySignIp, currency } = document
+  const { recipient, bolProof, exporter_sign_time, exporterSignIp, shippingCompanySignIp, currency, qrCode } = document
 
   console.log('recipient', recipient)
   // const recipient = document.recipient
@@ -272,6 +273,17 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
             </tr>
           </table>
         </div>
+
+        <div style={{ padding: '0.5rem'}}>
+          {qrCode?.uri !== undefined ? (
+            <QRCodeSVG
+              value={qrCode?.uri}
+              style={{ height: 80, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
 
       <table
@@ -288,7 +300,7 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
           <td css={tableTd}>
             <h6 css={cellHeader}> 1.SHIPPER / EXPORTER</h6>
             <div css={cellContent} style={{ marginLeft: 15 }}>
-              {exporterName},<br />
+              {exporterName}
               {exporterAddress && (
                 <>
                   , <br />
@@ -298,12 +310,14 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
               {exporterEmail && (
                 <>
                   , <br />
+                  Email:&nbsp;
                   {exporterEmail}
                 </>
               )}
               {exporterPhone && (
                 <>
                   , <br />
+                  Phone:&nbsp;
                   {exporterPhone}
                 </>
               )}
@@ -321,13 +335,15 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
               )}
               {consigneeEmail && (
                 <>
-                  , <br />
+                  ,<br />
+                  Email:&nbsp;
                   {consigneeEmail}
                 </>
               )}
               {consigneePhone && (
                 <>
                   , <br />
+                  Phone:&nbsp;
                   {consigneePhone}
                 </>
               )}

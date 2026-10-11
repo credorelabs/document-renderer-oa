@@ -95,4 +95,10 @@ export interface BulkBOLData extends v2.OpenAttestationDocument {
   exporterSignIp: string
   shippingCompanySignIp: string
   currency: string
+  qrCode: QrCodeInfo
+}
+
+interface QrCodeInfo {
+  uri?: string
+  type?: string
 }
