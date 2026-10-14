@@ -573,22 +573,22 @@ export const BulkEblTemplate: FunctionComponent<TemplateProps<BulkBOLData>> = ({
         <tr css={tableTr}>
           <td css={tableTd} colSpan={4}>
             <h6 css={cellHeader}> 26.Locations</h6>
-            <div css={cellContent} style={{ marginLeft: 20, display:'flex', alignItems:'center', }}>
+            <div css={cellContent} style={{ marginLeft: 20, display: 'flex', alignItems: 'center' }}>
               {portOfLoading}
               {transhipmentLocation && (
                 <>
-                  <button style={{ color: '#666666', border: 0 }}>
-                    <ArrowRightAltIcon className='text-sm font-semibold' />
+                  <button style={{ color: '#666666', border: 0, lineHeight: 0, padding: 0 }}>
+                    <ArrowRightAltIcon style={{ fontSize: '24px', fontWeight: 'bold' }} />
                   </button>
-                  {transhipmentLocation}&nbsp;
+                  {transhipmentLocation}
                 </>
               )}
               {portOfDischarge && (
                 <>
-                  <button style={{ color: '#666666', border: 0 }}>
-                    <ArrowRightAltIcon className='text-sm font-semibold' />
+                  <button style={{ color: '#666666', border: 0, lineHeight: 0, padding: 0 }}>
+                    <ArrowRightAltIcon style={{ fontSize: '24px', fontWeight: 'bold' }} />
                   </button>
-                  {portOfDischarge}&nbsp;
+                  {portOfDischarge}
                 </>
               )}
             </div>

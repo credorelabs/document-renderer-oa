@@ -9,7 +9,7 @@ interface BulkBOLParty {
   leiNo?: string
 }
 
-interface BulkBOLRecipient extends v2.Recipient {
+export interface BulkBOLRecipient extends v2.Recipient {
   ip?: string
   scac?: string
   voyage?: string

@@ -1,0 +1,23 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { BulkBOLW3CTemplate } from "./template";
+import { w3cBulkBOLCargoDocument } from "../samples/w3cBulkBOLTemplate";
+import { bulkEblTemplate } from "../samples/bulkBOLTemplate";
+
+<Meta title="MDX|BulkBOLW3CTemplate" component={BulkBOLW3CTemplate} />
+
+# W3C Cargo Document Template
+
+<Description of={BulkBOLW3CTemplate} />
+
+# Props
+
+<Props of={BulkBOLW3CTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="basic W3C sample">
+    <BulkBOLW3CTemplate document={object("document", w3cBulkBOLCargoDocument)} />
+  </Story>
+</Preview>

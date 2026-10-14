@@ -15,6 +15,7 @@ export const W3CCargoDocumentTemplate = (
   const w3cDocument = props.document as W3CCargoDocument;
 
   const cargoDocument = adaptW3CDocument(w3cDocument);
+  console.log('cargoDocument', cargoDocument);
 
   return (
     <CargoDocumentTemplate
