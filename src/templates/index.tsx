@@ -26,6 +26,7 @@ import { NewPromissoryNoteTemplates } from "./promissory-note-v2";
 import { FiataBLTemplates } from "./fiata-bl";
 import { PDFVerifiableTemplates } from "./pdf-verifiable";
 import { BulkEblTemplates } from "./bulkbol";
+import { BulkBOLW3CCargoDocumentTemplates } from "./bulkbol-w3c";
 import { W3CCargoDocumentTemplates } from "./transport-document-w3c";
 import { CCIW3CCargoDocumentTemplates } from "./transport-document-w3c-cci";
 
@@ -54,6 +55,7 @@ export const registry: TemplateRegistry<any> = {
   FIATA_BL: FiataBLTemplates,
   PDF_VERIFIABLE: PDFVerifiableTemplates,
   BULK_EBL: BulkEblTemplates,
+  BULK_EBL_W3C: BulkBOLW3CCargoDocumentTemplates,
   CCI_BOL_W3C: CCIW3CCargoDocumentTemplates,
   // PACKING_LIST:packingListTemplate
 };

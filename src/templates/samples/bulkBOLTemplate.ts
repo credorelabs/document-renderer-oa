@@ -99,10 +99,10 @@ export const bulkEblTemplate: BulkBOLData = {
   exporterSignIp: "",
   shippingCompanySignIp: "",
   currency: "",
-  // qrCode: {
-  //     uri: "https://dev.verify.credore.xyz?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fdev-api.credore.in%2Fdcsa-transport-doc%2Fw3c%2FBL-CD-14%22%2C%22redirect%22%3A%22https%3A%2F%2Fdev.verify.credore.xyz%2F%22%2C%22chainId%22%3A80002%7D%7D",
-  //     type: "TrustVCQRCode",
-  //   },
+  qrCode: {
+      uri: "https://dev.verify.credore.xyz?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fdev-api.credore.in%2Fdcsa-transport-doc%2Fw3c%2FBL-CD-14%22%2C%22redirect%22%3A%22https%3A%2F%2Fdev.verify.credore.xyz%2F%22%2C%22chainId%22%3A80002%7D%7D",
+      type: "TrustVCQRCode",
+    },
   
 
   bolProof: {
@@ -128,7 +128,7 @@ export const bulkEblTemplate: BulkBOLData = {
     }
   ],
   $template: {
-    name: "BULK_EBL",
+    name: "BULK_EBL", 
     type: v2.TemplateType.EmbeddedRenderer,
     url: "http://localhost:3000"
   }
