@@ -1,7 +1,9 @@
-import { BulkBOLData } from "../bulkbol/types";
+import { BulkBOLData, BulkBOLRecipient } from "../bulkbol/types";
+
+export type BulkEblW3CCredentialSubject = Partial<BulkBOLData> & BulkBOLRecipient;
 
 export interface BulkEblW3CCargoDocument {
   "@context"?: string[];
   type?: string[];
-  credentialSubject?: BulkBOLData | BulkBOLData[];
+  credentialSubject?: BulkEblW3CCredentialSubject | BulkEblW3CCredentialSubject[];
 }

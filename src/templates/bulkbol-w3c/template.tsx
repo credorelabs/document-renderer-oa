@@ -4,24 +4,9 @@ import { BulkEblTemplate } from "../bulkbol/template";
 import { adaptW3CDocument } from "./w3cAdapter";
 import { BulkEblW3CCargoDocument } from "./types";
 
-export const BulkBOLW3CTemplate = (
-  props: TemplateProps<any>
-) => {
-  console.log(
-    "🔥 W3C CARGO DOCUMENT TEMPLATE LOADED",
-    props.document
-  );
-
+export const BulkBOLW3CTemplate = (props: TemplateProps<any>): JSX.Element => {
   const w3cDocument = props.document as BulkEblW3CCargoDocument;
-
-  console.log('Bulk BOL w3cDocument', w3cDocument);
   const BulkEblCargoDocument = adaptW3CDocument(w3cDocument);
-  console.log('BulkEblCargoDocument', BulkEblCargoDocument);
 
-  return (
-    <BulkEblTemplate
-      document={BulkEblCargoDocument}
-      handleObfuscation={props.handleObfuscation}
-    />
-  );
+  return <BulkEblTemplate document={BulkEblCargoDocument} handleObfuscation={props.handleObfuscation} />;
 };
