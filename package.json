@@ -10,6 +10,8 @@
     "@govtechsg/decentralized-renderer-react-components": "^3.8.0",
     "@govtechsg/open-attestation": "^6.5.1",
     "@hot-loader/react-dom": "^16.11.0",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "debug": "4.1.1",
     "he": "^1.2.0",
     "number-to-words": "^1.2.4",
