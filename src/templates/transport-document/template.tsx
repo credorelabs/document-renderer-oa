@@ -100,7 +100,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     corridor,
     qrCode,
     placeOfAcceptance,
-    dateOfAcceptance
+    dateOfAcceptance,
+    importerAddress
   } = recipient
 
   const containerStyle = css`
@@ -279,7 +280,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
                     <br />
                   </>
                 )}
-                {importerName},{importer_address},<br />
+                {importerName},{importerAddress},<br />
                 {importer_email},<br />
                 {importer_phone},<br />
               </span>
