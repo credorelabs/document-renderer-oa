@@ -54,8 +54,8 @@ export const registry: TemplateRegistry<any> = {
   PROMISSORY_NOTE_V2: NewPromissoryNoteTemplates,
   FIATA_BL: FiataBLTemplates,
   PDF_VERIFIABLE: PDFVerifiableTemplates,
-  BULK_EBL: BulkEblTemplates,
-  BULK_EBL_W3C: BulkBOLW3CCargoDocumentTemplates,
+  // BULK_EBL: BulkEblTemplates,
+  BULK_EBL: BulkBOLW3CCargoDocumentTemplates,
   CCI_BOL_W3C: CCIW3CCargoDocumentTemplates,
   // PACKING_LIST:packingListTemplate
 };
