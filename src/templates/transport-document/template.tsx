@@ -483,8 +483,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
                 </span>
               </div>
               <strong>HSCODE: </strong>
-              <div style={{ display: 'flex' }}>{goods_HSCode}</div> 
-              <div style={{ display: 'flex' }}>{goods_descriptionOfGoods}</div>
+              <div style={{ display: 'flex' }}>{`${goods_HSCode} - ${goods_descriptionOfGoods}`}</div> 
               <br />
               <strong>Temperature:</strong> 0 CEL <br />
               <strong>Humidity:</strong> 0 <br />
