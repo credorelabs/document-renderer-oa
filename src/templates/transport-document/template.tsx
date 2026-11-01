@@ -115,7 +115,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     consignmentItems,
     currency,
     valueCurrency,
-    terms
+    terms,
+    importerAddress
   } = recipient
 
   const containerStyle = css`
