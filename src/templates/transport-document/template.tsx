@@ -7,7 +7,18 @@ import eBl from './eBL_t&c.png'
 import CredoreTermsSG from '../../../public/Credore_eBL_Terms_and_Conditions_SG.png'
 import CredoreTermsUK from '../../../public/Credore_eBL_Terms_and_Conditions_UK.png'
 import carrierLogo from '../../../public/carrier-logo.png'
+import signature from '../../../public/digital-signature.png'
 import { QRCodeSVG } from 'qrcode.react'
+import {
+  Table,
+  TableRow,
+  TableCell,
+  CircularProgress,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails
+} from '@material-ui/core'
+import ExpandMore from '@material-ui/icons/ExpandMore'
 
 const PAYMENT_METHODS = [
   { value: 'A', label: 'Payment in Cash (A)' },
@@ -100,15 +111,20 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
     corridor,
     qrCode,
     placeOfAcceptance,
-    dateOfAcceptance
+    dateOfAcceptance,
+    consignmentItems,
+    currency,
+    valueCurrency,
+    terms
   } = recipient
 
   const containerStyle = css`
     margin: auto;
     padding: 15px;
-    width: 80%;
+    width: auto;
     font-family: sans-serif;
-    max-width: 1130px;
+    max-width:1130px;
+    letter-spacing:0.01071em !important;
   `
 
   // const containerStyle = css`
@@ -124,12 +140,75 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
   // `;
 
   const tableTr = css`
-    border: 1px solid black;
+    border: 1px solid #374151;
   `
 
   const tableTd = css`
-    border: 1px solid black;
-    padding: 1em;
+    border-width: 1px;
+    border-style: solid !important;
+    border-color: #999999 !important;
+    padding: 0.25rem !important;
+  `
+  const cellHeader = css`
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    color: #29564b;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 700;
+  `
+  const cellTitle = css`
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 600;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  `
+
+  const cellText = css`
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  `
+  const textXs = css`
+    font-size: 0.75rem;
+    line-height: 1rem;
+  `
+  const signatureTableTd = css`
+    border-width: 0 0 0 1px;
+    border-style: solid !important;
+    border-color: #374151 !important;
+    padding: 1.5rem !important;
+    width: '50%';
+    color: #03271e;
+  `
+  const signatureCellTitle = css`
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    vertical-align: middle;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+    color: #03271e;
+  `
+
+  const signatureCellHeader = css`
+    color: #29564b;
+    font-size: 0.75rem;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+  `
+
+  const signatureCellText = css`
+    color: #29564b;
+    font-size: 0.75rem;
+    margin: 0;
+    line-height: 1rem;
+  `
+
+  const cellContent = css`
+    font-size: 14px;
   `
 
   // useEffect(() => {
@@ -153,6 +232,10 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       return false // It's not a valid JSON string
     }
   }
+  console.log('notify_address: ', notify_address)
+  console.log('notify_contact_email: ', notify_contact_email)
+  console.log('notify_contact_phone: ', notify_contact_phone)
+  console.log('notify_lei: ', notify_lei)
 
   return (
     <div css={containerStyle}>
@@ -163,8 +246,8 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             justifyContent: 'space-between',
             alignItems: 'center',
             margin: 0,
-            border: '2px solid #333',
-            borderBottom: '0',
+            border: '2px solid #374151',
+            borderBottomWidth: 0,
             padding: '0.25rem',
             paddingLeft: '1rem',
             paddingRight: '1rem',
@@ -174,9 +257,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
           <img
             src={primaryLogo ? primaryLogo : carrierLogo}
             alt='Image'
-            style={{ height: 80, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
+            style={{ height: 100, width: 'auto', objectFit: 'contain', padding: 0 }}
           />
-          <div style={{ fontSize: '1.875rem', lineHeight: '2.25rem', textAlign: 'center', color: '#093228' }}>
+          <div style={{ fontSize: '2.25rem', lineHeight: '2.25rem', textAlign: 'center', color: '#093228' }}>
             <b>BILL OF LADING</b> (ELECTRONIC)
           </div>
 
@@ -184,7 +267,9 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             {qrCode?.uri !== undefined ? (
               <QRCodeSVG
                 value={qrCode?.uri}
-                style={{ height: 80, width: 'auto', objectFit: 'contain', padding: '.5rem' }}
+                height={92}
+                width={92}
+                style={{ objectFit: 'contain', padding: '0.25rem' }}
               />
             ) : (
               <></>
@@ -198,8 +283,11 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
             justifyContent: 'center',
             alignItems: 'center',
             margin: 0,
-            border: '2px solid #333',
-            padding: '0.5rem',
+            border: '2px solid #374151',
+            borderBottomWidth: 0,
+            padding: '0.25rem',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
             background: '#DDF2E9',
             gap: 40
           }}
@@ -216,42 +304,65 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       )}
 
       <table
-        style={{ width: '100%', border: '1px solid black', borderBottom: '0', padding: '0px', borderSpacing: '0px' }}
+        style={{
+          width: '100%',
+          border: '1px solid #374151',
+          borderBottom: '0',
+          borderTop: '0',
+          padding: '0px',
+          borderSpacing: '0px'
+        }}
       >
         <tr css={tableTr}>
-          <td css={tableTd} style={{ width: '50%' }} rowSpan={2} colSpan={2}>
-            <span style={{ fontSize: '0.8rem' }}>Shipper</span>
+          <td css={tableTd} style={{ width: '47.6%', borderBottom: 0 }} rowSpan={2} colSpan={2}>
+            <span css={cellHeader}>Shipper</span>
             <br />
-            <span style={{ fontSize: '1.1rem' }}>
-              {exporterCompanyName},<br />
+            <span css={cellText}>
+              {exporterCompanyName || exporterName}
+              {exporterAddress && (
+                <>
+                  ,<br />
+                  {exporterAddress}
+                </>
+              )}
+              {exporterEmail && (
+                <>
+                  ,<br />
+                  <b>Email: </b>
+                  {exporterEmail}
+                </>
+              )}
+              {exporterPhone && (
+                <>
+                  ,<br />
+                  <b>Phone: </b>
+                  {exporterPhone}
+                </>
+              )}
+              {exporterPhone}
               {exporterLei && (
                 <>
-                  <b>LEI number:</b>&nbsp;{exporterLei}
+                  ,<br />
+                  <b>LEI No:</b>&nbsp;{exporterLei}
                   <br />
                 </>
               )}
-              {exporterName},{exporterAddress},<br />
-              {exporterEmail},<br />
-              {exporterPhone},<br />
             </span>
           </td>
-        
-          <td css={tableTd} colSpan={2}>
-            <span style={{ fontSize: '0.8rem' }}>
-              <b>B/L Number:</b>
-            </span>
-            &nbsp;{dcsaBlNumber}
+
+          <td css={tableTd} colSpan={2} style={{ borderBottom: 0, borderLeft: 0 }}>
+            <span css={cellHeader}>B/L Number:&nbsp;</span>
+            <span css={cellText}>{dcsaBlNumber}</span>
           </td>
         </tr>
-        
-        
+
         <tr css={tableTr}>
-          <td css={tableTd} rowSpan={3} colSpan={2}>
-            <span style={{ fontSize: '0.7rem' }}>
-              <b>Ocean Bill of Lading or Multimodal Bill of Lading</b>
+          <td css={tableTd} rowSpan={3} colSpan={2} style={{ borderBottom: 0, borderLeft: 0 }}>
+            <span css={cellHeader} style={{ textTransform: 'none' }}>
+              Ocean Bill of Lading or Multimodal Bill of Lading
             </span>
             <br />
-            <span style={{ fontSize: '0.8rem' }}>
+            <span css={cellText}>
               NEGOTIABLE UNLESS CONSIGNED “TO ORDER” .<br /> RECEIVED BY THE CARRIER THE GOODS SPECIFIED BELOW IN
               APPARENT GOOD ORDER AND CONDITION, UNLESS OTHERWISE STATED HEREIN, FOR TRANSPORTATION TO SUCH PLACE AS
               AGREED, AUTHORIZED, OR PERMITTED HEREIN AND SUBJECT TO ALL TERMS AND CONDITIONS APPEARING ON FRONT AND
@@ -267,162 +378,203 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd} rowSpan={2} colSpan={2}>
-            <span style={{ fontSize: '0.8rem' }}>Consignee</span>
+          <td css={tableTd} rowSpan={2} colSpan={2} style={{ borderBottom: 0 }}>
+            <span css={cellHeader}>Consignee</span>
             <br />
-            {importerCompanyName && (
-              <span style={{ fontSize: '1.2rem' }}>
-                {importerCompanyName},<br />
-                {importer_lei && (
-                  <>
-                    <b>LEI number:</b>&nbsp;{importer_lei}
-                    <br />
-                  </>
-                )}
-                {importerName},{importer_address},<br />
-                {importer_email},<br />
-                {importer_phone},<br />
-              </span>
-            )}
+            <span css={cellText}>
+              {importerCompanyName || importerName}
+              {importer_address && (
+                <>
+                  ,<br />
+                  {importer_address}
+                </>
+              )}
+              {importer_email && (
+                <>
+                  ,<br />
+                  <b>Email:&nbsp;</b>
+                  {importer_email}
+                </>
+              )}
+              {importer_phone && (
+                <>
+                  ,<br />
+                  <b>Phone:&nbsp;</b>
+                  {importer_phone}
+                </>
+              )}
+
+              {importer_lei && (
+                <>
+                  ,<br />
+                  <b>LEI No:</b>&nbsp;{importer_lei}
+                  <br />
+                </>
+              )}
+            </span>
           </td>
         </tr>
       </table>
+
       <table
         style={{
           width: '100%',
-          border: '1px solid black',
+          border: '1px solid #374151',
           borderTop: '1px',
-          borderBottom: '0',
+          // borderBottom: '0',
           padding: '0px',
           borderSpacing: '0px'
         }}
       >
         <tr css={tableTr}>
-          <td css={tableTd} style={{ width: '50%' }} rowSpan={3} colSpan={2}>
-            <span style={{ fontSize: '0.8rem' }}>
-              Notify Party (Carrier not responsible for failure to notify and no claim shall attach therefrom)
-            </span>
+          <td css={tableTd} style={{ width: '47.6%', borderBottom: 0 }} rowSpan={3} colSpan={2}>
+            <span css={cellHeader}>Notify Party</span>
             <br />
-            {notify_name && (
-              <span style={{ fontSize: '1.1rem' }}>
-                {notify_name},<br />
-                {notify_contact_name},<br />
+            <span css={cellText}>
+              {(notify_name || notify_contact_name) && (
                 <>
-                  <b>LEI number:</b>&nbsp; {notify_lei}
-                  <br />
+                  {notify_name || notify_contact_name}
+                  {notify_address || (
+                    <>
+                      ,<br />
+                      {notify_address}
+                    </>
+                  )}
+                  {notify_contact_email && (
+                    <>
+                      ,<br />
+                      <b>Email:&nbsp;</b>
+                      {notify_contact_email}
+                    </>
+                  )}
+                  {notify_contact_phone && (
+                    <>
+                      ,<br />
+                      <b>Phone:&nbsp;</b>
+                      {notify_contact_phone}
+                    </>
+                  )}
+
+                  {notify_lei && (
+                    <>
+                      ,<br />
+                      <b>LEI No:</b>&nbsp;{notify_lei}
+                      <br />
+                    </>
+                  )}
                 </>
-                {/* {notify_contact_name},<br /> */}
-                {notify_address},<br />
-                {notify_contact_email},<br />
-                {notify_contact_phone},<br />
-              </span>
-            )}
-          </td>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Shipper/ Export /Forwarder References</b>
+              )}
             </span>
             <br />
-            {shippingInstructionsReference} / &nbsp;
+            <small css={textXs} style={{ fontStyle: 'italic', color: '#666' }}>
+              (Carrier not responsible for failure to notify and no claim shall attach therefrom)
+            </small>
           </td>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Mode of Transport:</b>
-            </span>
+          <td css={tableTd} style={{ borderLeft: 0 }}>
+            <span css={cellHeader}>Shipper/Export/Forwarder References</span>
             <br />
-            {onCarriageBy}
+            <span css={cellText}>{shippingInstructionsReference} / &nbsp;</span>
+          </td>
+          <td css={tableTd} style={{ borderLeft: 0 }}>
+            <span css={cellHeader}>Mode of Transport</span>
+            <br />
+            <span css={cellText}>{onCarriageBy}</span>
           </td>
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Container Size:</b>
-            </span>
+          <td css={tableTd} style={{ border: 0, borderRight: '1px solid #374151' }}>
+            <span css={cellHeader}>Container Size</span>
             <br />
-            {containerSize}
+            <span css={cellText}>{containerSize}</span>
           </td>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Container Type:</b>
-            </span>
+          <td css={tableTd} style={{ border: 0, borderRight: '1px solid #374151' }}>
+            <span css={cellHeader}>Container Type</span>
             <br />
-            {containerType}
+            <span css={cellText}>{containerType}</span>
           </td>
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Place of Receipt:</b>
-            </span>
+          <td css={tableTd} style={{ border: 0, borderTop: '1px solid #374151', borderRight: '1px solid #374151' }}>
+            <span css={cellHeader}>Place of Receipt</span>
             <br />
-            {location_placeOfReceipt}
+            <span css={cellText}>{location_placeOfReceipt}</span>
           </td>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Port of Loading:</b>
-            </span>
+          <td css={tableTd} style={{ borderLeft: 0, borderBottom: 0 }}>
+            <span css={cellHeader}>Port of Loading</span>
             <br />
-            {location_portOfLoading}
+            <span css={cellText}>{location_portOfLoading}</span>
           </td>
         </tr>
         <tr css={tableTr}>
           <td css={tableTd} style={{ width: '50%' }} rowSpan={2} colSpan={2}>
-            <span style={{ fontSize: '0.8rem', position: 'relative', top: '-40px' }}>Also Notify</span>
+            <span css={cellHeader}>Also Notify</span>
             <br />
-            {other_name && (
-              <>
-                <strong>LEI</strong>: {other_lei},<br />
-                {other_name},<br />
-                {other_contact_name},<br />
-                {other_address},<br />
-                {other_contact_email},<br />
-                {other_contact_phone}
-                <br />
-                <span style={{ fontSize: '1.1rem' }}></span>
-              </>
-            )}
-          </td>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Port of Discharge</b>
+            <span css={cellText}>
+              {(other_name || other_contact_name) && (
+                <>
+                  {other_name || other_contact_name}
+                  {other_address && (
+                    <>
+                      ,<br /> {other_address}
+                    </>
+                  )}
+                  {other_contact_email && (
+                    <>
+                      ,<br />
+                      <b>Email:&nbsp;</b> {other_contact_email}
+                    </>
+                  )}
+                  {other_contact_phone && (
+                    <>
+                      ,<br />
+                      <b>Phone:&nbsp;</b> {other_contact_phone}
+                    </>
+                  )}
+                  {other_lei && (
+                    <>
+                      ,<br />
+                      <b>LEI No.:&nbsp;</b> {other_lei}
+                    </>
+                  )}
+                </>
+              )}
             </span>
-            <br />
-            {location_portOfDischarge}
           </td>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Place of Delivery/Final Destination</b>
-            </span>
+          <td css={tableTd} style={{ borderLeft: 0 }}>
+            <span css={cellHeader}>Port of Discharge</span>
             <br />
-            {location_placeOfDelivery}
+            <span css={cellText}>{location_portOfDischarge}</span>
+          </td>
+          <td css={tableTd} style={{ borderLeft: 0 }}>
+            <span css={cellHeader}>Place of Delivery/Final Destination</span>
+            <br />
+            <span css={cellText}>{location_placeOfDelivery}</span>
           </td>
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Pre-carriage by</b>
-            </span>
+          <td css={tableTd} style={{ borderLeft: 0, borderTop: 0 }}>
+            <span css={cellHeader}>Pre-carriage by</span>
             <br />
-            <br />
-            {preCarriageBy}
+            <span css={cellText}>{preCarriageBy}</span>
           </td>
-          <td css={tableTd}>
-            <span style={{ fontSize: '0.7rem', top: '0' }}>
-              <b>Vessel & Voyage</b>
-            </span>
+          <td css={tableTd} style={{ borderLeft: 0, borderTop: 0 }}>
+            <span css={cellHeader}>Vessel & Voyage</span>
             <br />
-            {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber}
+            <span css={cellText}>
+              {transport_vesselName}&nbsp;/&nbsp;{transport_IMOvesselNumber}
+            </span>
             {/* Mersk / Mersk1234 */}
           </td>
         </tr>
       </table>
+
       <table
         style={{
           width: '100%',
-          border: '1px solid black',
+          border: '2px solid #374151',
           borderTop: '1px',
           borderBottom: '0',
           padding: '0px',
@@ -431,281 +583,421 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
       >
         <thead>
           <tr css={tableTr}>
-            <th css={tableTd}>
-              <span style={{ fontSize: '0.8rem' }}>Container No.s & Seal No.s</span>
+            <th css={tableTd} style={{ border: 0, borderRight: 1 }}>
+              <span css={cellHeader}>Container No.s & Seal No.s</span>
             </th>
-            <th css={tableTd}>
-              <span style={{ fontSize: '0.8rem' }}>Marks & No. of Packages</span>
+            <th css={tableTd} style={{ border: 0, borderRight: 1 }}>
+              <span css={cellHeader}>Marks & No. of Packages</span>
             </th>
-            <th css={tableTd} colSpan={3}>
-              <span style={{ fontSize: '0.8rem' }}>Description of Goods & Packages</span>
+            <th css={tableTd} colSpan={3} style={{ border: 0, borderRight: 1 }}>
+              <span css={cellHeader}>Description of Goods & Packages</span>
             </th>
-            <th css={tableTd}>
-              <span style={{ fontSize: '0.8rem' }}>Gross Weight of Cargo (KG)</span>
+            <th css={tableTd} style={{ border: 0, borderRight: 1 }}>
+              <span css={cellHeader}>Gross Weight of Cargo (KG)</span>
             </th>
-            <th css={tableTd}>
-              <span style={{ fontSize: '0.8rem' }}>Measurement (CBM)</span>
+            <th css={tableTd} style={{ border: 0 }}>
+              <span css={cellHeader}>Measurement (CBM)</span>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr css={tableTr}>
-            <td css={tableTd}>
+            <td css={tableTd} style={{ border: 0, borderRight: 1, borderTop: 1 }}>
               <div style={{ position: 'relative', top: '0px' }}>
-                {/* BOOKING-AS-BOOKING0252 &nbsp;/&nbsp;{sealNumber} */}
-                {dcsaBlNumber} &nbsp;/&nbsp;{sealNumber}
+                <span css={cellText}>
+                  {dcsaBlNumber} &nbsp;/&nbsp;{sealNumber}
+                </span>
               </div>
             </td>
-            <td css={tableTd}>
-              {numberOfPackages}
+            <td css={tableTd} style={{ border: 0, borderRight: 1, borderTop: 1 }}>
+              <span css={cellText}>{numberOfPackages}</span>
               <br />
               {/* {consignment_containerSizeTypeISO} */}
             </td>
-            <td colSpan={3} style={{ width: '50%' }} css={tableTd}>
-              {numberOfContainer} X {containerSize} CONTAINERS SAID TO CONTAIN <br />
-              {goods_numberOfPackages} Packages <br />
+            <td colSpan={3} style={{ border: 0, borderRight: 1, borderTop: 1 }} css={tableTd}>
+              <span css={textXs}>
+                {numberOfContainer} X {containerSize} CONTAINERS SAID TO CONTAIN <br />
+                {goods_numberOfPackages} Packages <br />
+              </span>
               <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0.5rem 0' }}>
-                <span>
-                  <strong>DOCUMENT TYPE. :</strong> {documentType}{' '}
+                <span css={textXs}>
+                  <b>DOCUMENT TYPE. :</b> {documentType}{' '}
                 </span>
-                <span>
-                  <strong>DOCUMENT NO :</strong> {documentReferenceNumber}&nbsp;&nbsp;&nbsp;
+                <span css={textXs}>
+                  <b>DOCUMENT NO :</b> {documentReferenceNumber}&nbsp;&nbsp;&nbsp;
                 </span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 0 0.5rem 0' }}>
-                <span>
-                  <strong>SB NO:</strong> {shippingInstructionsReference}{' '}
-                </span>
-                <span>
-                  <strong>DATE: </strong>
+              {/* <span>
+                  <b>SB NO:</b> {shippingInstructionsReference}{' '}
+                </span> */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 0 0.75rem 0' }}>
+                <span css={textXs}>
+                  <b>DATE: </b>
                   {moment(expectedArrivalAtPlaceOfDeliveryStartDate).format('YYYY-MM-DD')}&nbsp;&nbsp;&nbsp;
                 </span>
               </div>
-              <strong>HSCODE: </strong>
-              <div style={{ display: 'flex' }}>{goods_HSCode}</div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {consignmentItems?.map((item, index) => (
+                  <span css={textXs} key={index}>
+                    <b style={{ textTransform: 'uppercase' }}>HSCODE: </b>
+                    {item?.hSCodes?.[0] ?? '--'} <br />
+                    <b style={{ textTransform: 'uppercase' }}>Item: </b>
+                    {item?.descriptionOfGoods?.[0] ?? '--'}
+                  </span>
+                ))}
+              </div>
               <br />
-              <strong>Temperature:</strong> 0 CEL <br />
-              <strong>Humidity:</strong> 0 <br />
-              <strong>Ventilation:</strong> NO
-              <br />
-              <br />
-              SHIPPED ON BOARD{' '}
-              {moment(expectedArrivalAtPlaceOfDeliveryStartDate)
-                .utc()
-                .add(5, 'hours')
-                .add(30, 'minutes')
-                .format('DD/MM/YYYY')}{' '}
-              <br />
-              FREIGHT PREPAID <br />
-              CY/CY <br />
-              FCL/FC <br />
-              <br />
-              <br />
+              <span css={textXs}>
+                <b className='uppercase'>SHIPPED ON BOARD DATE:</b>{' '}
+                {moment(expectedArrivalAtPlaceOfDeliveryStartDate)
+                  .utc()
+                  .add(5, 'hours')
+                  .add(30, 'minutes')
+                  .format('DD/MM/YYYY')}{' '}
+                <br />
+                <b className='uppercase'>
+                  FREIGHT PREPAID <br />
+                  CY/CY <br />
+                  FCL/FC <br />
+                  <br />
+                </b>
+              </span>
             </td>
-            <td css={tableTd}>{grossWeight}</td>
-            <td css={tableTd}>{grossWeightUnit}</td>
+            <td css={tableTd} style={{ border: 0, borderRight: 1, borderTop: 1 }}>
+              <span css={textXs}>{grossWeight}</span>
+            </td>
+            <td css={tableTd} style={{ border: 0, borderTop: 1 }}>
+              <span css={textXs}>{grossWeightUnit}</span>
+            </td>
           </tr>
           <tr css={tableTr}>
-            <td css={tableTd} colSpan={7}>
-              <div style={{ fontSize: '0.7rem' }}>
-                <b>Additional Information for Refrigerated Cargo / Hazardous Cargo / OOG Cargo</b> &nbsp;&nbsp;THE
-                SHIPPING LINE SHALL NOT BE RESPONSIBLE FOR THE OUTTURN IF THE CARGO HAS BEEN HOT-LOADED.
-              </div>
+            <td css={tableTd} colSpan={7} style={{ border: 0, borderTop: 1, borderBottom: 1 }}>
+              <span css={cellHeader} style={{ fontSize: '0.7rem' }}>
+                Additional Information for Refrigerated Cargo / Hazardous Cargo / OOG Cargo: &nbsp;
+              </span>
+
+              <span css={cellText} style={{ fontSize: '0.7rem', fontStyle: 'italic' }}>
+                The shipping line shall not be responsible for the outturn if the cargo has been hot-loaded.
+              </span>
             </td>
           </tr>
         </tbody>
       </table>
+
       <table
         style={{
           width: '100%',
-          border: '1px solid black',
+          border: '2px solid #374151',
           borderTop: '0',
           borderBottom: '0',
           padding: '0px',
           borderSpacing: '0px'
         }}
       >
-        <tr css={tableTr} style={{ fontSize: '0.8rem' }}>
-          <td css={tableTd}>
-            <b>CONTAINER NO. :</b> {containerNumber}
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ border: 0, borderRight: 1, width: '25%' }}>
+            <span css={cellHeader}>CONTAINER NO. :</span>
+            <span css={cellText}>{containerNumber}</span>
           </td>
-          <td css={tableTd}>
-            <b>TEMPERATURE :</b> {temperature}
+          <td css={tableTd} style={{ border: 0, borderRight: 1, width: '25%' }}>
+            <span css={cellHeader}>TEMPERATURE :</span>
+            <span css={cellText}> {temperature}</span>
           </td>
-          <td css={tableTd}>
-            <b>VENT :</b> {ventilation === true ? 'Yes' : 'No'}
+          <td css={tableTd} style={{ border: 0, borderRight: 1, width: '25%' }}>
+            <span css={cellHeader}>VENT :</span>
+            <span css={cellText}>{ventilation === true ? 'Yes' : 'No'}</span>
           </td>
-          <td css={tableTd}>
-            <b>HUMIDITY :</b> {humidity}
+          <td css={tableTd} style={{ border: 0, width: '25%' }}>
+            <span css={cellHeader}>HUMIDITY :</span>
+            <span css={cellText}>{humidity}</span>
           </td>
         </tr>
       </table>
+
       <table
         style={{
           width: '100%',
-          border: '1px solid black',
+          border: '1px solid #374151',
           borderTop: '0',
-          borderBottom: '0',
+          borderBottom: '1',
           padding: '0px',
           borderSpacing: '0px'
         }}
       >
         <tr css={tableTr} style={{ fontSize: '0.7rem' }}>
-          <td css={tableTd} style={{ textAlign: 'center' }} colSpan={5}>
-            All cargo-related particulars above as furnished by the Shipper but without responsibility and
-            representation by Carrier
+          <td css={tableTd} style={{ textAlign: 'center', borderBottom: 1 }} colSpan={5}>
+            <span css={cellHeader} style={{ textTransform: 'none' }}>
+              All cargo-related particulars above as furnished by the Shipper but without responsibility and
+              representation by Carrier
+            </span>
           </td>
         </tr>
         <tr css={tableTr}>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Freight & Charges</b>
+          <td css={tableTd} style={{ borderTop: 0, width: '16.666667%' }}>
+            <span css={cellHeader}>Freight & Charges</span>
           </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Units</b>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0, width: '16.666667%' }}>
+            <span css={cellHeader}>Units</span>
           </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Currency</b>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0, width: '16.666667%' }}>
+            <span css={cellHeader}>Currency</span>
           </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Prepaid</b>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0, width: '25%' }}>
+            <span css={cellHeader}>Prepaid</span>
           </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Collect</b>
-          </td>
-        </tr>
-        <tr css={tableTr}>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}></td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}></td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            {/* {currency} */}
-          </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}></td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}></td>
-        </tr>
-        <tr css={tableTr}>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Freight Payable at</b>
-          </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Freight Payable by</b>
-          </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>No. of Original Bill of Ladings</b>
-          </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Place of Issue</b>
-          </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            <b>Date of Issue</b>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0, width: '25%' }}>
+            <span css={cellHeader}>Collect</span>
           </td>
         </tr>
         <tr css={tableTr}>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            {invoicePayableAt}
+          <td css={tableTd} style={{ borderTop: 0 }}>
+            <span css={cellText}> </span>
           </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}></td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            NA
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellText}> </span>
           </td>
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            {placeOfIssue}
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellText}>
+              {currency}&nbsp;{valueCurrency}
+            </span>
+          </td>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellText}> </span>
+          </td>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellText}> </span>
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ borderTop: 0 }}>
+            <span css={cellHeader}>Freight Payable at</span>
+          </td>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellHeader}>Freight Payable by</span>
+          </td>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellHeader}>No. of Original BOLs</span>
+          </td>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellHeader}>Place of Issue</span>
+          </td>
+          <td css={tableTd} style={{ borderTop: 0, borderLeft: 0 }}>
+            <span css={cellHeader}>Date of Issue</span>
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} style={{ borderTop: 0, borderBottom: 0 }}>
+            <span css={cellText}>{invoicePayableAt}</span>
+          </td>
+          <td css={tableTd} style={{ border: 0, borderRight: 1 }}>
+            <span css={cellText}>{exporterCompanyName}</span>
+          </td>
+          <td css={tableTd} style={{ border: 0, borderRight: 1 }}>
+            <span css={cellText}>1</span>
+          </td>
+          <td css={tableTd} style={{ border: 0, borderRight: 1 }}>
+            <span css={cellText}>{placeOfIssue}</span>
           </td>
           {/* <td css={tableTd} style={{ fontSize: "0.8rem" }}>
-            {date_actualDateOfPlaceOfReceipt && moment(date_actualDateOfPlaceOfReceipt)
+            {carrierSignTime && moment(carrierSignTime)
               .utc()
               .add(5, "hours")
               .add(30, "minutes")
               .format("DD/MM/YYYY")}
           </td> */}
-          <td css={tableTd} style={{ fontSize: '0.8rem' }}>
-            {moment(carrierSignTime).format('DD/MM/YYYY')}
+          <td css={tableTd} style={{ border: 0, borderRight: 1 }}>
+            <span css={cellText}>{moment(carrierSignTime).format('DD/MM/YYYY')}</span>
           </td>
         </tr>
 
         <tr css={tableTr}>
-          <td css={tableTd} colSpan={3} style={{ padding: '1rem', width: '50%' }}>
+          {/* <td css={tableTd} colSpan={5} style={{ padding: '1rem', width: '50%' }}>
             <b style={{ color: 'red' }}>Digitally signed by Carrier :</b> <br /> <br />
             <b>Name:</b>&nbsp;{carrier_contact_name} <br />
-            {/* <b>Signer Place:</b>&nbsp;{carrierSignerPlace} */}
             <br />
             <b>Date & Time:</b>&nbsp;
             {moment(carrierSignTime).utc().add(5, 'hours').add(30, 'minutes').format('DD/MM/YYYY hh:mm A [IST]')}
             <br />
-            {/* <b>IP Address:</b>&nbsp; {carrierSignIp} */}
-          </td>
-          <td css={tableTd} colSpan={2}>
-            <span style={{ fontSize: '0.8rem' }}>
-              <b>Destination Agent:</b>
-            </span>
+          </td> */}
+          <td css={tableTd} colSpan={5}>
+            <span css={cellHeader}>Destination Agent:</span>
             <br />
-            {carrier_name && (
-              <>
-                {carrier_name},<br />
-                {carrier_lei},<br />
-                {carrier_contact_name},<br />
-                {carrier_address},<br />
-                {carrier_contact_email},<br />
-                {carrier_contact_phone}
-              </>
-            )}
+            <span css={cellText}>
+              {carrier_name && (
+                <>
+                  {carrier_name}
+                  {carrier_address && <>, {carrier_address}</>}
+                  {carrier_contact_phone && <>, Phone: {carrier_contact_phone}</>}
+                  {carrier_contact_email && <>, Email: {carrier_contact_email}</>}
+                  {carrier_lei && <>, LEI No: {carrier_lei}</>}
+                </>
+              )}
+            </span>
           </td>
         </tr>
-      </table>
-      <table
-        style={{
-          width: '100%',
-          borderWidth: '0px 1px 1px 1px',
-          borderStyle: 'solid',
-          borderColor: 'black',
-          padding: '0px',
-          borderSpacing: '0px'
-        }}
-      >
-        {/* <tr css={tableTr}>
-          <td css={tableTd} colSpan={4}>
-            <span style={{ fontWeight: "bold", fontSize: "0.8rem" }}>Disclaimer :</span> This document, originally
-            existing in electronic or paper or both formats, has been converted to the TradeTrust-recommended format,
-            ensuring MLETR compliance. The converted document, in compliance with Section 4(1) of the Electronic Trade
-            Document Act, holds the same legal validity. Any unauthorized alterations or modifications are strictly
-            prohibited. Verify its integrity and authenticity through approved channels.
-          </td>
-        </tr> */}
-        {/* <tr css={tableTr}>
-            <td css={tableTd} colSpan={4} style={{ fontSize: "0.8rem" }}>
-              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Proofs :</span> {bolProof?.a0},&nbsp;
-              {bolProof?.a1},<br />
-              &nbsp;{bolProof?.b0},&nbsp;{bolProof?.b1},<br />
-              &nbsp;{bolProof?.b2},&nbsp;{bolProof?.b3},<br />
-              &nbsp;{bolProof?.c0},&nbsp;{bolProof?.c1}
-              <br />
-              <br />
-              <span style={{ fontWeight: "bold", fontSize: "0.9rem" }}>Signer Public Key :</span>{" "}
-              {bolProof?.scalarPubKey0},&nbsp;{bolProof?.scalarPubKey1}
-            </td>
-          </tr> */}
-        <div css={tableTd} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem' }}>
-          <div>
-            <b>Blockchain:</b>&nbsp;{blockchainName === 'xinfin' ? 'XDC Network' : 'XDC Network'}
-          </div>
-          {/* <div>
-            <b>Genesis Transaction Hash:</b>&nbsp;{txHash?.split("/").pop()}
-          </div> */}
-        </div>
       </table>
 
       <table
         style={{
           width: '100%',
-          borderWidth: '2px',
-          borderStyle: 'solid',
-          borderColor: 'black',
-          padding: '0px',
-          borderSpacing: '0px',
-          marginTop: '2rem'
+          border: '2px solid #374151',
+          borderTopWidth: 0,
+          borderSpacing: '0px'
         }}
       >
-        <img src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK} alt='Credore eBL Terms & Conditions' style={{ width: '100%' }} />
+        <tr>
+          <td css={signatureTableTd} style={{ width: '50%', borderWidth: 0, padding: '1.5rem', borderBottomWidth:2 }}>
+            <div
+              style={{
+                border: '1px solid #336',
+                padding: '1.5rem',
+                borderRadius: '10px',
+                boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+                backgroundColor: '#d0eef6'
+              }}
+            >
+              <h6 css={signatureCellHeader}> Electronic Bill of Lading</h6>
+              <p css={signatureCellText} style={{ marginTop: 5 }}>
+                This is an Original Bill of Lading issued electronically by Credore which is an IG&PI deemed approved
+                platform. The authenticity of this document may be verified at&nbsp;
+                <a
+                  href='https://dev.verify.credore.xyz/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{ color: 'rgb(6, 70, 98)', textDecoration: 'none' }}
+                >
+                  <b>www.dev.verify.credore.xyz</b>
+                </a>
+              </p>
+              <div style={{ padding: '0.75rem', alignItems: 'center' }}>
+                <img
+                  src='https://www.credore.xyz/assets/images/Logo.png'
+                  alt='credore stamp'
+                  style={{ height: '2em', width: 'auto' }}
+                />
+              </div>
+              <p css={signatureCellText}>
+                Document Id:&nbsp;
+                <b>{dcsaBlNumber}</b>
+              </p>
+
+              <p css={signatureCellText}>
+                Network Name:&nbsp;
+                <b>{blockchainName}</b>
+              </p>
+              <p css={signatureCellText}>
+                Issued electronically on:&nbsp;
+                <b>{moment(carrierSignTime).format('DD/MM/YYYY HH:mm:ss')}</b>
+              </p>
+            </div>
+          </td>
+
+          <td css={signatureTableTd} style={{borderBottomWidth:2}}>
+            <h6 css={signatureCellTitle}> For {carrier_name}</h6>
+            <p css={signatureCellText}>Digitally Signed By</p>
+
+            <div style={{ marginLeft: 20 }}>
+              <h6 css={signatureCellTitle}> {carrier_contact_name}</h6>
+
+              <img src={signature} alt='carrier signature' style={{ height: '4rem', width: 'auto' }} />
+
+              <div css={cellContent} style={{ marginTop: 0 }}>
+                <p css={signatureCellText}>
+                  Signing Date & Time:&nbsp;<b>{moment(carrierSignTime).format('DD/MM/YYYY HH:mm:ss')}</b>
+                </p>
+                <p css={signatureCellText}>
+                  Place of Signing:&nbsp;<b>{carrierSignerPlace}</b>
+                </p>
+                <p css={signatureCellText}>
+                  Signer IP Address:&nbsp;<b>{carrierSignIp}</b>
+                </p>
+              </div>
+            </div>
+
+            <h6 css={signatureCellTitle} style={{ marginTop: 10 }}>
+              Authorised Signatory
+            </h6>
+            {/* </div> */}
+          </td>
+        </tr>
+        <tr css={tableTr}>
+          <td css={tableTd} colSpan={2} style={{ border: 0, borderTop: 1 }}>
+            <span css={cellHeader}>Disclaimer:</span>
+            <span css={cellText}>
+              This document, originally existing in electronic or paper or both formats, has been converted to the
+              TradeTrust-recommended format, ensuring MLETR compliance. The converted document, in compliance with
+              Section 4(1) of the Electronic Trade Document Act, holds the same legal validity. Any unauthorized
+              alterations or modifications are strictly prohibited. Verify its integrity and authenticity through
+              approved channels.
+            </span>
+          </td>
+        </tr>
       </table>
+
+      {/* <table
+        style={{
+          width: '100%',
+          borderWidth: '0px 1px 1px 1px',
+          borderStyle: 'solid',
+          borderColor: '#374151',
+          padding: '0px',
+          borderSpacing: '0px'
+        }}
+      >
+        <div css={tableTd}>
+          <span css={cellHeader}>Terms & Conditions:&nbsp;</span>
+          <span css={cellText}>{terms}</span>
+        </div>
+      </table> */}
+
+      <Accordion
+        style={{
+          marginTop: '1.25rem',
+          marginBottom: '1rem',
+          borderRadius: '0.375rem',
+          width: '100%',
+          backgroundColor: 'rgb(82 82 82 / 0.9)',
+          color: 'white'
+        }}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMore style={{ fontWeight: '900', color: 'white' }} />}
+          style={{ backgroundColor: '#525252e0', borderRadius: '0.375rem' }}
+        >
+          {carrier_name}
+          &nbsp;Terms & Conditions
+        </AccordionSummary>
+
+        <AccordionDetails style={{ backgroundColor: '#FFF', borderRadius: '0 0 0.375rem 0.375rem', color: '#666' }}>
+          <span css={cellText}>{terms}</span>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion
+        style={{
+          marginTop: '1.25rem',
+          marginBottom: '1rem',
+          borderRadius: '0.375rem',
+          width: '100%',
+          backgroundColor: 'rgb(82 82 82 / 0.9)',
+          color: 'white'
+        }}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMore style={{ fontWeight: '900', color: 'white' }} />}
+          style={{ backgroundColor: '#525252e0', borderRadius: '0.375rem' }}
+        >
+          eBL Terms & Conditions
+        </AccordionSummary>
+
+        <AccordionDetails style={{ backgroundColor: '#FFF', borderRadius: '0 0 0.375rem 0.375rem', color: '#666' }}>
+          <img
+            src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK}
+            alt='Credore eBL Terms & Conditions'
+            style={{ width: '100%' }}
+          />
+        </AccordionDetails>
+      </Accordion>
     </div>
   )
 }
