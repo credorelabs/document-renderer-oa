@@ -962,7 +962,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         }}
       >
         <AccordionSummary
-          expandIcon={<ExpandMore style={{ fontWeight: '900', color: 'white' }} />}
+          expandIcon={<ExpandMore style={{ fontWeight: 900, color: 'white' }} />}
           style={{ backgroundColor: '#525252e0', borderRadius: '0.375rem' }}
         >
           {carrier_name}
@@ -985,7 +985,7 @@ export const CargoDocumentTemplate: FunctionComponent<TemplateProps<CargoDocumen
         }}
       >
         <AccordionSummary
-          expandIcon={<ExpandMore style={{ fontWeight: '900', color: 'white' }} />}
+          expandIcon={<ExpandMore style={{ fontWeight: 900, color: 'white' }} />}
           style={{ backgroundColor: '#525252e0', borderRadius: '0.375rem' }}
         >
           eBL Terms & Conditions
