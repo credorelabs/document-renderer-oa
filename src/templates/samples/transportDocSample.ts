@@ -4,7 +4,8 @@ import { CargoDocument } from "../transport-document/types";
 export const cargoDocumentTemplate: CargoDocument = {
   recipient: {
     primaryLogo:
-      "https://imgs.search.brave.com/ju0dBzUiF5JbCT6wRZGfy61um0D9ntUXUU9GsSggplk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzYxLzIvbmlsZS1j/YXJnby1jYXJyaWVy/LXVnYW5kYS1sb2dv/LXBuZ19zZWVrbG9n/by02MTA1MzgucG5n",
+      // "https://imgs.search.brave.com/ju0dBzUiF5JbCT6wRZGfy61um0D9ntUXUU9GsSggplk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzYxLzIvbmlsZS1j/YXJnby1jYXJyaWVy/LXVnYW5kYS1sb2dv/LXBuZ19zZWVrbG9n/by02MTA1MzgucG5n",
+      "",
     dcsaBlNumber: "BOL-789012",
     shippingInstructionsReference: "a1b2c3d4-5678-9012-e3f4-g5h6i7j8k9l0",
     date_actualDateOfPlaceOfReceipt: "2025-05-25T00:00:00.000Z",
@@ -28,7 +29,7 @@ export const cargoDocumentTemplate: CargoDocument = {
     exporterPhone: "+919876543210",
     carrier_name: "Evergreen Line",
     carrier_contact_name: "John Lee",
-    carrier_address: "789 PortARE Road, Singapore 099253",
+    carrier_address: "789 Port ARE Road, Singapore 099253",
     carrier_contact_email: "john.lee@evergreenline.com",
     carrier_contact_phone: "+6567890123",
     other_name: "Freight Forwarders Co",
@@ -76,11 +77,57 @@ export const cargoDocumentTemplate: CargoDocument = {
     corridor: "SG",
     issueDate: "",
     qrCode: {
-      uri: "https://dev.verify.credore.xyz?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fdev-api.credore.in%2Fdcsa-transport-doc%2Fw3c%2FBL-CD-14%22%2C%22redirect%22%3A%22https%3A%2F%2Fdev.verify.credore.xyz%2F%22%2C%22chainId%22%3A80002%7D%7D",
-      type: "TrustVCQRCode",
+      uri:
+        "https://dev.verify.credore.xyz?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fdev-api.credore.in%2Fdcsa-transport-doc%2Fw3c%2FBL-CD-14%22%2C%22redirect%22%3A%22https%3A%2F%2Fdev.verify.credore.xyz%2F%22%2C%22chainId%22%3A80002%7D%7D",
+      type: "TrustVCQRCode"
     },
-    placeOfAcceptance:"Bhubaneswar Municipal Corporation, India",
-    dateOfAcceptance:"2026-09-30T12:28:37.306Z",
+    terms: "sample terms & conditions set by the shipping line which issues the bill of lasing",
+    placeOfAcceptance: "Bhubaneswar Municipal Corporation, India",
+    dateOfAcceptance: "2026-09-30T12:28:37.306Z",
+    consignmentItems: [
+      {
+        carrierBookingReference: "123",
+        commoditySubReference: "",
+        descriptionOfGoods: [
+          " Meat preparations; sausages and similar products, of meat, meat offal, blood or insects, and food preparations based on these products"
+        ],
+        hSCodes: ["1601"],
+        cargoItems: [
+          {
+            equipmentReference: "12",
+            houseBillOfLadingReference: "",
+            cargoGrossWeight: {
+              value: 20,
+              unit: "KGM"
+            },
+            cargoGrossVolume: {
+              unit: "CBM",
+              value: 10
+            },
+            cargoNetWeight: {
+              unit: "CBM",
+              value: 10
+            },
+            cargoNetVolume: {
+              unit: "CBM",
+              value: 10
+            },
+            customsReference: {},
+            nationalCommodityCodes: [],
+            OuterPackaging: {
+              packageCode: "12",
+              numberOfPackages: "20",
+              description: "woods",
+              woodDeclaration: "TREATED_AND_CERTIFIED"
+            },
+            packageCode: "",
+            numberOfPackages: "",
+            shippingMarks: "",
+            UNNumber: ""
+          }
+        ]
+      }
+    ]
   },
   issuers: [
     {
