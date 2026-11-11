@@ -194,6 +194,8 @@ export interface Recipient extends v2.Recipient {
   qrCode?: QrCodeInfo
   placeOfAcceptance?: string
   dateOfAcceptance?: string
+  exporterFax?: string
+  exporterGst?: string
 }
 interface Signature {
   name?: string

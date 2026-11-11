@@ -141,6 +141,8 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     exporterName,
     exporterLei,
     exporterCompanyName,
+    exporterFax,
+    exporterGst,
 
     importerCompanyName,
     importerAddress,
@@ -510,6 +512,18 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
                           <br />
                         </>
                       )}
+                      {exporterFax && (
+                        <>
+                          Fax:&nbsp;{exporterFax}
+                          <br />
+                        </>
+                      )}
+                      {exporterGst && (
+                        <>
+                          GSTN:&nbsp;{exporterGst}
+                          <br />
+                        </>
+                      )}
                       {exporterLei && <>LEI No: {exporterLei}</>}
                     </p>
                   </div>
@@ -748,7 +762,10 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
               <p css={cellText}>
                 <br />
                 <br />
-                <b style={{ textTransform: 'uppercase' }}>Net Weight<br/></b>
+                <b style={{ textTransform: 'uppercase' }}>
+                  Net Weight
+                  <br />
+                </b>
                 {netWeight}&nbsp;{grossWeightUnit}
               </p>
             )}
