@@ -185,6 +185,7 @@ export interface Recipient extends v2.Recipient {
   containerNumber?: string
   temperature?: string
   grossWeight?: number
+  netWeight?: number
   grossWeightUnit?: string
   valueCurrency?: string | number
   placeOfTranshipment?: string

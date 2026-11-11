@@ -203,6 +203,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
     containerNumber,
     temperature,
     grossWeight,
+    netWeight,
     grossWeightUnit,
     valueCurrency,
     placeOfTranshipment,
@@ -369,7 +370,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
           }}
         >
           <img src={carrierLogo} alt='Image' style={{ height: '100px', width: 'auto', objectFit: 'contain' }} />
-          <div style={{ fontSize: '1.875rem', lineHeight:'2.25rem', textAlign: 'center', color: '#093228' }}>
+          <div style={{ fontSize: '1.875rem', lineHeight: '2.25rem', textAlign: 'center', color: '#093228' }}>
             <b>BILL OF LADING</b> (ELECTRONIC)
           </div>
 
@@ -398,7 +399,7 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
           }}
         >
           <img src={carrierLogo} alt='Image' style={{ height: '100px', width: 'auto', objectFit: 'contain' }} />
-          <div style={{ fontSize: '1.875rem', lineHeight:'2.25rem', textAlign: 'center', color: '#093228' }}>
+          <div style={{ fontSize: '1.875rem', lineHeight: '2.25rem', textAlign: 'center', color: '#093228' }}>
             <b>BILL OF LADING</b> (ELECTRONIC)
           </div>
         </div>
@@ -742,6 +743,15 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
             <p css={cellText}>
               {grossWeight}&nbsp;{grossWeightUnit}
             </p>
+
+            {netWeight && (
+              <p css={cellText}>
+                <br />
+                <br />
+                <b style={{ textTransform: 'uppercase' }}>Net Weight<br/></b>
+                {netWeight}&nbsp;{grossWeightUnit}
+              </p>
+            )}
           </td>
           <td css={tableTdOneFifth} style={{ borderLeftWidth: 0, width: '15%' }}>
             <p css={cellText}>{containerSize}</p>
@@ -999,7 +1009,11 @@ export const CCIBolTemplate: FunctionComponent<TemplateProps<CCICargoDocument>> 
         }}
       >
         <h6 style={{ padding: '5px', margin: '10px 0 0 20px', fontSize: 14 }}>Credore eBL Terms & Conditions</h6>
-        <img src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK} alt='Credore eBL Terms & Conditions' style={{ width: '100%' }} />
+        <img
+          src={corridor === 'SG' ? CredoreTermsSG : CredoreTermsUK}
+          alt='Credore eBL Terms & Conditions'
+          style={{ width: '100%' }}
+        />
       </table>
 
       {/* <div>
